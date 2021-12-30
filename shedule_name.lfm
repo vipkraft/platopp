@@ -1,0 +1,8 @@
+object Form19: TForm19
+  Left = 693
+  Height = 240
+  Top = 416
+  Width = 320
+  Caption = 'Form19'
+  LCLVersion = '0.9.31'
+end

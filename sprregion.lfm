@@ -1,0 +1,232 @@
+object Form3: TForm3
+  Left = 542
+  Height = 924
+  Top = 45
+  Width = 1024
+  ActiveControl = StringGrid1
+  Caption = 'Справочник Республик,Областей,Районов,Населенных пунктов'
+  ClientHeight = 924
+  ClientWidth = 1024
+  OnCreate = FormCreate
+  LCLVersion = '0.9.31'
+  object Button1: TButton
+    Left = 23
+    Height = 27
+    Top = 881
+    Width = 70
+    Caption = 'Button1'
+    Enabled = False
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object StringGrid1: TStringGrid
+    Left = 3
+    Height = 434
+    Top = 6
+    Width = 1016
+    ColCount = 3
+    DefaultDrawing = False
+    FixedCols = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll]
+    TabOrder = 1
+    OnDrawCell = StringGrid1DrawCell
+    OnMouseDown = StringGrid1MouseDown
+    ColWidths = (
+      64
+      439
+      478
+    )
+  end
+  object Button2: TButton
+    Left = 16
+    Height = 30
+    Top = 752
+    Width = 144
+    Caption = 'Button2'
+    Enabled = False
+    OnClick = Button2Click
+    TabOrder = 2
+  end
+  object Label1: TLabel
+    Left = 48
+    Height = 34
+    Top = 480
+    Width = 91
+    Caption = 'Label1'
+    Font.Height = -27
+    ParentColor = False
+    ParentFont = False
+  end
+  object Button3: TButton
+    Left = 144
+    Height = 31
+    Top = 800
+    Width = 256
+    Caption = 'из kladr.dbf в geokladr.sql'
+    OnClick = Button3Click
+    TabOrder = 3
+  end
+  object Button4: TButton
+    Left = 207
+    Height = 44
+    Top = 736
+    Width = 158
+    Caption = 'WEB'
+    OnClick = Button4Click
+    TabOrder = 4
+  end
+  object Button5: TButton
+    Left = 533
+    Height = 53
+    Top = 740
+    Width = 156
+    Caption = 'Загрузка HACE.DBF'
+    OnClick = Button5Click
+    TabOrder = 5
+  end
+  object Label2: TLabel
+    Left = 504
+    Height = 34
+    Top = 480
+    Width = 91
+    Caption = 'Label2'
+    Font.Height = -27
+    ParentColor = False
+    ParentFont = False
+  end
+  object Button6: TButton
+    Left = 47
+    Height = 35
+    Top = 640
+    Width = 141
+    Caption = 'Старт Транзакции 1'
+    Font.Height = -11
+    OnClick = Button6Click
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Button7: TButton
+    Left = 480
+    Height = 35
+    Top = 640
+    Width = 141
+    Caption = 'Старт Транзакции 2'
+    Font.Height = -11
+    OnClick = Button7Click
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Button8: TButton
+    Left = 48
+    Height = 35
+    Top = 688
+    Width = 141
+    Caption = 'Стоп Транзакции 1'
+    Font.Height = -11
+    OnClick = Button8Click
+    ParentFont = False
+    TabOrder = 8
+  end
+  object Button9: TButton
+    Left = 480
+    Height = 35
+    Top = 688
+    Width = 141
+    Caption = 'Стоп Транзакции 2'
+    Font.Height = -11
+    OnClick = Button9Click
+    ParentFont = False
+    TabOrder = 9
+  end
+  object Button10: TButton
+    Left = 816
+    Height = 35
+    Top = 448
+    Width = 141
+    Caption = 'Старт'
+    Font.Height = -11
+    OnClick = Button10Click
+    ParentFont = False
+    TabOrder = 10
+  end
+  object ProgressBar1: TProgressBar
+    Left = 335
+    Height = 15
+    Top = 361
+    Width = 355
+    BorderWidth = 2
+    Smooth = True
+    TabOrder = 11
+    Visible = False
+  end
+  object ZConnection1: TZConnection
+    Protocol = 'postgresql'
+    HostName = '172.27.1.110'
+    Port = 5432
+    Database = 'platforma'
+    User = 'platforma'
+    Password = '19781985'
+    TransactIsolationLevel = tiReadCommitted
+    Connected = True
+    left = 240
+    top = 876
+  end
+  object ZQuery1: TZQuery
+    Connection = ZConnection1
+    Params = <>
+    left = 459
+    top = 876
+  end
+  object ZQuery2: TZQuery
+    Connection = ZConnection1
+    Params = <>
+    left = 752
+    top = 852
+  end
+  object Dbf1: TDbf
+    FilePath = '/home/swforeman/Документы/lazarus_pj/doc&library/kladr/1/'
+    IndexDefs = <>
+    TableName = 'KLADR.DBF'
+    TableLevel = 3
+    FilterOptions = []
+    left = 848
+    top = 848
+  end
+  object Datasource1: TDatasource
+    DataSet = Dbf1
+    left = 930
+    top = 849
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = Timer1Timer
+    left = 85
+    top = 566
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 15
+    OnTimer = Timer2Timer
+    left = 544
+    top = 568
+  end
+  object ZConnection2: TZConnection
+    Protocol = 'postgresql'
+    HostName = '172.27.1.110'
+    Port = 5432
+    Database = 'platforma'
+    User = 'platforma'
+    Password = '19781985'
+    TransactIsolationLevel = tiReadCommitted
+    Connected = True
+    left = 320
+    top = 876
+  end
+  object ZQuery3: TZQuery
+    Connection = ZConnection2
+    Params = <>
+    left = 537
+    top = 877
+  end
+end

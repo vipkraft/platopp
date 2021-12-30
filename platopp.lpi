@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="11"/>
+    <General>
+      <MainUnit Value="0"/>
+      <Title Value="АСПБ ПЛАТФОРМА АВ модуль ОПП"/>
+      <UseAppBundle Value="False"/>
+      <ResourceType Value="res"/>
+      <Icon Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+    </i18n>
+    <VersionInfo>
+      <UseVersionInfo Value="True"/>
+      <AutoIncrementBuild Value="True"/>
+      <MajorVersionNr Value="1"/>
+      <RevisionNr Value="1"/>
+      <BuildNr Value="75"/>
+      <Language Value="0419"/>
+      <CharSet Value="04B0"/>
+      <StringTable ProductVersion="1.0.1.60"/>
+    </VersionInfo>
+    <BuildModes Count="1" Active="Default">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default"/>
+      </Modes>
+    </RunParams>
+    <RequiredPackages Count="8">
+      <Item1>
+        <PackageName Value="DateTimeCtrls"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="KControlsLaz"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="FormatMemo"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="LazMouseAndKeyInput"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Release="1" Valid="True"/>
+      </Item5>
+      <Item6>
+        <PackageName Value="zcomponent"/>
+        <MinVersion Major="7" Valid="True"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="LCLBase"/>
+        <MinVersion Major="1" Release="1" Valid="True"/>
+      </Item7>
+      <Item8>
+        <PackageName Value="LCL"/>
+      </Item8>
+    </RequiredPackages>
+    <Units Count="68">
+      <Unit0>
+        <Filename Value="platopp.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="46" Y="19"/>
+        <UsageCount Value="205"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="mainopp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <TopLine Value="280"/>
+        <CursorPos X="20" Y="293"/>
+        <UsageCount Value="205"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="fullmap.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form2"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="34"/>
+        <CursorPos X="38" Y="47"/>
+        <UsageCount Value="205"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="platproc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="503"/>
+        <CursorPos X="45" Y="521"/>
+        <UsageCount Value="215"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="nas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form5"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="169"/>
+        <CursorPos X="28" Y="242"/>
+        <UsageCount Value="201"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="nas_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form6"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="278"/>
+        <CursorPos X="25" Y="302"/>
+        <UsageCount Value="200"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="other_nas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form8"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="122"/>
+        <CursorPos X="17" Y="137"/>
+        <ExtraEditorCount Value="1"/>
+        <ExtraEditor1>
+          <EditorIndex Value="-1"/>
+          <TopLine Value="9"/>
+          <CursorPos X="73" Y="9"/>
+        </ExtraEditor1>
+        <UsageCount Value="214"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="read_nas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form7"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="57" Y="8"/>
+        <UsageCount Value="213"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="point_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form9"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="450"/>
+        <CursorPos X="15" Y="460"/>
+        <UsageCount Value="200"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="point_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form10"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="137"/>
+        <CursorPos X="36" Y="148"/>
+        <UsageCount Value="204"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="group.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form11"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="298"/>
+        <CursorPos X="29" Y="322"/>
+        <UsageCount Value="200"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="group_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form12"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="165"/>
+        <CursorPos X="24" Y="189"/>
+        <UsageCount Value="200"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="ats_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form13"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="803"/>
+        <CursorPos X="32" Y="817"/>
+        <UsageCount Value="204"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="ats_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form14"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1048"/>
+        <CursorPos X="32" Y="1072"/>
+        <UsageCount Value="206"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="shedule_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form15"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="456"/>
+        <CursorPos X="57" Y="471"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="route_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form17"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="264"/>
+        <CursorPos X="18" Y="288"/>
+        <UsageCount Value="200"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="route_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form18"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="67" Y="8"/>
+        <UsageCount Value="212"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="kontr1c.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form21"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="138"/>
+        <CursorPos X="16" Y="167"/>
+        <UsageCount Value="213"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="kontr_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form20"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="41"/>
+        <CursorPos X="28" Y="50"/>
+        <UsageCount Value="201"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="shedule_edit_sostav.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form22"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="652"/>
+        <CursorPos X="76" Y="666"/>
+        <UsageCount Value="200"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="lgot_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formlgot"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="208"/>
+        <CursorPos X="31" Y="232"/>
+        <UsageCount Value="223"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="lgot_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formlgot_edit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="185"/>
+        <CursorPos X="33" Y="209"/>
+        <UsageCount Value="222"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="uslugi_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormUslugi"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="142"/>
+        <CursorPos X="27" Y="166"/>
+        <UsageCount Value="225"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="uslugi_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formuslugi_edit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="170"/>
+        <CursorPos X="35" Y="194"/>
+        <UsageCount Value="225"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="shedule_path.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formpath"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="90"/>
+        <CursorPos X="57" Y="98"/>
+        <UsageCount Value="208"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="tarif_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formtarif_edit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="14"/>
+        <CursorPos X="27" Y="1186"/>
+        <UsageCount Value="200"/>
+        <Bookmarks Count="5">
+          <Item0 Y="1143" ID="2"/>
+          <Item1 X="12" Y="462" ID="3"/>
+          <Item2 X="4" Y="770"/>
+          <Item3 X="4" Y="1618" ID="5"/>
+          <Item4 Y="2415" ID="6"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="tarif_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formtarif"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="518"/>
+        <CursorPos X="19" Y="542"/>
+        <UsageCount Value="200"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="dogovor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form23"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="328"/>
+        <CursorPos X="11" Y="341"/>
+        <UsageCount Value="200"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="ticketshablon.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="formTT"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ticketShablon"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="254"/>
+        <CursorPos X="29" Y="265"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="tickettypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormTicket"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="TicketTypes"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="362"/>
+        <CursorPos X="28" Y="372"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="kontr_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formsk"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="1908"/>
+        <CursorPos X="86" Y="1917"/>
+        <UsageCount Value="202"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="dogovor_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form24"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="527"/>
+        <CursorPos X="23" Y="538"/>
+        <UsageCount Value="201"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="dogovor1c.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form25"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="173"/>
+        <CursorPos X="11" Y="204"/>
+        <UsageCount Value="201"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="path_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formpm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="302"/>
+        <CursorPos X="29" Y="326"/>
+        <UsageCount Value="201"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="path_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formpme"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="353"/>
+        <CursorPos X="26" Y="377"/>
+        <UsageCount Value="201"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="reports.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Reports"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="118"/>
+        <CursorPos X="110" Y="128"/>
+        <UsageCount Value="200"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="rtfdoc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="RtfDoc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="448"/>
+        <CursorPos X="23" Y="453"/>
+        <UsageCount Value="200"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="license.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormLic"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="73"/>
+        <CursorPos X="45" Y="84"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="htmldoc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="478"/>
+        <CursorPos X="11" Y="494"/>
+        <UsageCount Value="207"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="htmlproc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8"/>
+        <CursorPos X="39" Y="9"/>
+        <UsageCount Value="207"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="datalog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormDLog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="307"/>
+        <CursorPos X="20" Y="331"/>
+        <UsageCount Value="201"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="shedule_grafik.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Formgr"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="145"/>
+        <CursorPos X="27" Y="169"/>
+        <UsageCount Value="202"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="users_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form_users"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="163"/>
+        <CursorPos X="41" Y="177"/>
+        <UsageCount Value="202"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="report_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormReport"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="31"/>
+        <CursorPos X="28" Y="52"/>
+        <UsageCount Value="200"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="report_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormRepEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1616"/>
+        <CursorPos X="17" Y="1640"/>
+        <UsageCount Value="204"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="report_vibor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormRepV"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="33" Y="8"/>
+        <UsageCount Value="203"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="shedule_edit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form16"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="1767"/>
+        <CursorPos X="49" Y="1775"/>
+        <UsageCount Value="237"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="servers_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form_servers"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="128"/>
+        <CursorPos X="29" Y="144"/>
+        <UsageCount Value="215"/>
+        <Loaded Value="True"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="shedule_bron.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form_Bron"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="40"/>
+        <CursorPos X="57" Y="119"/>
+        <UsageCount Value="203"/>
+        <Loaded Value="True"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="ticket.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormAdd"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="320"/>
+        <CursorPos X="39" Y="327"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="message_idle.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormIdle"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="58"/>
+        <CursorPos X="29" Y="62"/>
+        <UsageCount Value="202"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="shedule_tarif.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormST"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="33"/>
+        <CursorPos X="18" Y="39"/>
+        <UsageCount Value="200"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="kontr_tarif.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormKontrTarif"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="55" Y="9"/>
+        <UsageCount Value="200"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="version_info.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="207"/>
+      </Unit53>
+      <Unit54>
+        <Filename Value="facelist.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormFace"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="481"/>
+        <CursorPos X="42" Y="495"/>
+        <UsageCount Value="201"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="auth.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormAuth"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Auth"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="236"/>
+        <Loaded Value="True"/>
+      </Unit55>
+      <Unit56>
+        <Filename Value="../../egor/Документы/lazarus_install/formatmemo/formatmemo.lpk"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="235"/>
+        <DefaultSyntaxHighlighter Value="XML"/>
+      </Unit56>
+      <Unit57>
+        <Filename Value="servers_points.pas"/>
+        <ComponentName Value="Form26"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="11" Y="10"/>
+        <UsageCount Value="186"/>
+      </Unit57>
+      <Unit58>
+        <Filename Value="astradno.pas"/>
+        <ComponentName Value="Form27"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="28" Y="11"/>
+        <UsageCount Value="294"/>
+      </Unit58>
+      <Unit59>
+        <Filename Value="/usr/lib/lazarus/lcl/graphics.pp"/>
+        <UnitName Value="Graphics"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="49"/>
+        <CursorPos X="25" Y="63"/>
+        <UsageCount Value="65"/>
+      </Unit59>
+      <Unit60>
+        <Filename Value="spr_shed_kontr.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form28"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="261"/>
+        <CursorPos X="18" Y="282"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit60>
+      <Unit61>
+        <Filename Value="pdp_destination_points.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form29"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="311"/>
+        <CursorPos X="3" Y="341"/>
+        <UsageCount Value="182"/>
+      </Unit61>
+      <Unit62>
+        <Filename Value="../lazarus/fpc-3.0.4/packages/rtl-extra/src/inc/socketsh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="149"/>
+        <CursorPos X="11" Y="156"/>
+        <UsageCount Value="2"/>
+      </Unit62>
+      <Unit63>
+        <Filename Value="../lazarus/fpc-3.0.4/packages/libc/src/nifh.inc"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="5"/>
+      </Unit63>
+      <Unit64>
+        <Filename Value="../lazarus/fpc-3.0.4/packages/rtl-extra/src/linux/unxsockh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="3" Y="21"/>
+        <UsageCount Value="5"/>
+      </Unit64>
+      <Unit65>
+        <Filename Value="../lazarus/fpc-3.0.4/packages/libc/src/aineth.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="10" Y="8"/>
+        <UsageCount Value="5"/>
+      </Unit65>
+      <Unit66>
+        <Filename Value="../lazarus/fpc-3.0.4/packages/libc/src/libc.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="166"/>
+        <CursorPos X="11" Y="191"/>
+        <UsageCount Value="5"/>
+      </Unit66>
+      <Unit67>
+        <Filename Value="../lazarus/fpc-3.0.4/packages/fcl-net/src/cnetdb.pp"/>
+        <UnitName Value="cNetDB"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="21" Y="269"/>
+        <UsageCount Value="5"/>
+      </Unit67>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2118" Column="40" TopLine="2094"/>
+      </Position1>
+      <Position2>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2184" Column="41" TopLine="2160"/>
+      </Position2>
+      <Position3>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2296" Column="26" TopLine="2271"/>
+      </Position3>
+      <Position4>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2325" Column="27" TopLine="2300"/>
+      </Position4>
+      <Position5>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2486" Column="42" TopLine="2462"/>
+      </Position5>
+      <Position6>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2662" Column="59" TopLine="2638"/>
+      </Position6>
+      <Position7>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2486" Column="39" TopLine="2472"/>
+      </Position7>
+      <Position8>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2325" Column="24" TopLine="2310"/>
+      </Position8>
+      <Position9>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2486" Column="42" TopLine="2462"/>
+      </Position9>
+      <Position10>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2662" Column="59" TopLine="2638"/>
+      </Position10>
+      <Position11>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2672" Column="42" TopLine="2648"/>
+      </Position11>
+      <Position12>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="4230" Column="39" TopLine="4206"/>
+      </Position12>
+      <Position13>
+        <Filename Value="spr_shed_kontr.pas"/>
+        <Caret Line="233" Column="10" TopLine="231"/>
+      </Position13>
+      <Position14>
+        <Filename Value="spr_shed_kontr.pas"/>
+        <Caret Line="110" Column="3" TopLine="98"/>
+      </Position14>
+      <Position15>
+        <Filename Value="spr_shed_kontr.pas"/>
+        <Caret Line="565" Column="31" TopLine="542"/>
+      </Position15>
+      <Position16>
+        <Filename Value="shedule_main.pas"/>
+        <Caret Line="1616" Column="14" TopLine="1599"/>
+      </Position16>
+      <Position17>
+        <Filename Value="shedule_main.pas"/>
+        <Caret Line="6" Column="55"/>
+      </Position17>
+      <Position18>
+        <Filename Value="shedule_main.pas"/>
+        <Caret Line="228" Column="141" TopLine="204"/>
+      </Position18>
+      <Position19>
+        <Filename Value="shedule_main.pas"/>
+        <Caret Line="248" Column="130" TopLine="224"/>
+      </Position19>
+      <Position20>
+        <Filename Value="shedule_main.pas"/>
+        <Caret Line="392" Column="135" TopLine="368"/>
+      </Position20>
+      <Position21>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="4234" Column="11" TopLine="4215"/>
+      </Position21>
+      <Position22>
+        <Filename Value="shedule_edit.pas"/>
+      </Position22>
+      <Position23>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1679" Column="79" TopLine="1655"/>
+      </Position23>
+      <Position24>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1714" Column="79" TopLine="1690"/>
+      </Position24>
+      <Position25>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1900" Column="72" TopLine="1875"/>
+      </Position25>
+      <Position26>
+        <Filename Value="shedule_edit.pas"/>
+      </Position26>
+      <Position27>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="345" Column="18" TopLine="320"/>
+      </Position27>
+      <Position28>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1702" Column="14" TopLine="1663"/>
+      </Position28>
+      <Position29>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1734" Column="38" TopLine="1710"/>
+      </Position29>
+      <Position30>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1699" Column="22" TopLine="1676"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <Target>
+      <Filename Value="platopp"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <CodeGeneration>
+      <Optimizations>
+        <OptimizationLevel Value="0"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <UseExternalDbgSyms Value="True"/>
+      </Debugging>
+    </Linking>
+    <Other>
+      <Verbosity>
+        <ShowWarn Value="False"/>
+        <ShowNotes Value="False"/>
+        <ShoLineNum Value="True"/>
+        <ShowDebugInfo Value="True"/>
+      </Verbosity>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Watches Count="2">
+      <Item1>
+        <Expression Value="connectINI"/>
+      </Item1>
+      <Item2>
+        <Expression Value="connectINI[5]"/>
+      </Item2>
+    </Watches>
+    <Exceptions Count="7" IgnoreAll="True">
+      <Item1>
+        <Name Value="EAbort"/>
+        <Enabled Value="False"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+        <Enabled Value="False"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+        <Enabled Value="False"/>
+      </Item3>
+      <Item4>
+        <Name Value="EZSQLException"/>
+        <Enabled Value="False"/>
+      </Item4>
+      <Item5>
+        <Name Value="EConvertError"/>
+        <Enabled Value="False"/>
+      </Item5>
+      <Item6>
+        <Name Value="EListError"/>
+        <Enabled Value="False"/>
+      </Item6>
+      <Item7>
+        <Name Value="EZDatabaseError"/>
+        <Enabled Value="False"/>
+      </Item7>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
