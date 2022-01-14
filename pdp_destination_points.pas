@@ -115,9 +115,9 @@ procedure TForm29.UpdateGrid2(filter_type:byte; stroka:string);
   ZQuery1.SQL.add('  FROM av_spr_destination ');
   ZQuery1.SQL.add('WHERE 1=1 ');
    if (stroka<>'') and (filter_type=1) then
-      ZQuery1.SQL.add('and ((idek='+stroka+')) ORDER BY id;');
+      ZQuery1.SQL.add('and (idek like '+quotedstr('%'+stroka)+') ORDER BY idek;');
    if (stroka<>'') and (filter_type=2) then
-      ZQuery1.SQL.add('and ((dname ilike '+quotedstr('%'+stroka+'%')+')) ORDER BY dname;');
+      ZQuery1.SQL.add('and (dname ilike '+quotedstr('%'+stroka+'%')+') ORDER BY dname;');
   //-конец запроса :-)
   //showmessage(ZQuery1.SQL.Text);//;$
   try
