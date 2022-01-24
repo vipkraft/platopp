@@ -355,7 +355,6 @@ end;
 // возникновение формы
 procedure TFormDLog.FormShow(Sender: TObject);
 begin
-  Centrform(FormDLog);
   FormDLog.UpdateCombo();
  {
    SELECT  t.table_name, c.column_name

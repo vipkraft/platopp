@@ -375,7 +375,6 @@ end;
 // **************************** ВОЗНИКНОВЕНИЕ ФОРМЫ *******************************************
 procedure TForm18.FormShow(Sender: TObject);
 begin
-     Centrform(form18);
      fl_ch:= 0;
      route_id := '0';
  With FOrm18 do

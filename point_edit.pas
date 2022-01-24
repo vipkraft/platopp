@@ -84,7 +84,6 @@ procedure TForm10.FormShow(Sender: TObject);
 begin
   with Form10 do
   begin
-  Centrform(Form10);
   if flag_access=1 then  BitBtn3.Enabled:=false;
   // Режим новой записи
   if flag_edit_point=1 then

@@ -330,7 +330,6 @@ end;
 
 procedure TForm_servers.FormShow(Sender: TObject);
 begin
-   Centrform(Form_servers);
    Form_servers.UpdateGrid(datatyp,'');
    Form_servers.StringGrid1.Col := 2;
    Form_servers.StringGrid1.ColWidths[8] := 1;

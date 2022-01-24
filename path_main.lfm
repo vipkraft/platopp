@@ -10,8 +10,9 @@ object Formpm: TFormpm
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   ShowHint = True
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.8.0'
   object StringGrid1: TStringGrid
     Left = 6
     Height = 693
@@ -406,13 +407,12 @@ object Formpm: TFormpm
       Left = 1
       Height = 22
       Top = 2
-      Width = 10
       Caption = 'ToolButton7'
       Style = tbsSeparator
       Visible = False
     end
     object ToolButton8: TToolButton
-      Left = 11
+      Left = 9
       Hint = 'Поиск данных'
       Top = 2
       Caption = 'ToolButton8'
@@ -423,16 +423,15 @@ object Formpm: TFormpm
       Visible = False
     end
     object ToolButton3: TToolButton
-      Left = 34
+      Left = 32
       Height = 22
       Top = 2
-      Width = 5
       Caption = 'ToolButton3'
       Style = tbsDivider
       Visible = False
     end
     object ToolButton1: TToolButton
-      Left = 39
+      Left = 37
       Hint = 'Сортировка'
       Top = 2
       Caption = 'ToolButton1'
@@ -443,16 +442,15 @@ object Formpm: TFormpm
       Visible = False
     end
     object ToolButton2: TToolButton
-      Left = 62
+      Left = 60
       Height = 22
       Top = 2
-      Width = 10
       Caption = 'ToolButton2'
       Style = tbsSeparator
       Visible = False
     end
     object Label2: TLabel
-      Left = 72
+      Left = 68
       Height = 22
       Top = 2
       Width = 459

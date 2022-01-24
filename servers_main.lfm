@@ -10,6 +10,7 @@ object Form_servers: TForm_servers
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poMainFormCenter
   LCLVersion = '2.0.8.0'
   object StringGrid1: TStringGrid
     Left = 3

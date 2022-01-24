@@ -123,7 +123,6 @@ var
    n:integer;
    ssel,spassport:string;
 begin
- Centrform(Form21);
  With Form21 do
  begin
  // Подключаемся к серверу

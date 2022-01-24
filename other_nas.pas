@@ -17,25 +17,15 @@ type
     BitBtn5: TBitBtn;
     Edit1: TEdit;
     Image3: TImage;
-    ImageList1: TImageList;
-    Label2: TLabel;
     Label4: TLabel;
     ProgressBar1: TProgressBar;
     StringGrid1: TStringGrid;
-    ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
-    ToolButton7: TToolButton;
-    ToolButton8: TToolButton;
     ZConnection1: TZConnection;
     ZQuery1: TZQuery;
     procedure BitBtn4Click(Sender: TObject);
     procedure BitBtn5Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
-    procedure ToolButton1Click(Sender: TObject);
-    procedure ToolButton8Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -61,7 +51,7 @@ begin
         form8.Edit1.SetFocus;
       end;
     //ENTER \ ПОИСК
-     if (Key=13) and (form8.Edit1.Focused) then Form8.ToolButton8.Click;
+     //if (Key=13) and (form8.Edit1.Focused) then Form8.ToolButton8.Click;
        //GridPoisk(form9.StringGrid1,form9.Edit1);
 
    // F1
@@ -69,21 +59,11 @@ begin
     // ESC
     if Key=27 then form8.Close;
     //F7 - Поиск
-    if (Key=118) then form8.ToolButton8.Click;
+    //if (Key=118) then form8.ToolButton8.Click;
     // ПРОБЕЛ - ВЫБРАТЬ
     if (Key=13)  and  (form8.StringGrid1.Focused) then form8.BitBtn5.Click;
 
     if (Key=112) or (Key=13) or (Key=27)   then Key:=0;
-end;
-
-procedure TForm8.ToolButton1Click(Sender: TObject);
-begin
-  SortGrid(form8.StringGrid1,form8.StringGrid1.col,form8.ProgressBar1,0,1);
-end;
-
-procedure TForm8.ToolButton8Click(Sender: TObject);
-begin
-   GridPoisk(form8.StringGrid1,form8.Edit1);
 end;
 
 procedure TForm8.BitBtn4Click(Sender: TObject);
@@ -110,7 +90,6 @@ var
    n:integer;
    select_str:string;
 begin
-  Centrform(form8);
  With form8 do
  begin
  result_name:='';

@@ -590,7 +590,6 @@ If formgr.CheckBox1.Checked then
     n:integer;
    myYear, myMonth, myDay : Word;
  begin
-   Centrform(Formgr);
   // Заполняем combo месяцами
   formgr.ComboBox1.Items.Clear;
   for n:=1 to 12 do

@@ -10,7 +10,8 @@ object Formlgot_edit: TFormlgot_edit
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
     Height = 45

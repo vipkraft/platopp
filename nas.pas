@@ -20,20 +20,13 @@ type
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
     Edit1: TEdit;
+    Image1: TImage;
     Image3: TImage;
-    ImageList1: TImageList;
     Label1: TLabel;
     Label2: TLabel;
     Label4: TLabel;
     ProgressBar1: TProgressBar;
     StringGrid1: TStringGrid;
-    ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
-    ToolButton4: TToolButton;
-    ToolButton7: TToolButton;
-    ToolButton8: TToolButton;
     ZConnection1: TZConnection;
     ZQuery1: TZQuery;
     procedure BitBtn12Click(Sender: TObject);
@@ -366,7 +359,7 @@ With form5 do
     //F8 - Удалить
     if (Key=119) and (form5.bitbtn2.enabled=true) then form5.BitBtn2.Click;
     // F9
-    if Key=120 then form5.ToolButton4.Click;
+    //if Key=120 then form5.ToolButton4.Click;
     // ESC
     if Key=27 then form5.Close;
     // ПРОБЕЛ - ВЫБРАТЬ
@@ -390,7 +383,6 @@ end;
 
 procedure TForm5.FormShow(Sender: TObject);
 begin
- Centrform(form5);
  form5.UpdateGrid(datatyp,'');
  form5.StringGrid1.Col:=1;
  form5.StringGrid1.Row:=1;

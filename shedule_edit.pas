@@ -69,15 +69,12 @@ type
     Edit13: TEdit;
     Edit14: TEdit;
     Edit16: TEdit;
-    Edit17: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
-    Edit4: TEdit;
     Edit5: TEdit;
     Edit6: TEdit;
     Edit7: TEdit;
     Edit8: TEdit;
-    Edit9: TEdit;
     FloatSpinEdit1: TFloatSpinEdit;
     FloatSpinEdit2: TFloatSpinEdit;
     FloatSpinEdit3: TFloatSpinEdit;
@@ -86,6 +83,7 @@ type
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
     GroupBox6: TGroupBox;
     GroupBox7: TGroupBox;
     GroupBox8: TGroupBox;
@@ -102,7 +100,6 @@ type
     Label16: TLabel;
     Label17: TLabel;
     Label18: TLabel;
-    Label19: TLabel;
     Label2: TLabel;
     Label20: TLabel;
     Label21: TLabel;
@@ -111,14 +108,13 @@ type
     Label24: TLabel;
     Label25: TLabel;
     Label27: TLabel;
-    Label28: TLabel;
     Label3: TLabel;
     Label31: TLabel;
     Label32: TLabel;
+    Label33: TLabel;
     Label36: TLabel;
     Label37: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
@@ -133,9 +129,6 @@ type
     RadioButton5: TRadioButton;
     Shape1: TShape;
     Shape10: TShape;
-    Shape11: TShape;
-    Shape17: TShape;
-    Shape18: TShape;
     Shape19: TShape;
     Shape8: TShape;
     SpinEdit1: TSpinEdit;
@@ -166,6 +159,7 @@ type
     procedure BitBtn11Click(Sender: TObject);
     procedure BitBtn12Click(Sender: TObject);
     procedure BitBtn13Click(Sender: TObject);
+    procedure BitBtn13Exit(Sender: TObject);
     procedure BitBtn14Click(Sender: TObject);
     procedure BitBtn19Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -384,7 +378,7 @@ begin
      new_id:=intTostr(form16.ZQuery1.FieldByName('new_id').asInteger+1);
        ZQuery1.close;
       ZConnection1.disconnect;
-   Edit4.Text:=new_id;
+   Label4.caption:=new_id;
 
    If new_id='0' then
      begin
@@ -587,7 +581,7 @@ begin
           //showmessage(floattostr(form16.FloatSpinEdit3.value)+'<>'+(tarif_all[n,8])+#13+
           //trim(stringreplace(FloatSpinEdit5.text,',','.',[]))+'<>'+trim(tarif_all[n,9])+#13+
           //trim(stringreplace(FloatSpinEdit1.text,',','.',[]))+'<>'+trim(tarif_all[n,10])+#13+
-          //trim(stringreplace(FloatSpinEdit4.text,',','.',[]))+'<>'+trim(tarif_all[n,11])+#13);
+          //trim(stringreplace(FloatSpinLabel4.caption,',','.',[]))+'<>'+trim(tarif_all[n,11])+#13);
           //If floattostrf(form16.FloatSpinEdit3.value,fffixed,15,2)<>floattostrf(strtofloat(tarif_all[n,8])),fffixed,15,2)  then showmessage(floattostr(form16.FloatSpinEdit3.value)+'<1>'+(tarif_all[n,8]));
           //If form16.FloatSpinEdit5.value<>strtofloat(tarif_all[n,9])  then showmessage(floattostr(form16.FloatSpinEdit5.value)+'<2>'+(tarif_all[n,9]));
           //If form16.FloatSpinEdit1.value=strtofloat(tarif_all[n,10]) then showmessage(floattostr(form16.FloatSpinEdit1.value)+'<3>'+(tarif_all[n,10]));
@@ -2426,7 +2420,7 @@ begin
      // нименование маршрута
      form16.Edit2.Text:=form16.ZQuery1.FieldByName('name_route').asString;
      // id расписания
-     form16.Edit4.Text:=form16.ZQuery1.FieldByName('id').asString;
+     form16.Label4.caption:=form16.ZQuery1.FieldByName('id').asString;
      //old_id := form16.ZQuery1.FieldByName('id').asInteger;
      // код расписания
      form16.Edit6.Text:=form16.ZQuery1.FieldByName('kod').asString;
@@ -2988,7 +2982,7 @@ begin
     kform:=0;
     form16.Edit8.Text:='0';
     form16.Edit7.Text:='00:00';
-    form16.Edit9.Text:='0';
+    //form16.Edit9.Text:='0';
 
     // Рисуем итоговые показатели
   for n:=2 to form16.StringGrid1.rowcount-1 do
@@ -3037,7 +3031,7 @@ begin
     form16.Edit10.Text:=padl(inttostr(tsto1+(tsto2 div 60)),'0',2)+':'+padl(inttostr((tsto2 mod 60)),'0',2);
 
     //3.Средняя скорость В ДВИЖЕНИИ
-      if strtofloat(form16.Edit8.Text)=0 then form16.Edit9.Text:='0' else form16.Edit9.Text:=floattostr(round(strtofloat(form16.Edit8.Text)/((tsto3*60+tsto4))*60));
+      //if strtofloat(form16.Edit8.Text)=0 then form16.Edit9.Text:='0' else form16.Edit9.Text:=floattostr(round(strtofloat(form16.Edit8.Text)/((tsto3*60+tsto4))*60));
 
     //4.Кол.формирующихся
     form16.Edit12.Text:=inttostr(kform);
@@ -3048,8 +3042,8 @@ begin
     form16.Edit16.Text:=padl(inttostr(tsto3+(tsto4 div 60)),'0',2)+':'+padl(inttostr((tsto4 mod 60)),'0',2);
 
     //6.СКОРОСТЬ В ПУТИ
-    form16.Edit17.Text:='0';
-    if strtofloat(form16.Edit8.Text)=0 then form16.Edit17.Text:='0' else form16.Edit17.Text:=floattostr(round(strtofloat(form16.Edit8.Text)/((tsto3*60+tsto4))*60));
+    //form16.Edit17.Text:='0';
+    //if strtofloat(form16.Edit8.Text)=0 then form16.Edit17.Text:='0' else form16.Edit17.Text:=floattostr(round(strtofloat(form16.Edit8.Text)/((tsto3*60+tsto4))*60));
 
     // Меняем наименование расписания
     if form16.StringGrid1.RowCount>1 then
@@ -3955,6 +3949,7 @@ begin
 end;
 
 
+
 procedure TForm16.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
  n,srow:integer;
@@ -4002,9 +3997,14 @@ var
   rid,rkod,rname,rtype : string;
   ntype,flc: byte;
 begin
+ //Запоминаем маршрут
+ If trim(form16.Edit1.Text)='' then tekroute:='' else  tekroute:=trim(form16.Edit1.Text);
+
   form17:=Tform17.create(self);
   form17.ShowModal;
   FreeAndNil(form17);
+
+  tekroute:='';
   with Form16 do
   begin
     flc := 0;
@@ -4225,7 +4225,7 @@ begin
     // Загружаем тарифы
    ZQuery1.Close;
    ZQuery1.SQL.Clear;
-   ZQuery1.SQL.Add('select * from gettarif_avto('+quotedstr('tarif')+', '+Edit4.text+','+quotedstr(trim(ComboBox4.Text))+','+atp+','+inttostr(n)+');');
+   ZQuery1.SQL.Add('select * from gettarif_avto('+quotedstr('tarif')+', '+Label4.caption+','+quotedstr(trim(ComboBox4.Text))+','+atp+','+inttostr(n)+');');
    ZQuery1.sql.add('FETCH ALL IN tarif;');
    //showmessage(ZQuery1.SQL.Text);//$
    try
@@ -4694,6 +4694,11 @@ begin
    form16.Edit14.Text:=result_dog;
 end;
 
+procedure TForm16.BitBtn13Exit(Sender: TObject);
+begin
+
+end;
+
 
 //************************ ПЕЧАТЬ ОТЧЕТА *************************************
 procedure TForm16.BitBtn14Click(Sender: TObject);
@@ -4882,7 +4887,6 @@ begin
 //end;
  With Form16 do
  begin
-    Centrform(Form16);
     MasFree(); //очистка массивов
     Stringgrid6.RowHeights[1]:=0; //прячем строчку для всех
 

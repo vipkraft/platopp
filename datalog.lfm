@@ -9,6 +9,7 @@ object FormDLog: TFormDLog
   ClientWidth = 1024
   OnClose = FormClose
   OnShow = FormShow
+  Position = poOwnerFormCenter
   LCLVersion = '2.0.8.0'
   object ToolBar1: TToolBar
     Left = 0
@@ -630,6 +631,7 @@ object FormDLog: TFormDLog
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
     Properties.Strings = (
       'AutoEncodeStrings='
     )

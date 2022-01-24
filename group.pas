@@ -251,7 +251,6 @@ end;
 
 procedure TForm11.FormShow(Sender: TObject);
 begin
-   Centrform(form11);
    form11.UpdateGrid(datatyp,'');
    if flag_access=1 then
      begin

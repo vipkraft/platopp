@@ -1310,7 +1310,6 @@ procedure TformTT.FormShow(Sender: TObject);
 begin
   with FormTT do
   begin
-  Centrform(FormTT);
   PageControl1.ActivePageIndex:=0;
   //инициализация массивов опций
   //FillArray24();

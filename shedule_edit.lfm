@@ -11,144 +11,44 @@ object Form16: TForm16
   Font.Height = -12
   KeyPreview = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   LCLVersion = '2.0.8.0'
-  object Edit14: TEdit
-    Left = 621
-    Height = 22
-    Top = 78
-    Width = 330
-    AutoSize = False
-    Font.Height = -12
-    OnChange = Edit2Change
-    ParentFont = False
-    ReadOnly = True
-    TabStop = False
-    TabOrder = 21
-    Visible = False
-  end
-  object GroupBox3: TGroupBox
-    Left = 622
-    Height = 89
-    Top = 69
-    Width = 391
-    ClientHeight = 85
-    ClientWidth = 387
-    Color = clCream
-    Font.Height = -11
-    ParentColor = False
-    ParentFont = False
-    TabOrder = 13
-    Visible = False
-    object Label1: TLabel
-      Left = 206
-      Height = 13
-      Top = 30
-      Width = 70
-      Caption = 'ID маршрута:'
-      ParentColor = False
-    end
-    object Edit1: TEdit
-      Left = 295
-      Height = 23
-      Top = 27
-      Width = 76
-      Font.Height = -11
-      Font.Style = [fsBold]
-      ParentFont = False
-      ReadOnly = True
-      TabStop = False
-      TabOrder = 0
-    end
-    object Label4: TLabel
-      Left = 11
-      Height = 13
-      Top = 4
-      Width = 80
-      Caption = 'ID расписания:'
-      ParentColor = False
-    end
-    object Edit4: TEdit
-      Left = 105
-      Height = 23
-      Top = 2
-      Width = 88
-      Font.Height = -11
-      Font.Style = [fsBold]
-      ParentFont = False
-      ReadOnly = True
-      TabStop = False
-      TabOrder = 1
-    end
-    object Label16: TLabel
-      Left = 9
-      Height = 13
-      Top = 56
-      Width = 78
-      Caption = 'Тип маршрута:'
-      Font.Height = -11
-      ParentColor = False
-      ParentFont = False
-      WordWrap = True
-    end
-    object Edit13: TEdit
-      Left = 105
-      Height = 23
-      Top = 52
-      Width = 266
-      Font.Height = -11
-      Font.Style = [fsBold]
-      ParentFont = False
-      ReadOnly = True
-      TabStop = False
-      TabOrder = 2
-    end
-    object Label3: TLabel
-      Left = 9
-      Height = 13
-      Top = 30
-      Width = 73
-      Caption = 'Код маршрута'
-      ParentColor = False
-    end
-    object Edit3: TEdit
-      Left = 105
-      Height = 23
-      Top = 27
-      Width = 88
-      Font.Height = -11
-      Font.Style = [fsBold]
-      ParentFont = False
-      ReadOnly = True
-      TabStop = False
-      TabOrder = 3
-    end
-  end
   object PageControl1: TPageControl
-    Left = 8
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 2
     Height = 588
     Top = 144
-    Width = 1016
+    Width = 1020
     ActivePage = TabSheet1
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 2
+    BorderSpacing.Right = 2
     Font.Height = -12
     ParentFont = False
     TabIndex = 0
-    TabOrder = 9
+    TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = '   СОСТАВ РАСПИСАНИЯ   '
       ClientHeight = 564
-      ClientWidth = 1014
+      ClientWidth = 1018
       object GroupBox1: TGroupBox
-        Left = -2
-        Height = 583
-        Top = -13
-        Width = 1026
-        Caption = 'Остановочные пункты'
-        ClientHeight = 567
-        ClientWidth = 1022
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = TabSheet1
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet1
+        AnchorSideBottom.Side = asrBottom
+        Left = 0
+        Height = 564
+        Top = 0
+        Width = 1018
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        ClientHeight = 560
+        ClientWidth = 1014
         TabOrder = 0
         object StringGrid1: TStringGrid
           Left = 3
@@ -372,13 +272,6 @@ object Form16: TForm16
           ParentFont = False
           TabOrder = 4
         end
-        object Shape11: TShape
-          Left = 3
-          Height = 1
-          Top = 471
-          Width = 885
-          Pen.Color = clRed
-        end
         object BitBtn7: TBitBtn
           Left = 897
           Height = 25
@@ -425,6 +318,7 @@ object Form16: TForm16
           }
           ParentFont = False
           TabOrder = 9
+          Visible = False
         end
         object BitBtn8: TBitBtn
           Left = 897
@@ -473,121 +367,7 @@ object Form16: TForm16
           OnClick = BitBtn8Click
           ParentFont = False
           TabOrder = 8
-        end
-        object Label17: TLabel
-          AnchorSideLeft.Side = asrBottom
-          Left = 31
-          Height = 14
-          Top = 482
-          Width = 196
-          Caption = 'Полное время в движении (чч:мм)'
-          ParentColor = False
-        end
-        object Label18: TLabel
-          Left = 12
-          Height = 14
-          Top = 536
-          Width = 89
-          Caption = 'Расстояние (км)'
-          ParentColor = False
-        end
-        object Label19: TLabel
-          Left = 12
-          Height = 14
-          Top = 509
-          Width = 207
-          Caption = 'Средняя скорость в движении (км\ч)'
-          ParentColor = False
-        end
-        object Label20: TLabel
-          Left = 327
-          Height = 14
-          Top = 482
-          Width = 173
-          Caption = 'Полное время стоянок (чч:мм)'
-          ParentColor = False
-        end
-        object Edit7: TEdit
-          AnchorSideLeft.Control = Label17
-          AnchorSideLeft.Side = asrBottom
-          Left = 233
-          Height = 24
-          Top = 479
-          Width = 44
-          BorderSpacing.Left = 6
-          ReadOnly = True
-          TabStop = False
-          TabOrder = 10
-          Text = '00:00'
-        end
-        object Edit8: TEdit
-          Left = 117
-          Height = 24
-          Top = 532
-          Width = 44
-          ReadOnly = True
-          TabStop = False
-          TabOrder = 15
-          Text = '0'
-        end
-        object Edit9: TEdit
-          AnchorSideLeft.Control = Label19
-          AnchorSideLeft.Side = asrBottom
-          Left = 225
-          Height = 24
-          Top = 506
-          Width = 44
-          BorderSpacing.Left = 6
-          ReadOnly = True
-          TabStop = False
-          TabOrder = 13
-          Text = '0'
-        end
-        object Edit10: TEdit
-          Left = 522
-          Height = 24
-          Top = 479
-          Width = 44
-          ReadOnly = True
-          TabStop = False
-          TabOrder = 11
-          Text = '00:00'
-        end
-        object Label21: TLabel
-          Left = 172
-          Height = 14
-          Top = 536
-          Width = 198
-          Caption = 'Количество остановочных пунктов'
-          ParentColor = False
-        end
-        object Edit11: TEdit
-          Left = 401
-          Height = 24
-          Top = 532
-          Width = 44
-          ReadOnly = True
-          TabStop = False
-          TabOrder = 16
-          Text = '0'
-        end
-        object Label22: TLabel
-          Left = 453
-          Height = 14
-          Top = 536
-          Width = 298
-          Caption = 'Количество формирующихся остановочных пунктов'
-          ParentColor = False
-        end
-        object Edit12: TEdit
-          Left = 784
-          Height = 24
-          Top = 532
-          Width = 44
-          ReadOnly = True
-          TabStop = False
-          TabOrder = 17
-          Text = '0'
+          Visible = False
         end
         object BitBtn12: TBitBtn
           Left = 897
@@ -784,42 +564,6 @@ object Form16: TForm16
             'запрет'
           )
         end
-        object Label27: TLabel
-          Left = 578
-          Height = 14
-          Top = 482
-          Width = 164
-          Caption = 'Полное время в пути (чч:мм)'
-          ParentColor = False
-        end
-        object Edit16: TEdit
-          Left = 767
-          Height = 24
-          Top = 479
-          Width = 44
-          ReadOnly = True
-          TabStop = False
-          TabOrder = 12
-          Text = '00:00'
-        end
-        object Label28: TLabel
-          Left = 317
-          Height = 14
-          Top = 509
-          Width = 175
-          Caption = 'Средняя скорость в пути (км\ч)'
-          ParentColor = False
-        end
-        object Edit17: TEdit
-          Left = 522
-          Height = 24
-          Top = 506
-          Width = 44
-          ReadOnly = True
-          TabStop = False
-          TabOrder = 14
-          Text = '0'
-        end
         object BitBtn21: TBitBtn
           Left = 897
           Height = 25
@@ -916,14 +660,167 @@ object Form16: TForm16
           }
           OnClick = BitBtn26Click
           ParentFont = False
-          TabOrder = 18
+          TabOrder = 10
+        end
+        object Edit12: TEdit
+          AnchorSideLeft.Control = Label22
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label22
+          AnchorSideTop.Side = asrCenter
+          Left = 833
+          Height = 24
+          Top = 478
+          Width = 44
+          BorderSpacing.Left = 3
+          ReadOnly = True
+          TabStop = False
+          TabOrder = 11
+          Text = '0'
+        end
+        object Edit11: TEdit
+          AnchorSideLeft.Control = Label21
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label21
+          AnchorSideTop.Side = asrCenter
+          Left = 629
+          Height = 24
+          Top = 478
+          Width = 44
+          BorderSpacing.Left = 3
+          ReadOnly = True
+          TabStop = False
+          TabOrder = 12
+          Text = '0'
+        end
+        object Edit8: TEdit
+          AnchorSideLeft.Control = Label18
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label18
+          AnchorSideTop.Side = asrCenter
+          Left = 471
+          Height = 24
+          Top = 478
+          Width = 44
+          BorderSpacing.Left = 3
+          ReadOnly = True
+          TabStop = False
+          TabOrder = 13
+          Text = '0'
+        end
+        object Edit16: TEdit
+          AnchorSideLeft.Control = Label27
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label27
+          AnchorSideTop.Side = asrCenter
+          Left = 495
+          Height = 24
+          Top = 506
+          Width = 44
+          BorderSpacing.Left = 3
+          ReadOnly = True
+          TabStop = False
+          TabOrder = 14
+          Text = '00:00'
+        end
+        object Edit10: TEdit
+          AnchorSideLeft.Control = Label20
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label20
+          AnchorSideTop.Side = asrCenter
+          Left = 504
+          Height = 24
+          Top = 534
+          Width = 44
+          BorderSpacing.Left = 3
+          ReadOnly = True
+          TabStop = False
+          TabOrder = 15
+          Text = '00:00'
+        end
+        object Edit7: TEdit
+          AnchorSideLeft.Control = Label17
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label17
+          AnchorSideTop.Side = asrCenter
+          Left = 714
+          Height = 24
+          Top = 507
+          Width = 44
+          BorderSpacing.Left = 3
+          ReadOnly = True
+          TabStop = False
+          TabOrder = 16
+          Text = '00:00'
+        end
+        object Label17: TLabel
+          AnchorSideLeft.Side = asrBottom
+          Left = 560
+          Height = 14
+          Top = 512
+          Width = 151
+          Caption = 'Время в движении (чч:мм)'
+          ParentColor = False
+        end
+        object Label18: TLabel
+          Left = 376
+          Height = 14
+          Top = 483
+          Width = 92
+          Caption = 'Расстояние (км):'
+          ParentColor = False
+        end
+        object Label20: TLabel
+          Left = 376
+          Height = 14
+          Top = 539
+          Width = 125
+          Caption = 'Время стоянок общее:'
+          ParentColor = False
+        end
+        object Label21: TLabel
+          Left = 536
+          Height = 14
+          Top = 483
+          Width = 90
+          Caption = 'Кол-во пунктов:'
+          ParentColor = False
+        end
+        object Label22: TLabel
+          Left = 688
+          Height = 14
+          Top = 483
+          Width = 142
+          Caption = 'Кол-во формирующихся:'
+          ParentColor = False
+        end
+        object Label27: TLabel
+          Left = 376
+          Height = 14
+          Top = 511
+          Width = 116
+          Caption = 'Время в пути общее:'
+          ParentColor = False
+        end
+        object GroupBox4: TGroupBox
+          AnchorSideLeft.Control = GroupBox1
+          AnchorSideBottom.Control = GroupBox1
+          AnchorSideBottom.Side = asrBottom
+          Left = 2
+          Height = 85
+          Top = 474
+          Width = 361
+          Anchors = [akLeft, akBottom]
+          BorderSpacing.Left = 2
+          BorderSpacing.Bottom = 1
+          Caption = 'Последние изменения:'
+          TabOrder = 17
         end
       end
     end
     object TabSheet5: TTabSheet
       Caption = '   ПЕРЕВОЗЧИКИ   '
       ClientHeight = 564
-      ClientWidth = 1014
+      ClientWidth = 1018
       OnEnter = TabSheet5Enter
       object GroupBox7: TGroupBox
         Left = 11
@@ -931,7 +828,7 @@ object Form16: TForm16
         Top = 19
         Width = 990
         Caption = 'Список перевозчиков и АТС'
-        ClientHeight = 500
+        ClientHeight = 504
         ClientWidth = 986
         TabOrder = 0
         object StringGrid8: TStringGrid
@@ -1129,19 +1026,19 @@ object Form16: TForm16
     object TabSheet6: TTabSheet
       Caption = '   ТАРИФ и ОПЦИИ   '
       ClientHeight = 564
-      ClientWidth = 1014
+      ClientWidth = 1018
       object PageControl2: TPageControl
         Left = 323
         Height = 551
         Top = 8
         Width = 682
-        ActivePage = TabSheet7
-        TabIndex = 0
+        ActivePage = TabSheet8
+        TabIndex = 1
         TabOrder = 0
         object TabSheet7: TTabSheet
           Caption = '         1.Тариф       '
-          ClientHeight = 547
-          ClientWidth = 678
+          ClientHeight = 527
+          ClientWidth = 680
           OnEnter = TabSheet7Enter
           OnExit = TabSheet7Exit
           object StringGrid10: TStringGrid
@@ -1235,8 +1132,8 @@ object Form16: TForm16
         end
         object TabSheet8: TTabSheet
           Caption = '      2.Календарный план     '
-          ClientHeight = 547
-          ClientWidth = 678
+          ClientHeight = 527
+          ClientWidth = 680
           OnEnter = TabSheet8Enter
           object GroupBox8: TGroupBox
             Left = 7
@@ -1244,7 +1141,7 @@ object Form16: TForm16
             Top = 8
             Width = 664
             Caption = 'Временные характеристики расписания'
-            ClientHeight = 496
+            ClientHeight = 500
             ClientWidth = 660
             Font.Height = -12
             ParentFont = False
@@ -1274,7 +1171,7 @@ object Form16: TForm16
               ChildSizing.ShrinkVertical = crsScaleChilds
               ChildSizing.Layout = cclLeftToRightThenTopToBottom
               ChildSizing.ControlsPerLine = 4
-              ClientHeight = 54
+              ClientHeight = 58
               ClientWidth = 306
               Columns = 4
               Enabled = False
@@ -1308,7 +1205,7 @@ object Form16: TForm16
               ChildSizing.ShrinkVertical = crsScaleChilds
               ChildSizing.Layout = cclLeftToRightThenTopToBottom
               ChildSizing.ControlsPerLine = 2
-              ClientHeight = 54
+              ClientHeight = 58
               ClientWidth = 255
               Columns = 2
               Enabled = False
@@ -1339,7 +1236,7 @@ object Form16: TForm16
               ChildSizing.ShrinkVertical = crsScaleChilds
               ChildSizing.Layout = cclLeftToRightThenTopToBottom
               ChildSizing.ControlsPerLine = 11
-              ClientHeight = 102
+              ClientHeight = 106
               ClientWidth = 611
               Columns = 11
               Items.Strings = (
@@ -1421,7 +1318,7 @@ object Form16: TForm16
               ChildSizing.ShrinkVertical = crsScaleChilds
               ChildSizing.Layout = cclLeftToRightThenTopToBottom
               ChildSizing.ControlsPerLine = 6
-              ClientHeight = 52
+              ClientHeight = 56
               ClientWidth = 641
               Columns = 6
               Items.Strings = (
@@ -1523,14 +1420,14 @@ object Form16: TForm16
               Top = 251
               Width = 615
               Caption = 'Периодичность'
-              ClientHeight = 27
+              ClientHeight = 31
               ClientWidth = 611
               TabOrder = 9
               object CheckBox3: TCheckBox
                 Left = 9
                 Height = 21
                 Top = 4
-                Width = 58
+                Width = 51
                 Caption = 'Всем'
                 Checked = True
                 Enabled = False
@@ -1542,7 +1439,7 @@ object Form16: TForm16
                 Left = 78
                 Height = 21
                 Top = 4
-                Width = 79
+                Width = 67
                 Caption = 'Четным'
                 Enabled = False
                 OnChange = CheckBox4Change
@@ -1552,7 +1449,7 @@ object Form16: TForm16
                 Left = 158
                 Height = 21
                 Top = 4
-                Width = 97
+                Width = 80
                 Caption = 'Нечетным'
                 Enabled = False
                 OnChange = CheckBox5Change
@@ -1604,6 +1501,7 @@ object Form16: TForm16
               }
               OnClick = BitBtn27Click
               TabOrder = 10
+              Visible = False
             end
             object RadioButton3: TRadioButton
               Left = 11
@@ -1617,8 +1515,8 @@ object Form16: TForm16
         end
         object TabSheet9: TTabSheet
           Caption = '   3.Льготы и Услуги   '
-          ClientHeight = 547
-          ClientWidth = 678
+          ClientHeight = 527
+          ClientWidth = 680
           OnEnter = TabSheet9Enter
           object Bevel4: TBevel
             Left = 16
@@ -2053,7 +1951,7 @@ object Form16: TForm16
         Anchors = [akBottom]
         BorderSpacing.Bottom = 1
         Caption = 'Фискированный тариф перевозчика:'
-        ClientHeight = 112
+        ClientHeight = 115
         ClientWidth = 307
         Enabled = False
         Font.Height = -13
@@ -2080,7 +1978,7 @@ object Form16: TForm16
           ParentFont = False
         end
         object RadioButton1: TRadioButton
-          Left = 174
+          Left = 165
           Height = 21
           Top = 85
           Width = 52
@@ -2093,7 +1991,7 @@ object Form16: TForm16
           TabStop = True
         end
         object RadioButton2: TRadioButton
-          Left = 238
+          Left = 227
           Height = 21
           Top = 85
           Width = 35
@@ -2119,10 +2017,10 @@ object Form16: TForm16
           Value = 0
         end
         object FloatSpinEdit2: TFloatSpinEdit
-          Left = 69
+          Left = 63
           Height = 28
           Top = 80
-          Width = 95
+          Width = 85
           Font.Height = -15
           Font.Style = [fsBold]
           MaxValue = 10000
@@ -2208,11 +2106,26 @@ object Form16: TForm16
           Value = 0
         end
       end
+      object Panel1: TPanel
+        Left = 240
+        Height = 90
+        Top = 208
+        Width = 552
+        Caption = 'Подождите !!!  Идет расчет тарифа...'
+        Color = clYellow
+        Font.Color = clBlue
+        Font.Height = -19
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 4
+        Visible = False
+      end
     end
     object TabSheet3: TTabSheet
       Caption = '   ДОСТУП К РАСПИСАНИЮ'
       ClientHeight = 564
-      ClientWidth = 1014
+      ClientWidth = 1018
       object StringGrid3: TStringGrid
         Left = 6
         Height = 498
@@ -2340,6 +2253,322 @@ object Form16: TForm16
         TabOrder = 2
       end
     end
+  end
+  object BitBtn4: TBitBtn
+    Left = 902
+    Height = 32
+    Hint = 'Сохранить'
+    Top = 734
+    Width = 107
+    Caption = 'Выход'
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000000000060000
+      0004FFFFFF000000002C00000029000000240000001C0000002C000000290000
+      00240000001C00000015FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000
+      00200000002C010C1F4C0843B1C30844BFF2063DBCFF063EBEFF073EBDFF0844
+      BCF0083D9DB900000041000000390000002C00000020FFFFFF00FFFFFF00FFFF
+      FF000A50C94E0845C1F30748C8FF0850CFFF0851D0FF0952CFFF0851D0FF084F
+      CFFF0745C4FF0948C3E50A51C930FFFFFF000E54CD00FFFFFF00FFFFFF000A51
+      C96A0846C3FE0851D0FF0951CCFF0D53CDFF306CD4FF477CD9FF2564D2FF0D53
+      CCFF0951CCFF084ECDFF0846C3FA0B52CA3D0E54CD00FFFFFF000B54CB1E0949
+      C4F90B55D2FF0B51CBFF0353D7FF044ECBFFABACACFFCCCDCDFFFFFFFFFFC3D5
+      F3FF2D6AD3FF0A51CBFF0B53CFFF094BC5EC0B55CC05FFFFFF000B51C9AA0D55
+      D1FF3374DAFF60A0F0FF0555D9FF0857D9FF044ECBFFABACACFFCCCDCDFFFFFF
+      FFFFEBF1FBFF2D6AD3FF0A52CCFF0D52CCFF0B53CA87FFFFFF000A50C9F0135E
+      D6FF0D54CFFF044ECBFF2E7EE5FF0B59DAFF0D5BDAFF044ECBFFABACACFFCCCD
+      CDFFFFFFFFFFB0C7EFFF0D54CEFF135CD2FF0B52CAD3FFFFFF000F58D0FF1660
+      D7FF3B74D6FFFFFFFFFF044ECBFF3281E6FF105EDCFF1361DDFF044ECBFFABAC
+      ACFFCCCDCDFFF6F9FDFF0E54CDFF1660D5FF0C55CCF1FFFFFF00135FD4FF1864
+      DBFF4C80DAFFFFFFFFFFFFFFFFFF044ECBFF3886E8FF1664DDFF1967DFFF044E
+      CBFFABACACFFCCCDCDFF175ACFFF1963DAFF115BCFFBFFFFFF001460D6FF2471
+      E2FF2867D3FFE0E0E0FFFFFFFFFFFFFFFFFF044ECBFF3E8AEBFF1C69E0FF206C
+      E0FF044ECBFFABACACFF0E55CFFF2470E0FF105ED1EFFFFFFF000E5FD2DA2D7A
+      E6FF105CD7FFB2BDD0FFE0E0E0FFFFFFFFFFFFFFFFFF044ECBFF4390ECFF226E
+      E1FF2470E2FF044ECBFF105BD6FF2A76E1FF0D5FD2BFFFFFFF000E62D4852774
+      E2FF2273E9FF2868D5FFC0C4CAFFE0E0E0FFFFFFFFFFFFFFFFFF044ECBFF4994
+      EDFF2671E2FF2873E3FF2573E8FF216FDDFF0E63D457FFFFFF000E64D50D1166
+      D7EE3985ECFF1A6BE5FF1B60D3FFA5ADB9FFAFB1B2FFB4B5B5FFB2B6BCFF044E
+      CBFF73AFF5FF1B6BE5FF3581E8FF0F65D6D10E54CD00FFFFFF00FFFFFF000F67
+      D7391B6EDDF93F8CEEFF297AEDFF1563DFFF125DD8FF1059D3FF125DD8FF1563
+      DFFF3E89EFFF3C89EBFF186CDAEC0F67D71E0E54CD00FFFFFF00FFFFFF00FFFF
+      FF000F67D727136AD8CB3784EAFF4591F0FF559EF5FF529CF5FF559FF5FF4691
+      F0FF3382E7FF1169D8B00F67D7150E54CD000E54CD00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000F67D7030F67D769146BD9BD2176DEF82779E1FF2175DDF0136A
+      D8B30F67D74EFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = BitBtn4Click
+    TabOrder = 2
+  end
+  object BitBtn5: TBitBtn
+    Left = 766
+    Height = 32
+    Hint = 'Сохранить всю информацию по текущему расписанию'
+    Top = 734
+    Width = 125
+    Caption = 'Сохранить ВСЕ'
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      20000000000000040000640000006400000000000000000000001D1B1AB1201F
+      1EFF006DCAFF006DCAFF006DCAFF006DCAFF2F2C2CFF333030FFFCEBD7FFFCEB
+      D7FFFCEBD7FFFCEAD7FFFBEBD8FFFBEBD7FFFCEBD7FFFCEBD7FF22221FFF3432
+      30FF0380EEFF0380EEFF0380EEFF0380EEFF32302DFF363433FFC5D4DDFFC5D3
+      DDFFC5D4DDFFC5D4DCFFC5D4DDFFC5D4DDFFC5D4DDFFC5D4DDFF242321FF2623
+      22FF0380EEFF0380EEFF0380EEFF0380EEFF35322FFF3B3736FFB0A498FFFCEB
+      D8FFFCEBD8FFFCEBD8FFFCEBD8FFFCEBD8FFFCEBD8FFFCEBD8FF272624FF2827
+      25FFFCE9D3FFFCE9D4FFFCE9D4FFFCE9D4FF373433FF3E3B3AFF3E3B3AFF3F3B
+      3AFF3E3B3AFF3F3B3AFF3F3B3AFF3E3B3AFF3E3B3AFF3F3B3AFF292826FF2B2A
+      28FFFBE9D5FFFCE9D5FFFCE9D5FFFCEAD5FF383634FF423F3DFF555251FF4E4C
+      4BFF3B3938FF3B3938FF3B3A38FF3B3938FF3B3938FF3B3938FF2C2A28FF2F2D
+      2BFFC5D3DBFFC5D3DBFFC5D3DCFFC5D3DBFF3B3737FF464241FF4E4C4BFF403C
+      3AFF403C3AFFEAEACEFFEAEACDFFE8E8CDFFE8E8C9FFE8E8C3FF2F2C2CFF3330
+      30FFFCEBD7FFFCEBD7FFFCEBD7FFFCEAD7FF3C3A38FF494543FF514E4CFF403C
+      3AFF494644FFF0F0D4FFF0F0D4FFEFEFD3FFECECCFFFE8E8CCFF32302DFF3634
+      33FFC5D4DDFFC5D3DDFFC5D4DDFFC5D4DCFF3E3A39FF4C4946FF52504EFF403C
+      3AFF4C4847FFF2F2DBFFF2F2DDFFF2F2DBFFF1F1D6FFEEEED3FF35322FFF3B37
+      36FFB0A498FFFCEBD8FFFCEBD8FFFCEBD8FF3F3B3AFF6E6C6BFF3B3938FF403C
+      3AFF6E6C6BFFF6F6E9FFF8F8EBFFF8F8EAFFF6F6E8FFF5F5E4FF373433FF3E3B
+      3AFF3E3B3AFF3F3B3AFF3E3B3AFF3F3B3AFF4D4846FF403C3AFF433F3EFF403C
+      3AFF514C4AFFB3B3A7FFB3B3A7FFB3B3A7FFB3B3A7FFB3B3A7FF383634FF423F
+      3DFF555251FF4E4C4BFF3B3938FF3B3938FF3B3A38FF3B3938FF3B3938FF3B39
+      38FF3B3938FF3B3938FF3A3937FF393635FF423F3DFF383634FF3B3737FF4642
+      41FF4E4C4BFF403C3AFF403C3AFFEAEACEFFEAEACDFFE8E8CDFFE8E8C9FFE8E8
+      C3FFE8E8C3FFF0F0D7FFE8E8C3FF353231FF464240FF3B3736FF3C3A38FF4945
+      43FF514E4CFF403C3AFF494644FFF0F0D4FFF0F0D4FFEFEFD3FFECECCFFFE8E8
+      CCFFE8E8C8FF4C4947FFE8E8C3FF2F2D2CFF494644FF3C3A37FF3E3A39FF4C49
+      46FF52504EFF403C3AFF4C4847FFF2F2DBFFF2F2DDFFF2F2DBFFF1F1D6FFEEEE
+      D3FFEAEACBFF4C4947FFE8E8C3FF292827FF4C4946FF3E3B3AFF3F3B3AFF6E6C
+      6BFF3B3938FF403C3AFF6E6C6BFFF6F6E9FFF8F8EBFFF8F8EAFFF6F6E8FFF5F5
+      E4FFF4F4E1FF4C4947FFF0F0D9FF242322FF3F3B3AFF4F4A49C7514C4AC7403C
+      3AFF433F3EFF403C3AFF514C4AFFB3B3A7FFB3B3A7FFB3B3A7FFB3B3A7FFB3B3
+      A7FFB3B3A7FFB3B3A7FFB3B3A7FF201F1EFF514C4AC7514C4A2C
+    }
+    OnClick = BitBtn5Click
+    TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 120
+    Height = 21
+    Top = 740
+    Width = 106
+    Caption = 'mas_date'
+    OnClick = Button2Click
+    TabOrder = 3
+    Visible = False
+  end
+  object Button3: TButton
+    Left = 263
+    Height = 21
+    Top = 740
+    Width = 106
+    Caption = 'tarif'
+    OnClick = Button3Click
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+    Visible = False
+  end
+  object Button4: TButton
+    Left = 400
+    Height = 21
+    Top = 740
+    Width = 106
+    Caption = 'arSezon'
+    OnClick = Button4Click
+    TabOrder = 6
+    Visible = False
+  end
+  object BitBtn14: TBitBtn
+    Left = 644
+    Height = 32
+    Hint = 'Выбрать запись'
+    Top = 734
+    Width = 110
+    Caption = 'Печать'
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000000000000000
+      0000000000000000000000000000000000010000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000292929000E0F0F044C4B4B2D71717169565556432121210F282828102C2C
+      2D111A1E1F073233340F373939070000000053585800000000003C3C3C002D2D
+      2D001C1C1C075E5E5E578A8A8ACCA2A2A2FA8B8B8BE16E6D6EA0AEAEAEADAEAE
+      ADAC605C5B8C56504FAD43403F773737371A566467003F424300343434000101
+      010465656656A9A9A9E2BFBEBEFFBABABAFFB1B1B1FEB7B7B7FEDDDDDDFEDBDB
+      DAFE9A9594FE6B6261FF5E5756F5474342A33A39392F3D3F3F03737373005D5D
+      5D18B9B9B9C4D7D7D7FFD2D2D2FFD0D0D0FFC4C4C4FFAFAFAFFFA9A9A9FFD1D1
+      D1FFDDDDDCFFB5B2B1FF807978FF6C6565FC555050A83B39391DD8D8D800CFCF
+      CF16EDEDEDD4E6E6E6FFE4E4E4FFE2E2E2FFD7D7D7FFA3A3A3FF787878FF8888
+      88FFB4B4B4FFDADADAFFD0CFCEFFA8A5A5EC706E6E652A27260AE8E8E800E6E6
+      E60EEDEDEDCAF8F8F8FFF8F8F8FFEEEEEEFFD0D0D0FF979797FF8A8A8AFF8282
+      82FF7F7F7FFF969696FFB7B7B7FF8E8E8EBB6465642188878700D5D5D500DCDB
+      DC02D3D4D37DDADADAF5F6F7F7FFE5E5E5FFB3B3B3FFA4A4A4FF9D9D9DFF9595
+      95FF8E8E8EFF898989FF9D9D9DFF969696D85B5B5B266D6D6D00000000007875
+      7400736E6D089C9B9B80ABABABE9BCBCBCFED2D2D2FFBCBCBCFFAFAFAFFFA9A9
+      A9FFA1A1A1FF9D9D9DFFBCBCBCFFB9B9B9CF8383831796969600000000000000
+      00005653520000000003ABABAB6FE2E2E2FAF2F2F2FFEAEAEAFFD4D4D4FFB5B5
+      B5FFB2B2B2FFBFBFBFFFCECECEFFCCCCCC9799999901BABABA00000000005959
+      5900C9C9C900A1A1A12FD8D8D8CEF1F1F1FFF1F1F1FFF1F1F1FFF2F2F2FBB0B0
+      B0E2C4C4C4F7E4E4E4FDDBDBDBBBCFCFCF25D1D1D100C2C2C2008D8D8D00B0B0
+      B0009A9A9A34C8C8C8CCEFEFEFFFF3F3F3FFF3F3F3FFF3F3F3FFF2F2F2CCD5D5
+      D52DDFDFDF52EAEAEA65E9E9E916EBEBEB00E8E8E8000000000093939300FFFF
+      FF00C8C8C873EDEDEDF8F5F5F5FFF5F5F5FFF5F5F5FFF5F5F5F5F4F4F45BF6F6
+      F600F1F1F1000000000000000000000000000000000000000000FFFFFF00FBFB
+      FB00FCFCFC0CF6F6F647F6F6F69DF6F6F6E4F7F7F7FCF6F6F68FF2F2F206F4F4
+      F400000000000000000000000000000000000000000000000000000000000000
+      000000000000F4F4F400F2F2F203F6F6F62AF6F6F65BF6F6F614F6F6F6000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000
+    }
+    OnClick = BitBtn14Click
+    TabOrder = 5
+  end
+  object Label8: TLabel
+    Left = 30
+    Height = 13
+    Top = 742
+    Width = 59
+    Caption = 'F1-Помощь'
+    Font.Height = -11
+    ParentColor = False
+    ParentFont = False
+  end
+  object Image3: TImage
+    Left = 9
+    Height = 19
+    Top = 741
+    Width = 17
+    Picture.Data = {
+      1754506F727461626C654E6574776F726B477261706869638A0D000089504E47
+      0D0A1A0A0000000D49484452000000100000001008060000001FF3FF61000000
+      097048597300000B1200000B1201D2DD7EFC00000A4F6943435050686F746F73
+      686F70204943432070726F66696C65000078DA9D53675453E9163DF7DEF4424B
+      8880944B6F5215082052428B801491262A2109104A8821A1D91551C111454504
+      1BC8A088038E8E808C15512C0C8A0AD807E421A28E83A3888ACAFBE17BA36BD6
+      BCF7E6CDFEB5D73EE7ACF39DB3CF07C0080C9648335135800CA9421E11E083C7
+      C4C6E1E42E40810A2470001008B3642173FD230100F87E3C3C2B22C007BE0001
+      78D30B0800C04D9BC0301C87FF0FEA42995C01808401C07491384B0880140040
+      7A8E42A600404601809D98265300A0040060CB6362E300502D0060277FE6D300
+      809DF8997B01005B94211501A09100201365884400683B00ACCF568A45005830
+      0014664BC43900D82D00304957664800B0B700C0CE100BB200080C0030518885
+      2900047B0060C8232378008499001446F2573CF12BAE10E72A00007899B23CB9
+      243945815B082D710757572E1E28CE49172B14366102619A402EC27999193281
+      340FE0F3CC0000A0911511E083F3FD78CE0EAECECE368EB60E5F2DEABF06FF22
+      6262E3FEE5CFAB70400000E1747ED1FE2C2FB31A803B06806DFEA225EE04685E
+      0BA075F78B66B20F40B500A0E9DA57F370F87E3C3C45A190B9D9D9E5E4E4D84A
+      C4425B61CA577DFE67C25FC057FD6CF97E3CFCF7F5E0BEE22481325D814704F8
+      E0C2CCF44CA51CCF92098462DCE68F47FCB70BFFFC1DD322C44962B9582A14E3
+      5112718E449A8CF332A52289429229C525D2FF64E2DF2CFB033EDF3500B06A3E
+      017B912DA85D6303F64B27105874C0E2F70000F2BB6FC1D4280803806883E1CF
+      77FFEF3FFD47A02500806649927100005E44242E54CAB33FC708000044A0812A
+      B0411BF4C1182CC0061CC105DCC10BFC6036844224C4C24210420A64801C7260
+      29AC82422886CDB01D2A602FD4401D34C051688693700E2EC255B80E3D700FFA
+      61089EC128BC81090441C808136121DA8801628A58238E08179985F821C14804
+      128B2420C9881451224B91354831528A542055481DF23D720239875C46BA913B
+      C8003282FC86BC47319481B2513DD40CB543B9A8371A8446A20BD06474319A8F
+      16A09BD072B41A3D8C36A1E7D0AB680FDA8F3E43C730C0E8180733C46C302EC6
+      C342B1382C099363CBB122AC0CABC61AB056AC03BB89F563CFB17704128145C0
+      093604774220611E4148584C584ED848A8201C243411DA093709038451C22722
+      93A84BB426BA11F9C4186232318758482C23D6128F132F107B8843C437241289
+      433227B9900249B1A454D212D246D26E5223E92CA99B34481A2393C9DA646BB2
+      0739942C202BC885E49DE4C3E433E41BE421F25B0A9D624071A4F853E22852CA
+      6A4A19E510E534E5066598324155A39A52DDA8A15411358F5A42ADA1B652AF51
+      87A81334759A39CD8316494BA5ADA295D31A681768F769AFE874BA11DD951E4E
+      97D057D2CBE947E897E803F4770C0D861583C7886728199B18071867197718AF
+      984CA619D38B19C754303731EB98E7990F996F55582AB62A7C1591CA0A954A95
+      26951B2A2F54A9AAA6AADEAA0B55F355CB548FA95E537DAE46553353E3A909D4
+      96AB55AA9D50EB531B5367A93BA887AA67A86F543FA47E59FD890659C34CC34F
+      43A451A0B15FE3BCC6200B6319B3782C216B0DAB86758135C426B1CDD97C762A
+      BB98FD1DBB8B3DAAA9A13943334A3357B352F394663F07E39871F89C744E09E7
+      28A797F37E8ADE14EF29E2291BA6344CB931655C6BAA96979658AB48AB51AB47
+      EBBD36AEEDA79DA6BD45BB59FB810E41C74A275C2747678FCE059DE753D953DD
+      A70AA7164D3D3AF5AE2EAA6BA51BA1BB4477BF6EA7EE989EBE5E809E4C6FA7DE
+      79BDE7FA1C7D2FFD54FD6DFAA7F5470C5806B30C2406DB0CCE183CC535716F3C
+      1D2FC7DBF151435DC34043A561956197E18491B9D13CA3D5468D460F8C69C65C
+      E324E36DC66DC6A326062621264B4DEA4DEE9A524DB9A629A63B4C3B4CC7CDCC
+      CDA2CDD699359B3D31D732E79BE79BD79BDFB7605A785A2CB6A8B6B86549B2E4
+      5AA659EEB6BC6E855A3959A558555A5DB346AD9DAD25D6BBADBBA711A7B94E93
+      4EAB9ED667C3B0F1B6C9B6A9B719B0E5D806DBAEB66DB67D6167621767B7C5AE
+      C3EE93BD937DBA7D8DFD3D070D87D90EAB1D5A1D7E73B472143A563ADE9ACE9C
+      EE3F7DC5F496E92F6758CF10CFD833E3B613CB29C4699D539BD347671767B973
+      83F3888B894B82CB2E973E2E9B1BC6DDC8BDE44A74F5715DE17AD2F59D9BB39B
+      C2EDA8DBAFEE36EE69EE87DC9FCC349F299E593373D0C3C843E051E5D13F0B9F
+      95306BDFAC7E4F434F8167B5E7232F632F9157ADD7B0B7A577AAF761EF173EF6
+      3E729FE33EE33C37DE32DE595FCC37C0B7C8B7CB4FC36F9E5F85DF437F23FF64
+      FF7AFFD100A78025016703898141815B02FBF87A7C21BF8E3F3ADB65F6B2D9ED
+      418CA0B94115418F82AD82E5C1AD2168C8EC90AD21F7E798CE91CE690E85507E
+      E8D6D00761E6618BC37E0C2785878557863F8E7088581AD131973577D1DC4373
+      DF44FA449644DE9B67314F39AF2D4A352A3EAA2E6A3CDA37BA34BA3FC62E6659
+      CCD5589D58496C4B1C392E2AAE366E6CBEDFFCEDF387E29DE20BE37B17982FC8
+      5D7079A1CEC2F485A716A92E122C3A96404C884E3894F041102AA8168C25F213
+      77258E0A79C21DC267222FD136D188D8435C2A1E4EF2482A4D7A92EC91BC3579
+      24C533A52CE5B98427A990BC4C0D4CDD9B3A9E169A76206D323D3ABD31839291
+      907142AA214D93B667EA67E66676CBAC6585B2FEC56E8BB72F1E9507C96BB390
+      AC05592D0AB642A6E8545A28D72A07B267655766BFCD89CA3996AB9E2BCDEDCC
+      B3CADB90379CEF9FFFED12C212E192B6A5864B572D1D58E6BDAC6A39B23C7179
+      DB0AE315052B865606AC3CB88AB62A6DD54FABED5797AE7EBD267A4D6B815EC1
+      CA82C1B5016BEB0B550AE5857DEBDCD7ED5D4F582F59DFB561FA869D1B3E1589
+      8AAE14DB1797157FD828DC78E51B876FCABF99DC94B4A9ABC4B964CF66D266E9
+      E6DE2D9E5B0E96AA97E6970E6E0DD9DAB40DDF56B4EDF5F645DB2F97CD28DBBB
+      83B643B9A3BF3CB8BC65A7C9CECD3B3F54A454F454FA5436EED2DDB561D7F86E
+      D1EE1B7BBCF634ECD5DB5BBCF7FD3EC9BEDB5501554DD566D565FB49FBB3F73F
+      AE89AAE9F896FB6D5DAD4E6D71EDC703D203FD07230EB6D7B9D4D51DD23D5452
+      8FD62BEB470EC71FBEFE9DEF772D0D360D558D9CC6E223704479E4E9F709DFF7
+      1E0D3ADA768C7BACE107D31F761D671D2F6A429AF29A469B539AFB5B625BBA4F
+      CC3ED1D6EADE7AFC47DB1F0F9C343C59794AF354C969DAE982D39367F2CF8C9D
+      959D7D7E2EF9DC60DBA2B67BE763CEDF6A0F6FEFBA1074E1D245FF8BE73BBC3B
+      CE5CF2B874F2B2DBE51357B8579AAF3A5F6DEA74EA3CFE93D34FC7BB9CBB9AAE
+      B95C6BB9EE7ABDB57B66F7E91B9E37CEDDF4BD79F116FFD6D59E393DDDBDF37A
+      6FF7C5F7F5DF16DD7E7227FDCECBBBD97727EEADBC4FBC5FF440ED41D943DD87
+      D53F5BFEDCD8EFDC7F6AC077A0F3D1DC47F7068583CFFE91F58F0F43058F998F
+      CB860D86EB9E383E3939E23F72FDE9FCA743CF64CF269E17FEA2FECBAE17162F
+      7EF8D5EBD7CED198D1A197F29793BF6D7CA5FDEAC0EB19AFDBC6C2C61EBEC978
+      33315EF456FBEDC177DC771DEFA3DF0F4FE47C207F28FF68F9B1F553D0A7FB93
+      199393FF040398F3FC63332DDB000000206348524D00007A25000080830000F9
+      FF000080E9000075300000EA6000003A980000176F925FC546000002B5494441
+      5478DA5C933B889C551480BF7BEFFFCFF39FCDC8623265D0102DC428A649DAA4
+      9345145424AD8885CD82A095AC9DA4D94644B41E4B8BAC558A10A216427C6125
+      82B24BD4EC4E769C999DC7FFB8E71C8BD959562F1C2EF7DEEF7EE73E38CECC38
+      DDB6774601782B04F76ABD1EAE26C1D563B4495EC8D7AAF6D9E646F7D669DE9D
+      166CEF8C9EF2DEF5CF3EDE7CA1D908B46AE09C61E69897309B451E0DF35BAAF6
+      E6E64677F01FC1F6CEE84ABDE6EFF6CEB56AF33CB22822F35981A80290650D5A
+      8D94462DE1EFFDF930467D7E73A3BB1776C3357E1BB63BCE71BF77AED51E1D15
+      E4A5B098175CBF7486972E776837537E7D3047158A4A786C2D6D4E8E8A6B579F
+      6E7DEA01CCECFDB54EDA9DE591B254440C701C8C237965EC8F22668E28469147
+      16A5D26C26CFDEFC72F07A0220515F4BD3C0645A620006DE07BEFDF9806F7E8C
+      24B53AAD769B18150CC6E3823359CA58E4EDE4C2C527D793C42E949510E3F23D
+      9612E3FAE5B35CB9D8E4CE2F737EF83D07EC24411515137D2E11915EF4309B95
+      44592EAE201545448E43597D9801D3598568CC12551B14454508096AFE643318
+      F1446044599997E7884051C4B9DFFD63F76031CFC72246594644F438ECB85F66
+      5731446D29AB22B18A88C89E0770CEDD5EE40555552151515DC2AB2BA82EE74C
+      0D55254661369DE11C5F798010FCBB937F4665F09E3C2F885504834948B8F7A7
+      A36CA400C4AAA2C8734059E4F96108E18304A0D6E8EC89C8E6E1A3838FD7BAEB
+      2E8A509625F7BFCF71DE63AA882A4908A80AD3E1A4CA3AD9CB49AD5D25AB3A68
+      B6BB9F98F1603C1CF4D35A236BB633420880C39CC34C998C8638CF5FEDACF562
+      A3B5F6138003FC56FFA16EDDE89D07B2F5DE13E75F79E7F3F7927AE75251941D
+      EF3D66469AB8F1D1E1EE77FD9B6F7C04E4C011307566C6875FEC9F54E4D68DDE
+      338000D531D8FDDFB8D8EA3F1CACF87F07005F5CBC87DC45F43B000000004945
+      4E44AE426082
+    }
+  end
+  object StaticText1: TStaticText
+    AnchorSideRight.Side = asrBottom
+    Left = 200
+    Height = 26
+    Top = 4
+    Width = 357
+    Anchors = [akLeft]
+    AutoSize = True
+    BorderSpacing.Left = 200
+    BorderSpacing.Right = 1
+    Caption = 'Расписание: создание/редактирование'
+    Color = clWhite
+    Font.Color = clTeal
+    Font.Height = -19
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 7
   end
   object Image1: TImage
     AnchorSideLeft.Control = Owner
@@ -2585,134 +2814,126 @@ object Form16: TForm16
       1111111111F56EFF1B008233BD494076C01F0000000049454E44AE426082
     }
   end
-  object StaticText1: TStaticText
-    AnchorSideLeft.Control = Image1
-    AnchorSideRight.Control = Image1
-    AnchorSideRight.Side = asrBottom
-    Left = 200
-    Height = 26
-    Top = 4
-    Width = 357
-    Anchors = [akLeft]
-    AutoSize = True
-    BorderSpacing.Left = 200
-    BorderSpacing.Right = 1
-    Caption = 'Расписание: создание/редактирование'
-    Color = clWhite
-    Font.Color = clTeal
-    Font.Height = -19
+  object Edit14: TEdit
+    Left = 624
+    Height = 23
+    Top = 112
+    Width = 339
+    AutoSize = False
+    Font.Height = -12
     ParentFont = False
+    ReadOnly = True
+    TabStop = False
+    TabOrder = 8
+    Visible = False
+  end
+  object GroupBox3: TGroupBox
+    Left = 654
+    Height = 61
+    Top = 49
+    Width = 366
+    ClientHeight = 57
+    ClientWidth = 362
+    Color = clCream
+    Font.Height = -11
     ParentColor = False
-    TabOrder = 10
-  end
-  object BitBtn4: TBitBtn
-    Left = 902
-    Height = 32
-    Hint = 'Сохранить'
-    Top = 734
-    Width = 107
-    Caption = 'Выход'
-    Glyph.Data = {
-      36040000424D3604000000000000360000002800000010000000100000000100
-      2000000000000004000064000000640000000000000000000000000000060000
-      0004FFFFFF000000002C00000029000000240000001C0000002C000000290000
-      00240000001C00000015FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000
-      00200000002C010C1F4C0843B1C30844BFF2063DBCFF063EBEFF073EBDFF0844
-      BCF0083D9DB900000041000000390000002C00000020FFFFFF00FFFFFF00FFFF
-      FF000A50C94E0845C1F30748C8FF0850CFFF0851D0FF0952CFFF0851D0FF084F
-      CFFF0745C4FF0948C3E50A51C930FFFFFF000E54CD00FFFFFF00FFFFFF000A51
-      C96A0846C3FE0851D0FF0951CCFF0D53CDFF306CD4FF477CD9FF2564D2FF0D53
-      CCFF0951CCFF084ECDFF0846C3FA0B52CA3D0E54CD00FFFFFF000B54CB1E0949
-      C4F90B55D2FF0B51CBFF0353D7FF044ECBFFABACACFFCCCDCDFFFFFFFFFFC3D5
-      F3FF2D6AD3FF0A51CBFF0B53CFFF094BC5EC0B55CC05FFFFFF000B51C9AA0D55
-      D1FF3374DAFF60A0F0FF0555D9FF0857D9FF044ECBFFABACACFFCCCDCDFFFFFF
-      FFFFEBF1FBFF2D6AD3FF0A52CCFF0D52CCFF0B53CA87FFFFFF000A50C9F0135E
-      D6FF0D54CFFF044ECBFF2E7EE5FF0B59DAFF0D5BDAFF044ECBFFABACACFFCCCD
-      CDFFFFFFFFFFB0C7EFFF0D54CEFF135CD2FF0B52CAD3FFFFFF000F58D0FF1660
-      D7FF3B74D6FFFFFFFFFF044ECBFF3281E6FF105EDCFF1361DDFF044ECBFFABAC
-      ACFFCCCDCDFFF6F9FDFF0E54CDFF1660D5FF0C55CCF1FFFFFF00135FD4FF1864
-      DBFF4C80DAFFFFFFFFFFFFFFFFFF044ECBFF3886E8FF1664DDFF1967DFFF044E
-      CBFFABACACFFCCCDCDFF175ACFFF1963DAFF115BCFFBFFFFFF001460D6FF2471
-      E2FF2867D3FFE0E0E0FFFFFFFFFFFFFFFFFF044ECBFF3E8AEBFF1C69E0FF206C
-      E0FF044ECBFFABACACFF0E55CFFF2470E0FF105ED1EFFFFFFF000E5FD2DA2D7A
-      E6FF105CD7FFB2BDD0FFE0E0E0FFFFFFFFFFFFFFFFFF044ECBFF4390ECFF226E
-      E1FF2470E2FF044ECBFF105BD6FF2A76E1FF0D5FD2BFFFFFFF000E62D4852774
-      E2FF2273E9FF2868D5FFC0C4CAFFE0E0E0FFFFFFFFFFFFFFFFFF044ECBFF4994
-      EDFF2671E2FF2873E3FF2573E8FF216FDDFF0E63D457FFFFFF000E64D50D1166
-      D7EE3985ECFF1A6BE5FF1B60D3FFA5ADB9FFAFB1B2FFB4B5B5FFB2B6BCFF044E
-      CBFF73AFF5FF1B6BE5FF3581E8FF0F65D6D10E54CD00FFFFFF00FFFFFF000F67
-      D7391B6EDDF93F8CEEFF297AEDFF1563DFFF125DD8FF1059D3FF125DD8FF1563
-      DFFF3E89EFFF3C89EBFF186CDAEC0F67D71E0E54CD00FFFFFF00FFFFFF00FFFF
-      FF000F67D727136AD8CB3784EAFF4591F0FF559EF5FF529CF5FF559FF5FF4691
-      F0FF3382E7FF1169D8B00F67D7150E54CD000E54CD00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF000F67D7030F67D769146BD9BD2176DEF82779E1FF2175DDF0136A
-      D8B30F67D74EFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-    }
-    OnClick = BitBtn4Click
-    TabOrder = 12
-  end
-  object BitBtn5: TBitBtn
-    Left = 766
-    Height = 32
-    Hint = 'Сохранить всю информацию по текущему расписанию'
-    Top = 734
-    Width = 125
-    Caption = 'Сохранить ВСЕ'
-    Glyph.Data = {
-      36040000424D3604000000000000360000002800000010000000100000000100
-      20000000000000040000640000006400000000000000000000001D1B1AB1201F
-      1EFF006DCAFF006DCAFF006DCAFF006DCAFF2F2C2CFF333030FFFCEBD7FFFCEB
-      D7FFFCEBD7FFFCEAD7FFFBEBD8FFFBEBD7FFFCEBD7FFFCEBD7FF22221FFF3432
-      30FF0380EEFF0380EEFF0380EEFF0380EEFF32302DFF363433FFC5D4DDFFC5D3
-      DDFFC5D4DDFFC5D4DCFFC5D4DDFFC5D4DDFFC5D4DDFFC5D4DDFF242321FF2623
-      22FF0380EEFF0380EEFF0380EEFF0380EEFF35322FFF3B3736FFB0A498FFFCEB
-      D8FFFCEBD8FFFCEBD8FFFCEBD8FFFCEBD8FFFCEBD8FFFCEBD8FF272624FF2827
-      25FFFCE9D3FFFCE9D4FFFCE9D4FFFCE9D4FF373433FF3E3B3AFF3E3B3AFF3F3B
-      3AFF3E3B3AFF3F3B3AFF3F3B3AFF3E3B3AFF3E3B3AFF3F3B3AFF292826FF2B2A
-      28FFFBE9D5FFFCE9D5FFFCE9D5FFFCEAD5FF383634FF423F3DFF555251FF4E4C
-      4BFF3B3938FF3B3938FF3B3A38FF3B3938FF3B3938FF3B3938FF2C2A28FF2F2D
-      2BFFC5D3DBFFC5D3DBFFC5D3DCFFC5D3DBFF3B3737FF464241FF4E4C4BFF403C
-      3AFF403C3AFFEAEACEFFEAEACDFFE8E8CDFFE8E8C9FFE8E8C3FF2F2C2CFF3330
-      30FFFCEBD7FFFCEBD7FFFCEBD7FFFCEAD7FF3C3A38FF494543FF514E4CFF403C
-      3AFF494644FFF0F0D4FFF0F0D4FFEFEFD3FFECECCFFFE8E8CCFF32302DFF3634
-      33FFC5D4DDFFC5D3DDFFC5D4DDFFC5D4DCFF3E3A39FF4C4946FF52504EFF403C
-      3AFF4C4847FFF2F2DBFFF2F2DDFFF2F2DBFFF1F1D6FFEEEED3FF35322FFF3B37
-      36FFB0A498FFFCEBD8FFFCEBD8FFFCEBD8FF3F3B3AFF6E6C6BFF3B3938FF403C
-      3AFF6E6C6BFFF6F6E9FFF8F8EBFFF8F8EAFFF6F6E8FFF5F5E4FF373433FF3E3B
-      3AFF3E3B3AFF3F3B3AFF3E3B3AFF3F3B3AFF4D4846FF403C3AFF433F3EFF403C
-      3AFF514C4AFFB3B3A7FFB3B3A7FFB3B3A7FFB3B3A7FFB3B3A7FF383634FF423F
-      3DFF555251FF4E4C4BFF3B3938FF3B3938FF3B3A38FF3B3938FF3B3938FF3B39
-      38FF3B3938FF3B3938FF3A3937FF393635FF423F3DFF383634FF3B3737FF4642
-      41FF4E4C4BFF403C3AFF403C3AFFEAEACEFFEAEACDFFE8E8CDFFE8E8C9FFE8E8
-      C3FFE8E8C3FFF0F0D7FFE8E8C3FF353231FF464240FF3B3736FF3C3A38FF4945
-      43FF514E4CFF403C3AFF494644FFF0F0D4FFF0F0D4FFEFEFD3FFECECCFFFE8E8
-      CCFFE8E8C8FF4C4947FFE8E8C3FF2F2D2CFF494644FF3C3A37FF3E3A39FF4C49
-      46FF52504EFF403C3AFF4C4847FFF2F2DBFFF2F2DDFFF2F2DBFFF1F1D6FFEEEE
-      D3FFEAEACBFF4C4947FFE8E8C3FF292827FF4C4946FF3E3B3AFF3F3B3AFF6E6C
-      6BFF3B3938FF403C3AFF6E6C6BFFF6F6E9FFF8F8EBFFF8F8EAFFF6F6E8FFF5F5
-      E4FFF4F4E1FF4C4947FFF0F0D9FF242322FF3F3B3AFF4F4A49C7514C4AC7403C
-      3AFF433F3EFF403C3AFF514C4AFFB3B3A7FFB3B3A7FFB3B3A7FFB3B3A7FFB3B3
-      A7FFB3B3A7FFB3B3A7FFB3B3A7FF201F1EFF514C4AC7514C4A2C
-    }
-    OnClick = BitBtn5Click
-    TabOrder = 11
+    ParentFont = False
+    TabOrder = 9
+    object Label1: TLabel
+      Left = 199
+      Height = 13
+      Top = 8
+      Width = 70
+      Caption = 'ID маршрута:'
+      ParentColor = False
+    end
+    object Edit1: TEdit
+      AnchorSideTop.Control = Label1
+      AnchorSideTop.Side = asrCenter
+      Left = 277
+      Height = 23
+      Top = 3
+      Width = 76
+      Anchors = [akTop]
+      ReadOnly = True
+      TabStop = False
+      TabOrder = 0
+    end
+    object Label16: TLabel
+      Left = 7
+      Height = 13
+      Top = 35
+      Width = 78
+      Caption = 'Тип маршрута:'
+      Font.Height = -11
+      ParentColor = False
+      ParentFont = False
+      WordWrap = True
+    end
+    object Edit13: TEdit
+      AnchorSideTop.Control = Label16
+      AnchorSideTop.Side = asrCenter
+      Left = 92
+      Height = 23
+      Top = 30
+      Width = 206
+      ReadOnly = True
+      TabStop = False
+      TabOrder = 1
+    end
+    object Label3: TLabel
+      Left = 9
+      Height = 13
+      Top = 8
+      Width = 76
+      Caption = 'Код маршрута:'
+      ParentColor = False
+    end
+    object Edit3: TEdit
+      AnchorSideLeft.Control = Label3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Label3
+      AnchorSideTop.Side = asrCenter
+      Left = 88
+      Height = 23
+      Top = 3
+      Width = 91
+      BorderSpacing.Left = 3
+      ReadOnly = True
+      TabStop = False
+      TabOrder = 2
+    end
+    object CheckBox1: TCheckBox
+      Left = 630
+      Height = 21
+      Top = 48
+      Width = 90
+      Caption = 'инфо по мар'
+      Checked = True
+      Color = clDefault
+      ParentColor = False
+      State = cbChecked
+      TabOrder = 3
+    end
   end
   object CheckBox2: TCheckBox
     Left = 381
     Height = 21
-    Top = 114
+    Top = 85
     Width = 104
+    BidiMode = bdRightToLeft
     Caption = 'Активность:'
     Font.Height = -13
     Font.Style = [fsBold]
     OnChange = CheckBox2Change
     ParentFont = False
-    TabOrder = 7
+    ParentBidiMode = False
+    TabOrder = 10
   end
   object Label31: TLabel
     Left = 13
     Height = 14
-    Top = 117
+    Top = 88
     Width = 99
     Caption = 'Период действия:'
     Font.Height = -12
@@ -2722,7 +2943,7 @@ object Form16: TForm16
   object DateEdit1: TDateEdit
     Left = 118
     Height = 24
-    Top = 111
+    Top = 83
     Width = 116
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames, dsShowWeekNumbers]
     DefaultToday = True
@@ -2732,13 +2953,13 @@ object Form16: TForm16
     Font.Height = -12
     MaxLength = 10
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 11
     Text = '24.03.2017'
   end
   object Label32: TLabel
     Left = 241
     Height = 14
-    Top = 116
+    Top = 88
     Width = 14
     Caption = 'по'
     Font.Height = -12
@@ -2748,7 +2969,7 @@ object Form16: TForm16
   object DateEdit2: TDateEdit
     Left = 263
     Height = 24
-    Top = 112
+    Top = 83
     Width = 106
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
     DefaultToday = True
@@ -2758,27 +2979,13 @@ object Form16: TForm16
     Font.Height = -12
     MaxLength = 10
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 12
     Text = '24.03.2017'
   end
-  object Shape17: TShape
-    Left = 120
-    Height = 1
-    Top = 135
-    Width = 101
-    Pen.Color = clRed
-  end
-  object Shape18: TShape
-    Left = 262
-    Height = 1
-    Top = 135
-    Width = 102
-    Pen.Color = clRed
-  end
   object DateEdit3: TDateEdit
-    Left = 505
+    Left = 490
     Height = 23
-    Top = 113
+    Top = 84
     Width = 103
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
     DefaultToday = True
@@ -2789,88 +2996,56 @@ object Form16: TForm16
     Font.Height = -11
     Font.Style = [fsBold]
     MaxLength = 10
-    OnChange = DateEdit3Change
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 13
     Text = '24.03.2017'
   end
   object Shape19: TShape
-    Left = 509
+    AnchorSideLeft.Control = DateEdit3
+    AnchorSideTop.Control = DateEdit3
+    AnchorSideTop.Side = asrBottom
+    Left = 490
     Height = 1
-    Top = 135
+    Top = 107
     Width = 99
     Pen.Color = clRed
-  end
-  object CheckBox1: TCheckBox
-    Left = 630
-    Height = 21
-    Top = 48
-    Width = 190
-    Caption = 'дополнительная информация'
-    Color = clDefault
-    OnChange = CheckBox1Change
-    ParentColor = False
-    TabOrder = 14
-  end
-  object Button2: TButton
-    Left = 120
-    Height = 21
-    Top = 740
-    Width = 106
-    Caption = 'mas_date'
-    OnClick = Button2Click
-    TabOrder = 15
-    Visible = False
-  end
-  object Button3: TButton
-    Left = 263
-    Height = 21
-    Top = 740
-    Width = 106
-    Caption = 'tarif'
-    OnClick = Button3Click
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 16
-    Visible = False
-  end
-  object Button4: TButton
-    Left = 400
-    Height = 21
-    Top = 740
-    Width = 106
-    Caption = 'arSezon'
-    OnClick = Button4Click
-    TabOrder = 18
-    Visible = False
   end
   object Label2: TLabel
     Left = 13
     Height = 14
-    Top = 82
+    Top = 115
     Width = 54
     Caption = 'Маршрут:'
     ParentColor = False
   end
   object Edit2: TEdit
-    Left = 93
+    AnchorSideLeft.Control = Label2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label2
+    AnchorSideTop.Side = asrCenter
+    Left = 72
     Height = 22
-    Top = 78
-    Width = 391
+    Top = 111
+    Width = 408
     AutoSize = False
+    BorderSpacing.Left = 5
     Font.Height = -12
-    OnChange = Edit2Change
     ParentFont = False
     ReadOnly = True
     TabStop = False
-    TabOrder = 3
+    TabOrder = 14
   end
   object BitBtn1: TBitBtn
-    Left = 487
+    AnchorSideLeft.Control = Edit2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Edit2
+    AnchorSideTop.Side = asrCenter
+    Left = 482
     Height = 24
     Hint = 'Выбор из существующих маршрутов'
-    Top = 78
+    Top = 110
     Width = 27
+    BorderSpacing.Left = 2
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -2909,26 +3084,18 @@ object Form16: TForm16
     }
     OnClick = BitBtn1Click
     OnExit = BitBtn1Exit
-    TabOrder = 0
-  end
-  object Label5: TLabel
-    Left = 13
-    Height = 14
-    Top = 53
-    Width = 68
-    Caption = 'Расписание:'
-    ParentColor = False
+    TabOrder = 15
   end
   object Edit5: TEdit
-    Left = 93
-    Height = 23
+    Left = 89
+    Height = 25
     Top = 49
-    Width = 412
-    Font.Height = -11
+    Width = 421
+    Font.Height = -13
     Font.Style = [fsBold]
     ParentFont = False
     TabStop = False
-    TabOrder = 1
+    TabOrder = 16
   end
   object Label6: TLabel
     Left = 520
@@ -2941,33 +3108,49 @@ object Form16: TForm16
   end
   object Edit6: TEdit
     Left = 553
-    Height = 22
+    Height = 23
     Top = 49
     Width = 55
     AutoSize = False
-    Font.Height = -12
-    Font.Style = [fsBold]
+    Font.Height = -17
+    ParentColor = True
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 17
   end
   object Shape8: TShape
+    AnchorSideLeft.Control = Edit6
+    AnchorSideTop.Control = Edit6
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Edit6
+    AnchorSideRight.Side = asrBottom
     Left = 553
-    Height = 2
-    Top = 71
+    Height = 1
+    Top = 72
     Width = 55
+    Anchors = [akTop, akLeft, akRight]
     Pen.Color = clRed
   end
   object Shape10: TShape
-    Left = 93
-    Height = 2
-    Top = 71
-    Width = 410
+    AnchorSideLeft.Control = Edit5
+    AnchorSideTop.Control = Edit5
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Edit5
+    AnchorSideRight.Side = asrBottom
+    Left = 89
+    Height = 1
+    Top = 74
+    Width = 421
+    Anchors = [akTop, akLeft, akRight]
     Pen.Color = clRed
   end
   object Label12: TLabel
-    Left = 218
+    AnchorSideLeft.Control = Edit2
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = Edit2
+    AnchorSideTop.Side = asrBottom
+    Left = 217
     Height = 10
-    Top = 98
+    Top = 133
     Width = 119
     Caption = 'заполняется автоматически'
     Font.Height = -9
@@ -2975,211 +3158,24 @@ object Form16: TForm16
     ParentFont = False
   end
   object CheckBox6: TCheckBox
-    Left = 529
+    Left = 533
     Height = 21
-    Top = 79
+    Top = 112
     Width = 80
+    BidiMode = bdRightToLeft
     Caption = 'Заказной'
     Font.Height = -13
     OnChange = CheckBox6Change
     ParentFont = False
-    TabOrder = 4
-  end
-  object BitBtn14: TBitBtn
-    Left = 644
-    Height = 32
-    Hint = 'Выбрать запись'
-    Top = 734
-    Width = 110
-    Caption = 'Печать'
-    Glyph.Data = {
-      36040000424D3604000000000000360000002800000010000000100000000100
-      2000000000000004000064000000640000000000000000000000000000000000
-      0000000000000000000000000000000000010000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000292929000E0F0F044C4B4B2D71717169565556432121210F282828102C2C
-      2D111A1E1F073233340F373939070000000053585800000000003C3C3C002D2D
-      2D001C1C1C075E5E5E578A8A8ACCA2A2A2FA8B8B8BE16E6D6EA0AEAEAEADAEAE
-      ADAC605C5B8C56504FAD43403F773737371A566467003F424300343434000101
-      010465656656A9A9A9E2BFBEBEFFBABABAFFB1B1B1FEB7B7B7FEDDDDDDFEDBDB
-      DAFE9A9594FE6B6261FF5E5756F5474342A33A39392F3D3F3F03737373005D5D
-      5D18B9B9B9C4D7D7D7FFD2D2D2FFD0D0D0FFC4C4C4FFAFAFAFFFA9A9A9FFD1D1
-      D1FFDDDDDCFFB5B2B1FF807978FF6C6565FC555050A83B39391DD8D8D800CFCF
-      CF16EDEDEDD4E6E6E6FFE4E4E4FFE2E2E2FFD7D7D7FFA3A3A3FF787878FF8888
-      88FFB4B4B4FFDADADAFFD0CFCEFFA8A5A5EC706E6E652A27260AE8E8E800E6E6
-      E60EEDEDEDCAF8F8F8FFF8F8F8FFEEEEEEFFD0D0D0FF979797FF8A8A8AFF8282
-      82FF7F7F7FFF969696FFB7B7B7FF8E8E8EBB6465642188878700D5D5D500DCDB
-      DC02D3D4D37DDADADAF5F6F7F7FFE5E5E5FFB3B3B3FFA4A4A4FF9D9D9DFF9595
-      95FF8E8E8EFF898989FF9D9D9DFF969696D85B5B5B266D6D6D00000000007875
-      7400736E6D089C9B9B80ABABABE9BCBCBCFED2D2D2FFBCBCBCFFAFAFAFFFA9A9
-      A9FFA1A1A1FF9D9D9DFFBCBCBCFFB9B9B9CF8383831796969600000000000000
-      00005653520000000003ABABAB6FE2E2E2FAF2F2F2FFEAEAEAFFD4D4D4FFB5B5
-      B5FFB2B2B2FFBFBFBFFFCECECEFFCCCCCC9799999901BABABA00000000005959
-      5900C9C9C900A1A1A12FD8D8D8CEF1F1F1FFF1F1F1FFF1F1F1FFF2F2F2FBB0B0
-      B0E2C4C4C4F7E4E4E4FDDBDBDBBBCFCFCF25D1D1D100C2C2C2008D8D8D00B0B0
-      B0009A9A9A34C8C8C8CCEFEFEFFFF3F3F3FFF3F3F3FFF3F3F3FFF2F2F2CCD5D5
-      D52DDFDFDF52EAEAEA65E9E9E916EBEBEB00E8E8E8000000000093939300FFFF
-      FF00C8C8C873EDEDEDF8F5F5F5FFF5F5F5FFF5F5F5FFF5F5F5F5F4F4F45BF6F6
-      F600F1F1F1000000000000000000000000000000000000000000FFFFFF00FBFB
-      FB00FCFCFC0CF6F6F647F6F6F69DF6F6F6E4F7F7F7FCF6F6F68FF2F2F206F4F4
-      F400000000000000000000000000000000000000000000000000000000000000
-      000000000000F4F4F400F2F2F203F6F6F62AF6F6F65BF6F6F614F6F6F6000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000
-    }
-    OnClick = BitBtn14Click
-    TabOrder = 17
-  end
-  object Label8: TLabel
-    Left = 30
-    Height = 13
-    Top = 742
-    Width = 59
-    Caption = 'F1-Помощь'
-    Font.Height = -11
-    ParentColor = False
-    ParentFont = False
-  end
-  object Image3: TImage
-    Left = 9
-    Height = 19
-    Top = 741
-    Width = 17
-    Picture.Data = {
-      1754506F727461626C654E6574776F726B477261706869638A0D000089504E47
-      0D0A1A0A0000000D49484452000000100000001008060000001FF3FF61000000
-      097048597300000B1200000B1201D2DD7EFC00000A4F6943435050686F746F73
-      686F70204943432070726F66696C65000078DA9D53675453E9163DF7DEF4424B
-      8880944B6F5215082052428B801491262A2109104A8821A1D91551C111454504
-      1BC8A088038E8E808C15512C0C8A0AD807E421A28E83A3888ACAFBE17BA36BD6
-      BCF7E6CDFEB5D73EE7ACF39DB3CF07C0080C9648335135800CA9421E11E083C7
-      C4C6E1E42E40810A2470001008B3642173FD230100F87E3C3C2B22C007BE0001
-      78D30B0800C04D9BC0301C87FF0FEA42995C01808401C07491384B0880140040
-      7A8E42A600404601809D98265300A0040060CB6362E300502D0060277FE6D300
-      809DF8997B01005B94211501A09100201365884400683B00ACCF568A45005830
-      0014664BC43900D82D00304957664800B0B700C0CE100BB200080C0030518885
-      2900047B0060C8232378008499001446F2573CF12BAE10E72A00007899B23CB9
-      243945815B082D710757572E1E28CE49172B14366102619A402EC27999193281
-      340FE0F3CC0000A0911511E083F3FD78CE0EAECECE368EB60E5F2DEABF06FF22
-      6262E3FEE5CFAB70400000E1747ED1FE2C2FB31A803B06806DFEA225EE04685E
-      0BA075F78B66B20F40B500A0E9DA57F370F87E3C3C45A190B9D9D9E5E4E4D84A
-      C4425B61CA577DFE67C25FC057FD6CF97E3CFCF7F5E0BEE22481325D814704F8
-      E0C2CCF44CA51CCF92098462DCE68F47FCB70BFFFC1DD322C44962B9582A14E3
-      5112718E449A8CF332A52289429229C525D2FF64E2DF2CFB033EDF3500B06A3E
-      017B912DA85D6303F64B27105874C0E2F70000F2BB6FC1D4280803806883E1CF
-      77FFEF3FFD47A02500806649927100005E44242E54CAB33FC708000044A0812A
-      B0411BF4C1182CC0061CC105DCC10BFC6036844224C4C24210420A64801C7260
-      29AC82422886CDB01D2A602FD4401D34C051688693700E2EC255B80E3D700FFA
-      61089EC128BC81090441C808136121DA8801628A58238E08179985F821C14804
-      128B2420C9881451224B91354831528A542055481DF23D720239875C46BA913B
-      C8003282FC86BC47319481B2513DD40CB543B9A8371A8446A20BD06474319A8F
-      16A09BD072B41A3D8C36A1E7D0AB680FDA8F3E43C730C0E8180733C46C302EC6
-      C342B1382C099363CBB122AC0CABC61AB056AC03BB89F563CFB17704128145C0
-      093604774220611E4148584C584ED848A8201C243411DA093709038451C22722
-      93A84BB426BA11F9C4186232318758482C23D6128F132F107B8843C437241289
-      433227B9900249B1A454D212D246D26E5223E92CA99B34481A2393C9DA646BB2
-      0739942C202BC885E49DE4C3E433E41BE421F25B0A9D624071A4F853E22852CA
-      6A4A19E510E534E5066598324155A39A52DDA8A15411358F5A42ADA1B652AF51
-      87A81334759A39CD8316494BA5ADA295D31A681768F769AFE874BA11DD951E4E
-      97D057D2CBE947E897E803F4770C0D861583C7886728199B18071867197718AF
-      984CA619D38B19C754303731EB98E7990F996F55582AB62A7C1591CA0A954A95
-      26951B2A2F54A9AAA6AADEAA0B55F355CB548FA95E537DAE46553353E3A909D4
-      96AB55AA9D50EB531B5367A93BA887AA67A86F543FA47E59FD890659C34CC34F
-      43A451A0B15FE3BCC6200B6319B3782C216B0DAB86758135C426B1CDD97C762A
-      BB98FD1DBB8B3DAAA9A13943334A3357B352F394663F07E39871F89C744E09E7
-      28A797F37E8ADE14EF29E2291BA6344CB931655C6BAA96979658AB48AB51AB47
-      EBBD36AEEDA79DA6BD45BB59FB810E41C74A275C2747678FCE059DE753D953DD
-      A70AA7164D3D3AF5AE2EAA6BA51BA1BB4477BF6EA7EE989EBE5E809E4C6FA7DE
-      79BDE7FA1C7D2FFD54FD6DFAA7F5470C5806B30C2406DB0CCE183CC535716F3C
-      1D2FC7DBF151435DC34043A561956197E18491B9D13CA3D5468D460F8C69C65C
-      E324E36DC66DC6A326062621264B4DEA4DEE9A524DB9A629A63B4C3B4CC7CDCC
-      CDA2CDD699359B3D31D732E79BE79BD79BDFB7605A785A2CB6A8B6B86549B2E4
-      5AA659EEB6BC6E855A3959A558555A5DB346AD9DAD25D6BBADBBA711A7B94E93
-      4EAB9ED667C3B0F1B6C9B6A9B719B0E5D806DBAEB66DB67D6167621767B7C5AE
-      C3EE93BD937DBA7D8DFD3D070D87D90EAB1D5A1D7E73B472143A563ADE9ACE9C
-      EE3F7DC5F496E92F6758CF10CFD833E3B613CB29C4699D539BD347671767B973
-      83F3888B894B82CB2E973E2E9B1BC6DDC8BDE44A74F5715DE17AD2F59D9BB39B
-      C2EDA8DBAFEE36EE69EE87DC9FCC349F299E593373D0C3C843E051E5D13F0B9F
-      95306BDFAC7E4F434F8167B5E7232F632F9157ADD7B0B7A577AAF761EF173EF6
-      3E729FE33EE33C37DE32DE595FCC37C0B7C8B7CB4FC36F9E5F85DF437F23FF64
-      FF7AFFD100A78025016703898141815B02FBF87A7C21BF8E3F3ADB65F6B2D9ED
-      418CA0B94115418F82AD82E5C1AD2168C8EC90AD21F7E798CE91CE690E85507E
-      E8D6D00761E6618BC37E0C2785878557863F8E7088581AD131973577D1DC4373
-      DF44FA449644DE9B67314F39AF2D4A352A3EAA2E6A3CDA37BA34BA3FC62E6659
-      CCD5589D58496C4B1C392E2AAE366E6CBEDFFCEDF387E29DE20BE37B17982FC8
-      5D7079A1CEC2F485A716A92E122C3A96404C884E3894F041102AA8168C25F213
-      77258E0A79C21DC267222FD136D188D8435C2A1E4EF2482A4D7A92EC91BC3579
-      24C533A52CE5B98427A990BC4C0D4CDD9B3A9E169A76206D323D3ABD31839291
-      907142AA214D93B667EA67E66676CBAC6585B2FEC56E8BB72F1E9507C96BB390
-      AC05592D0AB642A6E8545A28D72A07B267655766BFCD89CA3996AB9E2BCDEDCC
-      B3CADB90379CEF9FFFED12C212E192B6A5864B572D1D58E6BDAC6A39B23C7179
-      DB0AE315052B865606AC3CB88AB62A6DD54FABED5797AE7EBD267A4D6B815EC1
-      CA82C1B5016BEB0B550AE5857DEBDCD7ED5D4F582F59DFB561FA869D1B3E1589
-      8AAE14DB1797157FD828DC78E51B876FCABF99DC94B4A9ABC4B964CF66D266E9
-      E6DE2D9E5B0E96AA97E6970E6E0DD9DAB40DDF56B4EDF5F645DB2F97CD28DBBB
-      83B643B9A3BF3CB8BC65A7C9CECD3B3F54A454F454FA5436EED2DDB561D7F86E
-      D1EE1B7BBCF634ECD5DB5BBCF7FD3EC9BEDB5501554DD566D565FB49FBB3F73F
-      AE89AAE9F896FB6D5DAD4E6D71EDC703D203FD07230EB6D7B9D4D51DD23D5452
-      8FD62BEB470EC71FBEFE9DEF772D0D360D558D9CC6E223704479E4E9F709DFF7
-      1E0D3ADA768C7BACE107D31F761D671D2F6A429AF29A469B539AFB5B625BBA4F
-      CC3ED1D6EADE7AFC47DB1F0F9C343C59794AF354C969DAE982D39367F2CF8C9D
-      959D7D7E2EF9DC60DBA2B67BE763CEDF6A0F6FEFBA1074E1D245FF8BE73BBC3B
-      CE5CF2B874F2B2DBE51357B8579AAF3A5F6DEA74EA3CFE93D34FC7BB9CBB9AAE
-      B95C6BB9EE7ABDB57B66F7E91B9E37CEDDF4BD79F116FFD6D59E393DDDBDF37A
-      6FF7C5F7F5DF16DD7E7227FDCECBBBD97727EEADBC4FBC5FF440ED41D943DD87
-      D53F5BFEDCD8EFDC7F6AC077A0F3D1DC47F7068583CFFE91F58F0F43058F998F
-      CB860D86EB9E383E3939E23F72FDE9FCA743CF64CF269E17FEA2FECBAE17162F
-      7EF8D5EBD7CED198D1A197F29793BF6D7CA5FDEAC0EB19AFDBC6C2C61EBEC978
-      33315EF456FBEDC177DC771DEFA3DF0F4FE47C207F28FF68F9B1F553D0A7FB93
-      199393FF040398F3FC63332DDB000000206348524D00007A25000080830000F9
-      FF000080E9000075300000EA6000003A980000176F925FC546000002B5494441
-      5478DA5C933B889C551480BF7BEFFFCFF39FCDC8623265D0102DC428A649DAA4
-      9345145424AD8885CD82A095AC9DA4D94644B41E4B8BAC558A10A216427C6125
-      82B24BD4EC4E769C999DC7FFB8E71C8BD959562F1C2EF7DEEF7EE73E38CECC38
-      DDB6774601782B04F76ABD1EAE26C1D563B4495EC8D7AAF6D9E646F7D669DE9D
-      166CEF8C9EF2DEF5CF3EDE7CA1D908B46AE09C61E69897309B451E0DF35BAAF6
-      E6E64677F01FC1F6CEE84ABDE6EFF6CEB56AF33CB22822F35981A80290650D5A
-      8D94462DE1EFFDF930467D7E73A3BB1776C3357E1BB63BCE71BF77AED51E1D15
-      E4A5B098175CBF7486972E776837537E7D3047158A4A786C2D6D4E8E8A6B579F
-      6E7DEA01CCECFDB54EDA9DE591B254440C701C8C237965EC8F22668E28469147
-      16A5D26C26CFDEFC72F07A0220515F4BD3C0645A620006DE07BEFDF9806F7E8C
-      24B53AAD769B18150CC6E3823359CA58E4EDE4C2C527D793C42E949510E3F23D
-      9612E3FAE5B35CB9D8E4CE2F737EF83D07EC24411515137D2E11915EF4309B95
-      44592EAE201545448E43597D9801D3598568CC12551B14454508096AFE643318
-      F1446044599997E7884051C4B9DFFD63F76031CFC72246594644F438ECB85F66
-      5731446D29AB22B18A88C89E0770CEDD5EE40555552151515DC2AB2BA82EE74C
-      0D55254661369DE11C5F798010FCBB937F4665F09E3C2F885504834948B8F7A7
-      A36CA400C4AAA2C8734059E4F96108E18304A0D6E8EC89C8E6E1A3838FD7BAEB
-      2E8A509625F7BFCF71DE63AA882A4908A80AD3E1A4CA3AD9CB49AD5D25AB3A68
-      B6BB9F98F1603C1CF4D35A236BB633420880C39CC34C998C8638CF5FEDACF562
-      A3B5F6138003FC56FFA16EDDE89D07B2F5DE13E75F79E7F3F7927AE75251941D
-      EF3D66469AB8F1D1E1EE77FD9B6F7C04E4C011307566C6875FEC9F54E4D68DDE
-      338000D531D8FDDFB8D8EA3F1CACF87F07005F5CBC87DC45F43B000000004945
-      4E44AE426082
-    }
-  end
-  object Panel1: TPanel
-    Left = 236
-    Height = 90
-    Top = 344
-    Width = 552
-    Caption = 'Подождите !!!  Идет расчет тарифа...'
-    Color = clYellow
-    Font.Color = clBlue
-    Font.Height = -19
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-    TabOrder = 19
-    Visible = False
+    ParentBidiMode = False
+    TabOrder = 18
   end
   object BitBtn13: TBitBtn
-    Left = 957
-    Height = 24
+    Left = 970
+    Height = 23
     Hint = 'Выбор из существующих маршрутов'
-    Top = 79
-    Width = 21
+    Top = 112
+    Width = 33
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -3218,8 +3214,29 @@ object Form16: TForm16
     }
     OnClick = BitBtn13Click
     OnExit = BitBtn1Exit
-    TabOrder = 20
+    TabOrder = 19
     Visible = False
+  end
+  object Label4: TLabel
+    Left = 31
+    Height = 18
+    Top = 54
+    Width = 48
+    Caption = 'Label4'
+    Font.Height = -15
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label33: TLabel
+    Left = 13
+    Height = 14
+    Top = 56
+    Width = 13
+    Caption = 'id:'
+    Font.Height = -12
+    ParentColor = False
+    ParentFont = False
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8

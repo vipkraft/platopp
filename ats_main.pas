@@ -807,7 +807,6 @@ end;
 
 procedure TForm13.FormShow(Sender: TObject);
 begin
-   Centrform(form13);
    sort_col := 1;
    sort_direction := 1;
     if flag_access=1 then

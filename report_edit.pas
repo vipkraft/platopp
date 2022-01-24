@@ -585,7 +585,6 @@ procedure TFormRepEdit.FormShow(Sender: TObject);
 var
   n: integer;
 begin
- Centrform(FormRepEdit);
  With FormRepEdit do
  begin
  if flag_access=1 then BitBtn3.Enabled:=false;

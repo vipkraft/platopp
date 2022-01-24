@@ -376,7 +376,6 @@ end;
 
 procedure TFormlgot.FormShow(Sender: TObject);
 begin
-     Centrform(formlgot);
    formlgot.UpdateGrid(datatyp,'');
    if flag_access=1 then
      begin

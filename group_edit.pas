@@ -143,7 +143,6 @@ procedure TForm12.FormShow(Sender: TObject);
   var
    tmp_id_user:integer;
 begin
-  Centrform(form12);
   with form12 do
     begin
      if flag_access=1 then   BitBtn3.Enabled:=false;

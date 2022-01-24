@@ -526,7 +526,6 @@ end;
 procedure TFormST.FormShow(Sender: TObject);
 begin
    decimalseparator:='.';
-     Centrform(FormST);
    with formST do
 begin
     shed_id := idshed;

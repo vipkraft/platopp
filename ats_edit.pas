@@ -626,7 +626,6 @@ procedure TForm14.FormShow(Sender: TObject);
    BlobStream: TStream;
    FileStream: TStream;
 begin
-   Centrform(Form14);
    with form14 do
        begin
     if flag_access=1 then

@@ -6,11 +6,12 @@ object Form10: TForm10
   Caption = 'Создание\Редактирование остановочных пунктов'
   ClientHeight = 768
   ClientWidth = 1024
-  Font.Height = -12
+  Font.Height = -13
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
     Height = 45
@@ -251,13 +252,12 @@ object Form10: TForm10
     }
   end
   object BitBtn3: TBitBtn
-    Left = 796
-    Height = 25
-    Hint = 'Сохранить'
-    Top = 707
-    Width = 107
-    Caption = 'Сохранить'
-    Font.Height = -11
+    Left = 720
+    Height = 34
+    Hint = 'Сохранить [F2]'
+    Top = 713
+    Width = 127
+    Caption = 'Сохранить [F2]'
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       20000000000000040000640000006400000000000000000000001D1B1AB1201F
@@ -295,17 +295,15 @@ object Form10: TForm10
       A7FFB3B3A7FFB3B3A7FFB3B3A7FF201F1EFF514C4AC7514C4A2C
     }
     OnClick = BitBtn3Click
-    ParentFont = False
     TabOrder = 14
   end
   object BitBtn4: TBitBtn
-    Left = 909
-    Height = 25
+    Left = 888
+    Height = 32
     Hint = 'Сохранить'
-    Top = 707
-    Width = 107
-    Caption = 'Отмена'
-    Font.Height = -11
+    Top = 715
+    Width = 119
+    Caption = 'Выход'
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000000000060000
@@ -343,14 +341,13 @@ object Form10: TForm10
       D8B30F67D74EFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
     OnClick = BitBtn4Click
-    ParentFont = False
     TabOrder = 15
   end
   object Label2: TLabel
     Left = 18
-    Height = 14
+    Height = 15
     Top = 53
-    Width = 140
+    Width = 155
     Caption = '№ остановочного пункта'
     ParentColor = False
   end
@@ -391,31 +388,31 @@ object Form10: TForm10
   end
   object Label5: TLabel
     Left = 36
-    Height = 14
+    Height = 15
     Top = 188
-    Width = 38
+    Width = 44
     Caption = 'Страна'
     ParentColor = False
   end
   object Label6: TLabel
     Left = 38
-    Height = 14
+    Height = 15
     Top = 222
-    Width = 39
+    Width = 43
     Caption = 'Регион'
     ParentColor = False
   end
   object Label7: TLabel
     Left = 44
-    Height = 14
+    Height = 15
     Top = 258
-    Width = 34
+    Width = 38
     Caption = 'Район'
     ParentColor = False
   end
   object Edit3: TEdit
     Left = 86
-    Height = 24
+    Height = 25
     Top = 186
     Width = 191
     ReadOnly = True
@@ -423,7 +420,7 @@ object Form10: TForm10
   end
   object Edit4: TEdit
     Left = 87
-    Height = 24
+    Height = 25
     Top = 219
     Width = 257
     ReadOnly = True
@@ -431,7 +428,7 @@ object Form10: TForm10
   end
   object Edit5: TEdit
     Left = 86
-    Height = 24
+    Height = 25
     Top = 255
     Width = 257
     ReadOnly = True
@@ -492,20 +489,20 @@ object Form10: TForm10
     Pen.Color = clRed
   end
   object Label10: TLabel
-    Left = 188
-    Height = 9
-    Top = 72
-    Width = 108
+    Left = 183
+    Height = 13
+    Top = 73
+    Width = 147
     Caption = 'Заполняется автоматически'
-    Font.Height = -8
+    Font.Height = -11
     ParentColor = False
     ParentFont = False
   end
   object Label12: TLabel
     Left = 24
-    Height = 14
+    Height = 15
     Top = 688
-    Width = 125
+    Width = 137
     Caption = 'Последняя редакция: -'
     ParentColor = False
   end
@@ -539,7 +536,7 @@ object Form10: TForm10
   end
   object Edit7: TEdit
     Left = 347
-    Height = 24
+    Height = 25
     Top = 219
     Width = 133
     ReadOnly = True
@@ -547,7 +544,7 @@ object Form10: TForm10
   end
   object Edit8: TEdit
     Left = 632
-    Height = 24
+    Height = 25
     Top = 139
     Width = 201
     ReadOnly = True
@@ -563,9 +560,9 @@ object Form10: TForm10
   end
   object Label9: TLabel
     Left = 606
-    Height = 14
+    Height = 15
     Top = 96
-    Width = 39
+    Width = 43
     Caption = 'Группа'
     ParentColor = False
   end
@@ -575,44 +572,44 @@ object Form10: TForm10
     Top = 295
     Width = 992
     Caption = 'Реквизиты остановочного пункта'
-    ClientHeight = 152
+    ClientHeight = 151
     ClientWidth = 988
     TabOrder = 12
     object Label11: TLabel
       Left = 27
-      Height = 14
+      Height = 15
       Top = 14
-      Width = 44
+      Width = 49
       Caption = 'ОКТМО:'
       ParentColor = False
     end
     object Edit9: TEdit
       Left = 81
-      Height = 24
+      Height = 25
       Top = 11
       Width = 295
       TabOrder = 0
     end
     object Label13: TLabel
       Left = 27
-      Height = 14
+      Height = 15
       Top = 58
-      Width = 159
+      Width = 171
       Caption = 'Владелец Ф.И.О\Должность:'
       ParentColor = False
     end
     object Edit10: TEdit
       Left = 223
-      Height = 24
+      Height = 25
       Top = 55
       Width = 760
       TabOrder = 1
     end
     object Label14: TLabel
       Left = 27
-      Height = 14
+      Height = 15
       Top = 100
-      Width = 33
+      Width = 36
       Caption = 'Адрес'
       ParentColor = False
     end
@@ -687,16 +684,16 @@ object Form10: TForm10
   end
   object Edit12: TEdit
     Left = 658
-    Height = 24
+    Height = 25
     Top = 94
     Width = 291
     ReadOnly = True
     TabOrder = 4
   end
   object Image3: TImage
-    Left = 26
+    Left = 18
     Height = 19
-    Top = 714
+    Top = 736
     Width = 17
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869638A0D000089504E47
@@ -812,14 +809,12 @@ object Form10: TForm10
     }
   end
   object Label4: TLabel
-    Left = 47
-    Height = 13
-    Top = 715
-    Width = 59
+    Left = 39
+    Height = 15
+    Top = 737
+    Width = 69
     Caption = 'F1-Помощь'
-    Font.Height = -11
     ParentColor = False
-    ParentFont = False
   end
   object Shape10: TShape
     Left = 658
@@ -831,15 +826,15 @@ object Form10: TForm10
   end
   object Label16: TLabel
     Left = 18
-    Height = 14
+    Height = 15
     Top = 524
-    Width = 77
+    Width = 85
     Caption = 'Часовой пояс'
     ParentColor = False
   end
   object SpinEdit1: TSpinEdit
-    Left = 102
-    Height = 24
+    Left = 113
+    Height = 25
     Top = 520
     Width = 41
     MaxValue = 24
@@ -863,13 +858,13 @@ object Form10: TForm10
     TransactIsolationLevel = tiReadCommitted
     Port = 0
     Protocol = 'postgresql'
-    left = 206
-    top = 705
+    left = 120
+    top = 8
   end
   object ZQuery1: TZQuery
     Connection = ZConnection1
     Params = <>
-    left = 246
-    top = 702
+    left = 32
+    top = 8
   end
 end

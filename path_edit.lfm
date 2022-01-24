@@ -10,7 +10,8 @@ object Formpme: TFormpme
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.1'
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.8.0'
   object Shape3: TShape
     Left = 213
     Height = 2
@@ -259,9 +260,9 @@ object Formpme: TFormpme
   end
   object Label1: TLabel
     Left = 206
-    Height = 24
+    Height = 22
     Top = 9
-    Width = 764
+    Width = 692
     Caption = 'Создание\Редактирование списка нормативов расстояний и времени в пути'
     Color = clWhite
     Font.Color = clTeal
@@ -296,9 +297,9 @@ object Formpme: TFormpme
   end
   object Label2: TLabel
     Left = 42
-    Height = 15
+    Height = 13
     Top = 166
-    Width = 158
+    Width = 139
     Caption = 'Остановочный пункт №1 - '
     ParentColor = False
   end
@@ -316,9 +317,9 @@ object Formpme: TFormpme
   end
   object Label3: TLabel
     Left = 613
-    Height = 15
+    Height = 13
     Top = 166
-    Width = 158
+    Width = 139
     Caption = 'Остановочный пункт №2 - '
     ParentColor = False
   end
@@ -373,17 +374,17 @@ object Formpme: TFormpme
   end
   object Label4: TLabel
     Left = 410
-    Height = 15
+    Height = 13
     Top = 282
-    Width = 79
+    Width = 69
     Caption = 'Время в пути'
     ParentColor = False
   end
   object Label5: TLabel
     Left = 547
-    Height = 18
+    Height = 15
     Top = 279
-    Width = 10
+    Width = 9
     Caption = 'Ч'
     Font.Height = -13
     ParentColor = False
@@ -402,9 +403,9 @@ object Formpme: TFormpme
   end
   object Label6: TLabel
     Left = 613
-    Height = 18
+    Height = 15
     Top = 279
-    Width = 12
+    Width = 11
     Caption = 'М'
     Font.Height = -13
     ParentColor = False
@@ -412,9 +413,9 @@ object Formpme: TFormpme
   end
   object Label7: TLabel
     Left = 400
-    Height = 15
+    Height = 13
     Top = 253
-    Width = 91
+    Width = 78
     Caption = 'Расстояние(км)'
     ParentColor = False
   end
@@ -634,9 +635,9 @@ object Formpme: TFormpme
   end
   object Label8: TLabel
     Left = 501
-    Height = 15
+    Height = 13
     Top = 718
-    Width = 64
+    Width = 59
     Caption = 'F1-Помощь'
     Font.Height = -11
     ParentColor = False
@@ -644,17 +645,17 @@ object Formpme: TFormpme
   end
   object Label9: TLabel
     Left = 202
-    Height = 15
+    Height = 13
     Top = 166
-    Width = 29
+    Width = 24
     Caption = '0000'
     ParentColor = False
   end
   object Label10: TLabel
     Left = 774
-    Height = 15
+    Height = 13
     Top = 166
-    Width = 29
+    Width = 24
     Caption = '0000'
     ParentColor = False
   end
@@ -758,9 +759,9 @@ object Formpme: TFormpme
   end
   object Label12: TLabel
     Left = 144
-    Height = 13
+    Height = 10
     Top = 208
-    Width = 138
+    Width = 119
     Caption = 'заполняется автоматически'
     Font.Height = -9
     ParentColor = False
@@ -768,9 +769,9 @@ object Formpme: TFormpme
   end
   object Label13: TLabel
     Left = 728
-    Height = 13
+    Height = 10
     Top = 207
-    Width = 138
+    Width = 119
     Caption = 'заполняется автоматически'
     Font.Height = -9
     ParentColor = False

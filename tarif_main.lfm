@@ -10,7 +10,7 @@ object Formtarif: TFormtarif
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  Position = poDesktopCenter
+  Position = poOwnerFormCenter
   LCLVersion = '2.0.8.0'
   object StringGrid1: TStringGrid
     AnchorSideLeft.Control = Owner
@@ -1049,6 +1049,7 @@ object Formtarif: TFormtarif
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
     Properties.Strings = (
       'AutoEncodeStrings='
     )

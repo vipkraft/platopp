@@ -684,7 +684,6 @@ end;
 
 procedure TFormtarif.FormShow(Sender: TObject);
 begin
-   Centrform(formtarif);
   MySett.DateSeparator := '-';
   MySett.TimeSeparator := ':';
   MySett.ShortDateFormat := 'dd-mm-yyyy';

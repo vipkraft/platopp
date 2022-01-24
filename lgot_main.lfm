@@ -10,7 +10,8 @@ object Formlgot: TFormlgot
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.8.0'
   object Image3: TImage
     Left = 9
     Height = 19
@@ -381,31 +382,28 @@ object Formlgot: TFormlgot
       Left = 1
       Height = 22
       Top = 2
-      Width = 10
       Caption = 'ToolButton7'
       Style = tbsSeparator
       Visible = False
     end
     object ToolButton3: TToolButton
-      Left = 11
+      Left = 9
       Height = 22
       Top = 2
-      Width = 5
       Caption = 'ToolButton3'
       Style = tbsDivider
       Visible = False
     end
     object ToolButton2: TToolButton
-      Left = 16
+      Left = 14
       Height = 22
       Top = 2
-      Width = 10
       Caption = 'ToolButton2'
       Style = tbsSeparator
       Visible = False
     end
     object Label2: TLabel
-      Left = 26
+      Left = 22
       Height = 22
       Top = 2
       Width = 204

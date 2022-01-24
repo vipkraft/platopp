@@ -1240,7 +1240,6 @@ end;
 //********************************* ВОЗНИКНОВЕНИЕ ФОРМЫ ************************************************************
 procedure TForm_Bron.FormShow(Sender: TObject);
 begin
-  Centrform(Form_Bron);
    try strtoInt(form15.StringGrid1.Cells[0,form15.StringGrid1.Row])
    except
       Close;

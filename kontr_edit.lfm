@@ -52,8 +52,9 @@ object Form20: TForm20
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   ShowHint = True
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.8.0'
   object BitBtn3: TBitBtn
     Left = 770
     Height = 32

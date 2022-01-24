@@ -12,7 +12,8 @@ object FormKontrTarif: TFormKontrTarif
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.1.99'
+  Position = poMainFormCenter
+  LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
     Height = 45
@@ -454,7 +455,6 @@ object FormKontrTarif: TFormKontrTarif
     ParentFont = False
     RowCount = 1
     TabOrder = 1
-    TitleFont.Height = -15
     OnEnter = StringGrid1Enter
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
@@ -635,7 +635,6 @@ object FormKontrTarif: TFormKontrTarif
         Top = 46
         Width = 97
         Font.Height = -17
-        Increment = 1
         MaxValue = 100000
         MinValue = 0
         ParentFont = False
@@ -646,7 +645,7 @@ object FormKontrTarif: TFormKontrTarif
         Left = 189
         Height = 21
         Top = 37
-        Width = 47
+        Width = 53
         Caption = 'руб.'
         Checked = True
         Font.Height = -16
@@ -658,7 +657,7 @@ object FormKontrTarif: TFormKontrTarif
         Left = 189
         Height = 21
         Top = 59
-        Width = 34
+        Width = 36
         Caption = '%'
         Font.Height = -16
         ParentFont = False
@@ -757,7 +756,6 @@ object FormKontrTarif: TFormKontrTarif
         Top = 46
         Width = 97
         Font.Height = -17
-        Increment = 1
         MaxValue = 100000
         MinValue = 0
         ParentFont = False
@@ -768,7 +766,7 @@ object FormKontrTarif: TFormKontrTarif
         Left = 189
         Height = 21
         Top = 37
-        Width = 47
+        Width = 53
         Caption = 'руб.'
         Checked = True
         Font.Height = -16
@@ -780,7 +778,7 @@ object FormKontrTarif: TFormKontrTarif
         Left = 189
         Height = 21
         Top = 59
-        Width = 34
+        Width = 36
         Caption = '%'
         Font.Height = -16
         ParentFont = False
@@ -820,6 +818,9 @@ object FormKontrTarif: TFormKontrTarif
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = False
+    Properties.Strings = (
+      'AutoEncodeStrings='
+    )
     TransactIsolationLevel = tiReadCommitted
     Port = 0
     Protocol = 'postgresql'

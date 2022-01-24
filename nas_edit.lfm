@@ -50,8 +50,9 @@ object Form6: TForm6
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   ShowHint = True
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.8.0'
   object Image4: TImage
     Left = 0
     Height = 45
@@ -1605,6 +1606,9 @@ object Form6: TForm6
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = False
+    Properties.Strings = (
+      'AutoEncodeStrings='
+    )
     TransactIsolationLevel = tiReadCommitted
     Port = 0
     Protocol = 'postgresql'

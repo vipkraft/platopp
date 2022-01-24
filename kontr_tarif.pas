@@ -270,7 +270,6 @@ end;
 //***************************** ВОЗНИКНОВЕНИЕ ФОРМЫ *******************************
 procedure TFormKontrTarif.FormShow(Sender: TObject);
 begin
-  Centrform(FormKontrTarif);
   datatyp:=0;
   Updategrid(datatyp,'');
   If flag_access<2 then FormKontrTarif.BitBtn4.Enabled:= false;

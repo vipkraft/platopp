@@ -13,7 +13,8 @@ object FormST: TFormST
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  Position = poMainFormCenter
+  LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
     Height = 45

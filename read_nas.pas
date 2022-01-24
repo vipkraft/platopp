@@ -241,7 +241,6 @@ procedure TForm7.FormShow(Sender: TObject);
  var
    n:integer;
 begin
- Centrform(form7);
  result_name_full:='';
  Form7.UpdateGrid(datatyp,'');
  //With Form7 do

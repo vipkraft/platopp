@@ -10,6 +10,7 @@ object Form14: TForm14
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   ShowHint = True
   LCLVersion = '2.0.8.0'
   object Image1: TImage
@@ -2446,6 +2447,7 @@ object Form14: TForm14
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
     Properties.Strings = (
       'AutoEncodeStrings='
     )

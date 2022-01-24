@@ -34,7 +34,7 @@ function kol_row_file(file_name:string):integer;                    //Возвр
 procedure AutoSizeGridColumn(Grid: TStringGrid);                    // Автоподбор ширины столбца
 procedure Exchange(List1, List2 : TStrings);                        // Процедура обмена текстовых списков (TStrings)
 procedure SetGridFocus(SGrid: TStringGrid; r, c: integer);          //Выделяем фокус ячейки
-procedure CentrForm(Frm: TForm);                                    //Выравнивание формы по центру
+//procedure CentrForm(Frm: TForm);                                    //Выравнивание формы по центру
 procedure fillarray;                                                //Запоняет массивы данными названий месяцев и дней недели
 function GetMonthName(nM:byte):string;                                    //Возвращает название месяца
 function GetDayName(nD:byte):string;                                    //Возвращает название дня недели
@@ -2346,14 +2346,14 @@ end;
 
 //----------------------------------------------------------------------------------------------------//
 //Выравнивание формы по центру
-procedure CentrForm(Frm: TForm);
-begin
+//procedure CentrForm(Frm: TForm);
+//begin
      //Frm.Width:=1024;
-     Frm.left:=(screen.width div 2) - (frm.Width div 2);
-     Frm.Top:=(screen.Height div 2) - (frm.Height div 2);
+     //Frm.left:=(screen.width div 2) - (frm.Width div 2);
+     //Frm.Top:=(screen.Height div 2) - (frm.Height div 2);
      //Frm.BorderStyle:=bsSingle;
      //Frm.BorderWidth:=2;
-end;
+//end;
 //----------------------------------------------------------------------------------------------------//
 
 //----------------------------------------------------------------------------------------------------//
