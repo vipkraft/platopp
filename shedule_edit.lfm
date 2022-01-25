@@ -22,13 +22,13 @@ object Form16: TForm16
     Height = 588
     Top = 144
     Width = 1020
-    ActivePage = TabSheet1
+    ActivePage = TabSheet6
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
     BorderSpacing.Right = 2
     Font.Height = -12
     ParentFont = False
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
@@ -50,132 +50,6 @@ object Form16: TForm16
         ClientHeight = 560
         ClientWidth = 1014
         TabOrder = 0
-        object StringGrid1: TStringGrid
-          Left = 3
-          Height = 445
-          Top = 26
-          Width = 890
-          ColCount = 11
-          Columns = <          
-            item
-              ReadOnly = True
-              Title.Caption = 'код о/п'
-              Width = 58
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = 'Наименование остановочного пункта'
-              Width = 278
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = 'Форм'
-              Width = 42
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = 'Платформа'
-              Width = 41
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = 'Время'
-              Width = 72
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = 'Время'
-              Width = 79
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = 'Платформа'
-              Width = 42
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = 'Время'
-              Width = 71
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = '    км'
-              Width = 78
-            end          
-            item
-              ReadOnly = True
-              Title.Caption = 'км/ч'
-              Width = 45
-            end          
-            item
-              ButtonStyle = cbsCheckboxColumn
-              Title.Caption = 'продажи'
-              Width = 60
-            end>
-          DefaultDrawing = False
-          DefaultRowHeight = 48
-          FixedCols = 0
-          Font.Height = -12
-          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing, goRowSelect, goSmoothScroll]
-          ParentFont = False
-          RowCount = 1
-          ScrollBars = ssAutoVertical
-          TabOrder = 1
-          TitleFont.Height = -11
-          OnDrawCell = StringGrid1DrawCell
-          OnEnter = StringGrid1Enter
-          OnSelection = StringGrid1Selection
-          OnSetCheckboxState = StringGrid1SetCheckboxState
-          ColWidths = (
-            58
-            278
-            42
-            41
-            72
-            79
-            42
-            71
-            78
-            45
-            60
-          )
-          Cells = (
-            11
-            0
-            0
-            'Код о\п'
-            1
-            0
-            'Наименование остановочного пункта'
-            2
-            0
-            'Форм'
-            3
-            0
-            'плат'
-            4
-            0
-            'Время'
-            5
-            0
-            'Время'
-            6
-            0
-            'плат'
-            7
-            0
-            'время'
-            8
-            0
-            '    км'
-            9
-            0
-            'км\ч'
-            10
-            0
-            'продажи'
-          )
-        end
         object BitBtn2: TBitBtn
           Left = 897
           Height = 28
@@ -514,9 +388,11 @@ object Form16: TForm16
           TabOrder = 6
         end
         object StringGrid7: TStringGrid
-          Left = 3
+          AnchorSideLeft.Control = GroupBox1
+          AnchorSideTop.Control = GroupBox1
+          Left = 0
           Height = 24
-          Top = 1
+          Top = 0
           Width = 890
           ColCount = 9
           DefaultDrawing = False
@@ -801,19 +677,143 @@ object Form16: TForm16
           Caption = 'Время в пути общее:'
           ParentColor = False
         end
-        object GroupBox4: TGroupBox
-          AnchorSideLeft.Control = GroupBox1
-          AnchorSideBottom.Control = GroupBox1
-          AnchorSideBottom.Side = asrBottom
-          Left = 2
-          Height = 85
-          Top = 474
-          Width = 361
-          Anchors = [akLeft, akBottom]
-          BorderSpacing.Left = 2
-          BorderSpacing.Bottom = 1
-          Caption = 'Последние изменения:'
+        object Button1: TButton
+          Left = 897
+          Height = 25
+          Top = 520
+          Width = 115
+          Caption = 'ИНФО (скрыть)'
+          OnClick = Button1Click
           TabOrder = 17
+        end
+        object StringGrid1: TStringGrid
+          AnchorSideLeft.Control = GroupBox1
+          AnchorSideTop.Control = StringGrid7
+          AnchorSideTop.Side = asrBottom
+          Left = 0
+          Height = 445
+          Top = 24
+          Width = 890
+          ColCount = 11
+          Columns = <          
+            item
+              ReadOnly = True
+              Title.Caption = 'код о/п'
+              Width = 58
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = 'Наименование остановочного пункта'
+              Width = 278
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = 'Форм'
+              Width = 42
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = 'Платформа'
+              Width = 41
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = 'Время'
+              Width = 72
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = 'Время'
+              Width = 79
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = 'Платформа'
+              Width = 42
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = 'Время'
+              Width = 71
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = '    км'
+              Width = 78
+            end          
+            item
+              ReadOnly = True
+              Title.Caption = 'км/ч'
+              Width = 45
+            end          
+            item
+              ButtonStyle = cbsCheckboxColumn
+              Title.Caption = 'продажи'
+              Width = 60
+            end>
+          DefaultDrawing = False
+          DefaultRowHeight = 48
+          FixedCols = 0
+          Font.Height = -12
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing, goRowSelect, goSmoothScroll]
+          ParentFont = False
+          RowCount = 1
+          ScrollBars = ssAutoVertical
+          TabOrder = 1
+          TitleFont.Height = -11
+          OnDrawCell = StringGrid1DrawCell
+          OnEnter = StringGrid1Enter
+          OnSelection = StringGrid1Selection
+          OnSetCheckboxState = StringGrid1SetCheckboxState
+          ColWidths = (
+            58
+            278
+            42
+            41
+            72
+            79
+            42
+            71
+            78
+            45
+            60
+          )
+          Cells = (
+            11
+            0
+            0
+            'Код о\п'
+            1
+            0
+            'Наименование остановочного пункта'
+            2
+            0
+            'Форм'
+            3
+            0
+            'плат'
+            4
+            0
+            'Время'
+            5
+            0
+            'Время'
+            6
+            0
+            'плат'
+            7
+            0
+            'время'
+            8
+            0
+            '    км'
+            9
+            0
+            'км\ч'
+            10
+            0
+            'продажи'
+          )
         end
       end
     end
@@ -1032,8 +1032,8 @@ object Form16: TForm16
         Height = 551
         Top = 8
         Width = 682
-        ActivePage = TabSheet8
-        TabIndex = 1
+        ActivePage = TabSheet7
+        TabIndex = 0
         TabOrder = 0
         object TabSheet7: TTabSheet
           Caption = '         1.Тариф       '
@@ -1840,7 +1840,7 @@ object Form16: TForm16
         AnchorSideTop.Control = ComboBox4
         AnchorSideTop.Side = asrBottom
         AnchorSideBottom.Control = GroupBox2
-        Left = 7
+        Left = 8
         Height = 386
         Top = 43
         Width = 311
@@ -1944,7 +1944,7 @@ object Form16: TForm16
       object GroupBox2: TGroupBox
         AnchorSideBottom.Control = TabSheet6
         AnchorSideBottom.Side = asrBottom
-        Left = 7
+        Left = 8
         Height = 132
         Top = 431
         Width = 311
@@ -2123,7 +2123,7 @@ object Form16: TForm16
       end
     end
     object TabSheet3: TTabSheet
-      Caption = '   ДОСТУП К РАСПИСАНИЮ'
+      Caption = '   ДОСТУП К РАСПИСАНИЮ / ЖУРНАЛ ИЗМЕНЕНИЙ'
       ClientHeight = 564
       ClientWidth = 1018
       object StringGrid3: TStringGrid
@@ -2251,6 +2251,38 @@ object Form16: TForm16
         }
         OnClick = BitBtn25Click
         TabOrder = 2
+      end
+      object GroupBox4: TGroupBox
+        AnchorSideLeft.Control = GroupBox1
+        AnchorSideBottom.Control = GroupBox1
+        AnchorSideBottom.Side = asrBottom
+        Left = 528
+        Height = 520
+        Top = 16
+        Width = 481
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 2
+        BorderSpacing.Bottom = 1
+        Caption = 'Последние изменения:'
+        ClientHeight = 504
+        ClientWidth = 477
+        TabOrder = 3
+        object Label5: TLabel
+          Left = 12
+          Height = 14
+          Top = 5
+          Width = 108
+          Caption = 'Общие параметры:'
+          ParentColor = False
+        end
+        object Label19: TLabel
+          Left = 12
+          Height = 14
+          Top = 27
+          Width = 112
+          Caption = 'Изменения состава:'
+          ParentColor = False
+        end
       end
     end
   end
@@ -2983,17 +3015,22 @@ object Form16: TForm16
     Text = '24.03.2017'
   end
   object DateEdit3: TDateEdit
+    AnchorSideLeft.Control = CheckBox2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = CheckBox2
+    AnchorSideTop.Side = asrCenter
     Left = 490
-    Height = 23
-    Top = 84
+    Height = 24
+    Top = 83
     Width = 103
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
     DefaultToday = True
     DateOrder = doDMY
     ButtonWidth = 23
+    BorderSpacing.Left = 5
     NumGlyphs = 1
     Enabled = False
-    Font.Height = -11
+    Font.Height = -12
     Font.Style = [fsBold]
     MaxLength = 10
     ParentFont = False

@@ -276,9 +276,16 @@ var
    ss:=trimleft(Edit1.Text);
    if UTF8Length(ss)>0 then
         begin
-          //определяем тип данных для поиска
-        if (ss[1] in ['0'..'9']) then datatyp:=1
-        else datatyp:=2;
+        for n:=1 to UTF8Length(ss) do
+        begin
+       //определяем тип данных для поиска
+     if not (ss[n] in ['0'..'9']) then
+       begin
+         datatyp:=2;
+         break;
+       end;
+      datatyp:=1;
+        end;
 
        updategrid(datatyp,ss);
         end

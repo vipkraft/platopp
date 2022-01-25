@@ -43,6 +43,7 @@ type
     BitBtn7: TBitBtn;
     BitBtn8: TBitBtn;
     BitBtn9: TBitBtn;
+    Button1: TButton;
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
@@ -100,6 +101,7 @@ type
     Label16: TLabel;
     Label17: TLabel;
     Label18: TLabel;
+    Label19: TLabel;
     Label2: TLabel;
     Label20: TLabel;
     Label21: TLabel;
@@ -115,6 +117,7 @@ type
     Label36: TLabel;
     Label37: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
@@ -3666,7 +3669,17 @@ procedure TForm16.Button1Click(Sender: TObject);
   //n,m:integer;
   // s:string;
 begin
-   showmas(arsatp);
+   if form16.StringGrid1.Height<500 then
+   begin
+     form16.StringGrid1.Height:=535;
+     form16.Button1.Caption:='ИНФО (показать)';
+   end
+   else
+   begin
+    form16.StringGrid1.Height:=445;
+    form16.Button1.Caption:='ИНФО (скрыть)';
+   end;
+   application.ProcessMessages;
 end;
 
 procedure TForm16.Button2Click(Sender: TObject);
