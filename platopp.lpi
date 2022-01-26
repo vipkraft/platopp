@@ -79,7 +79,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <TopLine Value="103"/>
-        <CursorPos X="20" Y="129"/>
+        <CursorPos X="13" Y="128"/>
         <UsageCount Value="205"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -98,9 +98,9 @@
       <Unit3>
         <Filename Value="platproc.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="22"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="25"/>
-        <CursorPos X="17" Y="37"/>
+        <CursorPos X="30" Y="38"/>
         <UsageCount Value="215"/>
         <Loaded Value="True"/>
       </Unit3>
@@ -110,11 +110,10 @@
         <ComponentName Value="Form5"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="278"/>
         <CursorPos X="15" Y="301"/>
         <UsageCount Value="201"/>
-        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="nas_edit.pas"/>
@@ -122,10 +121,11 @@
         <ComponentName Value="Form6"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="148"/>
-        <CursorPos Y="163"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="157"/>
+        <CursorPos X="38" Y="168"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="other_nas.pas"/>
@@ -150,12 +150,10 @@
         <ComponentName Value="Form7"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="143"/>
         <CursorPos X="15" Y="166"/>
         <UsageCount Value="213"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="point_main.pas"/>
@@ -163,12 +161,10 @@
         <ComponentName Value="Form9"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="201"/>
         <CursorPos X="14" Y="212"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="point_edit.pas"/>
@@ -187,11 +183,10 @@
         <ComponentName Value="Form11"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="143"/>
         <CursorPos X="15" Y="166"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="group_edit.pas"/>
@@ -210,11 +205,10 @@
         <ComponentName Value="Form13"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="571"/>
         <CursorPos X="15" Y="594"/>
         <UsageCount Value="204"/>
-        <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="ats_edit.pas"/>
@@ -233,7 +227,7 @@
         <ComponentName Value="Form15"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="1229"/>
         <CursorPos X="15" Y="1252"/>
         <UsageCount Value="200"/>
@@ -246,11 +240,10 @@
         <ComponentName Value="Form17"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="82"/>
         <CursorPos X="15" Y="105"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit15>
       <Unit16>
         <Filename Value="route_edit.pas"/>
@@ -280,11 +273,10 @@
         <ComponentName Value="Form20"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="419"/>
         <CursorPos X="53" Y="433"/>
         <UsageCount Value="201"/>
-        <Loaded Value="True"/>
       </Unit18>
       <Unit19>
         <Filename Value="shedule_edit_sostav.pas"/>
@@ -303,11 +295,10 @@
         <ComponentName Value="Formlgot"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="265"/>
         <CursorPos X="15" Y="288"/>
         <UsageCount Value="223"/>
-        <Loaded Value="True"/>
       </Unit20>
       <Unit21>
         <Filename Value="lgot_edit.pas"/>
@@ -326,11 +317,10 @@
         <ComponentName Value="FormUslugi"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="268"/>
         <CursorPos X="15" Y="291"/>
         <UsageCount Value="225"/>
-        <Loaded Value="True"/>
       </Unit22>
       <Unit23>
         <Filename Value="uslugi_edit.pas"/>
@@ -378,11 +368,10 @@
         <ComponentName Value="Formtarif"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="559"/>
         <CursorPos X="15" Y="583"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit26>
       <Unit27>
         <Filename Value="dogovor.pas"/>
@@ -414,11 +403,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="TicketTypes"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="642"/>
         <CursorPos X="10" Y="665"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit29>
       <Unit30>
         <Filename Value="kontr_main.pas"/>
@@ -458,11 +446,10 @@
         <ComponentName Value="Formpm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="260"/>
         <CursorPos X="15" Y="284"/>
         <UsageCount Value="201"/>
-        <Loaded Value="True"/>
       </Unit33>
       <Unit34>
         <Filename Value="path_edit.pas"/>
@@ -592,9 +579,10 @@
         <ComponentName Value="Form16"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="3660"/>
-        <CursorPos X="43" Y="3674"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="375"/>
+        <CursorPos X="14" Y="390"/>
         <UsageCount Value="237"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -605,11 +593,10 @@
         <ComponentName Value="Form_servers"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="202"/>
         <CursorPos X="15" Y="225"/>
         <UsageCount Value="215"/>
-        <Loaded Value="True"/>
       </Unit47>
       <Unit48>
         <Filename Value="shedule_bron.pas"/>
@@ -650,7 +637,7 @@
         <ComponentName Value="FormST"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="514"/>
         <CursorPos X="25" Y="528"/>
         <UsageCount Value="200"/>
@@ -663,11 +650,10 @@
         <ComponentName Value="FormKontrTarif"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="451"/>
         <CursorPos X="15" Y="475"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit52>
       <Unit53>
         <Filename Value="version_info.pas"/>
@@ -715,7 +701,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="11" Y="10"/>
-        <UsageCount Value="181"/>
+        <UsageCount Value="179"/>
       </Unit57>
       <Unit58>
         <Filename Value="astradno.pas"/>
@@ -724,7 +710,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="11"/>
-        <UsageCount Value="289"/>
+        <UsageCount Value="287"/>
       </Unit58>
       <Unit59>
         <Filename Value="/usr/lib/lazarus/lcl/graphics.pp"/>
@@ -732,7 +718,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="49"/>
         <CursorPos X="25" Y="63"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="58"/>
       </Unit59>
       <Unit60>
         <Filename Value="spr_shed_kontr.pas"/>
@@ -740,11 +726,10 @@
         <ComponentName Value="Form28"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="283"/>
         <CursorPos X="15" Y="302"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit60>
       <Unit61>
         <Filename Value="pdp_destination_points.pas"/>
@@ -752,13 +737,10 @@
         <ComponentName Value="Form29"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="21"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="378"/>
-        <CursorPos X="79" Y="392"/>
+        <CursorPos X="31" Y="386"/>
         <UsageCount Value="224"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit61>
       <Unit62>
         <Filename Value="../2/shedule_edit.pas"/>
@@ -766,129 +748,128 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit62>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3673" Column="43" TopLine="3659"/>
+        <Caret Line="250" Column="32" TopLine="234"/>
       </Position1>
       <Position2>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3674" Column="43" TopLine="3660"/>
+        <Caret Line="249" Column="32" TopLine="233"/>
       </Position2>
       <Position3>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3673" Column="43" TopLine="3659"/>
+        <Caret Line="258" Column="15" TopLine="301"/>
       </Position3>
       <Position4>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3672" Column="43" TopLine="3658"/>
+        <Caret Line="5004" Column="19" TopLine="4982"/>
       </Position4>
       <Position5>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3671" Column="43" TopLine="3657"/>
+        <Caret Line="262" Column="23" TopLine="251"/>
       </Position5>
       <Position6>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="473" Column="29" TopLine="451"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="404" Column="146" TopLine="379"/>
       </Position6>
       <Position7>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="217" Column="16" TopLine="197"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="405" Column="83" TopLine="380"/>
       </Position7>
       <Position8>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="214" Column="12" TopLine="199"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="415" Column="54" TopLine="391"/>
       </Position8>
       <Position9>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="216" Column="19" TopLine="205"/>
+        <Filename Value="shedule_edit.pas"/>
       </Position9>
       <Position10>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="217" TopLine="205"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="416" Column="65" TopLine="391"/>
       </Position10>
       <Position11>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="212" Column="15" TopLine="205"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="504" Column="33" TopLine="479"/>
       </Position11>
       <Position12>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="214" Column="9" TopLine="205"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="530" Column="32" TopLine="506"/>
       </Position12>
       <Position13>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="217" Column="22" TopLine="201"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="531" Column="31" TopLine="519"/>
       </Position13>
       <Position14>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="216" Column="27" TopLine="201"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="497" Column="14" TopLine="489"/>
       </Position14>
       <Position15>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="209" Column="15" TopLine="201"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="384" Column="13" TopLine="365"/>
       </Position15>
       <Position16>
-        <Filename Value="point_main.pas"/>
-        <Caret Line="212" Column="14" TopLine="201"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="457" Column="65" TopLine="432"/>
       </Position16>
       <Position17>
-        <Filename Value="nas.pas"/>
-        <Caret Line="301" Column="15" TopLine="278"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="545" Column="33" TopLine="520"/>
       </Position17>
       <Position18>
-        <Filename Value="read_nas.pas"/>
-        <Caret Line="166" Column="15" TopLine="143"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="572" Column="25" TopLine="556"/>
       </Position18>
       <Position19>
-        <Filename Value="group.pas"/>
-        <Caret Line="166" Column="15" TopLine="143"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="588" Column="29" TopLine="570"/>
       </Position19>
       <Position20>
-        <Filename Value="ats_main.pas"/>
-        <Caret Line="594" Column="15" TopLine="571"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="386" Column="69" TopLine="380"/>
       </Position20>
       <Position21>
-        <Filename Value="shedule_main.pas"/>
-        <Caret Line="1252" Column="15" TopLine="1229"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="430" Column="59" TopLine="406"/>
       </Position21>
       <Position22>
-        <Filename Value="route_main.pas"/>
-        <Caret Line="105" Column="15" TopLine="82"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="360" Column="35" TopLine="346"/>
       </Position22>
       <Position23>
-        <Filename Value="lgot_main.pas"/>
-        <Caret Line="288" Column="15" TopLine="265"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="369" Column="66" TopLine="354"/>
       </Position23>
       <Position24>
-        <Filename Value="uslugi_main.pas"/>
-        <Caret Line="291" Column="15" TopLine="268"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="4966" Column="12" TopLine="4953"/>
       </Position24>
       <Position25>
-        <Filename Value="tarif_main.pas"/>
-        <Caret Line="583" Column="15" TopLine="559"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1216" Column="27" TopLine="355"/>
       </Position25>
       <Position26>
-        <Filename Value="tickettypes.pas"/>
-        <Caret Line="665" Column="10" TopLine="642"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="5050" Column="5" TopLine="5027"/>
       </Position26>
       <Position27>
-        <Filename Value="path_main.pas"/>
-        <Caret Line="284" Column="15" TopLine="260"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="369" Column="66" TopLine="339"/>
       </Position27>
       <Position28>
-        <Filename Value="servers_main.pas"/>
-        <Caret Line="225" Column="15" TopLine="202"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="354" Column="19" TopLine="339"/>
       </Position28>
       <Position29>
-        <Filename Value="kontr_tarif.pas"/>
-        <Caret Line="475" Column="15" TopLine="451"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="5048" Column="5" TopLine="5026"/>
       </Position29>
       <Position30>
-        <Filename Value="spr_shed_kontr.pas"/>
-        <Caret Line="302" Column="15" TopLine="283"/>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="395" Column="25" TopLine="382"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

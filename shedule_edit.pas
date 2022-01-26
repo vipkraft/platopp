@@ -47,6 +47,7 @@ type
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
+    Button5: TButton;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox3: TCheckBox;
@@ -85,6 +86,7 @@ type
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
     GroupBox4: TGroupBox;
+    GroupBox5: TGroupBox;
     GroupBox6: TGroupBox;
     GroupBox7: TGroupBox;
     GroupBox8: TGroupBox;
@@ -101,7 +103,6 @@ type
     Label16: TLabel;
     Label17: TLabel;
     Label18: TLabel;
-    Label19: TLabel;
     Label2: TLabel;
     Label20: TLabel;
     Label21: TLabel;
@@ -110,6 +111,8 @@ type
     Label24: TLabel;
     Label25: TLabel;
     Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
     Label3: TLabel;
     Label31: TLabel;
     Label32: TLabel;
@@ -117,7 +120,6 @@ type
     Label36: TLabel;
     Label37: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
@@ -187,6 +189,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
     procedure CheckBox2Change(Sender: TObject);
     procedure CheckBox3Change(Sender: TObject);
@@ -252,6 +255,7 @@ type
  //   procedure Load_date(id_atp:string); //загрузка в массив сезонности
     procedure crossgraf();  //ОтЧЕТ ПЕРЕСЕЧЕНИЯ ПЕРЕВОЗЧИКОВ НА РАСПИСАНИИ
     procedure get_newid;//рассчитать новый код маршрута
+    procedure get_infoedit(idshed: string);//запросить инфу по изменениям
   private
     { private declarations }
   public
@@ -347,6 +351,62 @@ var
 
 { TForm16 }
 
+procedure Tform16.get_infoedit(idshed: string);
+var
+   n:integer;
+begin
+     With Form16 do
+  begin
+   //обнулить инфо поля
+  form16.Label28.Caption:='';
+  form16.Label29.Caption:='';
+   form16.StringGrid4.RowCount:=1;
+  // Подключаемся к серверу
+   If not(Connect2(Zconnection1, flagProfile)) then
+     begin
+      showmessagealt('Соединение с основным сервером потеряно !'+#13+'Проверьте соединение и/или'+#13+' обратитесь к администратору.');
+      Close;
+      exit;
+     end;
+    form16.ZQuery1.SQL.Clear;
+    form16.ZQuery1.SQL.add('SELECT get_shedule_history(''idsh'','+idshed+');');
+    form16.ZQuery1.SQL.add('FETCH ALL IN idsh;');
+      try
+      ZQuery1.open;
+     except
+      showmessagealt('ОШИБКА запроса к базе данных !'+#13+'Невозможно получить новый номер расписания !');
+      ZQuery1.close;
+      ZConnection1.disconnect;
+      Exit;
+     end;
+     If ZQuery1.recordcount=0 then
+       begin
+         ZQuery1.close;
+         ZConnection1.disconnect;
+         Exit;
+        end;
+     for n:=0 to ZQuery1.recordcount-1 do
+       begin
+         if n=0 then
+           begin
+              form16.Label28.Caption:=formatdatetime('YYYY-MM-DD hh:nn:ss',form16.ZQuery1.FieldByName('createdate').AsDatetime);
+              form16.Label29.Caption:=form16.ZQuery1.FieldByName('uname').AsString;
+               ZQuery1.Next;
+               continue;
+           end;
+         form16.StringGrid4.RowCount:=form16.StringGrid4.RowCount+1;
+         form16.StringGrid4.cells[0,form16.StringGrid4.RowCount-1]:=form16.ZQuery1.FieldByName('info').AsString;
+         form16.StringGrid4.cells[1,form16.StringGrid4.RowCount-1]:=formatdatetime('YYYY-MM-DD hh:nn:ss',form16.ZQuery1.FieldByName('createdate').AsDatetime);
+         form16.StringGrid4.cells[2,form16.StringGrid4.RowCount-1]:=form16.ZQuery1.FieldByName('uname').AsString;
+          ZQuery1.Next;
+         end;
+
+
+      ZQuery1.close;
+      ZConnection1.disconnect;
+
+  end;
+end;
 
 procedure Tform16.get_newid;//рассчитать новый код маршрута
 begin
@@ -3676,7 +3736,7 @@ begin
    end
    else
    begin
-    form16.StringGrid1.Height:=445;
+    form16.StringGrid1.Height:=465;
     form16.Button1.Caption:='ИНФО (скрыть)';
    end;
    application.ProcessMessages;
@@ -3742,6 +3802,12 @@ procedure TForm16.Button4Click(Sender: TObject);
 begin
   showmas(atp_sostav);
 
+end;
+
+procedure TForm16.Button5Click(Sender: TObject);
+begin
+  //переключить на вкладку журнал изменений
+  form16.PageControl1.ActivePageIndex:=3;
 end;
 
 
@@ -4980,6 +5046,7 @@ begin
     flag_edit_shedule:=1;
    end;
 
+
   // Редактируем запись
   if flag_edit_shedule=2 then
    begin
@@ -4988,6 +5055,7 @@ begin
     form16.perescet();
     form16.rascet();
     activDay:=form16.DateEdit3.date;
+    get_infoedit(old_id);
    end;
  end;
 end;
