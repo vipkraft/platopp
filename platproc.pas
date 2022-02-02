@@ -2101,6 +2101,7 @@ begin
   MyMesDlg.BorderWidth:=0;
   MyMesDlg.Font.Color := clBlack;
   MyMesDlg.Caption:='В Н И М А Н И Е !';
+  MyMesDlg.Position:=poMainFormCenter;
   for i:=0 to MyMesDlg.ComponentCount-1 do
       begin
        if (IsPublishedProp(MyMesDlg.Components[i],'Caption')) then

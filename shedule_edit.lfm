@@ -1,40 +1,44 @@
 object Form16: TForm16
-  Left = 336
-  Height = 768
-  Top = 180
-  Width = 1024
+  Left = 237
+  Height = 800
+  Top = 137
+  Width = 1150
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Создание\Редактирование расписаний'
-  ClientHeight = 768
-  ClientWidth = 1024
-  Font.Height = -12
+  ClientHeight = 800
+  ClientWidth = 1150
+  Font.Height = -13
   KeyPreview = True
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   LCLVersion = '2.0.8.0'
   object PageControl1: TPageControl
     AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Label12
+    AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 2
-    Height = 588
-    Top = 144
-    Width = 1020
-    ActivePage = TabSheet3
-    Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Left = 2
-    BorderSpacing.Right = 2
-    Font.Height = -12
-    ParentFont = False
-    TabIndex = 3
+    AnchorSideBottom.Control = BitBtn4
+    Left = 3
+    Height = 590
+    Top = 158
+    Width = 1144
+    ActivePage = TabSheet1
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Left = 3
+    BorderSpacing.Top = 10
+    BorderSpacing.Right = 3
+    BorderSpacing.Bottom = 10
+    TabIndex = 0
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
-      Caption = '   СОСТАВ РАСПИСАНИЯ   '
-      ClientHeight = 564
-      ClientWidth = 1018
+      Caption = '    СОСТАВ  РАСПИСАНИЯ    '
+      ClientHeight = 565
+      ClientWidth = 1142
       object GroupBox1: TGroupBox
         AnchorSideLeft.Control = TabSheet1
         AnchorSideTop.Control = TabSheet1
@@ -43,21 +47,75 @@ object Form16: TForm16
         AnchorSideBottom.Control = TabSheet1
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 564
+        Height = 565
         Top = 0
-        Width = 1018
+        Width = 1142
         Anchors = [akTop, akLeft, akRight, akBottom]
-        ClientHeight = 560
-        ClientWidth = 1014
+        ClientHeight = 561
+        ClientWidth = 1138
         TabOrder = 0
+        object GroupBox5: TGroupBox
+          AnchorSideLeft.Control = GroupBox1
+          AnchorSideBottom.Control = GroupBox1
+          AnchorSideBottom.Side = asrBottom
+          Left = 5
+          Height = 65
+          Top = 491
+          Width = 337
+          Anchors = [akLeft, akBottom]
+          BorderSpacing.Left = 5
+          BorderSpacing.Bottom = 5
+          Caption = 'Последнее изменение'
+          ClientHeight = 48
+          ClientWidth = 333
+          TabOrder = 18
+          object Label28: TLabel
+            Left = 16
+            Height = 14
+            Top = 7
+            Width = 199
+            AutoSize = False
+            Caption = 'Label28'
+            ParentColor = False
+          end
+          object Button5: TButton
+            AnchorSideRight.Control = GroupBox5
+            AnchorSideRight.Side = asrBottom
+            AnchorSideBottom.Control = GroupBox5
+            AnchorSideBottom.Side = asrBottom
+            Left = 224
+            Height = 32
+            Top = 6
+            Width = 99
+            Anchors = [akRight, akBottom]
+            BorderSpacing.Right = 10
+            BorderSpacing.Bottom = 10
+            Caption = 'Подробнее...'
+            Enabled = False
+            OnClick = Button5Click
+            TabOrder = 0
+          end
+          object Label29: TLabel
+            Left = 16
+            Height = 14
+            Top = 27
+            Width = 199
+            AutoSize = False
+            Caption = 'Label29'
+            ParentColor = False
+          end
+        end
         object BitBtn2: TBitBtn
-          Left = 897
-          Height = 28
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Добавить запись'
-          Top = 13
+          Top = 8
           Width = 115
+          Anchors = [akRight]
+          BorderSpacing.Right = 8
           Caption = 'Добавить (F5)'
-          Font.Height = -11
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -95,17 +153,22 @@ object Form16: TForm16
             90FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
           }
           OnClick = BitBtn2Click
-          ParentFont = False
           TabOrder = 2
         end
         object BitBtn3: TBitBtn
-          Left = 897
-          Height = 28
+          AnchorSideTop.Control = BitBtn12
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Удалить запись'
-          Top = 79
+          Top = 82
           Width = 115
+          Anchors = [akTop, akRight]
+          BorderSpacing.Top = 5
+          BorderSpacing.Right = 8
           Caption = 'Удалить (F8)'
-          Font.Height = -11
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000064000000640000000000000000000000000000180000
@@ -143,17 +206,19 @@ object Form16: TForm16
             FF000A59DC520A5BDEFF0A59DC52FFFFFF00FFFFFF00FFFFFF00
           }
           OnClick = BitBtn3Click
-          ParentFont = False
           TabOrder = 4
         end
         object BitBtn7: TBitBtn
-          Left = 897
-          Height = 25
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Выбрать запись'
-          Top = 312
+          Top = 376
           Width = 115
+          Anchors = [akRight]
+          BorderSpacing.Right = 8
           Caption = 'Расчет цены'
-          Font.Height = -11
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000064000000640000000000000000000000214564000000
@@ -190,18 +255,20 @@ object Form16: TForm16
             7B003D5D79234A6A88482C518F09486799097189AD089FAFC407BCC6D206A7B5
             C8067B91B205607CB403305172197790A65AD0DCE807B9C8D600
           }
-          ParentFont = False
           TabOrder = 9
           Visible = False
         end
         object BitBtn8: TBitBtn
-          Left = 897
-          Height = 25
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Выбрать запись'
-          Top = 280
+          Top = 344
           Width = 115
+          Anchors = [akRight]
+          BorderSpacing.Right = 8
           Caption = 'Печать'
-          Font.Height = -11
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000064000000640000000000000000000000000000000000
@@ -239,16 +306,22 @@ object Form16: TForm16
             0000000000000000000000000000000000000000000000000000
           }
           OnClick = BitBtn8Click
-          ParentFont = False
           TabOrder = 8
           Visible = False
         end
         object BitBtn12: TBitBtn
-          Left = 897
-          Height = 28
+          AnchorSideTop.Control = BitBtn2
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Внести изменения в данные'
-          Top = 46
+          Top = 45
           Width = 115
+          Anchors = [akTop, akRight]
+          BorderSpacing.Top = 5
+          BorderSpacing.Right = 8
           Caption = 'Изменить (F4)'
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
@@ -290,13 +363,16 @@ object Form16: TForm16
           TabOrder = 3
         end
         object BitBtn23: TBitBtn
-          Left = 897
-          Height = 30
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Переместить остановочный пункт ВВЕРХ по списку'
-          Top = 117
+          Top = 166
           Width = 115
+          Anchors = [akRight]
+          BorderSpacing.Right = 8
           Caption = 'Вверх'
-          Font.Height = -11
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -335,17 +411,22 @@ object Form16: TForm16
           }
           Margin = 15
           OnClick = BitBtn23Click
-          ParentFont = False
           TabOrder = 5
         end
         object BitBtn24: TBitBtn
-          Left = 897
-          Height = 30
+          AnchorSideTop.Control = BitBtn23
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Переместить остановочный пункт ВНИЗ по списку'
-          Top = 150
+          Top = 203
           Width = 115
+          Anchors = [akTop, akRight]
+          BorderSpacing.Top = 5
+          BorderSpacing.Right = 8
           Caption = 'Вниз'
-          Font.Height = -11
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -384,7 +465,6 @@ object Form16: TForm16
           }
           Margin = 15
           OnClick = BitBtn24Click
-          ParentFont = False
           TabOrder = 6
         end
         object StringGrid7: TStringGrid
@@ -441,14 +521,17 @@ object Form16: TForm16
           )
         end
         object BitBtn21: TBitBtn
-          Left = 897
-          Height = 25
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Автоматический расчет пути следования'
-          Top = 193
+          Top = 243
           Width = 115
+          Anchors = [akRight]
+          BorderSpacing.Right = 8
           Caption = 'Авторасчет'
           Enabled = False
-          Font.Height = -11
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000064000000640000000000000000000000000000000000
@@ -486,18 +569,20 @@ object Form16: TForm16
             0000000000000000000000000000000000000000000000000000
           }
           OnClick = BitBtn21Click
-          ParentFont = False
           TabOrder = 7
         end
         object BitBtn26: TBitBtn
-          Left = 897
-          Height = 25
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
           Hint = 'Добавить наименование остановочного пункта к наименованию расписания'
-          Top = 224
+          Top = 281
           Width = 115
+          Anchors = [akRight]
+          BorderSpacing.Right = 8
           Caption = 'Пункт +'
           Enabled = False
-          Font.Height = -11
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -535,7 +620,6 @@ object Form16: TForm16
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
           }
           OnClick = BitBtn26Click
-          ParentFont = False
           TabOrder = 10
         end
         object Edit12: TEdit
@@ -543,8 +627,8 @@ object Form16: TForm16
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = Label22
           AnchorSideTop.Side = asrCenter
-          Left = 842
-          Height = 24
+          Left = 845
+          Height = 25
           Top = 496
           Width = 44
           BorderSpacing.Left = 3
@@ -558,8 +642,8 @@ object Form16: TForm16
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = Label21
           AnchorSideTop.Side = asrCenter
-          Left = 632
-          Height = 24
+          Left = 621
+          Height = 25
           Top = 496
           Width = 44
           BorderSpacing.Left = 3
@@ -573,8 +657,8 @@ object Form16: TForm16
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = Label18
           AnchorSideTop.Side = asrCenter
-          Left = 449
-          Height = 24
+          Left = 454
+          Height = 25
           Top = 496
           Width = 44
           BorderSpacing.Left = 3
@@ -588,8 +672,8 @@ object Form16: TForm16
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = Label27
           AnchorSideTop.Side = asrCenter
-          Left = 449
-          Height = 24
+          Left = 481
+          Height = 25
           Top = 529
           Width = 44
           BorderSpacing.Left = 3
@@ -603,8 +687,8 @@ object Form16: TForm16
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = Label20
           AnchorSideTop.Side = asrCenter
-          Left = 632
-          Height = 24
+          Left = 678
+          Height = 25
           Top = 529
           Width = 44
           BorderSpacing.Left = 3
@@ -618,8 +702,8 @@ object Form16: TForm16
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = Label17
           AnchorSideTop.Side = asrCenter
-          Left = 842
-          Height = 24
+          Left = 900
+          Height = 25
           Top = 529
           Width = 44
           BorderSpacing.Left = 3
@@ -629,59 +713,88 @@ object Form16: TForm16
           Text = '00:00'
         end
         object Label17: TLabel
+          AnchorSideLeft.Control = Label20
           AnchorSideLeft.Side = asrBottom
-          Left = 688
-          Height = 14
+          AnchorSideTop.Control = Label27
+          Left = 735
+          Height = 15
           Top = 534
-          Width = 151
+          Width = 162
+          BorderSpacing.Left = 60
           Caption = 'Время в движении (чч:мм)'
           ParentColor = False
         end
         object Label18: TLabel
-          Left = 354
-          Height = 14
+          AnchorSideLeft.Control = GroupBox5
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = GroupBox5
+          Left = 352
+          Height = 15
           Top = 501
-          Width = 92
+          Width = 99
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 10
           Caption = 'Расстояние (км):'
           ParentColor = False
         end
         object Label20: TLabel
-          Left = 504
-          Height = 14
+          AnchorSideLeft.Control = Label27
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label27
+          Left = 538
+          Height = 15
           Top = 534
-          Width = 125
+          Width = 137
+          BorderSpacing.Left = 60
           Caption = 'Время стоянок общее:'
           ParentColor = False
         end
         object Label21: TLabel
-          Left = 539
-          Height = 14
+          AnchorSideLeft.Control = Label18
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label18
+          Left = 521
+          Height = 15
           Top = 501
-          Width = 90
+          Width = 97
+          BorderSpacing.Left = 70
           Caption = 'Кол-во пунктов:'
           ParentColor = False
         end
         object Label22: TLabel
-          Left = 697
-          Height = 14
+          AnchorSideLeft.Control = Label21
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = Label18
+          Left = 688
+          Height = 15
           Top = 501
-          Width = 142
+          Width = 154
+          BorderSpacing.Left = 70
           Caption = 'Кол-во формирующихся:'
           ParentColor = False
         end
         object Label27: TLabel
-          Left = 330
-          Height = 14
+          AnchorSideLeft.Control = Label18
+          AnchorSideTop.Control = Label18
+          AnchorSideTop.Side = asrBottom
+          Left = 352
+          Height = 15
           Top = 534
-          Width = 116
+          Width = 126
+          BorderSpacing.Top = 18
           Caption = 'Время в пути общее:'
           ParentColor = False
         end
         object Button1: TButton
-          Left = 897
-          Height = 25
-          Top = 520
+          AnchorSideTop.Control = GroupBox5
+          AnchorSideRight.Control = GroupBox1
+          AnchorSideRight.Side = asrBottom
+          Left = 1015
+          Height = 32
+          Top = 491
           Width = 115
+          Anchors = [akTop, akRight]
+          BorderSpacing.Right = 8
           Caption = 'ИНФО (скрыть)'
           OnClick = Button1Click
           TabOrder = 17
@@ -690,10 +803,13 @@ object Form16: TForm16
           AnchorSideLeft.Control = GroupBox1
           AnchorSideTop.Control = StringGrid7
           AnchorSideTop.Side = asrBottom
+          AnchorSideBottom.Control = GroupBox5
           Left = 0
-          Height = 465
+          Height = 463
           Top = 24
           Width = 890
+          Anchors = [akTop, akLeft, akBottom]
+          BorderSpacing.Bottom = 4
           ColCount = 11
           Columns = <          
             item
@@ -752,7 +868,7 @@ object Form16: TForm16
               Width = 60
             end>
           DefaultDrawing = False
-          DefaultRowHeight = 48
+          DefaultRowHeight = 38
           FixedCols = 0
           Font.Height = -12
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing, goRowSelect, goSmoothScroll]
@@ -815,64 +931,45 @@ object Form16: TForm16
             'продажи'
           )
         end
-        object GroupBox5: TGroupBox
-          Left = 5
-          Height = 64
-          Top = 493
-          Width = 320
-          Caption = 'Последнее изменение'
-          ClientHeight = 48
-          ClientWidth = 316
-          TabOrder = 18
-          object Label28: TLabel
-            Left = 16
-            Height = 14
-            Top = 7
-            Width = 184
-            AutoSize = False
-            Caption = 'Label28'
-            ParentColor = False
-          end
-          object Button5: TButton
-            Left = 208
-            Height = 32
-            Top = 8
-            Width = 99
-            Caption = 'Подробнее...'
-            OnClick = Button5Click
-            TabOrder = 0
-          end
-          object Label29: TLabel
-            Left = 16
-            Height = 14
-            Top = 27
-            Width = 184
-            AutoSize = False
-            Caption = 'Label29'
-            ParentColor = False
-          end
-        end
       end
     end
     object TabSheet5: TTabSheet
-      Caption = '   ПЕРЕВОЗЧИКИ   '
-      ClientHeight = 564
-      ClientWidth = 1018
+      Caption = '    ПЕРЕВОЗЧИКИ  И  АТС      '
+      ClientHeight = 565
+      ClientWidth = 1142
       OnEnter = TabSheet5Enter
       object GroupBox7: TGroupBox
-        Left = 11
-        Height = 520
-        Top = 19
-        Width = 990
+        AnchorSideLeft.Control = TabSheet5
+        AnchorSideTop.Control = TabSheet5
+        AnchorSideRight.Control = TabSheet5
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet5
+        AnchorSideBottom.Side = asrBottom
+        Left = 5
+        Height = 605
+        Top = 5
+        Width = 1182
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 5
+        BorderSpacing.Bottom = 5
         Caption = 'Список перевозчиков и АТС'
-        ClientHeight = 500
-        ClientWidth = 986
+        ClientHeight = 585
+        ClientWidth = 1178
         TabOrder = 0
         object StringGrid8: TStringGrid
-          Left = 9
-          Height = 453
-          Top = 12
+          AnchorSideLeft.Control = GroupBox7
+          AnchorSideTop.Control = GroupBox7
+          AnchorSideBottom.Control = BitBtn6
+          Left = 7
+          Height = 532
+          Top = 7
           Width = 449
+          Anchors = [akTop, akLeft, akBottom]
+          BorderSpacing.Left = 7
+          BorderSpacing.Top = 7
+          BorderSpacing.Bottom = 7
           ColCount = 2
           Columns = <          
             item
@@ -881,18 +978,18 @@ object Form16: TForm16
             end          
             item
               Title.Caption = 'Наименование перевозчика'
-              Width = 386
+              Width = 360
             end>
           FixedCols = 0
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll]
           RowCount = 1
           ScrollBars = ssAutoVertical
           TabOrder = 0
-          TitleFont.Height = -11
+          TitleFont.Height = -13
           OnSelection = StringGrid8Selection
           ColWidths = (
             59
-            386
+            360
           )
           Cells = (
             1
@@ -902,11 +999,17 @@ object Form16: TForm16
           )
         end
         object BitBtn6: TBitBtn
-          Left = 13
-          Height = 26
+          AnchorSideLeft.Control = GroupBox7
+          AnchorSideBottom.Control = GroupBox7
+          AnchorSideBottom.Side = asrBottom
+          Left = 10
+          Height = 32
           Hint = 'Добавить перевозчика'
-          Top = 470
-          Width = 99
+          Top = 546
+          Width = 110
+          Anchors = [akLeft, akBottom]
+          BorderSpacing.Left = 10
+          BorderSpacing.Bottom = 10
           Caption = 'Добавить'
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
@@ -948,11 +1051,17 @@ object Form16: TForm16
           TabOrder = 1
         end
         object BitBtn19: TBitBtn
-          Left = 370
-          Height = 26
+          AnchorSideTop.Control = BitBtn6
+          AnchorSideTop.Side = asrCenter
+          AnchorSideBottom.Control = GroupBox7
+          AnchorSideBottom.Side = asrBottom
+          Left = 350
+          Height = 32
           Hint = 'Удалить перевозчика'
-          Top = 470
-          Width = 88
+          Top = 546
+          Width = 112
+          Anchors = [akTop]
+          BorderSpacing.Bottom = 10
           Caption = 'Удалить'
           Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
@@ -994,21 +1103,32 @@ object Form16: TForm16
           TabOrder = 2
         end
         object StringGrid9: TStringGrid
-          Left = 469
-          Height = 484
-          Top = 12
-          Width = 504
+          AnchorSideLeft.Control = StringGrid8
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = StringGrid8
+          AnchorSideRight.Control = GroupBox7
+          AnchorSideRight.Side = asrBottom
+          AnchorSideBottom.Control = GroupBox7
+          AnchorSideBottom.Side = asrBottom
+          Left = 471
+          Height = 574
+          Top = 7
+          Width = 702
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          BorderSpacing.Left = 15
+          BorderSpacing.Right = 5
+          BorderSpacing.Bottom = 7
           ColCount = 7
           Columns = <          
             item
               ReadOnly = True
               Title.Caption = 'Код АТС'
-              Width = 57
+              Width = 65
             end          
             item
               ReadOnly = True
               Title.Caption = 'МАРКА АТС'
-              Width = 145
+              Width = 156
             end          
             item
               ReadOnly = True
@@ -1040,11 +1160,11 @@ object Form16: TForm16
           RowCount = 1
           ScrollBars = ssAutoVertical
           TabOrder = 3
-          TitleFont.Height = -11
+          TitleFont.Height = -12
           OnSetCheckboxState = StringGrid9SetCheckboxState
           ColWidths = (
-            57
-            145
+            65
+            156
             87
             56
             54
@@ -1061,28 +1181,51 @@ object Form16: TForm16
       end
     end
     object TabSheet6: TTabSheet
-      Caption = '   ТАРИФ и ОПЦИИ   '
-      ClientHeight = 564
-      ClientWidth = 1018
+      Caption = '       ТАРИФ   и   ОПЦИИ       '
+      ClientHeight = 565
+      ClientWidth = 1142
       object PageControl2: TPageControl
-        Left = 323
-        Height = 551
-        Top = 8
-        Width = 682
+        AnchorSideLeft.Control = StringGrid6
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet6
+        AnchorSideRight.Control = TabSheet6
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet6
+        AnchorSideBottom.Side = asrBottom
+        Left = 326
+        Height = 600
+        Top = 10
+        Width = 861
         ActivePage = TabSheet7
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 10
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 5
+        BorderSpacing.Bottom = 5
         TabIndex = 0
         TabOrder = 0
         object TabSheet7: TTabSheet
           Caption = '         1.Тариф       '
-          ClientHeight = 527
-          ClientWidth = 680
+          ClientHeight = 596
+          ClientWidth = 857
           OnEnter = TabSheet7Enter
           OnExit = TabSheet7Exit
           object StringGrid10: TStringGrid
-            Left = 7
-            Height = 514
-            Top = 8
-            Width = 668
+            AnchorSideLeft.Control = TabSheet7
+            AnchorSideTop.Control = TabSheet7
+            AnchorSideRight.Control = TabSheet7
+            AnchorSideRight.Side = asrBottom
+            AnchorSideBottom.Control = TabSheet7
+            AnchorSideBottom.Side = asrBottom
+            Left = 2
+            Height = 570
+            Top = 3
+            Width = 855
+            Anchors = [akTop, akLeft, akRight, akBottom]
+            BorderSpacing.Left = 2
+            BorderSpacing.Top = 3
+            BorderSpacing.Right = 2
+            BorderSpacing.Bottom = 2
             ColCount = 8
             Columns = <            
               item
@@ -1098,33 +1241,33 @@ object Form16: TForm16
               end            
               item
                 ReadOnly = True
-                Title.Caption = 'Путь,км.'
-                Width = 55
+                Title.Caption = 'Путь (км)'
+                Width = 60
               end            
               item
                 Color = clCream
-                Title.Caption = 'Ж,М2,руб.'
-                Width = 67
+                Title.Caption = 'Жест/М2'
+                Width = 68
               end            
               item
                 Color = clCream
-                Title.Caption = 'Ж,М3,руб.'
-                Width = 65
+                Title.Caption = 'Жест/М3'
+                Width = 68
               end            
               item
                 Color = clCream
-                Title.Caption = 'М,М2,руб.'
-                Width = 69
+                Title.Caption = 'Мягк/М2'
+                Width = 68
               end            
               item
                 Color = clCream
-                Title.Caption = 'М,М3,руб.'
-                Width = 64
+                Title.Caption = 'Мягк/М3'
+                Width = 68
               end            
               item
                 Color = clCream
-                Title.Caption = 'Багаж,руб.'
-                Width = 58
+                Title.Caption = 'БАГАЖ'
+                Width = 60
               end>
             DefaultDrawing = False
             ExtendedSelect = False
@@ -1143,12 +1286,12 @@ object Form16: TForm16
             ColWidths = (
               45
               223
-              55
-              67
-              65
-              69
-              64
-              58
+              60
+              68
+              68
+              68
+              68
+              60
             )
           end
           object StringGrid2: TStringGrid
@@ -1169,8 +1312,8 @@ object Form16: TForm16
         end
         object TabSheet8: TTabSheet
           Caption = '      2.Календарный план     '
-          ClientHeight = 527
-          ClientWidth = 680
+          ClientHeight = 596
+          ClientWidth = 857
           OnEnter = TabSheet8Enter
           object GroupBox8: TGroupBox
             Left = 7
@@ -1552,8 +1695,8 @@ object Form16: TForm16
         end
         object TabSheet9: TTabSheet
           Caption = '   3.Льготы и Услуги   '
-          ClientHeight = 527
-          ClientWidth = 680
+          ClientHeight = 596
+          ClientWidth = 857
           OnEnter = TabSheet9Enter
           object Bevel4: TBevel
             Left = 16
@@ -1865,23 +2008,25 @@ object Form16: TForm16
           end
           object Label7: TLabel
             Left = 16
-            Height = 14
+            Height = 15
             Top = 7
-            Width = 412
+            Width = 450
             Caption = 'Определение списка Льгот и Услуг, изменяемых для данного расписания'
             ParentColor = False
           end
         end
       end
       object StringGrid6: TStringGrid
+        AnchorSideLeft.Control = TabSheet6
         AnchorSideTop.Control = ComboBox4
         AnchorSideTop.Side = asrBottom
         AnchorSideBottom.Control = GroupBox2
-        Left = 8
-        Height = 386
+        Left = 5
+        Height = 435
         Top = 43
         Width = 311
-        Anchors = [akTop, akBottom]
+        Anchors = [akTop, akLeft, akBottom]
+        BorderSpacing.Left = 5
         BorderSpacing.Top = 7
         BorderSpacing.Bottom = 2
         Columns = <        
@@ -1979,16 +2124,18 @@ object Form16: TForm16
         TabOrder = 2
       end
       object GroupBox2: TGroupBox
+        AnchorSideLeft.Control = TabSheet6
         AnchorSideBottom.Control = TabSheet6
         AnchorSideBottom.Side = asrBottom
-        Left = 8
+        Left = 5
         Height = 132
-        Top = 431
+        Top = 480
         Width = 311
-        Anchors = [akBottom]
-        BorderSpacing.Bottom = 1
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 5
+        BorderSpacing.Bottom = 3
         Caption = 'Фискированный тариф перевозчика:'
-        ClientHeight = 115
+        ClientHeight = 112
         ClientWidth = 307
         Enabled = False
         Font.Height = -13
@@ -2160,14 +2307,23 @@ object Form16: TForm16
       end
     end
     object TabSheet3: TTabSheet
-      Caption = '   ДОСТУП К РАСПИСАНИЮ / ЖУРНАЛ ИЗМЕНЕНИЙ'
-      ClientHeight = 564
-      ClientWidth = 1018
+      Caption = '    ДОСТУП К РАСПИСАНИЮ / ЖУРНАЛ ИЗМЕНЕНИЙ   '
+      ClientHeight = 565
+      ClientWidth = 1142
       object StringGrid3: TStringGrid
-        Left = 6
-        Height = 498
-        Top = 35
-        Width = 455
+        AnchorSideLeft.Control = TabSheet3
+        AnchorSideTop.Control = Label9
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet3
+        AnchorSideBottom.Side = asrBottom
+        Left = 10
+        Height = 588
+        Top = 75
+        Width = 399
+        Anchors = [akTop, akLeft, akBottom]
+        BorderSpacing.Left = 10
+        BorderSpacing.Top = 10
+        BorderSpacing.Bottom = 10
         ColCount = 2
         Options = [goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll]
         RowCount = 1
@@ -2176,35 +2332,41 @@ object Form16: TForm16
         TitleFont.Height = -11
         ColWidths = (
           64
-          374
+          325
         )
         Cells = (
           2
           0
           0
-          '№ польз.'
+          'ID'
           1
           0
-          'Ф.И.О. пользователя'
+          'Ф.И.О.'
         )
       end
       object Label9: TLabel
-        Left = 11
-        Height = 13
-        Top = 14
-        Width = 386
-        Caption = 'СПИСОК ПОЛЬЗОВАТЕЛЕЙ  для которых НЕДОСТУПНО данное расписание'
-        Font.Color = clRed
-        Font.Height = -11
+        AnchorSideLeft.Control = TabSheet3
+        AnchorSideTop.Control = TabSheet3
+        Left = 20
+        Height = 45
+        Top = 20
+        Width = 167
+        BorderSpacing.Left = 20
+        BorderSpacing.Top = 20
+        Caption = 'СПИСОК ПОЛЬЗОВАТЕЛЕЙ, '#10'которым ДОСТУП ЗАКРЫТ '#10'к данному расписанию'
         ParentColor = False
-        ParentFont = False
+        WordWrap = True
       end
       object BitBtn9: TBitBtn
-        Left = 475
-        Height = 26
+        AnchorSideLeft.Control = StringGrid3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = StringGrid3
+        Left = 419
+        Height = 29
         Hint = 'Добавить перевозчика'
-        Top = 35
-        Width = 26
+        Top = 75
+        Width = 29
+        BorderSpacing.Left = 10
         Glyph.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -2245,11 +2407,18 @@ object Form16: TForm16
         TabOrder = 1
       end
       object BitBtn25: TBitBtn
-        Left = 475
+        AnchorSideLeft.Control = BitBtn9
+        AnchorSideTop.Control = BitBtn9
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = BitBtn9
+        AnchorSideRight.Side = asrBottom
+        Left = 419
         Height = 26
         Hint = 'Удалить перевозчика'
-        Top = 70
-        Width = 26
+        Top = 134
+        Width = 29
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 30
         Glyph.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000000000180000
@@ -2290,19 +2459,25 @@ object Form16: TForm16
         TabOrder = 2
       end
       object GroupBox4: TGroupBox
-        AnchorSideLeft.Control = GroupBox1
-        AnchorSideBottom.Control = GroupBox1
+        AnchorSideLeft.Control = BitBtn9
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet3
+        AnchorSideRight.Control = TabSheet3
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet3
         AnchorSideBottom.Side = asrBottom
-        Left = 518
-        Height = 517
-        Top = 16
-        Width = 489
-        Anchors = [akLeft, akBottom]
-        BorderSpacing.Left = 2
-        BorderSpacing.Bottom = 1
+        Left = 478
+        Height = 643
+        Top = 20
+        Width = 606
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 30
+        BorderSpacing.Top = 20
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 10
         Caption = 'Последние изменения:'
-        ClientHeight = 501
-        ClientWidth = 485
+        ClientHeight = 623
+        ClientWidth = 602
         TabOrder = 3
         object StringGrid4: TStringGrid
           AnchorSideLeft.Control = GroupBox4
@@ -2312,9 +2487,9 @@ object Form16: TForm16
           AnchorSideBottom.Control = GroupBox4
           AnchorSideBottom.Side = asrBottom
           Left = 3
-          Height = 496
+          Height = 621
           Top = 5
-          Width = 479
+          Width = 596
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderSpacing.Left = 3
           BorderSpacing.Top = 5
@@ -2353,11 +2528,18 @@ object Form16: TForm16
     end
   end
   object BitBtn4: TBitBtn
-    Left = 902
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 1033
     Height = 32
     Hint = 'Сохранить'
-    Top = 734
+    Top = 758
     Width = 107
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 10
+    BorderSpacing.Bottom = 10
     Caption = 'Выход'
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
@@ -2399,11 +2581,16 @@ object Form16: TForm16
     TabOrder = 2
   end
   object BitBtn5: TBitBtn
-    Left = 766
+    AnchorSideRight.Control = BitBtn4
+    AnchorSideBottom.Control = BitBtn4
+    AnchorSideBottom.Side = asrCenter
+    Left = 878
     Height = 32
     Hint = 'Сохранить всю информацию по текущему расписанию'
-    Top = 734
-    Width = 125
+    Top = 758
+    Width = 145
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 10
     Caption = 'Сохранить ВСЕ'
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
@@ -2445,9 +2632,9 @@ object Form16: TForm16
     TabOrder = 1
   end
   object Button2: TButton
-    Left = 120
+    Left = 864
     Height = 21
-    Top = 740
+    Top = 12
     Width = 106
     Caption = 'mas_date'
     OnClick = Button2Click
@@ -2455,9 +2642,9 @@ object Form16: TForm16
     Visible = False
   end
   object Button3: TButton
-    Left = 263
+    Left = 736
     Height = 21
-    Top = 740
+    Top = 12
     Width = 106
     Caption = 'tarif'
     OnClick = Button3Click
@@ -2467,9 +2654,9 @@ object Form16: TForm16
     Visible = False
   end
   object Button4: TButton
-    Left = 400
+    Left = 592
     Height = 21
-    Top = 740
+    Top = 12
     Width = 106
     Caption = 'arSezon'
     OnClick = Button4Click
@@ -2477,11 +2664,16 @@ object Form16: TForm16
     Visible = False
   end
   object BitBtn14: TBitBtn
-    Left = 644
+    AnchorSideRight.Control = BitBtn5
+    AnchorSideBottom.Control = BitBtn4
+    AnchorSideBottom.Side = asrCenter
+    Left = 758
     Height = 32
     Hint = 'Выбрать запись'
-    Top = 734
+    Top = 758
     Width = 110
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 10
     Caption = 'Печать'
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
@@ -2523,20 +2715,32 @@ object Form16: TForm16
     TabOrder = 5
   end
   object Label8: TLabel
-    Left = 30
-    Height = 13
-    Top = 742
-    Width = 59
+    AnchorSideLeft.Control = Image3
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideBottom.Control = Image3
+    AnchorSideBottom.Side = asrCenter
+    Left = 32
+    Height = 14
+    Top = 773
+    Width = 66
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 5
     Caption = 'F1-Помощь'
-    Font.Height = -11
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object Image3: TImage
-    Left = 9
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 10
     Height = 19
-    Top = 741
+    Top = 771
     Width = 17
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 10
+    BorderSpacing.Bottom = 10
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869638A0D000089504E47
       0D0A1A0A0000000D49484452000000100000001008060000001FF3FF61000000
@@ -2654,7 +2858,7 @@ object Form16: TForm16
     AnchorSideRight.Side = asrBottom
     Left = 200
     Height = 26
-    Top = 4
+    Top = 5
     Width = 357
     Anchors = [akLeft]
     AutoSize = True
@@ -2676,7 +2880,7 @@ object Form16: TForm16
     Left = 0
     Height = 45
     Top = 0
-    Width = 1024
+    Width = 1150
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
     Picture.Data = {
@@ -2913,11 +3117,16 @@ object Form16: TForm16
     }
   end
   object Edit14: TEdit
-    Left = 624
+    AnchorSideLeft.Control = CheckBox6
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = CheckBox6
+    AnchorSideTop.Side = asrCenter
+    Left = 623
     Height = 23
-    Top = 112
+    Top = 116
     Width = 339
     AutoSize = False
+    BorderSpacing.Left = 10
     Font.Height = -12
     ParentFont = False
     ReadOnly = True
@@ -3115,9 +3324,9 @@ object Form16: TForm16
   end
   object Label2: TLabel
     Left = 13
-    Height = 14
-    Top = 115
-    Width = 54
+    Height = 15
+    Top = 120
+    Width = 60
     Caption = 'Маршрут:'
     ParentColor = False
   end
@@ -3126,9 +3335,9 @@ object Form16: TForm16
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label2
     AnchorSideTop.Side = asrCenter
-    Left = 72
+    Left = 78
     Height = 22
-    Top = 111
+    Top = 116
     Width = 408
     AutoSize = False
     BorderSpacing.Left = 5
@@ -3143,10 +3352,10 @@ object Form16: TForm16
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Edit2
     AnchorSideTop.Side = asrCenter
-    Left = 482
+    Left = 488
     Height = 24
     Hint = 'Выбор из существующих маршрутов'
-    Top = 110
+    Top = 115
     Width = 27
     BorderSpacing.Left = 2
     Glyph.Data = {
@@ -3202,9 +3411,9 @@ object Form16: TForm16
   end
   object Label6: TLabel
     Left = 520
-    Height = 14
+    Height = 15
     Top = 54
-    Width = 27
+    Width = 29
     Caption = 'КОД:'
     ParentColor = False
     WordWrap = True
@@ -3251,9 +3460,9 @@ object Form16: TForm16
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Edit2
     AnchorSideTop.Side = asrBottom
-    Left = 217
+    Left = 223
     Height = 10
-    Top = 133
+    Top = 138
     Width = 119
     Caption = 'заполняется автоматически'
     Font.Height = -9
@@ -3261,9 +3470,11 @@ object Form16: TForm16
     ParentFont = False
   end
   object CheckBox6: TCheckBox
+    AnchorSideTop.Control = Label2
+    AnchorSideTop.Side = asrCenter
     Left = 533
     Height = 21
-    Top = 112
+    Top = 117
     Width = 80
     BidiMode = bdRightToLeft
     Caption = 'Заказной'
@@ -3274,11 +3485,16 @@ object Form16: TForm16
     TabOrder = 18
   end
   object BitBtn13: TBitBtn
-    Left = 970
+    AnchorSideLeft.Control = Edit14
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = CheckBox6
+    AnchorSideTop.Side = asrCenter
+    Left = 967
     Height = 23
     Hint = 'Выбор из существующих маршрутов'
-    Top = 112
+    Top = 116
     Width = 33
+    BorderSpacing.Left = 5
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -3321,7 +3537,7 @@ object Form16: TForm16
     Visible = False
   end
   object Label4: TLabel
-    Left = 31
+    Left = 33
     Height = 18
     Top = 54
     Width = 48
@@ -3333,13 +3549,11 @@ object Form16: TForm16
   end
   object Label33: TLabel
     Left = 13
-    Height = 14
+    Height = 15
     Top = 56
-    Width = 13
+    Width = 14
     Caption = 'id:'
-    Font.Height = -12
     ParentColor = False
-    ParentFont = False
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -3350,11 +3564,13 @@ object Form16: TForm16
     TransactIsolationLevel = tiReadCommitted
     Port = 0
     Protocol = 'postgresql'
-    left = 848
+    left = 248
+    top = 480
   end
   object ZQuery1: TZQuery
     Connection = ZConnection1
     Params = <>
-    left = 941
+    left = 240
+    top = 552
   end
 end

@@ -659,7 +659,7 @@ begin
     end;
    //showmessage(inttostr(n));
    //если не нашли перевозчика в массиве тарифов, то рассчитываем автоматом
-   If (flt=0) and (flag_edit_shedule<>1) then
+  { If (flt=0) and (flag_edit_shedule<>1) then
     begin
     //showmessage(id_atp);//$
     If not(tarif_auto(id_atp)) then
@@ -670,7 +670,7 @@ begin
     If (length(tarif_all)>1) then
     Refresh_all_grid(id_atp);
     end;
-
+   }
    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ TARIF_ALL^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   // ================================ LGOTY_ALL=========================================
@@ -3336,13 +3336,13 @@ begin
       // ===============================================================
 
       // Скоростные режимы
-      if (aRow>1) and (aCol=1) and (strtoint(m_sostav[aRow,11])>strtoint(m_sostav[aRow,10])) then
-         begin
-          Font.Size:=9;
-          Font.Color := clPurple;
-          TextOut(aRect.Left + 35, aRect.Top+22, 'ПРЕВЫШЕНИЕ СКОРОСТИ:');
-          TextOut(aRect.Left + 35, aRect.Top+32, 'ТЕКУЩАЯ='+trim(m_sostav[aRow,11])+' км\ч НОРМА='+trim(m_sostav[aRow,10])+' км\ч)');
-         end;
+      //if (aRow>1) and (aCol=1) and (strtoint(m_sostav[aRow,11])>strtoint(m_sostav[aRow,10])) then
+      //   begin
+      //    Font.Size:=9;
+      //    Font.Color := clPurple;
+      //    TextOut(aRect.Left + 35, aRect.Top+22, 'ПРЕВЫШЕНИЕ СКОРОСТИ:');
+      //    TextOut(aRect.Left + 35, aRect.Top+32, 'ТЕКУЩАЯ='+trim(m_sostav[aRow,11])+' км\ч НОРМА='+trim(m_sostav[aRow,10])+' км\ч)');
+      //   end;
 
       // Часовой пояс
       if (aRow>0) and (aCol=0) and not(trim(m_sostav[aRow,12])='0') then
@@ -3447,8 +3447,8 @@ end;
 //****************   ДОБАВИТЬ остановочный пункт в состав     ***********************************************
 procedure TForm16.BitBtn2Click(Sender: TObject);
 begin
-  If (length(m_sostav)>1) and schange and (dialogs.MessageDlg('Добавление пункта приведет к '+#13+'УДАЛЕНИЮ ручных изменений тарифа на расписании !'+#13+'Продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then exit;
-     schange:=false;
+  //If (length(m_sostav)>1) and schange and (dialogs.MessageDlg('Добавление пункта приведет к '+#13+'УДАЛЕНИЮ ручных изменений тарифа на расписании !'+#13+'Продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then exit;
+  schange:=false;
   flag_edit_sostav:=1;
   form22:=Tform22.create(self);
   form22.ShowModal;
@@ -3482,7 +3482,7 @@ begin
        showmessagealt('Невозможно удалить первый остановочный пункт'+#13+'так как существуют другие остановочные пункты в списке !');
        exit;
      end;
-  If schange and (dialogs.MessageDlg('Удаление пункта приведет к '+#13+'УДАЛЕНИЮ ручных изменений тарифа на расписании !'+#13+'Все равно удалить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then exit;
+  //If schange and (dialogs.MessageDlg('Удаление пункта приведет к '+#13+'УДАЛЕНИЮ ручных изменений тарифа на расписании !'+#13+'Все равно удалить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then exit;
      schange:=false;
      for n:=form16.StringGrid1.Row+1 to length(m_sostav)-1 do
       begin
@@ -3497,13 +3497,13 @@ begin
      form16.perescet();
      flsostav :=1; // флаг изменения состава
      //проставляем в массиве перевозчиков всем автоматический тариф
-     for n:=low(atp_sostav) to high(atp_sostav) do
-       begin
-        atp_sostav[n,3]:='0';
-       end;
-     UpdateGridATP();
-     fltarif:=1;
-     setlength(tarif_all,0,0); //удаляем тариф
+     //for n:=low(atp_sostav) to high(atp_sostav) do
+     //  begin
+     //   atp_sostav[n,3]:='0';
+     //  end;
+     //UpdateGridATP();
+     //fltarif:=1;
+     //setlength(tarif_all,0,0); //удаляем тариф
 
 end;
 
@@ -3729,14 +3729,14 @@ procedure TForm16.Button1Click(Sender: TObject);
   //n,m:integer;
   // s:string;
 begin
-   if form16.StringGrid1.Height<500 then
+   if form16.GroupBox5.Height<10 then
    begin
-     form16.StringGrid1.Height:=535;
+     form16.GroupBox5.Height:=65;
      form16.Button1.Caption:='ИНФО (показать)';
    end
    else
    begin
-    form16.StringGrid1.Height:=465;
+    form16.GroupBox5.Height:=1;
     form16.Button1.Caption:='ИНФО (скрыть)';
    end;
    application.ProcessMessages;
@@ -4228,8 +4228,8 @@ begin
     //exit;
   end;
 
- form16.Panel1.Visible:=true;
- application.ProcessMessages;
+ //form16.Panel1.Visible:=true;
+ //application.ProcessMessages;
  // ------------- проверяем что определен состав расписания ----------------------------------
   if length(m_sostav)<3 then
      begin
@@ -4247,11 +4247,11 @@ begin
  with form16 do
  begin
  // ------------- проверяем что выбрана дата тарифа ----------------------------------
-  if trim(combobox4.Text)='' then
-     begin
-       showmessagealt('Для расчета цен билетов необходимо выбрать ДАТУ действия ТАРИФА !');
-       exit;
-     end;
+  //if trim(combobox4.Text)='' then
+  //   begin
+  //     showmessagealt('Для расчета цен билетов необходимо выбрать ДАТУ действия ТАРИФА !');
+  //     exit;
+  //   end;
 
   // Удалить элемент массива по коду атп
  // Если массив не определен то отваливаемся
@@ -4282,7 +4282,6 @@ begin
         end;
     end;
   end;
-
    //StringGrid10.RowCount:=1;
    //StringGrid2.RowCount:=1;
  t:=0; //сбрасываем счетчик запросов
@@ -4304,7 +4303,7 @@ begin
     // Загружаем тарифы
    ZQuery1.Close;
    ZQuery1.SQL.Clear;
-   ZQuery1.SQL.Add('select * from gettarif_avto('+quotedstr('tarif')+', '+Label4.caption+','+quotedstr(trim(ComboBox4.Text))+','+atp+','+inttostr(n)+');');
+   ZQuery1.SQL.Add('select * from gettarif2('+quotedstr('tarif')+', '+Label4.caption+',current_date,'+atp+','+inttostr(n)+');');
    ZQuery1.sql.add('FETCH ALL IN tarif;');
    //showmessage(ZQuery1.SQL.Text);//$
    try
@@ -4471,12 +4470,12 @@ begin
        begin
         If atp_sostav[n,3]<>'0' then tarif_manual:=true;
        end;
-  If schange AND tarif_manual and (dialogs.MessageDlg('Изменение состава расписания приведет к УДАЛЕНИЮ изменений в тарифе !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then
-        begin
-          ZQuery1.Close;
-          ZConnection1.Disconnect;
-          exit;
-        end;
+  //If schange AND tarif_manual and (dialogs.MessageDlg('Изменение состава расписания приведет к УДАЛЕНИЮ изменений в тарифе !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then
+  //      begin
+  //        ZQuery1.Close;
+  //        ZConnection1.Disconnect;
+  //        exit;
+  //      end;
   schange:=false;
   //Меняем переменные в массиве местами
   for n:=0 to sostav_size-1 do
@@ -4518,12 +4517,12 @@ begin
        begin
         If atp_sostav[n,3]<>'0' then tarif_manual:=true;
        end;
-  If schange AND tarif_manual and (dialogs.MessageDlg('Изменение состава расписания приведет к УДАЛЕНИЮ изменений в тарифе !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then
-        begin
-          ZQuery1.Close;
-          ZConnection1.Disconnect;
-          exit;
-        end;
+  //If schange AND tarif_manual and (dialogs.MessageDlg('Изменение состава расписания приведет к УДАЛЕНИЮ изменений в тарифе !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then
+  //      begin
+  //        ZQuery1.Close;
+  //        ZConnection1.Disconnect;
+  //        exit;
+  //      end;
    schange:=false;
   //Меняем переменные в массиве местами
   for n:=0 to sostav_size-1 do
@@ -4973,7 +4972,7 @@ begin
     //параметры доступа
      if flag_access<2 then Bitbtn5.Enabled:=false;
     SetLength(m_sostav,1,sostav_size);
-    Form16.getNorma();
+    //Form16.getNorma();
 
   // Открыть на выбор для отчета
   if fl_print=1 then
@@ -5040,7 +5039,8 @@ begin
     fluslugi :=1;
     flblock :=1;
 
-    If flag_edit_shedule=4 then copy_shed:=old_id;//копировать данные по ручным тарифам
+    //If flag_edit_shedule=4 then
+     copy_shed:=old_id;//копировать данные по ручным тарифам
     old_id :='';
     past_id:='0'; //сбрасываем связку с действующим расписанием
     flag_edit_shedule:=1;
