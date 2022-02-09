@@ -106,7 +106,6 @@ type
     procedure ToolButton8Click(Sender: TObject);
     procedure UpdateGrid(filter_type:byte; stroka:string);
     procedure EditCheck(); //проверка ввода брони
-    procedure ResizeGrid();//раширение/сужение грида
   private
     { private declarations }
     formActivated: boolean;
@@ -170,23 +169,6 @@ var
    //m_route[n,24] //перевозчик код
    //m_route[n,25] //перевозчик имя
 
-procedure TForm15.ResizeGrid();
-var
-  n:integer;
-  sum: integer;
-begin
- form15.StringGrid1.ColWidths[4]:=0;
-
- for n:=0 to form15.StringGrid1.ColCount-1 do
- begin
-  if n=2 then continue;
-   sum:= sum+ form15.StringGrid1.ColWidths[n];
- end;
- form15.StringGrid1.ColWidths[2]:= form15.StringGrid1.Width - sum - 10;
-
-
-end;
-
 //***********************************  ОБНОВИТЬ ДАННЫЕ НА ГРИДЕ **************************************************
 procedure TForm15.UpdateGrid(filter_type:byte; stroka:string);
  var
@@ -198,7 +180,6 @@ procedure TForm15.UpdateGrid(filter_type:byte; stroka:string);
   begin
    label1.Caption:='';
 
-   form15.ResizeGrid();
    orderby := stringgrid1.Columns[sort_col].Title.Caption;
 
    Stringgrid1.RowCount:=1;
@@ -235,7 +216,7 @@ procedure TForm15.UpdateGrid(filter_type:byte; stroka:string);
   Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT inet_sale FROM av_shedule_remote_sale_permition WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as isale ');
   //Form15.ZQuery1.SQL.add('
   Form15.ZQuery1.SQL.add('FROM ( ');
-  Form15.ZQuery1.SQL.add('SELECT z.* FROM (select k.* ');
+  Form15.ZQuery1.SQL.add('SELECT DISTINCT z.* FROM (select k.* ');
   Form15.ZQuery1.SQL.add(',coalesce((SELECT b.kod        from av_route AS b WHERE k.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),'''') as kod_route ');
   Form15.ZQuery1.SQL.add(',coalesce((SELECT b.type_route from av_route AS b WHERE k.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as type_route ');
   Form15.ZQuery1.SQL.add(',coalesce((SELECT id_kontr FROM av_shedule_atp AS g WHERE k.id=g.id_shedule AND g.del=0 ORDER BY g.createdate DESC limit 1),0) as atpid ');
@@ -978,19 +959,22 @@ procedure TForm15.BitBtn10Click(Sender: TObject);
 begiN
   with form15 do
 begin
-  If GroupBox1.Height>40 then
+  If GroupBox1.Height>45 then
   begin
   //Stringgrid1.Height:=665;
-  //BitBtn10.Top:=697;
+  BitBtn11.visible:=false;
+  BitBtn8.visible:=false;
   //GroupBox1.Top:=696;
-  GroupBox1.Height:=36;
+  GroupBox1.Height:=40;
   end
   else
   begin
     //Stringgrid1.Height:=665;//525
     //BitBtn10.Top:=560;
     //GroupBox1.Top:= 545;
-    GroupBox1.Height:=180;
+    GroupBox1.Height:=183;
+    BitBtn11.visible:=true;
+  BitBtn8.visible:=true;
   end;
 end;
 end;
@@ -1809,8 +1793,9 @@ begin
  //Stringgrid1.Height:=665;
  //BitBtn10.Top:=697;
  //GroupBox1.Top:=697;
- GroupBox1.Height:=36;
- form15.ResizeGrid();
+ BitBtn11.visible:=false;
+  BitBtn8.visible:=false;
+ GroupBox1.Height:=40;
   sort_col := 0;  //колонка сортировки
   sort_direction := 2;
 

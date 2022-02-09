@@ -191,56 +191,6 @@ var
 //end;
 
 
-
- procedure GetIPAddr(var buf: array of char; const len: longint);
- const
-  CN_GDNS_ADDR = '127.0.0.1';
-  CN_GDNS_PORT = 53;
- var
-  s: string;
-  sock: longint;
-  err: longint;
-  HostAddr: TSockAddr;
-  l: Integer;
-  IPAddr: TInetSockAddr;
-
- begin
-  err := 0;
-  Assert(len >= 16);
-
-  sock := fpsocket(AF_INET, SOCK_DGRAM, 0);
-  assert(sock <> -1);
-
-  IPAddr.sin_family := AF_INET;
-  IPAddr.sin_port := htons(CN_GDNS_PORT);
-  IPAddr.sin_addr.s_addr := StrToHostAddr(CN_GDNS_ADDR).s_addr;
-
-  if (fpConnect(sock,@IPAddr,SizeOf(IPAddr)) = 0) then
-  begin
-    try
-      l := SizeOf(HostAddr);
-      if (fpgetsockname(sock, @HostAddr, @l) = 0) then
-      begin
-        s := NetAddrToStr(HostAddr.sin_addr);
-        StrPCopy(PChar(Buf), s);
-      end
-      else
-      begin
-        err:=socketError;
-      end;
-    finally
-      if (CloseSocket(sock) <> 0) then
-      begin
-        err := socketError;
-      end;
-    end;
-  end
-  else
-  begin
-    err:=socketError;
-  end;
- end;
-
  //----------------------------------------------------------------------------------------------------//
  //Узнаем свой IP
  function GetIPAddressOfInterface(if_name:string):string;

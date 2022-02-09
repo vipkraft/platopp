@@ -315,6 +315,7 @@ object Form15: TForm15
     Top = 47
     Width = 1144
     Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFillColumns = True
     BorderSpacing.Left = 3
     BorderSpacing.Top = 2
     BorderSpacing.Right = 3
@@ -324,22 +325,25 @@ object Form15: TForm15
     Columns = <    
       item
         ReadOnly = True
+        SizePriority = 0
         Title.Caption = 'id'
         Width = 56
       end    
       item
         ReadOnly = True
+        SizePriority = 0
         Title.Caption = 'kod'
         Width = 3
       end    
       item
         ReadOnly = True
         Title.Caption = 'name_shedule'
-        Width = 516
+        Width = 604
       end    
       item
         ButtonStyle = cbsCheckboxColumn
         ReadOnly = True
+        SizePriority = 0
         Title.Caption = 'active'
         Width = 25
         ValueChecked = '''1'''
@@ -347,60 +351,71 @@ object Form15: TForm15
       end    
       item
         ReadOnly = True
+        SizePriority = 0
         Title.Caption = 'del'
         Width = 15
       end    
       item
         ReadOnly = True
+        SizePriority = 0
         Title.Caption = 'dateactive'
-        Width = 75
+        Width = 79
       end    
       item
         ReadOnly = True
+        SizePriority = 0
         Title.Caption = 'zakaz'
         Width = 35
       end    
       item
         ReadOnly = True
+        SizePriority = 0
         Title.Caption = 'id_past'
         Width = 45
       end    
       item
         ButtonStyle = cbsCheckboxColumn
+        SizePriority = 0
         Title.Caption = 'Personal'
         Width = 40
         ValueChecked = '''1'''
         ValueUnchecked = '''0'''
       end    
       item
+        SizePriority = 0
         Title.MultiLine = True
         Title.Caption = 'ручной'
         Width = 40
       end    
       item
         ButtonStyle = cbsCheckboxColumn
+        SizePriority = 0
         Title.MultiLine = True
         Title.Caption = 'Удаленная продажа'
         Width = 40
       end    
       item
         ButtonStyle = cbsCheckboxColumn
+        SizePriority = 0
         Title.MultiLine = True
         Title.Caption = 'Интернет продажа'
         Width = 40
       end    
       item
         ButtonStyle = cbsCheckboxColumn
+        SizePriority = 0
         Title.Caption = 'Tel'
         Width = 40
       end    
       item
         ButtonStyle = cbsCheckboxColumn
+        SizePriority = 0
         Title.Caption = 'Voin'
         Width = 40
       end    
       item
         ButtonStyle = cbsCheckboxColumn
+        SizePriority = 0
         Title.MultiLine = True
         Title.Caption = 'Free'
         Width = 40
@@ -420,10 +435,10 @@ object Form15: TForm15
     ColWidths = (
       56
       3
-      516
+      604
       25
       15
-      75
+      79
       35
       45
       40
@@ -857,30 +872,27 @@ object Form15: TForm15
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = BitBtn4
-    Left = 5
+    Left = 0
     Height = 176
     Top = 581
-    Width = 1142
+    Width = 1150
     Anchors = [akLeft, akRight, akBottom]
-    BorderSpacing.Left = 5
-    BorderSpacing.Right = 3
     BorderSpacing.Bottom = 5
     ClientHeight = 172
-    ClientWidth = 1138
+    ClientWidth = 1146
     TabOrder = 1
     object BitBtn8: TBitBtn
       AnchorSideRight.Control = GroupBox1
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = GroupBox1
       AnchorSideBottom.Side = asrBottom
-      Left = 998
+      Left = 1006
       Height = 30
       Hint = 'Выбор из существующих маршрутов'
-      Top = 137
+      Top = 142
       Width = 135
       Anchors = [akRight, akBottom]
       BorderSpacing.Right = 5
-      BorderSpacing.Bottom = 5
       Caption = 'Обновить'
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -920,16 +932,17 @@ object Form15: TForm15
       }
       OnClick = BitBtn8Click
       TabOrder = 13
+      Visible = False
     end
     object BitBtn11: TBitBtn
       AnchorSideTop.Control = BitBtn8
       AnchorSideRight.Control = BitBtn8
       AnchorSideBottom.Control = BitBtn8
       AnchorSideBottom.Side = asrBottom
-      Left = 720
+      Left = 728
       Height = 30
       Hint = 'Показать все расписания'
-      Top = 137
+      Top = 142
       Width = 268
       Anchors = [akTop, akRight, akBottom]
       BorderSpacing.Right = 10
@@ -940,6 +953,7 @@ object Form15: TForm15
       OnClick = BitBtn11Click
       ParentFont = False
       TabOrder = 21
+      Visible = False
     end
     object CheckBox1: TCheckBox
       Left = 10
@@ -1266,14 +1280,13 @@ object Form15: TForm15
     end
     object BitBtn10: TBitBtn
       AnchorSideLeft.Control = GroupBox1
-      AnchorSideTop.Control = GroupBox1
       AnchorSideRight.Control = GroupBox1
       AnchorSideRight.Side = asrBottom
       Left = 0
-      Height = 30
-      Top = 1
-      Width = 1138
-      Anchors = [akTop, akLeft, akRight]
+      Height = 33
+      Top = -4
+      Width = 1146
+      Anchors = [akLeft, akRight]
       BorderSpacing.Top = 1
       Caption = 'Ф И Л Ь Т Р      Р А С П И С А Н И Й'
       Color = 14209229
