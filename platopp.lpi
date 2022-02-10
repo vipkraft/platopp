@@ -181,7 +181,7 @@
       <Unit3>
         <Filename Value="platproc.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <TopLine Value="190"/>
         <CursorPos X="11" Y="192"/>
         <UsageCount Value="215"/>
@@ -204,7 +204,7 @@
         <ComponentName Value="Form6"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="157"/>
         <CursorPos X="33" Y="175"/>
         <UsageCount Value="200"/>
@@ -256,8 +256,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="241"/>
-        <CursorPos Y="256"/>
+        <TopLine Value="257"/>
+        <CursorPos X="10" Y="281"/>
         <UsageCount Value="204"/>
       </Unit9>
       <Unit10>
@@ -312,8 +312,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="1778"/>
-        <CursorPos X="17" Y="1790"/>
+        <TopLine Value="395"/>
+        <CursorPos X="17" Y="414"/>
         <UsageCount Value="200"/>
         <Bookmarks Count="2">
           <Item0 X="7" Y="1534" ID="1"/>
@@ -372,10 +372,12 @@
         <ComponentName Value="Form22"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="652"/>
-        <CursorPos X="76" Y="666"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="383"/>
+        <CursorPos X="63" Y="407"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="lgot_main.pas"/>
@@ -669,8 +671,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="249"/>
-        <CursorPos X="41" Y="267"/>
+        <TopLine Value="258"/>
+        <CursorPos X="25" Y="269"/>
         <UsageCount Value="237"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -725,7 +727,7 @@
         <ComponentName Value="FormST"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="514"/>
         <CursorPos X="25" Y="528"/>
         <UsageCount Value="200"/>
@@ -853,125 +855,118 @@
         <UsageCount Value="31"/>
       </Unit64>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1968" Column="61" TopLine="1944"/>
+        <Caret Line="267" Column="41" TopLine="249"/>
       </Position1>
       <Position2>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="5103" Column="26" TopLine="5088"/>
+        <Filename Value="shedule_edit_sostav.pas"/>
+        <Caret Line="355" Column="95" TopLine="341"/>
       </Position2>
       <Position3>
         <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1262" Column="13" TopLine="1248"/>
       </Position3>
       <Position4>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1906" Column="53" TopLine="1882"/>
+        <Caret Line="283" Column="21" TopLine="267"/>
       </Position4>
       <Position5>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="2055" Column="52" TopLine="2031"/>
+        <Caret Line="1262" Column="7" TopLine="1257"/>
       </Position5>
       <Position6>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="2062" Column="55" TopLine="2038"/>
+        <Caret Line="283" Column="30" TopLine="267"/>
       </Position6>
       <Position7>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3633" Column="72" TopLine="3623"/>
+        <Caret Line="5010" Column="2" TopLine="5005"/>
       </Position7>
       <Position8>
         <Filename Value="shedule_edit.pas"/>
+        <Caret Line="5011" Column="3" TopLine="4994"/>
       </Position8>
       <Position9>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="5051" Column="6" TopLine="5029"/>
+        <Caret Line="283" Column="32" TopLine="268"/>
       </Position9>
       <Position10>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1586" Column="115" TopLine="1581"/>
+        <Caret Line="5011" Column="7" TopLine="4994"/>
       </Position10>
       <Position11>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="4438" Column="16" TopLine="4422"/>
+        <Filename Value="shedule_edit_sostav.pas"/>
+        <Caret Line="355" Column="95" TopLine="341"/>
       </Position11>
       <Position12>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1985" Column="10" TopLine="1956"/>
+        <Filename Value="shedule_edit_sostav.pas"/>
+        <Caret Line="9" Column="49"/>
       </Position12>
       <Position13>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="264" Column="17" TopLine="246"/>
+        <Filename Value="shedule_edit_sostav.pas"/>
+        <Caret Line="355" Column="16" TopLine="336"/>
       </Position13>
       <Position14>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="52" Column="38" TopLine="46"/>
+        <Filename Value="shedule_edit_sostav.pas"/>
+        <Caret Line="357" Column="104" TopLine="336"/>
       </Position14>
       <Position15>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3152" Column="22" TopLine="3127"/>
+        <Filename Value="shedule_edit_sostav.pas"/>
+        <Caret Line="360" Column="191" TopLine="336"/>
       </Position15>
       <Position16>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3313" Column="22" TopLine="3288"/>
+        <Caret Line="8" Column="45"/>
       </Position16>
       <Position17>
         <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3374" Column="22" TopLine="3350"/>
+        <Caret Line="251" Column="23" TopLine="227"/>
       </Position17>
       <Position18>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3387" Column="20" TopLine="3363"/>
+        <Filename Value="shedule_main.pas"/>
+        <Caret Line="1777" Column="26" TopLine="1767"/>
       </Position18>
       <Position19>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3403" Column="27" TopLine="3379"/>
+        <Filename Value="shedule_main.pas"/>
       </Position19>
       <Position20>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="3416" Column="26" TopLine="3392"/>
+        <Filename Value="shedule_main.pas"/>
+        <Caret Line="754" Column="39" TopLine="729"/>
       </Position20>
       <Position21>
         <Filename Value="shedule_main.pas"/>
-        <Caret Line="187" Column="16" TopLine="166"/>
+        <Caret Line="922" Column="46" TopLine="898"/>
       </Position21>
       <Position22>
         <Filename Value="shedule_main.pas"/>
-        <Caret Line="184" Column="15" TopLine="169"/>
+        <Caret Line="934" Column="39" TopLine="910"/>
       </Position22>
       <Position23>
         <Filename Value="shedule_main.pas"/>
-        <Caret Line="186" Column="42" TopLine="169"/>
+        <Caret Line="1281" Column="46" TopLine="1256"/>
       </Position23>
       <Position24>
         <Filename Value="shedule_main.pas"/>
-        <Caret Line="173" Column="20" TopLine="169"/>
+        <Caret Line="1301" Column="46" TopLine="1277"/>
       </Position24>
       <Position25>
         <Filename Value="shedule_main.pas"/>
-        <Caret Line="205" Column="13" TopLine="184"/>
+        <Caret Line="1367" Column="43" TopLine="1343"/>
       </Position25>
       <Position26>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="261" Column="8" TopLine="249"/>
+        <Filename Value="shedule_main.pas"/>
+        <Caret Line="1690" Column="42" TopLine="1666"/>
       </Position26>
       <Position27>
         <Filename Value="shedule_main.pas"/>
-        <Caret Line="1799" Column="15" TopLine="1779"/>
+        <Caret Line="754" Column="39" TopLine="740"/>
       </Position27>
       <Position28>
         <Filename Value="shedule_main.pas"/>
-        <Caret Line="967" Column="9" TopLine="957"/>
+        <Caret Line="922" Column="46" TopLine="898"/>
       </Position28>
-      <Position29>
-        <Filename Value="shedule_main.pas"/>
-        <Caret Line="966" Column="27" TopLine="957"/>
-      </Position29>
-      <Position30>
-        <Filename Value="shedule_main.pas"/>
-        <Caret Line="1264" Column="3" TopLine="1274"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

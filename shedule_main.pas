@@ -403,7 +403,7 @@ end;
       else ZQuery1.SQL.add(' ;');
 
   //-конец запроса :-)
-  //showmessage(ZQuery1.SQL.Text);//;$
+  //showmessage(ZQuery1.SQL.Text);//$
   try
    ZQuery1.open;
   except

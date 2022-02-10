@@ -25,13 +25,13 @@ object Form16: TForm16
     Height = 590
     Top = 158
     Width = 1144
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 3
     BorderSpacing.Top = 10
     BorderSpacing.Right = 3
     BorderSpacing.Bottom = 10
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
@@ -953,7 +953,7 @@ object Form16: TForm16
         BorderSpacing.Right = 5
         BorderSpacing.Bottom = 5
         Caption = 'Список перевозчиков и АТС'
-        ClientHeight = 538
+        ClientHeight = 535
         ClientWidth = 1128
         TabOrder = 0
         object StringGrid8: TStringGrid
@@ -980,7 +980,7 @@ object Form16: TForm16
             item
               SizePriority = 3
               Title.Caption = 'Наименование перевозчика'
-              Width = 382
+              Width = 380
             end>
           FixedCols = 0
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll]
@@ -991,7 +991,7 @@ object Form16: TForm16
           OnSelection = StringGrid8Selection
           ColWidths = (
             65
-            382
+            380
           )
           Cells = (
             1
@@ -1132,7 +1132,7 @@ object Form16: TForm16
             item
               ReadOnly = True
               Title.Caption = 'МАРКА АТС'
-              Width = 293
+              Width = 291
             end          
             item
               ReadOnly = True
@@ -1174,7 +1174,7 @@ object Form16: TForm16
           OnSetCheckboxState = StringGrid9SetCheckboxState
           ColWidths = (
             65
-            293
+            291
             87
             56
             54
@@ -1216,8 +1216,8 @@ object Form16: TForm16
         TabOrder = 0
         object TabSheet7: TTabSheet
           Caption = '         1.Тариф       '
-          ClientHeight = 525
-          ClientWidth = 809
+          ClientHeight = 546
+          ClientWidth = 807
           OnEnter = TabSheet7Enter
           OnExit = TabSheet7Exit
           object StringGrid10: TStringGrid
@@ -1249,7 +1249,7 @@ object Form16: TForm16
               item
                 ReadOnly = True
                 Title.Caption = 'Наименование пункта'
-                Width = 352
+                Width = 364
               end            
               item
                 ReadOnly = True
@@ -1303,7 +1303,7 @@ object Form16: TForm16
             OnGetEditMask = StringGrid10GetEditMask
             ColWidths = (
               45
-              352
+              364
               60
               68
               68
@@ -1330,8 +1330,8 @@ object Form16: TForm16
         end
         object TabSheet8: TTabSheet
           Caption = '      2.Календарный план     '
-          ClientHeight = 525
-          ClientWidth = 809
+          ClientHeight = 546
+          ClientWidth = 807
           OnEnter = TabSheet8Enter
           object GroupBox8: TGroupBox
             Left = 7
@@ -1713,8 +1713,8 @@ object Form16: TForm16
         end
         object TabSheet9: TTabSheet
           Caption = '   3.Льготы и Услуги   '
-          ClientHeight = 525
-          ClientWidth = 809
+          ClientHeight = 546
+          ClientWidth = 807
           OnEnter = TabSheet9Enter
           object Bevel4: TBevel
             Left = 16
@@ -2155,7 +2155,7 @@ object Form16: TForm16
         BorderSpacing.Left = 5
         BorderSpacing.Bottom = 3
         Caption = 'Фискированный тариф перевозчика:'
-        ClientHeight = 115
+        ClientHeight = 112
         ClientWidth = 307
         Enabled = False
         Font.Height = -13

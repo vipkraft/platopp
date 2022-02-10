@@ -5007,6 +5007,8 @@ begin
  decimalseparator:='.';
  copy_shed:='0';
  new_id:='0';
+ norma_KMH:=110;
+ norma_Deti:=110;
 //try
 //  raise EExternal.Create('Test');
 //except

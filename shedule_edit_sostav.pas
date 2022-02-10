@@ -352,10 +352,14 @@ begin
           showmessagealt('Расстояние и/или время в пути не может быть нулевым !'+#13+'Запонены не все обязательные поля.');
           exit;
         end;
-     if round(form22.SpinEdit9.value/(form22.SpinEdit10.value*60+form22.SpinEdit11.value)*60)>norma_kmh then
+     if norma_kmh>0 then
         begin
-          showmessagealt('СКОРОСТЬ движения на данном участке пути НЕДОПУСТИМА !'+#13+'Текущая скорость движения: '+floattostr(round(form22.SpinEdit9.value/(form22.SpinEdit10.value*60+form22.SpinEdit11.value)*60))+' км\ч.'+#13+'Нормативная скорость: '+ intToStr(norma_kmh) +' км\ч.');
-          exit;
+         if round(form22.SpinEdit9.value/(form22.SpinEdit10.value*60+form22.SpinEdit11.value)*60)>norma_kmh then
+            begin
+              showmessagealt('СКОРОСТЬ движения на данном участке пути НЕДОПУСТИМА !'+#13+'Текущая скорость движения: '
+                +floattostr(round(form22.SpinEdit9.value/(form22.SpinEdit10.value*60+form22.SpinEdit11.value)*60))+' км\ч.'+#13+'Нормативная скорость: '+ intToStr(norma_kmh) +' км\ч.');
+              exit;
+            end;
         end;
     end;
 
