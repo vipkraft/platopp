@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, ZConnection, ZDataset, LazFileUtils, Forms, Controls, Graphics,
-  Dialogs, Grids, Buttons, ComCtrls, StdCtrls, ExtCtrls,platproc,point_edit,report_main,LazUtf8;
+  Dialogs, Grids, Buttons, ComCtrls, StdCtrls, ExtCtrls,platproc,point_edit,report_main,LazUtf8, Types;
 
 type
 
@@ -134,17 +134,18 @@ begin
      end;
    //запрос списка
    ZQuery1.SQL.Clear;
-   ZQuery1.SQL.add('SELECT * FROM (select a.id,a.name ');
-   ZQuery1.SQL.add(',(select b.name from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as locality ');
-   ZQuery1.SQL.add(',(select b.rajon from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as rajon ');
-   ZQuery1.SQL.add(',(select b.region from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as region ');
-   ZQuery1.SQL.add(',(select b.land from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as land ');
-   ZQuery1.SQL.add(',(select c.name from av_spr_point_group c where c.id=a.id_group order by c.del asc,c.createdate desc limit 1) as name_group ');
+   ZQuery1.SQL.add('SELECT * FROM (select a.id,btrim(a.name) as name ');
+   ZQuery1.SQL.add(',(select btrim(b.name) from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as locality ');
+   ZQuery1.SQL.add(',(select btrim(b.rajon) from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as rajon ');
+   ZQuery1.SQL.add(',(select btrim(b.region) from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as region ');
+   ZQuery1.SQL.add(',(select btrim(b.land) from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as land ');
+   ZQuery1.SQL.add(',(SELECT id_dest FROM av_pdp_dest_point Where id_point=a.id ORDER BY del asc, createdate desc limit 1) ekop ');
+   //ZQuery1.SQL.add(',(select c.name from av_spr_point_group c where c.id=a.id_group order by c.del asc,c.createdate desc limit 1) as name_group ');
    ZQuery1.SQL.add('from av_spr_point a ');
    ZQuery1.SQL.add('where a.del=0 ) z ');
    if (stroka<>'') and (filter_type=2)
      then ZQuery1.SQL.add('WHERE z.name ilike '+quotedstr(stroka+'%')+' OR z.locality ilike '+quotedstr(stroka+'%')+' OR z.rajon ilike '+quotedstr(stroka+'%')+' OR z.region ilike '+quotedstr(stroka+'%')+' OR z.land ilike '+quotedstr(stroka+'%'));
-   if (stroka<>'') and (filter_type=1) then ZQuery1.SQL.add('WHERE z.id='+stroka);
+   if (stroka<>'') and (filter_type=1) then ZQuery1.SQL.add('WHERE z.id='+stroka+' OR z.ekop='+stroka);
      //showmessage(ZQuery1.SQL.Text);//$
    ZQuery1.SQL.add('ORDER BY z.name;');
   try
@@ -166,7 +167,8 @@ begin
    for n:=1 to form9.ZQuery1.RecordCount do
     begin
       form9.StringGrid1.Cells[0,n]:=form9.ZQuery1.FieldByName('id').asString;
-      form9.StringGrid1.Cells[1,n]:=form9.ZQuery1.FieldByName('name_group').asString;
+      //form9.StringGrid1.Cells[1,n]:=form9.ZQuery1.FieldByName('name_group').asString;
+      form9.StringGrid1.Cells[1,n]:=form9.ZQuery1.FieldByName('ekop').asString;
       form9.StringGrid1.Cells[2,n]:=form9.ZQuery1.FieldByName('name').asString;
       form9.StringGrid1.Cells[3,n]:=form9.ZQuery1.FieldByName('locality').asString;
       form9.StringGrid1.Cells[4,n]:=form9.ZQuery1.FieldByName('rajon').asString;
@@ -180,8 +182,6 @@ begin
    //form9.StringGrid1.SetFocus;
    end;
 end;
-
-
 
 
 procedure TForm9.BitBtn4Click(Sender: TObject);
@@ -379,7 +379,7 @@ end;
 procedure TForm9.StringGrid1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-   Click_Header((Sender as TStringgrid),X,Y,Self.ProgressBar1);
+   //Click_Header((Sender as TStringgrid),X,Y,Self.ProgressBar1);
 end;
 
 procedure TForm9.BitBtn1Click(Sender: TObject);

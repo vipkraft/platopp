@@ -565,6 +565,7 @@ object Form10: TForm10
     Width = 43
     Caption = 'Группа'
     ParentColor = False
+    Visible = False
   end
   object GroupBox1: TGroupBox
     Left = 18
@@ -681,6 +682,7 @@ object Form10: TForm10
     OnClick = BitBtn7Click
     TabOrder = 5
     TabStop = False
+    Visible = False
   end
   object Edit12: TEdit
     Left = 658
@@ -689,6 +691,7 @@ object Form10: TForm10
     Width = 291
     ReadOnly = True
     TabOrder = 4
+    Visible = False
   end
   object Image3: TImage
     Left = 18

@@ -1,17 +1,17 @@
 object Form9: TForm9
-  Left = 349
+  Left = 362
   Height = 768
-  Top = 164
+  Top = 156
   Width = 1024
   Caption = 'Справочник остановочных пунктов'
   ClientHeight = 768
   ClientWidth = 1024
-  Font.Height = -11
+  Font.Height = -13
   KeyPreview = True
   OnActivate = FormActivate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  Position = poScreenCenter
+  Position = poOwnerFormCenter
   LCLVersion = '2.0.8.0'
   object Image1: TImage
     AnchorSideLeft.Control = Owner
@@ -263,47 +263,82 @@ object Form9: TForm9
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 3
-    Height = 679
-    Top = 45
-    Width = 1018
-    Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Left = 3
-    BorderSpacing.Right = 3
+    AnchorSideBottom.Control = BitBtn4
+    Left = 2
+    Height = 680
+    Top = 46
+    Width = 1020
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFillColumns = True
+    BorderSpacing.Left = 2
+    BorderSpacing.Top = 1
+    BorderSpacing.Right = 2
+    BorderSpacing.Bottom = 5
     ColCount = 7
     ColumnClickSorts = True
+    Columns = <    
+      item
+        SizePriority = 0
+        Title.Caption = 'Код'
+        Width = 50
+      end    
+      item
+        SizePriority = 0
+        Title.Caption = 'Номер в реестре'
+        Width = 70
+      end    
+      item
+        Title.Caption = 'Наименование'
+        Width = 194
+      end    
+      item
+        Title.Caption = 'Населенный пункт'
+        Width = 194
+      end    
+      item
+        Title.Caption = 'Район'
+        Width = 194
+      end    
+      item
+        Title.Caption = 'Регион'
+        Width = 194
+      end    
+      item
+        SizePriority = 0
+        Title.Caption = 'Государство'
+        Width = 120
+      end>
     DefaultDrawing = False
     DefaultRowHeight = 27
     FixedCols = 0
     Font.Height = -12
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll]
+    Options = [goFixedVertLine, goFixedHorzLine, goHorzLine, goRowSelect, goSmoothScroll]
     ParentFont = False
     RowCount = 1
     TabOrder = 0
     TitleFont.Height = -11
     OnDrawCell = StringGrid1DrawCell
     OnEnter = StringGrid1Enter
-    OnMouseDown = StringGrid1MouseDown
     ColWidths = (
-      49
-      133
-      269
-      184
-      137
-      139
-      80
+      50
+      70
+      194
+      194
+      194
+      194
+      120
     )
     Cells = (
       7
       0
       0
-      '№ н\п'
+      'Код'
       1
       0
-      'Группа'
+      'Номер в реестре'
       2
       0
-      'Остановочный пункт'
+      'Наименование'
       3
       0
       'Населенный пункт'
@@ -315,17 +350,21 @@ object Form9: TForm9
       'Регион'
       6
       0
-      'Гос-во'
+      'Государство'
     )
   end
   object BitBtn5: TBitBtn
-    Left = 452
+    AnchorSideRight.Control = BitBtn1
+    AnchorSideBottom.Control = BitBtn4
+    AnchorSideBottom.Side = asrCenter
+    Left = 439
     Height = 32
     Hint = 'Выбрать запись'
-    Top = 732
-    Width = 107
+    Top = 731
+    Width = 105
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 10
     Caption = 'Выбрать'
-    Font.Height = -11
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -363,17 +402,20 @@ object Form9: TForm9
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0026AE8116
     }
     OnClick = BitBtn5Click
-    ParentFont = False
     TabOrder = 1
   end
   object BitBtn1: TBitBtn
-    Left = 567
-    Height = 32
+    AnchorSideRight.Control = BitBtn2
+    AnchorSideBottom.Control = BitBtn4
+    AnchorSideBottom.Side = asrCenter
+    Left = 554
+    Height = 30
     Hint = 'Добавить запись'
     Top = 732
-    Width = 107
+    Width = 105
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 10
     Caption = 'Добавить'
-    Font.Height = -11
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -411,17 +453,20 @@ object Form9: TForm9
       90FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
     OnClick = BitBtn1Click
-    ParentFont = False
     TabOrder = 2
   end
   object BitBtn2: TBitBtn
-    Left = 682
+    AnchorSideRight.Control = BitBtn12
+    AnchorSideBottom.Control = BitBtn4
+    AnchorSideBottom.Side = asrCenter
+    Left = 669
     Height = 32
     Hint = 'Удалить запись'
-    Top = 732
-    Width = 107
+    Top = 731
+    Width = 105
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 10
     Caption = 'Удалить'
-    Font.Height = -11
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000000000180000
@@ -459,17 +504,22 @@ object Form9: TForm9
       FF000A59DC520A5BDEFF0A59DC52FFFFFF00FFFFFF00FFFFFF00
     }
     OnClick = BitBtn2Click
-    ParentFont = False
     TabOrder = 3
   end
   object BitBtn4: TBitBtn
-    Left = 900
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 914
     Height = 32
     Hint = 'Сохранить'
-    Top = 732
-    Width = 107
+    Top = 731
+    Width = 105
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
     Caption = 'Выход'
-    Font.Height = -11
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000000000060000
@@ -507,15 +557,19 @@ object Form9: TForm9
       D8B30F67D74EFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
     OnClick = BitBtn4Click
-    ParentFont = False
     TabOrder = 4
   end
   object BitBtn12: TBitBtn
-    Left = 797
+    AnchorSideRight.Control = BitBtn4
+    AnchorSideBottom.Control = BitBtn4
+    AnchorSideBottom.Side = asrCenter
+    Left = 784
     Height = 32
     Hint = 'Внести изменения в данные'
-    Top = 732
-    Width = 95
+    Top = 731
+    Width = 105
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 25
     Caption = 'Изменить'
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
@@ -567,10 +621,16 @@ object Form9: TForm9
     Visible = False
   end
   object Image3: TImage
-    Left = 9
-    Height = 19
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 10
+    Height = 21
     Top = 737
     Width = 17
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 10
+    BorderSpacing.Bottom = 10
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869638A0D000089504E47
       0D0A1A0A0000000D49484452000000100000001008060000001FF3FF61000000
@@ -685,12 +745,18 @@ object Form9: TForm9
     }
   end
   object Label4: TLabel
-    Left = 30
-    Height = 13
-    Top = 738
-    Width = 59
+    AnchorSideLeft.Control = Image3
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideBottom.Control = Image3
+    AnchorSideBottom.Side = asrCenter
+    Left = 37
+    Height = 14
+    Top = 740
+    Width = 66
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 10
     Caption = 'F1-Помощь'
-    Font.Height = -11
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end

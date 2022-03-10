@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, ZConnection, ZDataset, LazFileUtils, Forms, Controls, Graphics,
   Dialogs, ExtCtrls, StdCtrls, Buttons, Grids, ComCtrls, Spin, EditBtn, report_main,
-  StrUtils, types, dateutils;
+  StrUtils, types, dateutils, math;
 
 type Tmas = array of array of string;
 
@@ -238,6 +238,8 @@ type
     procedure StringGrid6MouseEnter(Sender: TObject);
     procedure StringGrid6Selection(Sender: TObject; aCol, aRow: Integer);
     procedure StringGrid6SetCheckboxState(Sender: TObject; ACol, ARow: Integer;       const Value: TCheckboxState);
+    procedure StringGrid6SetEditText(Sender: TObject; ACol, ARow: Integer;
+      const Value: string);
     procedure StringGrid8Selection(Sender: TObject; aCol, aRow: Integer);
     procedure StringGrid9Enter(Sender: TObject);
     procedure StringGrid9SetCheckboxState(Sender: TObject; ACol, ARow: Integer;const Value: TCheckboxState);
@@ -2424,6 +2426,17 @@ begin
    end;
 end;
 
+procedure TForm16.StringGrid6SetEditText(Sender: TObject; ACol, ARow: Integer;
+  const Value: string);
+begin
+    if not flatp and (ACol=2) then
+   begin
+    form16.Panel1.Caption:=inttostr(ACol);
+    form16.Panel1.Visible:=true;
+    flatp:=true;
+   end;
+end;
+
 
 //********************       Заполнение массива данными по составу расписания и основным реквизитам          ********************************
 procedure TForm16.fill_array(old_id: string);
@@ -2553,8 +2566,9 @@ begin
      // ================================== Массив Перевозчиков ==================================================
      //запрос на Перевозчиков расписания, а также на тип тарифа для каждого (0-авто/1-измененный вручную)
       form16.ZQuery1.SQL.Clear;
-      form16.ZQuery1.SQL.add('SELECT DISTINCT a.id_kontr,a.def_ats,b.name,a.reestr ');
-      form16.ZQuery1.SQL.add(',case WHEN (select count(id_kontr) from av_shedule_tarif where del=0 and id_kontr=a.id_kontr and id_shedule='+old_id+')>0 THEN 1 ELSE 0 END tarif_type ');
+      form16.ZQuery1.SQL.add('SELECT DISTINCT a.id_kontr,a.def_ats,btrim(b.name) perevoz,a.reestr ');
+      form16.ZQuery1.SQL.add(',coalesce((select 1 from av_shedule_price where del=0 and id_kontr=a.id_kontr and id_shedule='+old_id+' order by createdate desc limit 1),0) as tarif_price ');
+      form16.ZQuery1.SQL.add(',coalesce((select 1 from av_shedule_tarif where del=0 and id_kontr=a.id_kontr and id_shedule='+old_id+' order by createdate desc limit 1),0) as tarif_type ');
       form16.ZQuery1.SQL.add('FROM av_shedule_atp as a ');
       form16.ZQuery1.SQL.add('LEFT JOIN av_spr_kontragent as b ON a.id_kontr=b.id and b.del=0 ');
       form16.ZQuery1.SQL.add('WHERE a.del=0 and a.id_shedule='+ old_id +';');
@@ -2578,9 +2592,12 @@ begin
      setlength(atp_sostav,form16.ZQuery1.RecordCount, atp_size);
      for n:=0 to form16.ZQuery1.RecordCount-1 do
        begin
+         //проверка на фиксированный тариф
+          If form16.ZQuery1.FieldByName('tarif_type').AsInteger=1 then
+            form16.Panel1.Visible:=true;
          atp_sostav[n,0]:=form16.ZQuery1.FieldByName('id_kontr').AsString;
          sTmp := sTmp + atp_sostav[n,0] + ','; //строка id АТП для запроса АТС
-         atp_sostav[n,1]:=form16.ZQuery1.FieldByName('name').AsString;
+         atp_sostav[n,1]:=form16.ZQuery1.FieldByName('perevoz').AsString;
          atp_sostav[n,2]:=form16.ZQuery1.FieldByName('def_ats').AsString; // Код АТС по умолчанию
          atp_sostav[n,3]:=form16.ZQuery1.FieldByName('tarif_type').AsString; //тип расчета тарифа 0-авто 1-ручной
          atp_sostav[n,4]:=form16.ZQuery1.FieldByName('reestr').AsString;//код реестра
@@ -3939,15 +3956,16 @@ procedure TForm16.FloatSpinEdit1EditingDone(Sender: TObject);
 //********************************************************** ПЕРЕСЧИТАТЬ ТАРИФ М2-мягкий С НОВЫМ КОЭФФИЦИЕНТОМ *********************************
 var
    n:integer;
-   tD : double=0;
+   //tD : double=0;
 begin
  fltarif :=true;
    for n:=0 to length(tarif_all)-1 do
      begin
        If tarif_all[n,13]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
         begin
-         td:=strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value;
-         tarif_all[n,5]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         //td:=strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value;
+         //tarif_all[n,5]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         tarif_all[n,5]:=inttostr(floor(strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value));
          tarif_all[n,10]:=stringreplace(FloatSpinEdit1.text,',','.',[]);
      end;
        end;
@@ -4420,7 +4438,7 @@ begin
  end;
   form16.GroupBox2.Enabled:=false;
    result:=true;
-   form16.Panel1.Visible:=false;
+   //form16.Panel1.Visible:=false;
    setlength(tmp_tarif,0,0);
    tmp_tarif := nil;
  end;
@@ -4936,6 +4954,8 @@ begin
          form16.Edit18.text:='';
          form16.Edit19.text:='';
       end;}
+
+
   SetLength(tmp_arr,0,ats_size);
 
   // Если был один перевозчик, то просто чистим все массивы
@@ -4992,6 +5012,10 @@ begin
        end;
  //showmas(atp_sostav);
   flatp := true;
+  flchange:= true;
+  fltarif :=true;
+  flsezon :=true;
+  fluslugi :=true;
 
   Refresh_arrays(kodatp, true);    // удаляем из всех массивов этого перевозчика
 

@@ -25,13 +25,13 @@ object Form16: TForm16
     Height = 590
     Top = 158
     Width = 1144
-    ActivePage = TabSheet1
+    ActivePage = TabSheet6
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 3
     BorderSpacing.Top = 10
     BorderSpacing.Right = 3
     BorderSpacing.Bottom = 10
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
@@ -50,7 +50,7 @@ object Form16: TForm16
         Top = 0
         Width = 1142
         Anchors = [akTop, akLeft, akRight, akBottom]
-        ClientHeight = 561
+        ClientHeight = 545
         ClientWidth = 1138
         TabOrder = 0
         object GroupBox5: TGroupBox
@@ -65,7 +65,7 @@ object Form16: TForm16
           BorderSpacing.Left = 5
           BorderSpacing.Bottom = 5
           Caption = 'Последнее изменение'
-          ClientHeight = 48
+          ClientHeight = 45
           ClientWidth = 333
           TabOrder = 18
           object Label28: TLabel
@@ -1202,10 +1202,10 @@ object Form16: TForm16
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = TabSheet6
         AnchorSideBottom.Side = asrBottom
-        Left = 326
+        Left = 324
         Height = 550
         Top = 10
-        Width = 811
+        Width = 813
         ActivePage = TabSheet7
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 10
@@ -1216,8 +1216,8 @@ object Form16: TForm16
         TabOrder = 0
         object TabSheet7: TTabSheet
           Caption = '         1.Тариф       '
-          ClientHeight = 546
-          ClientWidth = 807
+          ClientHeight = 525
+          ClientWidth = 811
           OnEnter = TabSheet7Enter
           OnExit = TabSheet7Exit
           object StringGrid10: TStringGrid
@@ -1230,7 +1230,7 @@ object Form16: TForm16
             Left = 2
             Height = 520
             Top = 3
-            Width = 805
+            Width = 807
             Anchors = [akTop, akLeft, akRight, akBottom]
             AutoFillColumns = True
             BorderSpacing.Left = 2
@@ -1249,7 +1249,7 @@ object Form16: TForm16
               item
                 ReadOnly = True
                 Title.Caption = 'Наименование пункта'
-                Width = 364
+                Width = 354
               end            
               item
                 ReadOnly = True
@@ -1303,7 +1303,7 @@ object Form16: TForm16
             OnGetEditMask = StringGrid10GetEditMask
             ColWidths = (
               45
-              364
+              354
               60
               68
               68
@@ -1330,8 +1330,8 @@ object Form16: TForm16
         end
         object TabSheet8: TTabSheet
           Caption = '      2.Календарный план     '
-          ClientHeight = 546
-          ClientWidth = 807
+          ClientHeight = 525
+          ClientWidth = 811
           OnEnter = TabSheet8Enter
           object GroupBox8: TGroupBox
             Left = 7
@@ -1713,8 +1713,8 @@ object Form16: TForm16
         end
         object TabSheet9: TTabSheet
           Caption = '   3.Льготы и Услуги   '
-          ClientHeight = 546
-          ClientWidth = 807
+          ClientHeight = 525
+          ClientWidth = 811
           OnEnter = TabSheet9Enter
           object Bevel4: TBevel
             Left = 16
@@ -2039,12 +2039,11 @@ object Form16: TForm16
         AnchorSideTop.Control = ComboBox4
         AnchorSideTop.Side = asrBottom
         AnchorSideBottom.Control = GroupBox2
-        Left = 5
-        Height = 385
+        Left = 3
+        Height = 353
         Top = 43
         Width = 311
-        Anchors = [akTop, akLeft, akBottom]
-        BorderSpacing.Left = 5
+        BorderSpacing.Left = 3
         BorderSpacing.Top = 7
         BorderSpacing.Bottom = 2
         Columns = <        
@@ -2086,6 +2085,7 @@ object Form16: TForm16
         OnButtonClick = StringGrid6ButtonClick
         OnSelection = StringGrid6Selection
         OnSetCheckboxState = StringGrid6SetCheckboxState
+        OnSetEditText = StringGrid6SetEditText
         ColWidths = (
           43
           128
@@ -2145,17 +2145,20 @@ object Form16: TForm16
       end
       object GroupBox2: TGroupBox
         AnchorSideLeft.Control = TabSheet6
+        AnchorSideTop.Control = Panel1
+        AnchorSideTop.Side = asrBottom
         AnchorSideBottom.Control = TabSheet6
         AnchorSideBottom.Side = asrBottom
         Left = 5
-        Height = 132
-        Top = 430
+        Height = 135
+        Top = 427
         Width = 311
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 5
+        BorderSpacing.Top = 3
         BorderSpacing.Bottom = 3
-        Caption = 'Фискированный тариф перевозчика:'
-        ClientHeight = 112
+        Caption = 'ТАРИФНЫЙ КОЭФФИЦИЕНТ;'
+        ClientHeight = 118
         ClientWidth = 307
         Enabled = False
         Font.Height = -13
@@ -2311,14 +2314,20 @@ object Form16: TForm16
         end
       end
       object Panel1: TPanel
-        Left = 240
-        Height = 90
-        Top = 208
-        Width = 552
-        Caption = 'Подождите !!!  Идет расчет тарифа...'
-        Color = clYellow
-        Font.Color = clBlue
-        Font.Height = -19
+        AnchorSideLeft.Control = StringGrid6
+        AnchorSideTop.Control = StringGrid6
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = StringGrid6
+        AnchorSideRight.Side = asrBottom
+        Left = 3
+        Height = 26
+        Top = 398
+        Width = 311
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'ИСПОЛЬЗУЕТСЯ ФИКСИРОВАННЫЙ ТАРИФ!'
+        Color = clRed
+        Font.Color = clBlack
+        Font.Height = -13
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
@@ -2496,7 +2505,7 @@ object Form16: TForm16
         BorderSpacing.Right = 10
         BorderSpacing.Bottom = 10
         Caption = 'Последние изменения:'
-        ClientHeight = 518
+        ClientHeight = 515
         ClientWidth = 650
         TabOrder = 3
         object StringGrid4: TStringGrid
