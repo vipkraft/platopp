@@ -285,12 +285,12 @@ object Form9: TForm9
     OnEnter = StringGrid1Enter
     OnMouseDown = StringGrid1MouseDown
     ColWidths = (
-      49
-      133
-      269
-      184
-      137
-      139
+      55
+      64
+      271
+      223
+      157
+      155
       80
     )
     Cells = (
@@ -300,7 +300,7 @@ object Form9: TForm9
       '№ н\п'
       1
       0
-      'Группа'
+      'ЕКОП'
       2
       0
       'Остановочный пункт'

@@ -17,13 +17,92 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="75"/>
+      <BuildNr Value="76"/>
       <Language Value="0419"/>
       <CharSet Value="04B0"/>
       <StringTable ProductVersion="1.0.1.60"/>
     </VersionInfo>
-    <BuildModes Count="1" Active="Default">
+    <BuildModes Count="3" Active="Release">
       <Item1 Name="Default" Default="True"/>
+      <Item2 Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="platopp"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <IncludeAssertionCode Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+          </Linking>
+          <Other>
+            <Verbosity>
+              <ShowWarn Value="False"/>
+              <ShowNotes Value="False"/>
+              <ShoLineNum Value="True"/>
+              <ShowDebugInfo Value="True"/>
+            </Verbosity>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="platopp"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <Verbosity>
+              <ShowWarn Value="False"/>
+              <ShowNotes Value="False"/>
+              <ShoLineNum Value="True"/>
+              <ShowDebugInfo Value="True"/>
+            </Verbosity>
+          </Other>
+        </CompilerOptions>
+      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -63,7 +142,7 @@
         <PackageName Value="LCL"/>
       </Item8>
     </RequiredPackages>
-    <Units Count="68">
+    <Units Count="67">
       <Unit0>
         <Filename Value="platopp.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -78,8 +157,8 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="280"/>
-        <CursorPos X="20" Y="293"/>
+        <TopLine Value="279"/>
+        <CursorPos X="25" Y="303"/>
         <UsageCount Value="205"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -98,7 +177,7 @@
       <Unit3>
         <Filename Value="platproc.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="15"/>
         <TopLine Value="503"/>
         <CursorPos X="45" Y="521"/>
         <UsageCount Value="215"/>
@@ -159,10 +238,12 @@
         <ComponentName Value="Form9"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="450"/>
-        <CursorPos X="15" Y="460"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="134"/>
+        <CursorPos X="79" Y="148"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="point_edit.pas"/>
@@ -170,10 +251,13 @@
         <ComponentName Value="Form10"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="137"/>
-        <CursorPos X="36" Y="148"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="14"/>
+        <TopLine Value="76"/>
+        <CursorPos X="3" Y="89"/>
         <UsageCount Value="204"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="group.pas"/>
@@ -226,8 +310,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="456"/>
-        <CursorPos X="57" Y="471"/>
+        <TopLine Value="105"/>
+        <CursorPos X="24" Y="119"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -347,7 +431,8 @@
         <ComponentName Value="Formtarif_edit"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="17"/>
+        <TopLine Value="1159"/>
         <CursorPos X="27" Y="1186"/>
         <UsageCount Value="200"/>
         <Bookmarks Count="5">
@@ -597,7 +682,7 @@
         <ComponentName Value="Form_servers"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="16"/>
         <TopLine Value="128"/>
         <CursorPos X="29" Y="144"/>
         <UsageCount Value="215"/>
@@ -610,7 +695,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="40"/>
+        <TopLine Value="91"/>
         <CursorPos X="57" Y="119"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
@@ -705,7 +790,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="11" Y="10"/>
-        <UsageCount Value="186"/>
+        <UsageCount Value="181"/>
       </Unit57>
       <Unit58>
         <Filename Value="astradno.pas"/>
@@ -714,7 +799,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="11"/>
-        <UsageCount Value="294"/>
+        <UsageCount Value="289"/>
       </Unit58>
       <Unit59>
         <Filename Value="/usr/lib/lazarus/lcl/graphics.pp"/>
@@ -722,7 +807,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="49"/>
         <CursorPos X="25" Y="63"/>
-        <UsageCount Value="65"/>
+        <UsageCount Value="60"/>
       </Unit59>
       <Unit60>
         <Filename Value="spr_shed_kontr.pas"/>
@@ -743,171 +828,164 @@
         <ComponentName Value="Form29"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
-        <TopLine Value="107"/>
-        <CursorPos X="79" Y="118"/>
-        <UsageCount Value="182"/>
+        <TopLine Value="73"/>
+        <CursorPos X="10" Y="85"/>
+        <UsageCount Value="216"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit61>
       <Unit62>
-        <Filename Value="../lazarus/fpc-3.0.4/packages/rtl-extra/src/inc/socketsh.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="149"/>
-        <CursorPos X="11" Y="156"/>
-        <UsageCount Value="2"/>
-      </Unit62>
-      <Unit63>
         <Filename Value="../lazarus/fpc-3.0.4/packages/libc/src/nifh.inc"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="5"/>
-      </Unit63>
-      <Unit64>
+        <UsageCount Value="10"/>
+      </Unit62>
+      <Unit63>
         <Filename Value="../lazarus/fpc-3.0.4/packages/rtl-extra/src/linux/unxsockh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="3" Y="21"/>
-        <UsageCount Value="5"/>
-      </Unit64>
-      <Unit65>
+        <UsageCount Value="10"/>
+      </Unit63>
+      <Unit64>
         <Filename Value="../lazarus/fpc-3.0.4/packages/libc/src/aineth.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="10" Y="8"/>
-        <UsageCount Value="5"/>
-      </Unit65>
-      <Unit66>
+        <UsageCount Value="10"/>
+      </Unit64>
+      <Unit65>
         <Filename Value="../lazarus/fpc-3.0.4/packages/libc/src/libc.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="166"/>
         <CursorPos X="11" Y="191"/>
-        <UsageCount Value="5"/>
-      </Unit66>
-      <Unit67>
+        <UsageCount Value="10"/>
+      </Unit65>
+      <Unit66>
         <Filename Value="../lazarus/fpc-3.0.4/packages/fcl-net/src/cnetdb.pp"/>
         <UnitName Value="cNetDB"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="21" Y="269"/>
-        <UsageCount Value="5"/>
-      </Unit67>
+        <UsageCount Value="10"/>
+      </Unit66>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="2325" Column="24" TopLine="2310"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="372" Column="60" TopLine="371"/>
       </Position1>
       <Position2>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="2486" Column="42" TopLine="2462"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="373" Column="58" TopLine="368"/>
       </Position2>
       <Position3>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="2662" Column="59" TopLine="2638"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="372" Column="54" TopLine="366"/>
       </Position3>
       <Position4>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="2672" Column="42" TopLine="2648"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="375" Column="17" TopLine="362"/>
       </Position4>
       <Position5>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="4230" Column="39" TopLine="4206"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="57" Column="13" TopLine="50"/>
       </Position5>
       <Position6>
-        <Filename Value="spr_shed_kontr.pas"/>
-        <Caret Line="233" Column="10" TopLine="231"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="359" Column="3" TopLine="348"/>
       </Position6>
       <Position7>
-        <Filename Value="spr_shed_kontr.pas"/>
-        <Caret Line="110" Column="3" TopLine="98"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="357" Column="33" TopLine="329"/>
       </Position7>
       <Position8>
-        <Filename Value="spr_shed_kontr.pas"/>
-        <Caret Line="565" Column="31" TopLine="542"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="10" Column="26"/>
       </Position8>
       <Position9>
-        <Filename Value="shedule_main.pas"/>
-        <Caret Line="1616" Column="14" TopLine="1599"/>
+        <Filename Value="mainopp.pas"/>
+        <Caret Line="354" Column="25" TopLine="330"/>
       </Position9>
       <Position10>
-        <Filename Value="shedule_main.pas"/>
-        <Caret Line="6" Column="55"/>
+        <Filename Value="mainopp.pas"/>
       </Position10>
       <Position11>
-        <Filename Value="shedule_main.pas"/>
-        <Caret Line="228" Column="141" TopLine="204"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="197" Column="88" TopLine="186"/>
       </Position11>
       <Position12>
-        <Filename Value="shedule_main.pas"/>
-        <Caret Line="248" Column="130" TopLine="224"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="242" Column="63" TopLine="233"/>
       </Position12>
       <Position13>
-        <Filename Value="shedule_main.pas"/>
-        <Caret Line="392" Column="135" TopLine="368"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="363" Column="4" TopLine="349"/>
       </Position13>
       <Position14>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="4234" Column="11" TopLine="4215"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="13" Column="29" TopLine="70"/>
       </Position14>
       <Position15>
-        <Filename Value="shedule_edit.pas"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="414" Column="81" TopLine="399"/>
       </Position15>
       <Position16>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1679" Column="79" TopLine="1655"/>
+        <Filename Value="pdp_destination_points.pas"/>
       </Position16>
       <Position17>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1714" Column="79" TopLine="1690"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="414" Column="25" TopLine="391"/>
       </Position17>
       <Position18>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1900" Column="72" TopLine="1875"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="452" Column="25" TopLine="429"/>
       </Position18>
       <Position19>
-        <Filename Value="shedule_edit.pas"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="520" Column="31" TopLine="497"/>
       </Position19>
       <Position20>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="345" Column="18" TopLine="320"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="529" Column="28" TopLine="506"/>
       </Position20>
       <Position21>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1702" Column="14" TopLine="1663"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="537" Column="28" TopLine="514"/>
       </Position21>
       <Position22>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1734" Column="38" TopLine="1710"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="557" Column="31" TopLine="534"/>
       </Position22>
       <Position23>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1699" Column="22" TopLine="1676"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="564" Column="28" TopLine="541"/>
       </Position23>
       <Position24>
-        <Filename Value="shedule_edit.pas"/>
-        <Caret Line="1775" Column="29" TopLine="1767"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="571" Column="28" TopLine="548"/>
       </Position24>
       <Position25>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="117" Column="36" TopLine="103"/>
+        <Caret Line="592" Column="24" TopLine="569"/>
       </Position25>
       <Position26>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="434" Column="7" TopLine="423"/>
+        <Caret Line="774" Column="25" TopLine="755"/>
       </Position26>
       <Position27>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="117" Column="25" TopLine="103"/>
+        <Caret Line="596" Column="28" TopLine="583"/>
       </Position27>
       <Position28>
-        <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="434" Column="16" TopLine="420"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="363" Column="2" TopLine="345"/>
       </Position28>
       <Position29>
-        <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="95" Column="19" TopLine="81"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="362" Column="37" TopLine="348"/>
       </Position29>
       <Position30>
-        <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="165" Column="20" TopLine="152"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="360" Column="38" TopLine="348"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

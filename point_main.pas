@@ -134,19 +134,28 @@ begin
      end;
    //запрос списка
    ZQuery1.SQL.Clear;
-   ZQuery1.SQL.add('SELECT * FROM (select a.id,a.name ');
-   ZQuery1.SQL.add(',(select b.name from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as locality ');
-   ZQuery1.SQL.add(',(select b.rajon from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as rajon ');
-   ZQuery1.SQL.add(',(select b.region from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as region ');
-   ZQuery1.SQL.add(',(select b.land from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as land ');
-   ZQuery1.SQL.add(',(select c.name from av_spr_point_group c where c.id=a.id_group order by c.del asc,c.createdate desc limit 1) as name_group ');
+   ZQuery1.SQL.add('SELECT * FROM (select a.id, a.createdate, trim(a.name) pname ');
+   ZQuery1.SQL.add(',(select trim(b.name) from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as locality ');
+   ZQuery1.SQL.add(',(select trim(b.rajon) from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as rajon ');
+   ZQuery1.SQL.add(',(select trim(b.region) from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as region ');
+   ZQuery1.SQL.add(',(select trim(b.land) from av_spr_locality b where b.id=a.kod_locality order by del asc,createdate desc limit 1) as land ');
+   //ZQuery1.SQL.add(',(select c.name from av_spr_point_group c where c.id=a.id_group order by c.del asc,c.createdate desc limit 1) as name_group ');
+   ZQuery1.SQL.add(',(SELECT id_dest FROM av_pdp_dest_point b where b.id_point=a.id order by del asc,createdate desc limit 1) as iddest ');
    ZQuery1.SQL.add('from av_spr_point a ');
    ZQuery1.SQL.add('where a.del=0 ) z ');
    if (stroka<>'') and (filter_type=2)
-     then ZQuery1.SQL.add('WHERE z.name ilike '+quotedstr(stroka+'%')+' OR z.locality ilike '+quotedstr(stroka+'%')+' OR z.rajon ilike '+quotedstr(stroka+'%')+' OR z.region ilike '+quotedstr(stroka+'%')+' OR z.land ilike '+quotedstr(stroka+'%'));
-   if (stroka<>'') and (filter_type=1) then ZQuery1.SQL.add('WHERE z.id='+stroka);
-     //showmessage(ZQuery1.SQL.Text);//$
-   ZQuery1.SQL.add('ORDER BY z.name;');
+     then begin
+       ZQuery1.SQL.add('WHERE z.pname ilike '+quotedstr(stroka+'%')+' OR z.locality ilike '+quotedstr(stroka+'%')+' OR z.land ilike '+quotedstr(stroka+'%'));
+       //ZQuery1.SQL.add(+' OR z.rajon ilike '+quotedstr(stroka+'%')+' OR z.region ilike '+quotedstr(stroka+'%'));
+     end;
+   if (stroka<>'') and (filter_type=1) then ZQuery1.SQL.add('WHERE z.id='+stroka +' OR z.iddest='+stroka);
+
+   if (stroka='') then
+      ZQuery1.SQL.add('ORDER BY z.createdate desc;')
+   else
+     ZQuery1.SQL.add('ORDER BY z.pname asc;');
+
+      //showmessage(ZQuery1.SQL.Text);//$
   try
    ZQuery1.open;
   except
@@ -166,8 +175,9 @@ begin
    for n:=1 to form9.ZQuery1.RecordCount do
     begin
       form9.StringGrid1.Cells[0,n]:=form9.ZQuery1.FieldByName('id').asString;
-      form9.StringGrid1.Cells[1,n]:=form9.ZQuery1.FieldByName('name_group').asString;
-      form9.StringGrid1.Cells[2,n]:=form9.ZQuery1.FieldByName('name').asString;
+      form9.StringGrid1.Cells[1,n]:=form9.ZQuery1.FieldByName('iddest').asString;
+      //form9.StringGrid1.Cells[1,n]:=form9.ZQuery1.FieldByName('name_group').asString;
+      form9.StringGrid1.Cells[2,n]:=form9.ZQuery1.FieldByName('pname').asString;
       form9.StringGrid1.Cells[3,n]:=form9.ZQuery1.FieldByName('locality').asString;
       form9.StringGrid1.Cells[4,n]:=form9.ZQuery1.FieldByName('rajon').asString;
       form9.StringGrid1.Cells[5,n]:=form9.ZQuery1.FieldByName('region').asString;

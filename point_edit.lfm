@@ -1,16 +1,16 @@
 object Form10: TForm10
-  Left = 422
+  Left = 353
   Height = 768
-  Top = 203
+  Top = 169
   Width = 1024
   Caption = 'Создание\Редактирование остановочных пунктов'
   ClientHeight = 768
   ClientWidth = 1024
-  Font.Height = -12
+  Font.Height = -13
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
     Height = 45
@@ -251,13 +251,12 @@ object Form10: TForm10
     }
   end
   object BitBtn3: TBitBtn
-    Left = 796
-    Height = 25
+    Left = 784
+    Height = 28
     Hint = 'Сохранить'
-    Top = 707
+    Top = 720
     Width = 107
     Caption = 'Сохранить'
-    Font.Height = -11
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       20000000000000040000640000006400000000000000000000001D1B1AB1201F
@@ -295,17 +294,15 @@ object Form10: TForm10
       A7FFB3B3A7FFB3B3A7FFB3B3A7FF201F1EFF514C4AC7514C4A2C
     }
     OnClick = BitBtn3Click
-    ParentFont = False
-    TabOrder = 14
+    TabOrder = 13
   end
   object BitBtn4: TBitBtn
-    Left = 909
-    Height = 25
+    Left = 897
+    Height = 28
     Hint = 'Сохранить'
-    Top = 707
+    Top = 720
     Width = 107
     Caption = 'Отмена'
-    Font.Height = -11
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000000000060000
@@ -343,14 +340,13 @@ object Form10: TForm10
       D8B30F67D74EFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
     OnClick = BitBtn4Click
-    ParentFont = False
-    TabOrder = 15
+    TabOrder = 14
   end
   object Label2: TLabel
-    Left = 18
-    Height = 14
-    Top = 53
-    Width = 140
+    Left = 40
+    Height = 15
+    Top = 57
+    Width = 155
     Caption = '№ остановочного пункта'
     ParentColor = False
   end
@@ -366,16 +362,17 @@ object Form10: TForm10
     WordWrap = True
   end
   object Edit1: TEdit
-    Left = 184
+    Left = 208
     Height = 22
-    Top = 51
+    Top = 53
     Width = 137
     Alignment = taRightJustify
     AutoSize = False
-    Enabled = False
+    AutoSelect = False
     Font.Height = -16
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
+    ReadOnly = True
     TabStop = False
     TabOrder = 1
   end
@@ -387,62 +384,62 @@ object Form10: TForm10
     Font.Height = -11
     ParentFont = False
     ReadOnly = True
-    TabOrder = 6
+    TabOrder = 5
   end
   object Label5: TLabel
     Left = 36
-    Height = 14
+    Height = 15
     Top = 188
-    Width = 38
+    Width = 44
     Caption = 'Страна'
     ParentColor = False
   end
   object Label6: TLabel
     Left = 38
-    Height = 14
+    Height = 15
     Top = 222
-    Width = 39
+    Width = 43
     Caption = 'Регион'
     ParentColor = False
   end
   object Label7: TLabel
     Left = 44
-    Height = 14
+    Height = 15
     Top = 258
-    Width = 34
+    Width = 38
     Caption = 'Район'
     ParentColor = False
   end
   object Edit3: TEdit
-    Left = 86
-    Height = 24
+    Left = 87
+    Height = 25
     Top = 186
     Width = 191
     ReadOnly = True
-    TabOrder = 8
+    TabOrder = 7
   end
   object Edit4: TEdit
     Left = 87
-    Height = 24
+    Height = 25
     Top = 219
     Width = 257
     ReadOnly = True
-    TabOrder = 9
+    TabOrder = 8
   end
   object Edit5: TEdit
-    Left = 86
-    Height = 24
+    Left = 87
+    Height = 25
     Top = 255
     Width = 257
     ReadOnly = True
-    TabOrder = 11
+    TabOrder = 10
   end
   object BitBtn6: TBitBtn
     Left = 602
-    Height = 22
+    Height = 25
     Hint = 'Выбор из имеющихся данных'
     Top = 139
-    Width = 24
+    Width = 28
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -480,32 +477,24 @@ object Form10: TForm10
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
     OnClick = BitBtn6Click
-    TabOrder = 2
+    TabOrder = 3
     TabStop = False
   end
-  object Shape1: TShape
-    Left = 658
-    Height = 1
-    Top = 117
-    Width = 291
-    Brush.Color = clRed
-    Pen.Color = clRed
-  end
   object Label10: TLabel
-    Left = 188
-    Height = 9
-    Top = 72
-    Width = 108
+    Left = 212
+    Height = 10
+    Top = 74
+    Width = 120
     Caption = 'Заполняется автоматически'
-    Font.Height = -8
+    Font.Height = -9
     ParentColor = False
     ParentFont = False
   end
   object Label12: TLabel
     Left = 24
-    Height = 14
-    Top = 688
-    Width = 125
+    Height = 15
+    Top = 704
+    Width = 137
     Caption = 'Последняя редакция: -'
     ParentColor = False
   end
@@ -527,7 +516,7 @@ object Form10: TForm10
     Width = 390
     Font.Height = -11
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 4
   end
   object Shape7: TShape
     Left = 208
@@ -538,20 +527,20 @@ object Form10: TForm10
     Pen.Color = clRed
   end
   object Edit7: TEdit
-    Left = 347
-    Height = 24
+    Left = 348
+    Height = 25
     Top = 219
     Width = 133
     ReadOnly = True
-    TabOrder = 10
+    TabOrder = 9
   end
   object Edit8: TEdit
-    Left = 632
-    Height = 24
+    Left = 636
+    Height = 25
     Top = 139
     Width = 201
     ReadOnly = True
-    TabOrder = 7
+    TabOrder = 6
   end
   object Shape8: TShape
     Left = 208
@@ -561,68 +550,126 @@ object Form10: TForm10
     Brush.Color = clRed
     Pen.Color = clRed
   end
-  object Label9: TLabel
-    Left = 606
-    Height = 14
-    Top = 96
-    Width = 39
-    Caption = 'Группа'
-    ParentColor = False
-  end
   object GroupBox1: TGroupBox
     Left = 18
-    Height = 168
+    Height = 253
     Top = 295
     Width = 992
     Caption = 'Реквизиты остановочного пункта'
-    ClientHeight = 152
+    ClientHeight = 236
     ClientWidth = 988
-    TabOrder = 12
+    TabOrder = 11
     object Label11: TLabel
-      Left = 27
-      Height = 14
-      Top = 14
-      Width = 44
+      Left = 30
+      Height = 15
+      Top = 15
+      Width = 49
       Caption = 'ОКТМО:'
       ParentColor = False
     end
     object Edit9: TEdit
-      Left = 81
-      Height = 24
+      Left = 91
+      Height = 25
       Top = 11
-      Width = 295
+      Width = 254
       TabOrder = 0
     end
     object Label13: TLabel
-      Left = 27
-      Height = 14
+      Left = 18
+      Height = 15
       Top = 58
-      Width = 159
-      Caption = 'Владелец Ф.И.О\Должность:'
+      Width = 61
+      Caption = 'Владелец:'
       ParentColor = False
     end
     object Edit10: TEdit
-      Left = 223
-      Height = 24
-      Top = 55
-      Width = 760
+      Left = 91
+      Height = 25
+      Top = 54
+      Width = 879
       TabOrder = 1
     end
     object Label14: TLabel
-      Left = 27
-      Height = 14
-      Top = 100
-      Width = 33
+      Left = 43
+      Height = 15
+      Top = 104
+      Width = 36
       Caption = 'Адрес'
       ParentColor = False
     end
     object Edit11: TEdit
-      Left = 73
-      Height = 45
+      Left = 91
+      Height = 35
       Top = 97
-      Width = 910
+      Width = 879
       AutoSize = False
+      TabOrder = 3
+    end
+    object Label17: TLabel
+      Left = 9
+      Height = 40
+      Top = 184
+      Width = 70
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Почтовый ориентир'
+      ParentColor = False
+      WordWrap = True
+    end
+    object Edit13: TEdit
+      Left = 91
+      Height = 35
+      Top = 184
+      Width = 879
+      AutoSize = False
+      TabOrder = 4
+    end
+    object BitBtn7: TBitBtn
+      Left = 91
+      Height = 25
+      Hint = 'Выбор из имеющихся данных'
+      Top = 144
+      Width = 209
+      Caption = 'Скопировать адрес'
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000000F7B2AFF000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000107C2BFF0E7B29FF0D7A27FF0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000127E2DFF107D2BFF0E7B28FF0C7A27FF0B79
+        26FF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000014802EFF127F2DFF107E2BFF0E7C29FF0C7A27FF0B79
+        26FF0A7925FF0000000000000000000000000000000000000000000000000000
+        000000000000168231FF15812FFF13802DFF107F2BFF0E7D29FF0C7B27FF0B7A
+        26FF0B7926FF0B7926FF00000000000000000000000000000000000000000000
+        0000178332FF178331FF158330FF13822EFF11802CFF0F7E2AFF0D7D29FF0C7B
+        27FF0C7A27FF0C7A27FF0D7A28FF000000000000000000000000000000000000
+        000000000000000000000000000014832FFF12812DFF10802CFF0F7E2AFF0E7C
+        29FF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000158430FF13822EFF12812DFF107F2BFF0F7E
+        2AFF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000158430FF14832FFF13822EFF12802DFF117E
+        2CFF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000168531FF158430FF14822FFF14812EFF137F
+        2DFF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000178532FF168431FF168330FF158130FF1480
+        2FFF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000188532FF178432FF178331FF178231FF1680
+        30FF000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      OnClick = BitBtn7Click
       TabOrder = 2
+      TabStop = False
     end
   end
   object StaticText1: TStaticText
@@ -639,64 +686,10 @@ object Form10: TForm10
     ParentColor = False
     TabOrder = 0
   end
-  object BitBtn7: TBitBtn
-    Left = 954
-    Height = 22
-    Hint = 'Выбор из имеющихся данных'
-    Top = 94
-    Width = 24
-    Glyph.Data = {
-      36040000424D3604000000000000360000002800000010000000100000000100
-      2000000000000004000064000000640000000000000000000000676767004E4E
-      4E0A4E4E4E245050503150505032505050325050503250505032505050325050
-      503250505032505050324F4F4F2E4D4D4C175454530351515000FFFFFF007575
-      7643808080A87F7F80B77F7F80B77F7F80B77F7F80B77F7F80B77F7F80B77F7F
-      80B77F7F7FB77F7F7FB7808080B47D7D7D82686868116F6F7000F7F7F8008D8D
-      8E84BFBFBFFFBFBFBFFFBDBDBEFFC1C1C1FFC0C0C0FFC4C4C4FFC2C2C2FFC1C1
-      C1FFC5C5C5FFC4C4C4FFC7C7C7FFA9A9AAE36C6C6D227B7B7B00FFFFFF009595
-      9586C7C7C7FFA3A3A3FF9D9D9DFFA8A8A8FFA6A6A6FFBFBFBFFFA1A1A1FFABAB
-      ABFFCDCDCDFFCECECEFFD5D5D5FFB4B4B4E56D6D6E237E7E7F00FFFFFF009797
-      9886CCCCCCFFB9B9B8FFC6C6C6FFCCCCCCFFCBCBCBFFD4D4D4FFC7C7C7FFD4D4
-      D4FFDADADAFFD8D8D8FFD9D9D9FFB7B7B7E57070712381818200FFFFFF009C9C
-      9C86CECECEFFA9A9A9FFA4A4A4FFB3B3B3FFAAAAAAFFD8D8D8FFE1E1E1FFDFDF
-      DFFFDEDEDEFFDDDDDDFFDDDDDDFFBBBBBBE57474752385858600FFFFFF009F9F
-      A086D3D3D3FFC4C4C4FFD4D4D4FFDADADAFFD9D9D9FFE0E0E0FFE1E1E1FFE0E0
-      E0FFDFDFDFFFDEDEDEFFDFDFDFFFBFBFBFE57878782389898A00FFFFFF00A3A3
-      A486D8D8D8FFDDDDDDFFDADADAFFDDDDDDFFDFDFDFFFDFDFDFFFDEDEDEFFDDDD
-      DDFFDCDCDCFFDBDBDBFFDDDDDDFFC2C2C2E57C7C7D238E8E8E00FFFFFF00A7A7
-      A886DEDEDEFFD2D2D2FFBEBEBEFFBEBEBEFFC9C9C9FFCDCDCDFFDBDBDBFFE6E6
-      E6FFEDEDEDFFECECECFFECECECFFC7C7C7E57F7F7F2392929200FFFFFF00ACAC
-      AC86E0E0E0FFC9C9C9FFC5C5C5FFC6C6C6FFCECECEFFCECECEFFE8E8E8FFEFEF
-      EFFFF1F1F1FFF0F0F0FFF0F0F0FFCBCBCBE58383832396969600FFFFFF00B0B0
-      B086E6E6E6FFD5D5D5FFC4C4C4FFCBCBCBFFD0D0D0FFE5E5E5FFEFEFEFFFF7F7
-      F7FFF6F6F6FFF6F6F6FFF6F6F6FFCFCFD0E5868686239A9A9A00FFFFFF00B4B4
-      B584E9E9E9FFC7C7C7FFC1C1C1FFD0D0D0FFD3D3D3FFF3F3F3FFF9F9F9FFFCFC
-      FCFFFBFBFBFFFBFBFBFFFCFCFCFFD4D4D4E58B8B8C219F9F9F00D7D5D400B8B6
-      B580E9EAEBFFEFF0F2FFF2F2F4FFF5F6F8FFF5F6F8FFF4F5F7FFF4F4F4FFF3F3
-      F3FFF3F3F3FFF3F3F3FFF4F4F4FFD3D3D3E09797971CA6A6A600C79E6B00C395
-      5F7ED0B586FFD2B987FFD2B887FFD2B887FFD2B989FFCBAF87F1BEB5AC8DBDBD
-      BE7EBDBDBD7FBDBDBD7FBDBDBD80B6B6B661A5A5A508AAAAAA00DEA44B00D997
-      3A7EEDC673FFF0CC76FFF0CC76FFF0CC75FFF1CD79FFE3B05AE3CB77111BD184
-      2200000000000000000000000000000000000000000000000000E1A74800DE9F
-      3B6CE9BD68FDEBC270FFEBC270FFEBC270FFEBC370FFE4B054D1D5891A15D993
-      2A00000000000000000000000000000000000000000000000000
-    }
-    OnClick = BitBtn7Click
-    TabOrder = 5
-    TabStop = False
-  end
-  object Edit12: TEdit
-    Left = 658
-    Height = 24
-    Top = 94
-    Width = 291
-    ReadOnly = True
-    TabOrder = 4
-  end
   object Image3: TImage
-    Left = 26
+    Left = 24
     Height = 19
-    Top = 714
+    Top = 736
     Width = 17
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869638A0D000089504E47
@@ -812,47 +805,92 @@ object Form10: TForm10
     }
   end
   object Label4: TLabel
-    Left = 47
+    Left = 45
     Height = 13
-    Top = 715
+    Top = 737
     Width = 59
     Caption = 'F1-Помощь'
     Font.Height = -11
     ParentColor = False
     ParentFont = False
   end
-  object Shape10: TShape
-    Left = 658
-    Height = 1
-    Top = 115
-    Width = 291
-    Brush.Color = clRed
-    Pen.Color = clRed
-  end
   object Label16: TLabel
-    Left = 18
-    Height = 14
-    Top = 524
-    Width = 77
+    Left = 381
+    Height = 15
+    Top = 57
+    Width = 85
     Caption = 'Часовой пояс'
     ParentColor = False
   end
   object SpinEdit1: TSpinEdit
-    Left = 102
-    Height = 24
-    Top = 520
+    Left = 477
+    Height = 25
+    Top = 53
     Width = 41
     MaxValue = 24
     MinValue = -24
-    TabOrder = 13
+    TabOrder = 12
   end
-  object Shape9: TShape
-    Left = 658
-    Height = 2
-    Top = 115
-    Width = 291
-    Brush.Color = clRed
-    Pen.Color = clRed
+  object Edit12: TEdit
+    Left = 111
+    Height = 25
+    Top = 569
+    Width = 201
+    TabOrder = 15
+  end
+  object Label15: TLabel
+    Left = 63
+    Height = 15
+    Top = 573
+    Width = 37
+    Caption = 'ЕКОП:'
+    ParentColor = False
+  end
+  object BitBtn8: TBitBtn
+    Left = 320
+    Height = 25
+    Hint = 'Выбор из имеющихся данных'
+    Top = 568
+    Width = 28
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00000000380000
+      0038000000380000003800000038000000380000003800000038000000380000
+      003800000038000000380000003800000038FFFFFF00FFFFFF0092674C5DD9A1
+      7BFDD3936CFDD3936CFDD3936CFDD3936CFDD3936CFDD3936CFDD3936CFDD393
+      6CFDD3936CFDD3936CFDCE8E68FA432E2133FFFFFF00FFFFFF00D69A74FFF0C8
+      A3FFEEB189FFF0B78EFFF0B78EFFF0B78EFFF0B78EFFF0B78EFFF0B78EFFF0B7
+      8EFFF0B78EFFF0B78EFFEEB58DFFCC8D68A9FFFFFF00FFFFFF00D69A74FFE2B4
+      90FFEFB48BFFEEAD83FFEEAD83FFEEAD83FFEEAD83FFEEAD83FFEEAD83FFEEAD
+      83FFEEAD83FFEEAD83FFEEAD83FFD4956EE9FFFFFF00FFFFFF00D79A75FFC08B
+      66FFF1C69FFFEFB187FFEFB187FFEFB187FFEFB187FFEFB187FFEFB187FFEFB1
+      87FFEFB187FFEFB187FFEFB187FFE7A980FFC98B6566FFFFFF00D79B75FFC894
+      6EFFEABD98FFF1B68CFFF1B58AFFF1B58AFFF1B58AFFF1B58AFFF1B58AFFF1B5
+      8AFFF1B58AFFF1B58AFFF1B58AFFF1B58AFFD2956EC6FFFFFF00D89B75FFD19E
+      77FFD49A74FFF4C8A1FFF3B88DFFF3B88DFFF3B88DFFF3B88DFFF3B88DFFF3B8
+      8DFFF3B88DFFF3B88DFFF3B88DFFF3B88DFFE2A77EF9C588622ED89C76FFE2B0
+      87FFD99E76FFD99E76FFFFFAF1FFF6DBB8FFF6DBB8FFF6DBB8FFF6DBB8FFF6DB
+      B8FFF6DBB8FFF6DBB8FFF6DBB8FFF6DBB8FFF6DBB8FF9E603F4DD99C76FFE8B8
+      8DFFE6AC83FFD49A74FFD49A74FFD49A74FFD49A74FFD49A74FFD49A74FFD49A
+      74FFD49A74FFD49A74FFD99F77FFA56745609E603F439E603F1DDA9D77FFF1C4
+      9AFFF6BD92FFF6BD92FFF6BD92FFF6BD92FFF6CFA9FFF6CFA9FFF6CFA9FFF6CB
+      A4FFF6CBA4FFF6C8A0FFE7AE85FFC2856019FFFFFF009E603F05DA9D77FFFEF7
+      EBFFF6DBB8FFF6DBB8FFF6DBB8FFF3D7B4FFDDAD8FFFDDAD8FFFDDAD8FFFDDAD
+      8FFFDDAD8FFFDDAD8FFFDDAD8FFFBB7F5B06FFFFFF00FFFFFF00E3A781A1DDAD
+      8FFFDDAD8FFFDDAD8FFFDDAD8FFFDDAD8FFF9E603F01FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = BitBtn8Click
+    TabOrder = 2
+    TabStop = False
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -869,7 +907,7 @@ object Form10: TForm10
   object ZQuery1: TZQuery
     Connection = ZConnection1
     Params = <>
-    left = 246
-    top = 702
+    left = 296
+    top = 705
   end
 end

@@ -6,7 +6,9 @@ interface
 
 uses
   Classes, SysUtils, ZConnection, ZDataset, LazFileUtils, Forms, Controls, Graphics,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, Grids, MaskEdit, Spin,platproc;
+  Dialogs, StdCtrls, Buttons, ExtCtrls, Grids, MaskEdit, Spin,
+  pdp_destination_points,
+  platproc;
 
 type
 
@@ -17,10 +19,12 @@ type
     BitBtn4: TBitBtn;
     BitBtn6: TBitBtn;
     BitBtn7: TBitBtn;
+    BitBtn8: TBitBtn;
     Edit1: TEdit;
     Edit10: TEdit;
     Edit11: TEdit;
     Edit12: TEdit;
+    Edit13: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
     Edit4: TEdit;
@@ -37,7 +41,9 @@ type
     Label12: TLabel;
     Label13: TLabel;
     Label14: TLabel;
+    Label15: TLabel;
     Label16: TLabel;
+    Label17: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -45,12 +51,8 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    Label9: TLabel;
-    Shape1: TShape;
-    Shape10: TShape;
     Shape7: TShape;
     Shape8: TShape;
-    Shape9: TShape;
     SpinEdit1: TSpinEdit;
     StaticText1: TStaticText;
     ZConnection1: TZConnection;
@@ -59,6 +61,7 @@ type
     procedure BitBtn4Click(Sender: TObject);
     procedure BitBtn6Click(Sender: TObject);
     procedure BitBtn7Click(Sender: TObject);
+    procedure BitBtn8Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
   private
@@ -69,7 +72,7 @@ type
 
 var
   Form10: TForm10;
-  id_locality,id_group,razbor:string;
+  id_locality,razbor:string;
 
 
 implementation
@@ -84,10 +87,9 @@ procedure TForm10.FormShow(Sender: TObject);
 begin
   with Form10 do
   begin
-  Centrform(Form10);
-  if flag_access=1 then  BitBtn3.Enabled:=false;
+   if flag_access=1 then BitBtn3.Enabled:=false;
   // Режим новой записи
-  if flag_edit_point=1 then
+   if flag_edit_point=1 then
    begin
    // Подключаемся к серверу
    If not(Connect2(Zconnection1, flagProfile)) then
@@ -98,7 +100,7 @@ begin
      end;
 
   //Определяем первую группу остановочных пунктов
-  id_group:='0';
+ { id_group:='0';
      // Определяем список групп
      Form10.ZQuery1.SQL.Clear;
      Form10.ZQuery1.SQL.add('Select id,name from av_spr_point_group where del=0 limit 1;');
@@ -115,7 +117,7 @@ begin
           Form10.edit12.text:=trim(Form10.ZQuery1.FieldByName('name').asString);
       end;
        ZQuery1.Close;
-
+  }
      // Определяем пользователя
      Form10.ZQuery1.SQL.Clear;
      Form10.ZQuery1.SQL.add('Select * from av_users where id='+inttostr(id_user)+';');
@@ -143,14 +145,26 @@ begin
      end;
    // Определяем пользователя
    Form10.ZQuery1.SQL.clear;
-   Form10.ZQuery1.SQL.add('select a.* ');
-   Form10.ZQuery1.SQL.add(',(select c.name from av_spr_point_group c where a.id_group=c.id order by c.del asc, createdate desc limit 1) as name_group ');
-   Form10.ZQuery1.SQL.add(',b.name as locality,b.rajon,b.region,b.land,b.typ_locality,b.typ_region ');
-   Form10.ZQuery1.SQL.add('from av_spr_point a ');
-   Form10.ZQuery1.SQL.add('left join av_spr_locality b ON a.kod_locality=b.id and b.del=0 ');
-   Form10.ZQuery1.SQL.add('where a.del=0  ');
-   Form10.ZQuery1.SQL.add('and a.id='+trim(form9.StringGrid1.Cells[0,form9.StringGrid1.row])+';');
-    //showmessage(ZQuery1.SQL.Text);//$
+   Form10.ZQuery1.SQL.add('   select ');
+   Form10.ZQuery1.SQL.add('case when btrim(adres)='''' then dlocation else btrim(adres) end as plocation ');
+Form10.ZQuery1.SQL.add(',case when btrim(fio_owner)='''' then downer else btrim(fio_owner) end as powner ');
+Form10.ZQuery1.SQL.add(',* ');
+Form10.ZQuery1.SQL.add(' FROM ( ');
+ Form10.ZQuery1.SQL.add('SELECT * ');
+Form10.ZQuery1.SQL.add(',(SELECT c.location FROM av_spr_destination c where c.idek=m.iddest limit 1) dlocation ');
+Form10.ZQuery1.SQL.add(',(SELECT c.owner FROM av_spr_destination c where c.idek=m.iddest limit 1) downer ');
+Form10.ZQuery1.SQL.add('FROM ( ');
+Form10.ZQuery1.SQL.add('select a.* ');
+Form10.ZQuery1.SQL.add(',trim(b.name) as locality,b.rajon,b.region,b.land,b.typ_locality,b.typ_region ');
+Form10.ZQuery1.SQL.add(',(SELECT trim(to_char(id_dest,''99999'')) FROM av_pdp_dest_point b where b.id_point=a.id order by del asc,createdate desc limit 1) as iddest ');
+Form10.ZQuery1.SQL.add('from av_spr_point a ');
+Form10.ZQuery1.SQL.add('left join av_spr_locality b ON a.kod_locality=b.id and b.del=0 ');
+Form10.ZQuery1.SQL.add('where a.del=0  ');
+Form10.ZQuery1.SQL.add('and a.id='+trim(form9.StringGrid1.Cells[0,form9.StringGrid1.row]));
+Form10.ZQuery1.SQL.add(') m ');
+Form10.ZQuery1.SQL.add(') z ');
+   //Form10.ZQuery1.SQL.add(',(select c.name from av_spr_point_group c where a.id_group=c.id order by c.del asc, createdate desc limit 1) as name_group ');
+ //showmessage(ZQuery1.SQL.Text);//$
    try
    ZQuery1.open;
   except
@@ -161,7 +175,7 @@ begin
    // Определяем текущие данные
    Form10.Edit1.Text:=Form10.ZQuery1.FieldByName('id').asString;
    Form10.Edit6.Text:=Form10.ZQuery1.FieldByName('name').asString;
-   Form10.edit12.Text:=Form10.ZQuery1.FieldByName('name_group').asString;
+   //Form10.edit12.Text:=Form10.ZQuery1.FieldByName('name_group').asString;
    Form10.Edit2.Text:=Form10.ZQuery1.FieldByName('locality').asString;
    Form10.Edit8.Text:=Form10.ZQuery1.FieldByName('typ_locality').asString;
    Form10.Edit3.Text:=Form10.ZQuery1.FieldByName('land').asString;
@@ -169,14 +183,17 @@ begin
    Form10.Edit7.Text:=Form10.ZQuery1.FieldByName('typ_region').asString;
    Form10.edit5.Text:=Form10.ZQuery1.FieldByName('rajon').asString;
    Form10.edit9.Text:=Form10.ZQuery1.FieldByName('owner').asString;
-   Form10.edit10.Text:=Form10.ZQuery1.FieldByName('fio_owner').asString;
-   Form10.edit11.Text:=Form10.ZQuery1.FieldByName('adres').asString;
-
-
+   //Form10.edit10.Text:=Form10.ZQuery1.FieldByName('fio_owner').asString;
+   //Form10.edit11.Text:=Form10.ZQuery1.FieldByName('adres').asString;
+   Form10.edit10.Text:=Form10.ZQuery1.FieldByName('powner').asString;
+   Form10.edit11.Text:=Form10.ZQuery1.FieldByName('plocation').asString;
    Form10.SpinEdit1.value:=Form10.ZQuery1.FieldByName('timering').asInteger;
+   Form10.edit12.Text:=Form10.ZQuery1.FieldByName('iddest').asString;
    tmp_id_user:=Form10.ZQuery1.FieldByName('id_user').asInteger;
    id_locality:=Form10.ZQuery1.FieldByName('kod_locality').asString;
-   id_group:=Form10.ZQuery1.FieldByName('id_group').asString;
+   Form10.edit13.Text:=Form10.ZQuery1.FieldByName('postadress').asString;
+
+   //id_group:=Form10.ZQuery1.FieldByName('id_group').asString;
    Form10.ZQuery1.SQL.Clear;
    Form10.ZQuery1.SQL.add('Select * from av_users where id='+inttostr(tmp_id_user));
    try
@@ -203,7 +220,7 @@ begin
   //Проверяем на наличие всех данных в полях ввода
   if (trim(Form10.Edit2.text)='') or
      (trim(Form10.Edit6.text)='')
-     or (trim(id_group)='')
+     //or (trim(id_group)='')
      then
       begin
        showmessagealt('Сохранение невозможно !!!'+#13+'Заполнены не все обязательные поля данных !');
@@ -250,15 +267,12 @@ begin
       end;
 
   //Определяем id населенного пункта и id группы
-  if trim(id_group)='' then id_group:='0';
+  //if trim(id_group)='' then id_group:='0';
    ZQuery1.SQL.Clear;
-   ZQuery1.SQL.add('INSERT INTO av_spr_point(name,kod_locality,owner,fio_owner,adres,id_group,timering,id_user,createdate,id_user_first,createdate_first,del,id) VALUES (');
+   ZQuery1.SQL.add('INSERT INTO av_spr_point(name,kod_locality,owner,fio_owner,adres,timering,postadress,id_user,createdate,id_user_first,createdate_first,del,id) VALUES (');
    ZQuery1.SQL.add(QuotedSTR(trim(Edit6.text))+','+trim(id_locality)+','+QuotedSTR(trim(Edit9.text))+','+QuotedSTR(trim(Edit10.text))+',');
-   ZQuery1.SQL.add(QuotedSTR(trim(Edit11.text))+','+trim(id_group)+',');
-
-
-   ZQuery1.SQL.add(inttostr(SpinEdit1.Value)+','+intToStr(id_user)+',now(),');
-
+   ZQuery1.SQL.add(QuotedSTR(trim(Edit11.text))+',');
+   ZQuery1.SQL.add(inttostr(SpinEdit1.Value)+','+QuotedSTR(trim(Edit13.text))+','+intToStr(id_user)+',now(),');
    //режим добавления
   if flag_edit_point=1 then
       begin
@@ -336,36 +350,55 @@ end;
 
 procedure TForm10.BitBtn7Click(Sender: TObject);
 begin
-  form11:=Tform11.create(self);
-  form11.ShowModal;
-  FreeAndNil(form11);
-  if not(trim(result_name)='') then
-   begin
-    id_group:=trim(result_name);
-   // Подключаемся к серверу
-   If not(Connect2(Zconnection1, flagProfile)) then
-     begin
-      showmessagealt('Соединение с основным сервером потеряно !'+#13+'Проверьте соединение и/или'+#13+' обратитесь к администратору.');
-      Close;
-      exit;
-     end;
-     // Определяем список групп
-     Form10.ZQuery1.SQL.Clear;
-     Form10.ZQuery1.SQL.add('Select * from av_spr_point_group where del=0 and id='+trim(result_name)+';');
-      try
-   form10.ZQuery1.open;
-  except
-    showmessagealt('ОШИБКА запроса к базе данных !'+#13+'Команда: '+ZQuery1.SQL.Text);
-    ZQuery1.Close;
-    Zconnection1.disconnect;
-  end;
-     if Form10.ZQuery1.RecordCount>0 then
-      begin
-          Form10.edit12.text:=trim(Form10.ZQuery1.FieldByName('name').asString);
-      end;
-     end;
-     Form10.Zconnection1.disconnect;
+  self.Edit13.Text:=self.Edit11.text;
 end;
+
+procedure TForm10.BitBtn8Click(Sender: TObject);
+begin
+   form29:=Tform29.create(self);
+   form29.Edit1.Enabled:=false;
+   //form29.Stringgrid1.Enabled:=false;
+   if not (self.Edit6.Text = EmptyStr) then
+    form29.Edit2.Text:=self.Edit6.Text;
+   form29.Bitbtn5.Enabled:=true;
+   form29.Showmodal;
+   //form29.StringGrid2.SetFocus;
+   self.Edit12.Text:=result_dest;
+   FreeAndNil(Form29);
+end;
+
+//procedure TForm10.BitBtn7Click(Sender: TObject);
+//begin
+//  form11:=Tform11.create(self);
+//  form11.ShowModal;
+//  FreeAndNil(form11);
+//  if not(trim(result_name)='') then
+//   begin
+//    id_group:=trim(result_name);
+//   // Подключаемся к серверу
+//   If not(Connect2(Zconnection1, flagProfile)) then
+//     begin
+//      showmessagealt('Соединение с основным сервером потеряно !'+#13+'Проверьте соединение и/или'+#13+' обратитесь к администратору.');
+//      Close;
+//      exit;
+//     end;
+//     // Определяем список групп
+//     Form10.ZQuery1.SQL.Clear;
+//     Form10.ZQuery1.SQL.add('Select * from av_spr_point_group where del=0 and id='+trim(result_name)+';');
+//      try
+//   form10.ZQuery1.open;
+//  except
+//    showmessagealt('ОШИБКА запроса к базе данных !'+#13+'Команда: '+ZQuery1.SQL.Text);
+//    ZQuery1.Close;
+//    Zconnection1.disconnect;
+//  end;
+//     if Form10.ZQuery1.RecordCount>0 then
+//      begin
+//          Form10.edit12.text:=trim(Form10.ZQuery1.FieldByName('name').asString);
+//      end;
+//     end;
+//     Form10.Zconnection1.disconnect;
+//end;
 
 
 procedure TForm10.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

@@ -21,7 +21,7 @@ uses
 {$R *.res}
 
  begin
-   Application.Title:='АСПБ ПЛАТФОРМА АВ модуль ОПП';
+  Application.Title:='АСПБ ПЛАТФОРМА АВ модуль ОПП';
 
   //if ParamCount < 1 then
   // begin

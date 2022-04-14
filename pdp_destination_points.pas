@@ -15,6 +15,7 @@ type
 
   TForm29 = class(TForm)
     BitBtn4: TBitBtn;
+    BitBtn5: TBitBtn;
     Edit1: TEdit;
     Edit2: TEdit;
     Image1: TImage;
@@ -35,6 +36,7 @@ type
     ZConnection1: TZConnection;
     ZQuery1: TZQuery;
     procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure Edit1Enter(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: char);
@@ -74,6 +76,7 @@ type
 var
   Form29: TForm29;
   fl_edit_dog: byte;
+  result_dest:string;
 
 
 
@@ -366,6 +369,15 @@ begin
   Form29.Close;
 end;
 
+procedure TForm29.BitBtn5Click(Sender: TObject);
+begin
+     if (self.StringGrid2.RowCount>1) AND (trim(self.StringGrid2.Cells[1,self.StringGrid2.Row])<>'') then
+    begin
+     result_dest := self.StringGrid2.Cells[1,self.StringGrid2.row];
+     //form15.close;
+    end;
+end;
+
 procedure TForm29.Edit1Change(Sender: TObject);
 var
  n:integer=0;
@@ -579,6 +591,10 @@ begin
          //Edit1.Visible:=true;
          Edit2.SetFocus;
        end;
+       //выбор пункта
+       if key=13 then
+         if self.BitBtn5.Enabled then
+            self.BitBtn5.Click;
      end;
       if (Key=112) or (Key=115) or (Key=116) or (Key=119) or (Key=120) or (Key=27)
 //      or (Key=13)
@@ -761,7 +777,12 @@ begin
     FormActivated := True;
 
      UpdateGrid1(0,'');
-     Edit1.SetFocus;
+     if self.Edit1.Enabled then
+       Edit1.SetFocus
+       else
+         if self.Edit2.Enabled then
+           Edit2.SetFocus;
+
      //UpdateGrid2(0,'');
   end;
 end;
