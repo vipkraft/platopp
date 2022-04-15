@@ -21,18 +21,10 @@ type
     Edit1: TEdit;
     Image1: TImage;
     Image3: TImage;
-    ImageList1: TImageList;
-    imagelistsort: TImageList;
     Label2: TLabel;
     Label4: TLabel;
     ProgressBar1: TProgressBar;
     StringGrid1: TStringGrid;
-    ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
-    ToolButton7: TToolButton;
-    ToolButton8: TToolButton;
     ZConnection1: TZConnection;
     ZQuery1: TZQuery;
     procedure BitBtn12Click(Sender: TObject);
@@ -43,7 +35,6 @@ type
     procedure Edit1Change(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
-    procedure Image1Click(Sender: TObject);
     procedure StringGrid1DrawCell(Sender: TObject; aCol, aRow: Integer;
       aRect: TRect; aState: TGridDrawState);
     procedure StringGrid1Enter(Sender: TObject);
@@ -51,7 +42,6 @@ type
       Index: Integer);
     procedure StringGrid1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure ToolButton1Click(Sender: TObject);
     procedure ToolButton8Click(Sender: TObject);
     procedure UpdateGrid(filter_type:byte; stroka:string);
   private
@@ -103,10 +93,16 @@ procedure TForm17.Edit1Change(Sender: TObject);
     ss:=trimleft(Edit1.Text);
     if UTF8Length(ss)>0 then
          begin
-           //определяем тип данных для поиска
-         if (ss[1] in ['0'..'9','*'..'/']) then datatyp:=1
-         else datatyp:=2;
-
+          for n:=1 to UTF8Length(ss) do
+        begin
+       //определяем тип данных для поиска
+     if not (ss[n] in ['0'..'9']) then
+       begin
+         datatyp:=2;
+         break;
+       end;
+      datatyp:=1;
+        end;
         updategrid(datatyp,ss);
          end
     else
@@ -279,11 +275,11 @@ begin
    ZQuery1.SQL.add('where a.del=0 ');
 
    if (stroka<>'') and (filter_type=2) then ZQuery1.SQL.add('and ((b.name) ilike '+quotedstr(stroka+'%')+' or (c.name) ilike '+quotedstr(stroka+'%')+' or (d.name) ilike '+quotedstr(stroka+'%')+')');
-   if (stroka<>'') and (filter_type=1) then ZQuery1.SQL.add('and cast(a.kod as text) like '+quotedstr(stroka+'%'));
+   if (stroka<>'') and (filter_type=1) then ZQuery1.SQL.add('and ( position('+quotedstr(stroka)+' in a.kod)>0 OR position('+quotedstr(stroka)+' in cast(a.id as text))>0 )');
 
    ZQuery1.SQL.add('ORDER by name1;');
 
- //  showmessagealt('Команда: '+ZQuery1.SQL.Text);
+   //showmessage(ZQuery1.SQL.Text);//$
   try
     ZQuery1.open;
   except
@@ -396,7 +392,6 @@ end;
 
 procedure TForm17.FormShow(Sender: TObject);
 begin
-   Centrform(form17);
    form17.UpdateGrid(datatyp,'');
    if (flag_access=1) or (fl_print=1) then
      begin
@@ -410,12 +405,14 @@ begin
    form17.StringGrid1.SetFocus;
    form17.StringGrid1.Col:=2;
    form17.StringGrid1.Row:=1;
+     if tekroute<>'' then
+     begin
+      form17.Edit1.Text:=tekroute;
+      form17.Edit1.Visible:=true;
+      form17.Edit1.SetFocus;
+     end;
 end;
 
-procedure TForm17.Image1Click(Sender: TObject);
-begin
-  form17.ImageListsort.GetBitmap(0, Image1.Picture.Bitmap);
-end;
 
 procedure TForm17.StringGrid1DrawCell(Sender: TObject; aCol, aRow: Integer;
   aRect: TRect; aState: TGridDrawState);
@@ -448,7 +445,7 @@ with Sender as TStringGrid, Canvas do
             font.Style:=[];
          end;
 
-      if aCol=1 then Font.Color := brush.color;
+      //if aCol=1 then Font.Color := brush.color;
 
       if aRow>0 then
          begin
@@ -506,11 +503,6 @@ procedure TForm17.StringGrid1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   Click_Header((Sender as TStringgrid),X,Y,Self.ProgressBar1);
-end;
-
-procedure TForm17.ToolButton1Click(Sender: TObject);
-begin
-    SortGrid(form17.StringGrid1,form17.StringGrid1.col,form17.ProgressBar1,0,1);
 end;
 
 procedure TForm17.ToolButton8Click(Sender: TObject);

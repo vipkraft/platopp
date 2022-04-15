@@ -9,7 +9,8 @@ object Form18: TForm18
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
     Height = 45
@@ -259,7 +260,7 @@ object Form18: TForm18
   end
   object ComboBox1: TComboBox
     Left = 172
-    Height = 28
+    Height = 25
     Hint = 'Выбрать из списка'
     Top = 223
     Width = 251

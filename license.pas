@@ -437,7 +437,6 @@ end;
   // **************************************  ВОЗНИКНОВЕНИЕ ФОРМЫ ****************************************
 procedure TFormLic.FormShow(Sender: TObject);
 begin
- Centrform(FormLic);
  //FormLic.StringGrid1.RowHeights[0]:=20;
  FormLic.Label3.Caption:=copy(formsk.StringGrid1.Cells[2,formsk.StringGrid1.Row],1,pos('     ',formsk.StringGrid1.Cells[2,formsk.StringGrid1.Row]));
  FOrmlic.GroupBox1.Enabled:=false;

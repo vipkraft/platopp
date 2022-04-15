@@ -160,7 +160,6 @@ var
    n:integer;
    ssel,spassport:string;
 begin
- Centrform(Form25);
  With Form25 do
  begin
  Form25.StringGrid1.RowHeights[0]:=30;

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, ZConnection, ZDataset, LazFileUtils, Forms, Controls, Graphics,
-  Dialogs, Grids, Buttons, ComCtrls, StdCtrls, ExtCtrls,platproc,point_edit,report_main,LazUtf8;
+  Dialogs, Grids, Buttons, ComCtrls, StdCtrls, ExtCtrls,platproc,point_edit,report_main,LazUtf8, Types;
 
 type
 
@@ -192,8 +192,6 @@ begin
 end;
 
 
-
-
 procedure TForm9.BitBtn4Click(Sender: TObject);
 begin
   result_point_name:='';
@@ -218,10 +216,16 @@ begin
 ss:=trimleft(Edit1.Text);
 if UTF8Length(ss)>0 then
      begin
+       for n:=1 to UTF8Length(ss) do
+        begin
        //определяем тип данных для поиска
-     if (ss[1] in ['0'..'9']) then datatyp:=1
-     else datatyp:=2;
-
+     if not (ss[n] in ['0'..'9']) then
+       begin
+         datatyp:=2;
+         break;
+       end;
+      datatyp:=1;
+        end;
     updategrid(datatyp,ss);
      end
 else
@@ -383,7 +387,7 @@ end;
 procedure TForm9.StringGrid1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-   Click_Header((Sender as TStringgrid),X,Y,Self.ProgressBar1);
+   //Click_Header((Sender as TStringgrid),X,Y,Self.ProgressBar1);
 end;
 
 procedure TForm9.BitBtn1Click(Sender: TObject);

@@ -11,6 +11,7 @@ object FormRepEdit: TFormRepEdit
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   ShowHint = True
   LCLVersion = '2.0.8.0'
   object Image1: TImage
@@ -2296,6 +2297,7 @@ object FormRepEdit: TFormRepEdit
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
     Properties.Strings = (
       'AutoEncodeStrings='
     )

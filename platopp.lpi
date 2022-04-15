@@ -55,6 +55,11 @@
               <TrashVariables Value="True"/>
               <UseExternalDbgSyms Value="True"/>
             </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
           </Linking>
           <Other>
             <Verbosity>
@@ -146,7 +151,7 @@
       <Unit0>
         <Filename Value="platopp.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="1"/>
         <CursorPos X="46" Y="19"/>
         <UsageCount Value="205"/>
         <Loaded Value="True"/>
@@ -177,7 +182,7 @@
       <Unit3>
         <Filename Value="platproc.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="13"/>
         <TopLine Value="503"/>
         <CursorPos X="45" Y="521"/>
         <UsageCount Value="215"/>
@@ -190,8 +195,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="169"/>
-        <CursorPos X="28" Y="242"/>
+        <TopLine Value="278"/>
+        <CursorPos X="15" Y="301"/>
         <UsageCount Value="201"/>
       </Unit4>
       <Unit5>
@@ -200,10 +205,11 @@
         <ComponentName Value="Form6"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="278"/>
-        <CursorPos X="25" Y="302"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="157"/>
+        <CursorPos X="33" Y="175"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="other_nas.pas"/>
@@ -212,13 +218,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="122"/>
-        <CursorPos X="17" Y="137"/>
+        <TopLine Value="36"/>
+        <CursorPos X="15" Y="51"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
-          <TopLine Value="9"/>
-          <CursorPos X="73" Y="9"/>
+          <TopLine Value="54"/>
+          <CursorPos Y="68"/>
         </ExtraEditor1>
         <UsageCount Value="214"/>
       </Unit6>
@@ -229,7 +235,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="57" Y="8"/>
+        <TopLine Value="143"/>
+        <CursorPos X="15" Y="166"/>
         <UsageCount Value="213"/>
       </Unit7>
       <Unit8>
@@ -238,7 +245,7 @@
         <ComponentName Value="Form9"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="134"/>
         <CursorPos X="79" Y="148"/>
         <UsageCount Value="200"/>
@@ -252,9 +259,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="76"/>
-        <CursorPos X="3" Y="89"/>
+        <CursorPos X="47" Y="91"/>
         <UsageCount Value="204"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -266,8 +273,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="298"/>
-        <CursorPos X="29" Y="322"/>
+        <TopLine Value="143"/>
+        <CursorPos X="15" Y="166"/>
         <UsageCount Value="200"/>
       </Unit10>
       <Unit11>
@@ -277,8 +284,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="165"/>
-        <CursorPos X="24" Y="189"/>
+        <TopLine Value="131"/>
+        <CursorPos X="63" Y="139"/>
         <UsageCount Value="200"/>
       </Unit11>
       <Unit12>
@@ -288,8 +295,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="803"/>
-        <CursorPos X="32" Y="817"/>
+        <TopLine Value="571"/>
+        <CursorPos X="15" Y="594"/>
         <UsageCount Value="204"/>
       </Unit12>
       <Unit13>
@@ -299,8 +306,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="1048"/>
-        <CursorPos X="32" Y="1072"/>
+        <TopLine Value="614"/>
+        <CursorPos Y="629"/>
         <UsageCount Value="206"/>
       </Unit13>
       <Unit14>
@@ -309,10 +316,14 @@
         <ComponentName Value="Form15"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="105"/>
         <CursorPos X="24" Y="119"/>
         <UsageCount Value="200"/>
+        <Bookmarks Count="2">
+          <Item0 X="7" Y="1534" ID="1"/>
+          <Item1 X="13" Y="444"/>
+        </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
@@ -323,8 +334,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="264"/>
-        <CursorPos X="18" Y="288"/>
+        <TopLine Value="82"/>
+        <CursorPos X="15" Y="105"/>
         <UsageCount Value="200"/>
       </Unit15>
       <Unit16>
@@ -334,7 +345,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="67" Y="8"/>
+        <TopLine Value="363"/>
+        <CursorPos Y="378"/>
         <UsageCount Value="212"/>
       </Unit16>
       <Unit17>
@@ -344,8 +356,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="138"/>
-        <CursorPos X="16" Y="167"/>
+        <TopLine Value="120"/>
+        <CursorPos Y="126"/>
         <UsageCount Value="213"/>
       </Unit17>
       <Unit18>
@@ -355,8 +367,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="41"/>
-        <CursorPos X="28" Y="50"/>
+        <TopLine Value="419"/>
+        <CursorPos X="53" Y="433"/>
         <UsageCount Value="201"/>
       </Unit18>
       <Unit19>
@@ -365,10 +377,12 @@
         <ComponentName Value="Form22"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="652"/>
-        <CursorPos X="76" Y="666"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="383"/>
+        <CursorPos X="63" Y="407"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="lgot_main.pas"/>
@@ -377,8 +391,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="208"/>
-        <CursorPos X="31" Y="232"/>
+        <TopLine Value="265"/>
+        <CursorPos X="15" Y="288"/>
         <UsageCount Value="223"/>
       </Unit20>
       <Unit21>
@@ -388,8 +402,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="185"/>
-        <CursorPos X="33" Y="209"/>
+        <TopLine Value="62"/>
+        <CursorPos Y="77"/>
         <UsageCount Value="222"/>
       </Unit21>
       <Unit22>
@@ -399,8 +413,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="142"/>
-        <CursorPos X="27" Y="166"/>
+        <TopLine Value="268"/>
+        <CursorPos X="15" Y="291"/>
         <UsageCount Value="225"/>
       </Unit22>
       <Unit23>
@@ -410,8 +424,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="170"/>
-        <CursorPos X="35" Y="194"/>
+        <TopLine Value="60"/>
+        <CursorPos X="6" Y="79"/>
         <UsageCount Value="225"/>
       </Unit23>
       <Unit24>
@@ -421,8 +435,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="90"/>
-        <CursorPos X="57" Y="98"/>
+        <TopLine Value="89"/>
+        <CursorPos X="111" Y="93"/>
         <UsageCount Value="208"/>
       </Unit24>
       <Unit25>
@@ -442,8 +456,6 @@
           <Item3 X="4" Y="1618" ID="5"/>
           <Item4 Y="2415" ID="6"/>
         </Bookmarks>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="tarif_main.pas"/>
@@ -452,8 +464,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="518"/>
-        <CursorPos X="19" Y="542"/>
+        <TopLine Value="559"/>
+        <CursorPos X="15" Y="583"/>
         <UsageCount Value="200"/>
       </Unit26>
       <Unit27>
@@ -474,12 +486,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ticketShablon"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="254"/>
-        <CursorPos X="29" Y="265"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="65" Y="6"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit28>
       <Unit29>
         <Filename Value="tickettypes.pas"/>
@@ -488,11 +497,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="TicketTypes"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="362"/>
-        <CursorPos X="28" Y="372"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="642"/>
+        <CursorPos X="10" Y="665"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit29>
       <Unit30>
         <Filename Value="kontr_main.pas"/>
@@ -500,12 +508,11 @@
         <ComponentName Value="Formsk"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="9"/>
-        <TopLine Value="1908"/>
-        <CursorPos X="86" Y="1917"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="208"/>
+        <CursorPos X="28" Y="224"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit30>
       <Unit31>
         <Filename Value="dogovor_edit.pas"/>
@@ -525,8 +532,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="173"/>
-        <CursorPos X="11" Y="204"/>
+        <TopLine Value="148"/>
+        <CursorPos X="33" Y="169"/>
         <UsageCount Value="201"/>
       </Unit32>
       <Unit33>
@@ -536,8 +543,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="302"/>
-        <CursorPos X="29" Y="326"/>
+        <TopLine Value="260"/>
+        <CursorPos X="15" Y="284"/>
         <UsageCount Value="201"/>
       </Unit33>
       <Unit34>
@@ -547,8 +554,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="353"/>
-        <CursorPos X="26" Y="377"/>
+        <TopLine Value="64"/>
+        <CursorPos X="18" Y="84"/>
         <UsageCount Value="201"/>
       </Unit34>
       <Unit35>
@@ -575,12 +582,10 @@
         <ComponentName Value="FormLic"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="10"/>
-        <TopLine Value="73"/>
-        <CursorPos X="45" Y="84"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="425"/>
+        <CursorPos Y="440"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit37>
       <Unit38>
         <Filename Value="htmldoc.pas"/>
@@ -605,8 +610,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="307"/>
-        <CursorPos X="20" Y="331"/>
+        <TopLine Value="343"/>
+        <CursorPos X="12" Y="366"/>
         <UsageCount Value="201"/>
       </Unit40>
       <Unit41>
@@ -616,8 +621,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="145"/>
-        <CursorPos X="27" Y="169"/>
+        <TopLine Value="578"/>
+        <CursorPos X="81" Y="593"/>
         <UsageCount Value="202"/>
       </Unit41>
       <Unit42>
@@ -638,8 +643,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="31"/>
-        <CursorPos X="28" Y="52"/>
+        <TopLine Value="29"/>
+        <CursorPos X="43" Y="42"/>
         <UsageCount Value="200"/>
       </Unit43>
       <Unit44>
@@ -649,8 +654,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="1616"/>
-        <CursorPos X="17" Y="1640"/>
+        <TopLine Value="573"/>
+        <CursorPos X="66" Y="587"/>
         <UsageCount Value="204"/>
       </Unit44>
       <Unit45>
@@ -660,7 +665,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="33" Y="8"/>
+        <TopLine Value="221"/>
+        <CursorPos Y="237"/>
         <UsageCount Value="203"/>
       </Unit45>
       <Unit46>
@@ -669,9 +675,8 @@
         <ComponentName Value="Form16"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="11"/>
-        <TopLine Value="1767"/>
-        <CursorPos X="29" Y="1775"/>
+        <EditorIndex Value="6"/>
+        <CursorPos X="35" Y="11"/>
         <UsageCount Value="237"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -686,7 +691,6 @@
         <TopLine Value="128"/>
         <CursorPos X="29" Y="144"/>
         <UsageCount Value="215"/>
-        <Loaded Value="True"/>
       </Unit47>
       <Unit48>
         <Filename Value="shedule_bron.pas"/>
@@ -699,6 +703,7 @@
         <CursorPos X="57" Y="119"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit48>
       <Unit49>
         <Filename Value="ticket.pas"/>
@@ -706,11 +711,10 @@
         <ComponentName Value="FormAdd"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="320"/>
-        <CursorPos X="39" Y="327"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="435"/>
+        <CursorPos Y="450"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit49>
       <Unit50>
         <Filename Value="message_idle.pas"/>
@@ -729,10 +733,12 @@
         <ComponentName Value="FormST"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="33"/>
-        <CursorPos X="18" Y="39"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="156"/>
+        <CursorPos X="19" Y="156"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit51>
       <Unit52>
         <Filename Value="kontr_tarif.pas"/>
@@ -741,7 +747,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="55" Y="9"/>
+        <TopLine Value="451"/>
+        <CursorPos X="15" Y="475"/>
         <UsageCount Value="200"/>
       </Unit52>
       <Unit53>
@@ -757,8 +764,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="481"/>
-        <CursorPos X="42" Y="495"/>
+        <TopLine Value="321"/>
+        <CursorPos X="67" Y="332"/>
         <UsageCount Value="201"/>
       </Unit54>
       <Unit55>
@@ -768,7 +775,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Auth"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="2"/>
         <UsageCount Value="236"/>
         <Loaded Value="True"/>
       </Unit55>
@@ -815,12 +822,10 @@
         <ComponentName Value="Form28"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="261"/>
-        <CursorPos X="18" Y="282"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="283"/>
+        <CursorPos X="15" Y="302"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit60>
       <Unit61>
         <Filename Value="pdp_destination_points.pas"/>
@@ -828,7 +833,7 @@
         <ComponentName Value="Form29"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="10"/>
         <TopLine Value="73"/>
         <CursorPos X="10" Y="85"/>
         <UsageCount Value="216"/>
@@ -868,7 +873,7 @@
         <UsageCount Value="10"/>
       </Unit66>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="pdp_destination_points.pas"/>
         <Caret Line="372" Column="60" TopLine="371"/>
@@ -921,72 +926,68 @@
         <Caret Line="363" Column="4" TopLine="349"/>
       </Position13>
       <Position14>
-        <Filename Value="point_edit.pas"/>
-        <Caret Line="13" Column="29" TopLine="70"/>
+        <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="414" Column="81" TopLine="399"/>
       </Position14>
       <Position15>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="414" Column="81" TopLine="399"/>
       </Position15>
       <Position16>
         <Filename Value="pdp_destination_points.pas"/>
+        <Caret Line="414" Column="25" TopLine="391"/>
       </Position16>
       <Position17>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="414" Column="25" TopLine="391"/>
+        <Caret Line="452" Column="25" TopLine="429"/>
       </Position17>
       <Position18>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="452" Column="25" TopLine="429"/>
+        <Caret Line="520" Column="31" TopLine="497"/>
       </Position18>
       <Position19>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="520" Column="31" TopLine="497"/>
+        <Caret Line="529" Column="28" TopLine="506"/>
       </Position19>
       <Position20>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="529" Column="28" TopLine="506"/>
+        <Caret Line="537" Column="28" TopLine="514"/>
       </Position20>
       <Position21>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="537" Column="28" TopLine="514"/>
+        <Caret Line="557" Column="31" TopLine="534"/>
       </Position21>
       <Position22>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="557" Column="31" TopLine="534"/>
+        <Caret Line="564" Column="28" TopLine="541"/>
       </Position22>
       <Position23>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="564" Column="28" TopLine="541"/>
+        <Caret Line="571" Column="28" TopLine="548"/>
       </Position23>
       <Position24>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="571" Column="28" TopLine="548"/>
+        <Caret Line="592" Column="24" TopLine="569"/>
       </Position24>
       <Position25>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="592" Column="24" TopLine="569"/>
+        <Caret Line="774" Column="25" TopLine="755"/>
       </Position25>
       <Position26>
         <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="774" Column="25" TopLine="755"/>
+        <Caret Line="596" Column="28" TopLine="583"/>
       </Position26>
       <Position27>
-        <Filename Value="pdp_destination_points.pas"/>
-        <Caret Line="596" Column="28" TopLine="583"/>
+        <Filename Value="point_edit.pas"/>
+        <Caret Line="363" Column="2" TopLine="345"/>
       </Position27>
       <Position28>
         <Filename Value="point_edit.pas"/>
-        <Caret Line="363" Column="2" TopLine="345"/>
+        <Caret Line="362" Column="37" TopLine="348"/>
       </Position28>
       <Position29>
         <Filename Value="point_edit.pas"/>
-        <Caret Line="362" Column="37" TopLine="348"/>
-      </Position29>
-      <Position30>
-        <Filename Value="point_edit.pas"/>
         <Caret Line="360" Column="38" TopLine="348"/>
-      </Position30>
+      </Position29>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -1007,6 +1008,11 @@
       <Debugging>
         <UseExternalDbgSyms Value="True"/>
       </Debugging>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
     </Linking>
     <Other>
       <Verbosity>
@@ -1018,13 +1024,22 @@
     </Other>
   </CompilerOptions>
   <Debugging>
-    <Watches Count="2">
+    <Watches Count="5">
       <Item1>
-        <Expression Value="connectINI"/>
+        <Expression Value="sum"/>
       </Item1>
       <Item2>
-        <Expression Value="connectINI[5]"/>
+        <Expression Value="form15.StringGrid1.Width"/>
       </Item2>
+      <Item3>
+        <Expression Value="form15.StringGrid1.ColWidths[2]"/>
+      </Item3>
+      <Item4>
+        <Expression Value="form15.StringGrid1.clientwidth"/>
+      </Item4>
+      <Item5>
+        <Expression Value="form15.StringGrid1.GridLineWidth"/>
+      </Item5>
     </Watches>
     <Exceptions Count="7" IgnoreAll="True">
       <Item1>

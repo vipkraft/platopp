@@ -431,7 +431,6 @@ procedure TForm20.FormShow(Sender: TObject);
   var
    tmp_id, tmp_id_first: string;
 begin
-  Centrform(Form20);
   fl_fio:=false;
    CountryLoad();
   with Form20 do

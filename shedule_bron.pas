@@ -204,7 +204,7 @@ begin
     ZQuery1.SQL.add('SELECT a.createdate,a.id_user,a.id_point,a.bron_count,a.point_order,a.seats,a.seats2,b.name as username FROM av_shedule_bron AS a ');
     ZQuery1.SQL.add('LEFT JOIN av_users as b ON b.del=0 and b.id=a.id_user ');
     ZQuery1.SQL.add('WHERE a.del=0 AND a.id_kontr='+Stringgrid4.Cells[0,Stringgrid4.Row]+' AND a.id_shedule='+shedule_id+' ORDER BY a.point_order;');
-    //showmessagealt(ZQuery1.SQL.text);
+    //showmessage(ZQuery1.SQL.text);//$
     try
        ZQuery1.open;
      except
@@ -1240,7 +1240,6 @@ end;
 //********************************* ВОЗНИКНОВЕНИЕ ФОРМЫ ************************************************************
 procedure TForm_Bron.FormShow(Sender: TObject);
 begin
-  Centrform(Form_Bron);
    try strtoInt(form15.StringGrid1.Cells[0,form15.StringGrid1.Row])
    except
       Close;

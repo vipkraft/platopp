@@ -1955,7 +1955,6 @@ var
    tmp_bagag,tmp_uslugi,s:string;
 begin
    DecimalSeparator:='.';
-     Centrform(Formtarif_edit);
      if flag_access=1 then
      begin
       with formtarif_edit do

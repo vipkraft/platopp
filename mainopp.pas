@@ -126,7 +126,7 @@ var
   my_local_serv: string;
   tekkontr:string;
   sort_col,sort_direction: byte;  //сортируемый столбец, флаг направления сортировки
-
+  tekroute: string;
 
 
 implementation

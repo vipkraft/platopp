@@ -10,7 +10,8 @@ object Form12: TForm12
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.1'
+  Position = poOwnerFormCenter
+  LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
     Height = 45
@@ -254,7 +255,7 @@ object Form12: TForm12
     Left = 187
     Height = 23
     Top = 6
-    Width = 539
+    Width = 488
     AutoSize = True
     Caption = 'Создание\Редактирование списка групп остановочных пунктов'
     Font.Color = clTeal
@@ -360,9 +361,9 @@ object Form12: TForm12
   end
   object Label2: TLabel
     Left = 32
-    Height = 18
+    Height = 15
     Top = 75
-    Width = 70
+    Width = 61
     Caption = '№ группы'
     ParentColor = False
   end
@@ -382,9 +383,9 @@ object Form12: TForm12
   end
   object Label12: TLabel
     Left = 13
-    Height = 18
+    Height = 15
     Top = 682
-    Width = 159
+    Width = 137
     Caption = 'Последняя редакция: -'
     ParentColor = False
   end
@@ -401,7 +402,7 @@ object Form12: TForm12
   end
   object Edit6: TEdit
     Left = 208
-    Height = 22
+    Height = 23
     Top = 146
     Width = 558
     Font.Height = -11
@@ -418,9 +419,9 @@ object Form12: TForm12
   end
   object Label10: TLabel
     Left = 116
-    Height = 11
+    Height = 9
     Top = 96
-    Width = 123
+    Width = 108
     Caption = 'Заполняется автоматически'
     Font.Height = -8
     ParentColor = False
@@ -546,9 +547,9 @@ object Form12: TForm12
   end
   object Label4: TLabel
     Left = 37
-    Height = 15
+    Height = 13
     Top = 729
-    Width = 64
+    Width = 59
     Caption = 'F1-Помощь'
     Font.Height = -11
     ParentColor = False
@@ -557,6 +558,9 @@ object Form12: TForm12
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = False
+    Properties.Strings = (
+      'AutoEncodeStrings='
+    )
     TransactIsolationLevel = tiReadCommitted
     Port = 0
     Protocol = 'postgresql'

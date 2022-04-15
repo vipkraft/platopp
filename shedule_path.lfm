@@ -11,7 +11,8 @@ object Formpath: TFormpath
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  Position = poScreenCenter
+  LCLVersion = '2.0.8.0'
   object Shape3: TShape
     Left = 208
     Height = 2
@@ -655,7 +656,6 @@ object Formpath: TFormpath
     AutoSize = False
     DecimalPlaces = 3
     Font.Height = -13
-    Increment = 1
     MaxValue = 999999.998999999
     MinValue = 0
     ParentFont = False

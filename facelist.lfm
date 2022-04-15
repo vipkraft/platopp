@@ -10,7 +10,8 @@ object FormFace: TFormFace
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.1'
+  Position = poMainFormCenter
+  LCLVersion = '2.0.8.0'
   object StringGrid1: TStringGrid
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Image1
@@ -230,9 +231,9 @@ object FormFace: TFormFace
   end
   object Label4: TLabel
     Left = 30
-    Height = 15
+    Height = 13
     Top = 738
-    Width = 64
+    Width = 59
     Caption = 'F1-Помощь'
     Font.Height = -11
     ParentColor = False
@@ -480,9 +481,9 @@ object FormFace: TFormFace
   end
   object Label2: TLabel
     Left = 213
-    Height = 24
+    Height = 22
     Top = 6
-    Width = 224
+    Width = 201
     Caption = 'Поиск подозреваемых'
     Font.Color = clNavy
     Font.Height = -19
@@ -499,9 +500,9 @@ object FormFace: TFormFace
     TabOrder = 2
     object Label1: TLabel
       Left = 18
-      Height = 18
+      Height = 15
       Top = 20
-      Width = 44
+      Width = 38
       Caption = 'Ф.И.О.'
       ParentColor = False
     end
@@ -515,9 +516,9 @@ object FormFace: TFormFace
     end
     object Label3: TLabel
       Left = 18
-      Height = 18
+      Height = 15
       Top = 67
-      Width = 70
+      Width = 58
       Caption = 'Документ'
       ParentColor = False
     end
@@ -531,41 +532,41 @@ object FormFace: TFormFace
     end
     object Label5: TLabel
       Left = 18
-      Height = 18
+      Height = 15
       Top = 120
-      Width = 81
+      Width = 73
       Caption = 'Инициатор:'
       ParentColor = False
     end
     object Label6: TLabel
       Left = 18
-      Height = 18
+      Height = 15
       Top = 262
-      Width = 70
+      Width = 59
       Caption = 'Редактор:'
       ParentColor = False
     end
     object Label7: TLabel
       Left = 142
-      Height = 18
+      Height = 15
       Top = 262
-      Width = 44
+      Width = 38
       Caption = 'Label7'
       ParentColor = False
     end
     object Label8: TLabel
       Left = 18
-      Height = 18
+      Height = 15
       Top = 305
-      Width = 109
+      Width = 93
       Caption = 'Дата редакции:'
       ParentColor = False
     end
     object Label9: TLabel
       Left = 142
-      Height = 18
+      Height = 15
       Top = 305
-      Width = 44
+      Width = 38
       Caption = 'Label9'
       ParentColor = False
     end

@@ -102,7 +102,7 @@ end;
 
 procedure TFormPath.FormShow(Sender: TObject);
 begin
-    Centrform(FormPath);
+
     With FormPath do
     begin
     // Заполняем поля данными из предыдущей формы

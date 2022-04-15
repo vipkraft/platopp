@@ -14,6 +14,7 @@ object FormAdd: TFormAdd
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   LCLVersion = '2.0.8.0'
   object StaticText1: TStaticText
     Left = 192

@@ -13,7 +13,8 @@ object FormST: TFormST
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  Position = poMainFormCenter
+  LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
     Height = 45
@@ -276,7 +277,7 @@ object FormST: TFormST
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 394
+    Left = 364
     Height = 18
     Top = 23
     Width = 96
@@ -639,11 +640,12 @@ object FormST: TFormST
     Caption = 'Button1'
     OnClick = Button1Click
     TabOrder = 4
+    Visible = False
   end
   object CheckBox1: TCheckBox
     Left = 424
     Height = 38
-    Top = 720
+    Top = 723
     Width = 265
     Caption = 'Удалить записи стоимости '#10'тарифа и багажа для перевозчика'
     TabOrder = 5

@@ -65,6 +65,7 @@ type
     Label9: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     RadioGroup1: TRadioGroup;
     RadioGroup2: TRadioGroup;
     StringGrid1: TStringGrid;
@@ -104,7 +105,6 @@ type
       const Value: TCheckboxState);
     procedure ToolButton8Click(Sender: TObject);
     procedure UpdateGrid(filter_type:byte; stroka:string);
-    procedure Filtracia(); // собрать условия фильтра для запроса
     procedure EditCheck(); //проверка ввода брони
   private
     { private declarations }
@@ -127,15 +127,17 @@ uses
 
 { TForm15 }
 const
-  mas_size = 24;
+  mas_size = 26;
 var
-  s_zapros : string;
+  //s_zapros : string;
   n_idroute: integer;
   n_atp : integer=0;
   datatyp : byte=0;
   ss:string='';
-  filtr,flag :boolean;
+  filtr,flagupdate :boolean;
   ar_seats : array of string;
+  //флаг первичной выборки
+  first_flag: boolean;
 
  // ================================= M_route =========================================
   //  m_route - Основной массив данных расписаний
@@ -164,36 +166,8 @@ var
     //m_route[n,21] //обязательный телефон
   //  m_route[n,22] //запрет продажи по ВОИНСКИМ ПЕРЕВОЗОЧНЫМ ДОКУМЕНТАМ (ВПД)
    //m_route[n,23] //невидимые расписания для интернета
-
-
-procedure TForm15.Filtracia(); // собрать условия фильтра для запроса
-begin
-   with Form15 do
-   begin
-    s_zapros := '';
-    //фильтр по маршруту
-    If CheckBox1.Checked then
-      begin
-      If (trim(Edit2.Text)<>'') AND (n_idroute>0) then
-        s_zapros := ' AND a.id_route=' + intToStr(n_idroute);
-      If (trim(Edit2.Text)='') then
-        n_idroute := 0;
-      end;
-    // фильтр по типу маршрута
-    If CheckBox2.Checked then
-     begin
-      If (trim(ComboBox1.Text)<>'') then
-        begin
-        s_zapros := s_zapros + ' AND a.id_route in (SELECT b.id FROM av_route b WHERE b.del=0 and b.type_route=' + intToStr(ComboBox1.ItemIndex)+') ';
-        end;
-     end;
-    // фильтр по статусу
-    If CheckBox3.Checked then
-      begin
-        s_zapros := s_zapros +' AND a.active=' + intToStr(RadioGroup1.ItemIndex);
-      end;
-   end;
-end;
+   //m_route[n,24] //перевозчик код
+   //m_route[n,25] //перевозчик имя
 
 //***********************************  ОБНОВИТЬ ДАННЫЕ НА ГРИДЕ **************************************************
 procedure TForm15.UpdateGrid(filter_type:byte; stroka:string);
@@ -201,10 +175,11 @@ procedure TForm15.UpdateGrid(filter_type:byte; stroka:string);
    n,m,cnt:integer;
    orderby,sstr,stp,sal,stmp : string;
  begin
-     flag:=false;
+   flagupdate:=true;
   with FOrm15 do
   begin
    label1.Caption:='';
+
    orderby := stringgrid1.Columns[sort_col].Title.Caption;
 
    Stringgrid1.RowCount:=1;
@@ -221,45 +196,35 @@ procedure TForm15.UpdateGrid(filter_type:byte; stroka:string);
    stmp:='';
   //||=====================  фильтр расписаний
 
-
-
   // Запрос маршрутов и расписаний
   Form15.ZQuery1.SQL.clear;
-  //Form15.ZQuery1.SQL.add('SELECT Distinct a.id,a.kod,a.name_shedule,a.active,a.del,a.dateactive,a.typ_tarif,a.date_tarif,a.zakaz,a.id_past ');
-  //Form15.ZQuery1.SQL.add(',b.kod as kod_route,(e.name || '' - '' || c.name || coalesce('' - '' || d.name,'''')) as name_route,b.type_route, ');
-  //Form15.ZQuery1.SQL.add('(SELECT COUNT(*) FROM av_shedule_bron WHERE del=0 AND a.id=id_shedule) as bron, ');
-  //Form15.ZQuery1.SQL.add('(SELECT COUNT(*) FROM av_shedule_price WHERE del=0 AND a.id=id_shedule) as price, ');
-  //Form15.ZQuery1.SQL.add('(select 1 FROM av_shedule_tarif WHERE del=0 AND id_shedule=a.id limit 1) as tarif, ');
-  //Form15.ZQuery1.SQL.add('(SELECT 1 FROM av_shedule_fio WHERE del=0 AND a.id=id_shedule) as personal ');
-  //Form15.ZQuery1.SQL.add('FROM av_shedule AS a ');
-  Form15.ZQuery1.SQL.add('  Select Distinct z.* ');
-  Form15.ZQuery1.SQL.add(',(case when nas3=0 then ');
-  Form15.ZQuery1.SQL.add('(SELECT c.name FROM av_spr_locality AS c WHERE z.nas1=c.id ORDER BY c.del ASC, c.createdate DESC limit 1) ');
-  Form15.ZQuery1.SQL.add('|| '' - '' ');
-  Form15.ZQuery1.SQL.add('|| (SELECT c.name FROM av_spr_locality AS c WHERE z.nas2=c.id ORDER BY c.del ASC, c.createdate DESC limit 1) ');
-  Form15.ZQuery1.SQL.add('else ');
-  Form15.ZQuery1.SQL.add('(SELECT c.name FROM av_spr_locality AS c WHERE z.nas1=c.id ORDER BY c.del ASC, c.createdate DESC limit 1) ');
-  Form15.ZQuery1.SQL.add('|| '' - '' ');
-  Form15.ZQuery1.SQL.add('|| (SELECT c.name FROM av_spr_locality AS c WHERE z.nas2=c.id ORDER BY c.del ASC, c.createdate DESC limit 1) ');
-  Form15.ZQuery1.SQL.add('|| '' - '' ');
-  Form15.ZQuery1.SQL.add('|| (SELECT c.name FROM av_spr_locality AS c WHERE z.nas3=c.id ORDER BY c.del ASC, c.createdate DESC limit 1) ');
-  Form15.ZQuery1.SQL.add(' end) as name_route ');
+  Form15.ZQuery1.SQL.add(' SELECT g.* FROM ( SELECT m.* ');
+  Form15.ZQuery1.SQL.add(',(SELECT c.name FROM av_spr_locality AS c WHERE m.nas1=c.id ORDER BY c.del ASC, c.createdate DESC limit 1) ');
+  Form15.ZQuery1.SQL.add('|| '' - '' ||');
+  Form15.ZQuery1.SQL.add(' (SELECT c.name FROM av_spr_locality AS c WHERE m.nas2=c.id ORDER BY c.del ASC, c.createdate DESC limit 1) ');
+  Form15.ZQuery1.SQL.add('|| (case when nas3>0 then ('' - '' || (SELECT c.name FROM av_spr_locality AS c WHERE m.nas3=c.id ORDER BY c.del ASC, c.createdate DESC limit 1))');
+  Form15.ZQuery1.SQL.add(' ELSE '''' end) as name_route ');
+  Form15.ZQuery1.SQL.add(',coalesce((SELECT t.name FROM av_spr_kontragent AS t WHERE t.id=m.atpid AND t.del=0 ORDER BY t.createdate DESC limit 1),'''') as atpname ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT 1 FROM av_shedule_bron  WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as bron ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT 1 FROM av_shedule_price WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as price ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((select 1 FROM av_shedule_tarif WHERE del=0 AND id_shedule=m.id limit 1),0) END as tarif ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT 1 FROM av_shedule_fio    WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as personal ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT 1 FROM av_shedule_tel    WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as tel ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT 1 FROM av_shedule_voin_deny  WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as vpd ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT 1 FROM av_shedule_invisible  WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as invis ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT remote_sale FROM av_shedule_remote_sale_permition WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as rsale ');
+  Form15.ZQuery1.SQL.add(',case WHEN active=0 then 0 ELSE coalesce((SELECT inet_sale FROM av_shedule_remote_sale_permition WHERE del=0 AND m.id=id_shedule LIMIT 1),0) END as isale ');
+  //Form15.ZQuery1.SQL.add('
   Form15.ZQuery1.SQL.add('FROM ( ');
-  Form15.ZQuery1.SQL.add('SELECT a.id,a.kod,a.name_shedule,a.active,a.del,a.dateactive,a.typ_tarif,a.date_tarif,a.zakaz,a.id_past ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.kod        from av_route AS b WHERE a.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),'''') as kod_route ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.type_route from av_route AS b WHERE a.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as type_route ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.id_nas1    from av_route AS b WHERE a.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as nas1 ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.id_nas2    from av_route AS b WHERE a.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as nas2 ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.id_nas3    from av_route AS b WHERE a.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as nas3 ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT 1 FROM av_shedule_bron  WHERE del=0 AND a.id=id_shedule LIMIT 1),0) as bron ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT 1 FROM av_shedule_price WHERE del=0 AND a.id=id_shedule LIMIT 1),0) as price ');
-  Form15.ZQuery1.SQL.add(',coalesce((select 1 FROM av_shedule_tarif WHERE del=0 AND id_shedule=a.id limit 1),0) as tarif ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT 1 FROM av_shedule_fio    WHERE del=0 AND a.id=id_shedule LIMIT 1),0) as personal ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT 1 FROM av_shedule_tel    WHERE del=0 AND a.id=id_shedule LIMIT 1),0) as tel ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT 1 FROM av_shedule_voin_deny  WHERE del=0 AND a.id=id_shedule LIMIT 1),0) as vpd ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT 1 FROM av_shedule_invisible  WHERE del=0 AND a.id=id_shedule LIMIT 1),0) as invis ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT remote_sale FROM av_shedule_remote_sale_permition WHERE del=0 AND a.id=id_shedule LIMIT 1),0) as rsale ');
-  Form15.ZQuery1.SQL.add(',coalesce((SELECT inet_sale FROM av_shedule_remote_sale_permition WHERE del=0 AND a.id=id_shedule LIMIT 1),0) as isale ');
+  Form15.ZQuery1.SQL.add('SELECT DISTINCT z.* FROM (select k.* ');
+  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.kod        from av_route AS b WHERE k.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),'''') as kod_route ');
+  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.type_route from av_route AS b WHERE k.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as type_route ');
+  Form15.ZQuery1.SQL.add(',coalesce((SELECT id_kontr FROM av_shedule_atp AS g WHERE k.id=g.id_shedule AND g.del=0 ORDER BY g.createdate DESC limit 1),0) as atpid ');
+  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.id_nas1    from av_route AS b WHERE k.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as nas1 ');
+  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.id_nas2    from av_route AS b WHERE k.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as nas2 ');
+  Form15.ZQuery1.SQL.add(',coalesce((SELECT b.id_nas3    from av_route AS b WHERE k.id_route=b.id ORDER BY b.del ASC, b.createdate DESC limit 1),0) as nas3 ');
+  Form15.ZQuery1.SQL.add('FROM ( ');
+  Form15.ZQuery1.SQL.add('SELECT a.id,a.kod,trim(a.name_shedule) name_shedule,a.active,a.del,a.dateactive,a.typ_tarif,a.date_tarif,a.zakaz,a.id_past, a.id_route ');
   Form15.ZQuery1.SQL.add('FROM av_shedule AS a ');
 
   //||=====================  фильтр расписаний
@@ -314,16 +279,33 @@ end;
          ZQuery1.SQL.add('Join av_shedule_ats AS h ON a.id=h.id_shedule AND h.del=0 ');
          ZQuery1.SQL.add('Join av_spr_ats AS i ON i.id=h.id_ats AND i.type_ats='+ IntToStr(RadioGroup2.ItemIndex+1) +' AND i.del=0 ');
       end;
- //                                                                                                                     ||
- //                                                                                                                     ||
- //                                                 -------------------------------------------------------------------||
 
- //фильтр на удаленные
+   //фильтр на удаленные
  If not(Form15.CheckBox7.Checked) then
- Form15.ZQuery1.SQL.add('WHERE a.del=0 ');
+   Form15.ZQuery1.SQL.add('WHERE a.del=0 ')
+  else
+   Form15.ZQuery1.SQL.add('WHERE a.del=2 ');
 
- If Form15.CheckBox7.Checked then
- Form15.ZQuery1.SQL.add('WHERE a.del<>1 ');
+   //флаг первичной выборки
+ If first_flag then
+   begin
+   Form15.ZQuery1.SQL.add(' AND a.datepo>current_date ');
+   //Form15.ZQuery1.SQL.add(' AND a.active=1 ');
+   first_flag:=false;
+   end;
+   //осуществлять контекстный поиск или нет
+  //++++++++++++++++++++++++++++++++++++++++++++++++++++
+ If filter_type=1 then
+   begin
+   ZQuery1.SQL.add('AND ((a.id='+stroka+') OR (substr(a.kod,1,'+inttostr(Utf8length(stroka))+')='+Quotedstr(stroka)+')) ');
+   end;
+ If filter_type=2 then
+   begin
+     stroka:=stringreplace(trim(stroka),#32,'% ',[])+'%';
+   //If length(stroka)>2 then  showmessage(stroka);
+   ZQuery1.SQL.add('AND ((UPPER(a.name_shedule) LIKE UPPER('+Quotedstr(stroka)+')) OR (UPPER(a.name_shedule) LIKE UPPER('+Quotedstr('%- '+stroka)+'))) ');
+   end;
+
 
   If filter_shedule=0 then
     begin
@@ -368,56 +350,60 @@ end;
   stmp:=' (z.type_route=0 or z.type_route=1) ';
   end;
 
-  // если используется фильтр
-  If CheckBox1.Checked OR CheckBox2.Checked OR CheckBox3.Checked then
-    begin
-    Filtracia();
-    Form15.ZQuery1.SQL.add(s_zapros);
-    end;
+  // фильтр по АКТИВНЫЙ/НЕАКТИВНЫЙ
+    If CheckBox3.Checked then
+      begin
+        ZQuery1.SQL.add(' AND a.active=' + intToStr(RadioGroup1.ItemIndex));
+      end;
 
-  //осуществлять контекстный поиск или нет
-  //++++++++++++++++++++++++++++++++++++++++++++++++++++
- If filter_type=1 then
-   begin
-   ZQuery1.SQL.add('AND ((a.id='+stroka+') OR (substr(a.kod,1,'+inttostr(Utf8length(stroka))+')='+Quotedstr(stroka)+')) ');
-   end;
- If filter_type=2 then
-   begin
-     stroka:=stringreplace(trim(stroka),#32,'% ',[])+'%';
-   //If length(stroka)>2 then  showmessage(stroka);
-   ZQuery1.SQL.add('AND ((UPPER(a.name_shedule) LIKE UPPER('+Quotedstr(stroka)+')) OR (UPPER(a.name_shedule) LIKE UPPER('+Quotedstr('%- '+stroka)+'))) ');
-   end;
-  //++++++++++++++++++++++++++++++++++++++++++++++++++++
+   Form15.ZQuery1.SQL.add(') k ) z ');
 
-  //Form15.ZQuery1.SQL.add(' GROUP BY a.id,a.kod,a.name_shedule,a.active,a.del,a.dateactive,a.typ_tarif,a.date_tarif,a.zakaz,a.id_past,kod_route,name_route,b.type_route ');
+     //фильтр по маршруту
+    If CheckBox1.Checked then
+      begin
+      If (trim(Edit2.Text)<>'') AND (n_idroute>0) then
+        ZQuery1.SQL.add(' AND id_route=' + intToStr(n_idroute));
+      If (trim(Edit2.Text)='') then
+        n_idroute := 0;
+      end;
+    // фильтр по типу маршрута
+    If CheckBox2.Checked then
+     begin
+      If (trim(ComboBox1.Text)<>'') then
+        begin
+         ZQuery1.SQL.add(' AND id_route in (SELECT b.id FROM av_route b WHERE b.del=0 and b.type_route=' + intToStr(ComboBox1.ItemIndex)+') ');
+        end;
+     end;
 
-
-    Form15.ZQuery1.SQL.add(') z ');
+    //Form15.ZQuery1.SQL.add(') z ');
     Form15.ZQuery1.SQL.add(' WHERE 1=1 ');
     //добавляем фильтр по типу расписаний
     Form15.ZQuery1.SQL.add(' AND '+stmp);
 
+    Form15.ZQuery1.SQL.add(') m ) g');
+
      //фильтр на наличие брони
  If Form15.CheckBox8.Checked then
-    Form15.ZQuery1.SQL.add('AND z.bron>0 ');
+    Form15.ZQuery1.SQL.add('AND g.bron>0 ');
      //фильтр на наличие фиксированной цены
  If Form15.CheckBox10.Checked then
-    Form15.ZQuery1.SQL.add('AND z.price>0 ');
+    Form15.ZQuery1.SQL.add('AND g.price>0 ');
       //фильтр на наличие измененного тарифа
  If Form15.CheckBox9.Checked then
-    Form15.ZQuery1.SQL.add('AND z.tarif>0 ');
+    Form15.ZQuery1.SQL.add('AND g.tarif>0 ');
 
-    Form15.ZQuery1.SQL.add('ORDER BY '+orderby);
+    //Form15.ZQuery1.SQL.add('ORDER BY '+orderby);
+    Form15.ZQuery1.SQL.add('ORDER BY id');
   If sort_direction=1 then
            ZQuery1.SQL.add(' ASC')
       else ZQuery1.SQL.add(' DESC');
 
   If orderby<>'dateactive' then
-           ZQuery1.SQL.add(',z.dateactive DESC;')
+           ZQuery1.SQL.add(',dateactive DESC;')
       else ZQuery1.SQL.add(' ;');
 
   //-конец запроса :-)
-  //showmessage(ZQuery1.SQL.Text);//;$
+  //showmessage(ZQuery1.SQL.Text);//$
   try
    ZQuery1.open;
   except
@@ -432,11 +418,6 @@ end;
 
    if Form15.ZQuery1.RecordCount=0 then
       begin
-        //setlength(m_route,1,20);
-        //for n:=low(m_route) to high(m_route) do
-        // begin
-        //  m_route[0,n]:=' ';
-        // end;
         Form15.ZQuery1.close;
         Form15.ZConnection1.Disconnect;
         exit;
@@ -476,6 +457,8 @@ end;
       m_route[n,21]:=Form15.ZQuery1.FieldByName('tel').asString; //обязательный телефон
       m_route[n,22]:=Form15.ZQuery1.FieldByName('vpd').asString; //запрет продажи воинских
       m_route[n,23]:=Form15.ZQuery1.FieldByName('invis').asString; //невидимое расписание
+      m_route[n,24]:=Form15.ZQuery1.FieldByName('atpid').asString; //перевозчик код
+      m_route[n,25]:=Form15.ZQuery1.FieldByName('atpname').asString; //перевозчик имя
       form15.ZQuery1.Next;
     end;
 
@@ -506,24 +489,25 @@ end;
 
    // Заполняем stringgrid
    Form15.StringGrid1.RowCount:=length(m_route)+1;
-   form15.StringGrid1.Columns[3].ValueChecked:='ДА';
-   form15.StringGrid1.Columns[3].ValueUnchecked:='НЕТ';
+   //form15.StringGrid1.Columns[3].ValueChecked:='ДА';
+   //form15.StringGrid1.Columns[3].ValueUnchecked:='НЕТ';
    for n:=0 to length(m_route)-1 do
     begin
       Form15.StringGrid1.Cells[0,n+1]:=m_route[n,6];
       Form15.StringGrid1.Cells[1,n+1]:=m_route[n,7];
       Form15.StringGrid1.Cells[2,n+1]:=m_route[n,8];
-      Form15.StringGrid1.Cells[3,n+1]:=IFTHEN(m_route[n,5]='1','ДА','НЕТ'); //активность расписания
+      Form15.StringGrid1.Cells[3,n+1]:=m_route[n,5]; //IFTHEN(m_route[n,5]='1','ДА','НЕТ'); //активность расписания
       Form15.StringGrid1.Cells[4,n+1]:=m_route[n,12];
       Form15.StringGrid1.Cells[5,n+1]:=m_route[n,13]; //дата активации
-      If m_route[n,14]='1' then  Form15.StringGrid1.Cells[6,n+1]:= '*'; //заказной
+      //If m_route[n,14]='1' then  Form15.StringGrid1.Cells[6,n+1]:= '*'; //заказной
+      Form15.StringGrid1.Cells[6,n+1]:= m_route[n,14]; //заказной
       If m_route[n,16]<>'0' then
       Form15.StringGrid1.Cells[7,n+1]:=m_route[n,16]; //id текущего расписания
 
       If trim(m_route[n,9])='1' then Form15.StringGrid1.Cells[8,n+1]:='1' else Form15.StringGrid1.Cells[8,n+1]:='0'; //ПДП
       If trim(m_route[n,19])='1' then Form15.StringGrid1.Cells[10,n+1]:='1' else Form15.StringGrid1.Cells[10,n+1]:='0'; //удаленка
       If trim(m_route[n,20])='1' then Form15.StringGrid1.Cells[11,n+1]:='1' else Form15.StringGrid1.Cells[11,n+1]:='0'; //интернет
-      If (m_route[n,15]='1') or not(m_route[n,18]='0')  then Form15.StringGrid1.Cells[9,n+1]:='1';
+      If (m_route[n,15]='1') or (m_route[n,18]='1')  then Form15.StringGrid1.Cells[9,n+1]:='1';
       If m_route[n,21]='1' then Form15.StringGrid1.Cells[12,n+1]:='1' else Form15.StringGrid1.Cells[12,n+1]:='0'; //телеф
       If m_route[n,22]='1' then Form15.StringGrid1.Cells[13,n+1]:='1' else Form15.StringGrid1.Cells[13,n+1]:='0'; //воин
       If m_route[n,23]='1' then Form15.StringGrid1.Cells[14,n+1]:='1' else Form15.StringGrid1.Cells[14,n+1]:='0'; //невидимые расписания
@@ -537,7 +521,7 @@ end;
    //Form15.StringGrid1.Refresh;
   end;
   form15.StringGrid1.ColWidths[9]:=0;
-  flag:=true;
+  flagupdate:=false;
 end;
 
 procedure TForm15.BitBtn1Click(Sender: TObject);
@@ -549,9 +533,9 @@ begin
   if dialogs.MessageDlg('Перенести данные с текущего РАСПИСАНИЯ в новое ?',mtConfirmation,[mbYes,mbNO], 0)=6 then
    begin
     flag_edit_shedule := 3;
-    if trim(Form15.StringGrid1.Cells[9,form15.StringGrid1.Row])='1' then
-      If dialogs.MessageDlg('Перенести данные по фиксированному тарифу в новое РАСПИСАНИЕ?',mtConfirmation,[mbYes,mbNO], 0)=6 then
-    flag_edit_shedule := 4;
+    //if trim(Form15.StringGrid1.Cells[9,form15.StringGrid1.Row])='1' then
+      //If dialogs.MessageDlg('Перенести данные по фиксированному тарифу в новое РАСПИСАНИЕ?',mtConfirmation,[mbYes,mbNO], 0)=6 then
+    //flag_edit_shedule := 4;
   end;
   end;
 
@@ -975,19 +959,22 @@ procedure TForm15.BitBtn10Click(Sender: TObject);
 begiN
   with form15 do
 begin
-  If GroupBox1.Height>35 then
+  If GroupBox1.Height>45 then
   begin
   //Stringgrid1.Height:=665;
-  //BitBtn10.Top:=697;
+  BitBtn11.visible:=false;
+  BitBtn8.visible:=false;
   //GroupBox1.Top:=696;
-  GroupBox1.Height:=34;
+  GroupBox1.Height:=40;
   end
   else
   begin
     //Stringgrid1.Height:=665;//525
     //BitBtn10.Top:=560;
     //GroupBox1.Top:= 545;
-    GroupBox1.Height:=180;
+    GroupBox1.Height:=183;
+    BitBtn11.visible:=true;
+  BitBtn8.visible:=true;
   end;
 end;
 end;
@@ -1005,6 +992,8 @@ begin
             CheckBox6.Checked:= false;
             CheckBox7.Checked:= false;
             CheckBox8.Checked:= false;
+            Edit1.Visible:=false;
+            Edit1.Text:='';
             Edit2.Text:='';
             Edit3.Text:='';
             Edit4.Text:='';
@@ -1240,9 +1229,16 @@ begin
   ss:=trimleft(Edit1.Text);
   if UTF8Length(ss)>0 then
        begin
-         //определяем тип данных для поиска
-       if (ss[1] in ['0'..'9']) then datatyp:=1
-       else datatyp:=2;
+        for n:=1 to UTF8Length(ss) do
+        begin
+       //определяем тип данных для поиска
+     if not (ss[n] in ['0'..'9']) then
+       begin
+         datatyp:=2;
+         break;
+       end;
+      datatyp:=1;
+        end;
 
       updategrid(datatyp,ss);
        end
@@ -1387,32 +1383,88 @@ end;
 //--------------- ОТРИСОВКА ГРИДА  -----------------------------------------------
 procedure TForm15.StringGrid1DrawCell(Sender: TObject; aCol, aRow: Integer;
   aRect: TRect; aState: TGridDrawState);
+const
+  cInactive = $CDD0D8;
+  cDlt = $C6D6E6;
+  //sDLt := $E8E8E8;
+  cZkz = $BBEDBB;
+  kolons = [0,2,5,7];
 var
-   sDlt : Tcolor;
+   //sDlt : Tcolor;
    n:integer;
+   //kolons : Set of 0, 2, 5, 7;
+
 begin
    if length(m_route)<1 then exit;
    with Sender as TStringGrid, Canvas do
     begin
+    //закрашиваем все белым
        Brush.Color:=clWhite;
-       sDLt := $E8E8E8;
        FillRect(aRect);
-     //другой цвет для удаленных
+
+       if Cells[aCol, aRow]='1' then
+       begin
+            //ПДП
+            if (acol=8) then  brush.Color:=clMaroon;
+
+            //Доступность расписания для удаленной продажи
+            if (acol=10) then brush.Color:=clGreen;
+
+               //form1.StringGrid1.Canvas.TextRect(aRect,arow+5,5,form1.StringGrid1.Cells[aCol, aRow]);
+                 //DrawCellsAlign(form1.StringGrid1,2,2,form1.StringGrid1.Cells[aCol, aRow],aRect);
+
+           //Доступность расписания для ИНТЕРНЕТ продажи
+            if (acol=11) then brush.Color:=clOlive;
+
+           //Обязательный телефон для продажи
+            if (acol=12) then brush.Color:=clPurple;
+
+          //Воинские ВПД
+            if (acol=13) then brush.Color:=$001678FD;
+
+            //невидимые расписания
+            If (aCol=14) then brush.Color:=clSkyBlue;
+
+             //закрашиваем клетку
+         If (acol=8) or (acol=10) or (acol=11) or (acol=12) or (acol=13) or (acol=14) then
+          begin
+           FillRect(aRect);
+           pen.Width:=1;
+           pen.Color:=clGray;
+           MoveTo(aRect.left,aRect.bottom-1);
+           LineTo(aRect.right,aRect.Bottom-1);
+          end;
+      end;
+
+      //НЕАКТИВНЫЕ
+       if Cells[3, aRow]='0' then
+        begin
+          Brush.Color:= cInactive;
+          FillRect(aRect);
+         end;
+        //ЗАКАЗНОЙ
+       if Cells[6, aRow]='1' then
+        begin
+          Brush.Color:= cZkz;
+          FillRect(aRect);
+         end;
+     //УДАЛЕННЫЕ
      If Cells[4, aRow]='2' then
        begin
-         Brush.Color:= sDlt;
+         Brush.Color:= cDlt;
          FillRect(aRect);
        end;
      //красный цвет для расписаний с ручным изменением тарифа
-     For n:=low(m_route) to high(m_route) do
-      begin
-        If (m_route[n,6]=Cells[0,aRow]) AND (aRow>0) and (m_route[n,15]='1') then
-       begin
-         Brush.Color:= $ABABFF;
-         FillRect(aRect);
-         break;
-       end;
-      end;
+     //For n:=low(m_route) to high(m_route) do
+     // begin
+     //   If (m_route[n,6]=Cells[0,aRow]) AND (aRow>0) and (m_route[n,15]='1') then
+     //  begin
+     //    Brush.Color:= $ABABFF;
+     //    FillRect(aRect);
+     //    break;
+     //  end;
+     // end;
+
 
      if (gdSelected in aState) then
            begin
@@ -1441,9 +1493,35 @@ begin
           5: font.Size:=10; //дата активации
           end;
       //выводим текст на всех полях
-      TextOut(aRect.Left + 5, aRect.Top+5, Cells[aCol, aRow]);
+      If (aCol in kolons) then TextOut(aRect.Left + 5, aRect.Top+5, Cells[aCol, aRow]);
 
-      //добавляем информацию о маршрутах
+      //Выводим заказной
+      If (aCol=6) and (Cells[aCol,aRow]='1') then
+        begin
+          Font.Size:=20;
+          Font.Style:=[fsBold];
+          Font.Color := clRed;
+          TextOut(aRect.Left+10, aRect.Top+5,'3');
+        end;
+        //Выводим НЕКТИВНЫЙ
+      If (aCol=3) then
+        begin
+          Font.Color := clRed;
+          if (Cells[aCol,aRow]='1') then
+            begin
+             Font.Size:=12;
+             Font.Style:=[fsBold];
+             TextOut(aRect.Left+5, aRect.Top+5,'*')
+            end
+          else
+            begin
+              Font.Size:=20;
+              Font.Style:=[fsBold];
+             TextOut(aRect.Left+5, aRect.Top+5,'!')
+            end;
+        end;
+
+      //добавляем информацию
       if (aRow>0) and (aCol=2) then
        begin
           Font.Size:=10;
@@ -1451,11 +1529,29 @@ begin
           Font.Color := clBlue;
            For n:=low(m_route) to high(m_route) do
              begin
+               //о маршрутах
                If (m_route[n,6]=Cells[0,aRow]) then
                  begin
-                   TextOut(aRect.Left + 5, aRect.Top+25,'   Код:'+m_route[n, 1]+
-                   '   МАРШРУТ: '+IFTHEN(copy(m_route[n, 2],length(m_route[n, 2]),1)='-',
-                   copy(m_route[n, 2],1,length(m_route[aRow-1, 2])-1),m_route[n, 2])+'   Тип: '+trim(m_route[n, 3]));
+                 //ширина текста наименования расписания canvas.TextWidth(m_route[n,8]);
+                   font.color:= clNavy;
+                   //если в наименовании расписания меньше 40 символов
+                  if utf8length(m_route[n,8])<40 then
+                    begin
+                    //если есть бронь
+                   if m_route[n,17]='1' then
+                      TextOut(aRect.right - canvas.TextWidth('обслуж: '+m_route[n,25]+' ['+m_route[n,24]+']')-120, aRect.Top+5,'обслуж: '+m_route[n,25]+' ['+m_route[n,24]+']')
+                    else
+                      TextOut(aRect.right - canvas.TextWidth('обслуж: '+m_route[n,25]+' ['+m_route[n,24]+']')-60, aRect.Top+5,'обслуж: '+m_route[n,25]+' ['+m_route[n,24]+']');
+                   end
+                  else
+                    TextOut(aRect.right - canvas.TextWidth(m_route[n,25]+' ['+m_route[n,24]+']')-50, aRect.Top+5, m_route[n,25]+' ['+m_route[n,24]+']');
+                   //'   МАРШРУТ: '+IFTHEN(copy(m_route[n,2],length(m_route[n,2]),1)='-', copy(m_route[n,2],1,length(m_route[aRow-1,2])-1),m_route[n,2])+
+                   Font.Color := clBlue;
+                   TextOut(aRect.Left + 10, aRect.Top+28,'Код:  '+m_route[n,1]+
+                   '   МАРШРУТ:  '+m_route[n,2]+
+                   '   тип:  '+trim(m_route[n,3]));
+
+
 
                    //есть броня
                    If m_route[n,17]<>'0' then
@@ -1465,19 +1561,19 @@ begin
                         font.Size:=11;
                         font.Style:=[];
                         pen.Color:=clBlue;
-                        canvas.Rectangle(aRect.Right-67,aRect.top+3,aRect.right-3,aRect.top+22);
+                        canvas.Rectangle(aRect.Right-67,aRect.top+3,aRect.right-3,aRect.top+23);
                         TextOut(aRect.right-65, aRect.Top+5, 'БРОНЬ');
                      end;
-                    //есть фиксированный тариф
-                   If m_route[n,18]<>'0' then
+                    //нет фиксированного тарифа
+                   If (m_route[n,18]='0') and (Cells[3,aRow]='1') then
                      begin
                         pen.Width:=1;
-                        font.color:=clRed;
+                        font.color:=clMaroon;
                         font.Size:=11;
                         font.Style:=[];
                         pen.Color:=clBlack;
-                        canvas.Rectangle(aRect.Right-67,aRect.bottom-22,aRect.right-3,aRect.bottom-3);
-                        TextOut(aRect.right-65, aRect.bottom-20, 'ТАРИФ');
+                        canvas.Rectangle(aRect.Right-100,aRect.bottom-22,aRect.right-3,aRect.bottom-3);
+                        TextOut(aRect.right-97, aRect.bottom-20, 'НЕТ ТАРИФА');
                      end;
                    break;
                  end;
@@ -1485,73 +1581,7 @@ begin
        end;
 
        brush.Color:=clWhite;
-       //ПДП
-            if (acol=8) and (trim(Cells[aCol, aRow])='1') then
-              begin
-                 brush.Color:=clRed;
-              end;
-
-            //Доступность расписания для удаленной продажи
-            if (acol=10) then
-              begin
-               font.Color:=clGreen;
-               font.size:=24;
-               font.Style:=[];
-               //form1.StringGrid1.Canvas.TextRect(aRect,arow+5,5,form1.StringGrid1.Cells[aCol, aRow]);
-               if trim(Cells[aCol, aRow])='1' then
-                 brush.Color:=clGreen;
-                 //DrawCellsAlign(form1.StringGrid1,2,2,form1.StringGrid1.Cells[aCol, aRow],aRect);
-                 //DrawCellsAlign(form1.StringGrid1,2,2,'*',aRect);
-            end;
-              //Доступность расписания для ИНТЕРНЕТ продажи
-            if (acol=11) then
-              begin
-               font.Color:=clOlive;
-               font.size:=24;
-               font.Style:=[];
-               //form1.StringGrid1.Canvas.TextRect(aRect,arow+5,5,form1.StringGrid1.Cells[aCol, aRow]);
-               if trim(Cells[aCol, aRow])='1' then
-                 brush.Color:=clOlive;
-              end;
-
-              //Обязательный телефон для продажи
-            if (acol=12) then
-              begin
-               font.Color:=clPurple;
-               font.size:=24;
-               font.Style:=[];
-               //form1.StringGrid1.Canvas.TextRect(aRect,arow+5,5,form1.StringGrid1.Cells[aCol, aRow]);
-               if trim(Cells[aCol, aRow])='1' then
-                 brush.Color:=clPurple;
-                 //DrawCellsAlign(form1.StringGrid1,2,2,form1.StringGrid1.Cells[aCol, aRow],aRect);
-                 //DrawCellsAlign(form1.StringGrid1,2,2,'*',aRect);
-                end;
-
-          //Воинские ВПД
-            if (acol=13) then
-              begin
-               font.Color:=$001678FD;
-               font.size:=24;
-               font.Style:=[];
-               //form1.StringGrid1.Canvas.TextRect(aRect,arow+5,5,form1.StringGrid1.Cells[aCol, aRow]);
-               if trim(Cells[aCol, aRow])='1' then
-                 brush.Color:=$001678FD;
-            end;
-            //невидимые расписания
-            If (aCol=14) and (trim(Cells[aCol, aRow])='1') then
-               brush.Color:=clSkyBlue;
-
-       //закрашиваем клетку
-       If (acol=8) or (acol=10) or (acol=11) or (acol=12) or (acol=13) or (acol=14) then
-        begin
-           FillRect(aRect);
-           pen.Width:=1;
-           pen.Color:=clGray;
-           MoveTo(aRect.left,aRect.bottom-1);
-           LineTo(aRect.right,aRect.Bottom-1);
-         end;
        end;
-
 
        // Заголовок
        if aRow=0 then
@@ -1562,7 +1592,7 @@ begin
            font.Size:=9;
            TextOut(aRect.Left+5, aRect.Top+15, Cells[aCol, aRow]);
            ////Рисуем значки сортировки и активного столбца
-            If sort_col=aCol then Canvas_Triangle(canvas,sort_direction,aRect.left);
+            //If sort_col=aCol then Canvas_Triangle(canvas,sort_direction,aRect.left);
           end;
       end;
 end;
@@ -1572,6 +1602,7 @@ procedure TForm15.StringGrid1Enter(Sender: TObject);
 begin
   Edit1.Visible:=false;
 end;
+
 
 //procedure TForm15.StringGrid1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 //var
@@ -1600,7 +1631,7 @@ begin
   with sender as TStringGrid do
    begin
      currow := aRow;
-    If not flag then exit;
+    If flagupdate then exit;
 
        If (dialogs.MessageDlg('Подтверждаете изменение ?',mtConfirmation,[mbYes,mbNO], 0)= mrNo) then
         begin
@@ -1746,6 +1777,9 @@ end;
 
 procedure TForm15.FormShow(Sender: TObject);
 begin
+  //флаг первичной выборки
+  first_flag:=true;
+
  with form15 do
   begin
    if flag_access=1 then
@@ -1758,9 +1792,10 @@ begin
  //определяем местоположение элементов на форме
  //Stringgrid1.Height:=665;
  //BitBtn10.Top:=697;
- GroupBox1.Top:=697;
- GroupBox1.Height:=32;
- form15.StringGrid1.ColWidths[4]:=0;
+ //GroupBox1.Top:=697;
+ BitBtn11.visible:=false;
+  BitBtn8.visible:=false;
+ GroupBox1.Height:=40;
   sort_col := 0;  //колонка сортировки
   sort_direction := 2;
 

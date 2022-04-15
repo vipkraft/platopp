@@ -72,7 +72,6 @@ procedure TFormuslugi_edit.FormShow(Sender: TObject);
  var
    tmp_id_user,n:integer;
 begin
-     Centrform(Formuslugi_edit);
    with Formuslugi_edit do
     begin
       Memo1.Clear;

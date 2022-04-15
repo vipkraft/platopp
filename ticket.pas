@@ -447,7 +447,6 @@ var
   fl:boolean=false;
   n:integer=0;
 begin
-   Centrform(FormAdd);
    with FormAdd do
   begin
   // Редактируем запись

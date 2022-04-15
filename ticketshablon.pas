@@ -7,7 +7,11 @@ interface
 uses
   Classes, SysUtils, ZConnection, ZDataset, LazFileUtils, Forms, Controls, Graphics,
   Dialogs, ExtCtrls, StdCtrls, Buttons, Grids, ComCtrls, Spin, EditBtn, LazUtf8,
-  StrUtils, FMemo, ticket,FMemo_Type, MouseAndKeyInput;
+  StrUtils, ticket,
+  {$IFDEF UNIX}
+   FMemo, FMemo_Type,
+  {$ENDIF}
+  MouseAndKeyInput;
 
 type
 
@@ -1310,7 +1314,6 @@ procedure TformTT.FormShow(Sender: TObject);
 begin
   with FormTT do
   begin
-  Centrform(FormTT);
   PageControl1.ActivePageIndex:=0;
   //инициализация массивов опций
   //FillArray24();

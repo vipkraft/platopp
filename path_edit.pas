@@ -76,7 +76,6 @@ var
 
 procedure TFormpme.FormShow(Sender: TObject);
 begin
-     Centrform(formpme);
     //если добавление
    if flag_edit_path=1 then
        begin

@@ -234,7 +234,6 @@ end;
 
 procedure TFormRepV.FormShow(Sender: TObject);
 begin
-  Centrform(FormRepV);
   With FormRepV do
   begin
    fillotd;

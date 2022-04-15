@@ -14,6 +14,7 @@ object formTT: TformTT
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
@@ -1189,14 +1190,14 @@ object formTT: TformTT
         end
         object ToolButton14: TToolButton
           Left = 24
-          Height = 22
+          Height = 5
           Top = 2
           Caption = 'ToolButton2'
           Style = tbsDivider
         end
         object ToolButton15: TToolButton
           Left = 29
-          Height = 22
+          Height = 5
           Top = 2
           Caption = 'ToolButton3'
           ImageIndex = 8
@@ -1211,7 +1212,7 @@ object formTT: TformTT
         end
         object ToolButton17: TToolButton
           Left = 57
-          Height = 22
+          Height = 5
           Top = 2
           Caption = 'ToolButton5'
           Style = tbsDivider
@@ -1225,7 +1226,7 @@ object formTT: TformTT
         end
         object ToolButton19: TToolButton
           Left = 85
-          Height = 22
+          Height = 5
           Top = 2
           Caption = 'ToolButton7'
           Style = tbsDivider
@@ -1239,7 +1240,7 @@ object formTT: TformTT
         end
         object ToolButton21: TToolButton
           Left = 113
-          Height = 22
+          Height = 8
           Top = 2
           Caption = 'ToolButton9'
           Style = tbsSeparator
@@ -1253,7 +1254,7 @@ object formTT: TformTT
         end
         object ToolButton23: TToolButton
           Left = 144
-          Height = 22
+          Height = 5
           Top = 2
           Caption = 'ToolButton11'
           Style = tbsDivider

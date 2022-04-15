@@ -12,7 +12,9 @@ object Form_Bron: TForm_Bron
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   LCLVersion = '2.0.8.0'
+  Scaled = False
   object Image1: TImage
     Left = 0
     Height = 45
@@ -873,6 +875,7 @@ object Form_Bron: TForm_Bron
     Caption = 'Button1'
     OnClick = Button1Click
     TabOrder = 9
+    Visible = False
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF8

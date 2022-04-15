@@ -1,3 +1,4 @@
+
 unit shedule_edit;
 
 {$mode objfpc}{$H+}
@@ -7,7 +8,7 @@ interface
 uses
   Classes, SysUtils, ZConnection, ZDataset, LazFileUtils, Forms, Controls, Graphics,
   Dialogs, ExtCtrls, StdCtrls, Buttons, Grids, ComCtrls, Spin, EditBtn, report_main,
-  StrUtils, types, dateutils;
+  StrUtils, types, dateutils, math;
 
 type Tmas = array of array of string;
 
@@ -43,9 +44,11 @@ type
     BitBtn7: TBitBtn;
     BitBtn8: TBitBtn;
     BitBtn9: TBitBtn;
+    Button1: TButton;
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
+    Button5: TButton;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox3: TCheckBox;
@@ -69,15 +72,12 @@ type
     Edit13: TEdit;
     Edit14: TEdit;
     Edit16: TEdit;
-    Edit17: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
-    Edit4: TEdit;
     Edit5: TEdit;
     Edit6: TEdit;
     Edit7: TEdit;
     Edit8: TEdit;
-    Edit9: TEdit;
     FloatSpinEdit1: TFloatSpinEdit;
     FloatSpinEdit2: TFloatSpinEdit;
     FloatSpinEdit3: TFloatSpinEdit;
@@ -86,6 +86,8 @@ type
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    GroupBox5: TGroupBox;
     GroupBox6: TGroupBox;
     GroupBox7: TGroupBox;
     GroupBox8: TGroupBox;
@@ -102,7 +104,6 @@ type
     Label16: TLabel;
     Label17: TLabel;
     Label18: TLabel;
-    Label19: TLabel;
     Label2: TLabel;
     Label20: TLabel;
     Label21: TLabel;
@@ -112,13 +113,14 @@ type
     Label25: TLabel;
     Label27: TLabel;
     Label28: TLabel;
+    Label29: TLabel;
     Label3: TLabel;
     Label31: TLabel;
     Label32: TLabel;
+    Label33: TLabel;
     Label36: TLabel;
     Label37: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
@@ -133,9 +135,6 @@ type
     RadioButton5: TRadioButton;
     Shape1: TShape;
     Shape10: TShape;
-    Shape11: TShape;
-    Shape17: TShape;
-    Shape18: TShape;
     Shape19: TShape;
     Shape8: TShape;
     SpinEdit1: TSpinEdit;
@@ -166,6 +165,7 @@ type
     procedure BitBtn11Click(Sender: TObject);
     procedure BitBtn12Click(Sender: TObject);
     procedure BitBtn13Click(Sender: TObject);
+    procedure BitBtn13Exit(Sender: TObject);
     procedure BitBtn14Click(Sender: TObject);
     procedure BitBtn19Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -190,14 +190,19 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
     procedure CheckBox2Change(Sender: TObject);
     procedure CheckBox3Change(Sender: TObject);
     procedure CheckBox4Change(Sender: TObject);
     procedure CheckBox5Change(Sender: TObject);
     procedure CheckBox6Change(Sender: TObject);
+    procedure DateEdit1Change(Sender: TObject);
+    procedure DateEdit2Change(Sender: TObject);
     procedure DateEdit3Change(Sender: TObject);
     procedure Edit2Change(Sender: TObject);
+    procedure Edit5Change(Sender: TObject);
+    procedure Edit6Change(Sender: TObject);
     procedure FloatSpinEdit1EditingDone(Sender: TObject);
     procedure FloatSpinEdit2EditingDone(Sender: TObject);
     procedure FloatSpinEdit3EditingDone(Sender: TObject);
@@ -233,9 +238,11 @@ type
     procedure StringGrid6MouseEnter(Sender: TObject);
     procedure StringGrid6Selection(Sender: TObject; aCol, aRow: Integer);
     procedure StringGrid6SetCheckboxState(Sender: TObject; ACol, ARow: Integer;       const Value: TCheckboxState);
+    procedure StringGrid6SetEditText(Sender: TObject; ACol, ARow: Integer;
+      const Value: string);
     procedure StringGrid8Selection(Sender: TObject; aCol, aRow: Integer);
+    procedure StringGrid9Enter(Sender: TObject);
     procedure StringGrid9SetCheckboxState(Sender: TObject; ACol, ARow: Integer;const Value: TCheckboxState);
-    procedure TabSheet5Enter(Sender: TObject);
     procedure TabSheet7Enter(Sender: TObject);
     procedure TabSheet7Exit(Sender: TObject);
     procedure TabSheet8Enter(Sender: TObject);
@@ -255,6 +262,7 @@ type
  //   procedure Load_date(id_atp:string); //загрузка в массив сезонности
     procedure crossgraf();  //ОтЧЕТ ПЕРЕСЕЧЕНИЯ ПЕРЕВОЗЧИКОВ НА РАСПИСАНИИ
     procedure get_newid;//рассчитать новый код маршрута
+    procedure get_infoedit(idshed: string);//запросить инфу по изменениям
   private
     { private declarations }
   public
@@ -341,7 +349,8 @@ const
   sezon_size = 63;
 var
   tmp_arr:array of array of String;
-  flchange,flsostav,flatp,fltarif,flsezon,fluslugi,flblock,flactiv : byte; //флаги изменений
+  //флаги изменений
+  flchange,flsostav,flatp,fltarif,flsezon,fluslugi,flblock,flactiv: boolean;
    sdate, past_id : string;
    copy_shed,  old_id :string;
   activDay : TDate;
@@ -350,6 +359,62 @@ var
 
 { TForm16 }
 
+procedure Tform16.get_infoedit(idshed: string);
+var
+   n:integer;
+begin
+     With Form16 do
+  begin
+   //обнулить инфо поля
+  form16.Label28.Caption:='';
+  form16.Label29.Caption:='';
+   form16.StringGrid4.RowCount:=1;
+  // Подключаемся к серверу
+   If not(Connect2(Zconnection1, flagProfile)) then
+     begin
+      showmessagealt('Соединение с основным сервером потеряно !'+#13+'Проверьте соединение и/или'+#13+' обратитесь к администратору.');
+      Close;
+      exit;
+     end;
+    form16.ZQuery1.SQL.Clear;
+    form16.ZQuery1.SQL.add('SELECT get_shedule_history(''idsh'','+idshed+');');
+    form16.ZQuery1.SQL.add('FETCH ALL IN idsh;');
+      try
+      ZQuery1.open;
+     except
+      showmessagealt('ОШИБКА запроса к базе данных !'+#13+form16.ZQuery1.SQL.text);
+      ZQuery1.close;
+      ZConnection1.disconnect;
+      Exit;
+     end;
+     If ZQuery1.recordcount=0 then
+       begin
+         ZQuery1.close;
+         ZConnection1.disconnect;
+         Exit;
+        end;
+     for n:=0 to ZQuery1.recordcount-1 do
+       begin
+         if n=0 then
+           begin
+              form16.Label28.Caption:=formatdatetime('YYYY-MM-DD hh:nn:ss',form16.ZQuery1.FieldByName('createdate').AsDatetime);
+              form16.Label29.Caption:=form16.ZQuery1.FieldByName('uname').AsString;
+               ZQuery1.Next;
+               continue;
+           end;
+         form16.StringGrid4.RowCount:=form16.StringGrid4.RowCount+1;
+         form16.StringGrid4.cells[0,form16.StringGrid4.RowCount-1]:=form16.ZQuery1.FieldByName('info').AsString;
+         form16.StringGrid4.cells[1,form16.StringGrid4.RowCount-1]:=formatdatetime('YYYY-MM-DD hh:nn:ss',form16.ZQuery1.FieldByName('createdate').AsDatetime);
+         form16.StringGrid4.cells[2,form16.StringGrid4.RowCount-1]:=form16.ZQuery1.FieldByName('uname').AsString;
+          ZQuery1.Next;
+         end;
+
+
+      ZQuery1.close;
+      ZConnection1.disconnect;
+
+  end;
+end;
 
 procedure Tform16.get_newid;//рассчитать новый код маршрута
 begin
@@ -384,7 +449,7 @@ begin
      new_id:=intTostr(form16.ZQuery1.FieldByName('new_id').asInteger+1);
        ZQuery1.close;
       ZConnection1.disconnect;
-   Edit4.Text:=new_id;
+   Label4.caption:=new_id;
 
    If new_id='0' then
      begin
@@ -582,12 +647,12 @@ begin
          form16.FloatSpinEdit1.text:=tarif_all[n,10];
          form16.FloatSpinEdit4.text:=tarif_all[n,11];
          //если тарифы для разных пунктов отличаются, то отображать нули на счетчиках
-         If (fltarif=0) and (n>0) then
+         If  (not fltarif) and (n>0) then
           begin
           //showmessage(floattostr(form16.FloatSpinEdit3.value)+'<>'+(tarif_all[n,8])+#13+
           //trim(stringreplace(FloatSpinEdit5.text,',','.',[]))+'<>'+trim(tarif_all[n,9])+#13+
           //trim(stringreplace(FloatSpinEdit1.text,',','.',[]))+'<>'+trim(tarif_all[n,10])+#13+
-          //trim(stringreplace(FloatSpinEdit4.text,',','.',[]))+'<>'+trim(tarif_all[n,11])+#13);
+          //trim(stringreplace(FloatSpinLabel4.caption,',','.',[]))+'<>'+trim(tarif_all[n,11])+#13);
           //If floattostrf(form16.FloatSpinEdit3.value,fffixed,15,2)<>floattostrf(strtofloat(tarif_all[n,8])),fffixed,15,2)  then showmessage(floattostr(form16.FloatSpinEdit3.value)+'<1>'+(tarif_all[n,8]));
           //If form16.FloatSpinEdit5.value<>strtofloat(tarif_all[n,9])  then showmessage(floattostr(form16.FloatSpinEdit5.value)+'<2>'+(tarif_all[n,9]));
           //If form16.FloatSpinEdit1.value=strtofloat(tarif_all[n,10]) then showmessage(floattostr(form16.FloatSpinEdit1.value)+'<3>'+(tarif_all[n,10]));
@@ -602,7 +667,7 @@ begin
     end;
    //showmessage(inttostr(n));
    //если не нашли перевозчика в массиве тарифов, то рассчитываем автоматом
-   If (flt=0) and (flag_edit_shedule<>1) then
+  { If (flt=0) and (flag_edit_shedule<>1) then
     begin
     //showmessage(id_atp);//$
     If not(tarif_auto(id_atp)) then
@@ -613,7 +678,7 @@ begin
     If (length(tarif_all)>1) then
     Refresh_all_grid(id_atp);
     end;
-
+   }
    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ TARIF_ALL^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   // ================================ LGOTY_ALL=========================================
@@ -1126,7 +1191,8 @@ begin
     // Если новая запись расписания то берем данные из ТАРИФА на ЭТУ дату
     Form16.ZQuery1.SQL.Clear;
     Form16.ZQuery1.SQL.add('SELECT b.activ,b.id_uslugi,b.sum,b.proc FROM av_tarif a,av_tarif_uslugi b WHERE a.id = b.id_tarif and a.del=0 and b.del=0 and ');
-    Form16.ZQuery1.SQL.add('a.datetarif='+quotedstr(trim(form16.ComboBox4.Text))+' and a.id_point=0;');
+    //Form16.ZQuery1.SQL.add('a.datetarif='+quotedstr(trim(form16.ComboBox4.Text))+' //2022-02-02 убить datetarif
+    Form16.ZQuery1.SQL.add(' a.id_point=0;');
     try
       Form16.ZQuery1.open;
     except
@@ -1333,6 +1399,12 @@ begin
   form16.UpdateGridATS();
 end;
 
+procedure TForm16.StringGrid9Enter(Sender: TObject);
+begin
+  //вкладка атп изменения машин
+   flatp := true;
+end;
+
 procedure TForm16.StringGrid9SetCheckboxState(Sender: TObject; ACol,ARow: Integer; const Value: TCheckboxState);
  var
    n:integer;
@@ -1378,12 +1450,6 @@ begin
 end;
 
 
-procedure TForm16.TabSheet5Enter(Sender: TObject);
-begin
-  //вкладка атп
-   flatp :=1;
-end;
-
 
 procedure TForm16.PageControl1Change(Sender: TObject);
 begin
@@ -1406,7 +1472,7 @@ procedure TForm16.RadioButton1Change(Sender: TObject);
     bag:string;
  begin
   If rfresh then exit;//флаг обновления данных на гриде
-   fltarif:=1;
+   fltarif:= true;
  bag:= stringreplace(form16.FloatSpinEdit2.text,',','.',[]);
     for n:=0 to length(tarif_all)-1 do
      begin
@@ -1427,7 +1493,7 @@ procedure TForm16.RadioButton2Change(Sender: TObject);
    bag:string;
 begin
  If rfresh then exit;//флаг обновления данных на гриде
-  fltarif:=1;
+  fltarif:= true;
  bag:= stringreplace(form16.FloatSpinEdit2.text,',','.',[]);
     for n:=0 to length(tarif_all)-1 do
      begin
@@ -1444,7 +1510,7 @@ end;
 procedure TForm16.TabSheet7Enter(Sender: TObject);
 begin
    //вкладка тарифа
-   fltarif:=1;
+   fltarif:= true;
 end;
 
 //уход с вкладки тарифа
@@ -1456,13 +1522,13 @@ end;
 procedure TForm16.TabSheet8Enter(Sender: TObject);
 begin
   //вкладка сезон
-   flsezon:=1;
+   flsezon:= true;
 end;
 
 procedure TForm16.TabSheet9Enter(Sender: TObject);
 begin
   //вкладка услуг и льгот
-   fluslugi :=1;
+   fluslugi := true;
 end;
 
 
@@ -1519,7 +1585,8 @@ procedure TForm16.save_shedule();
 begin
   WIth FOrm16 do
   begin
-    If flchange=0 then
+    If not flchange and not flsostav and not flatp and not fltarif and not flsezon and not fluslugi and not flblock
+     then
       begin
         showmessagealt('Сначала произведите изменения в расписании !');
         exit;
@@ -1612,7 +1679,7 @@ begin
                 If form16.StringGrid6.cells[0,k]=atp_sostav[n,0] then
                  If atp_sostav[n,4]<>form16.StringGrid6.cells[2,k] then
                   begin
-                    flatp:=1;
+                    flatp:= true;
                     atp_sostav[n,4]:=form16.StringGrid6.cells[2,k]; //код реестра reestr
                     end;
           end;
@@ -1697,7 +1764,7 @@ begin
               begin
               flag_edit_shedule := 1;
               past_id := old_id;
-              flactiv := 1;
+              flactiv := true;
               end;
             end;
         end;
@@ -1758,7 +1825,7 @@ begin
                 begin
                   flag_edit_shedule := 1;
                   past_id := old_id;
-                  flactiv := 1;
+                  flactiv := true;
                   end;
               end;
               end;
@@ -1801,7 +1868,7 @@ begin
      end;
 
 //\\\\\\\\\  проверка при изменении состава расписания удалять броню \\\\\\\\\\\\\\\\\\
-  if (flag_edit_shedule=2) AND (flsostav=1) and flcritical then
+  if (flag_edit_shedule=2) AND (flsostav) and flcritical then
     begin
       ZQuery1.SQL.Clear;
       ZQuery1.SQL.add('SELECT id_shedule FROM av_shedule_bron WHERE del=0 AND id_shedule='+old_id+';');
@@ -1881,7 +1948,7 @@ begin
 
   //Производим запись новых данных
   //Маркируем запись на удаление если режим редактирования
-  if flag_edit_shedule=2 then
+  if (flag_edit_shedule=2) and flchange then
       begin
        form16.ZQuery1.SQL.Clear;
        form16.ZQuery1.SQL.add('UPDATE av_shedule SET del=1,createdate=now(),id_user='+inttostr(id_user)+' WHERE id='+ old_id +' and del=0;');
@@ -1895,6 +1962,8 @@ begin
     zdog:='0';
 
   //Записываем новые основные данные по расписанию
+  if flchange then
+  begin
   form16.ZQuery1.SQL.Clear;
   form16.ZQuery1.SQL.add('INSERT INTO av_shedule(id,id_past,createdate,id_user,del,createdate_first,id_user_first,kod,name_shedule,id_route,active,zakaz,dates,datepo,dateactive,typ_tarif,date_tarif,zdogovor) VALUES (');
   if flag_edit_shedule=1 then form16.ZQuery1.SQL.add(new_id+','+past_id+',now(),'+inttostr(id_user)+',0,now(),'+inttostr(id_user)+',');
@@ -1908,11 +1977,13 @@ begin
                                  quotedstr(trim(form16.DateEdit1.text))+','+
                                  quotedstr(trim(form16.DateEdit2.text))+','+
                                  quotedstr(trim(form16.DateEdit3.text))+
-                                 ',0,'+quotedstr(combobox4.Text)+','+zdog+');');
+                                 ',0,current_date,'+zdog+');'); //2022-02-02 убить datetarif
+  //showmessage(form16.ZQuery1.SQL.Text);//$
   form16.ZQuery1.ExecSQL;
+  end;
 
   //=========================Записываем состав расписания============================
-  If (flsostav=1) OR (flactiv=1) then //если были изменения или будущее расписание
+  If (flsostav) OR (flactiv) then //если были изменения или будущее расписание
      begin
   if flag_edit_shedule=2 then
      begin
@@ -1946,7 +2017,8 @@ begin
      if flag_edit_shedule=1 then form16.ZQuery1.SQL.add(',now(),'+inttostr(id_user)+');');
      if flag_edit_shedule=2 then form16.ZQuery1.SQL.add(',NULL,NULL);');
 
-     //If n>3 then showmessage(form16.ZQuery1.SQL.Text);//$
+     //If n>3 then
+     //showmessage(form16.ZQuery1.SQL.Text);//$
      form16.ZQuery1.ExecSQL;
    end;
   end;
@@ -1958,7 +2030,7 @@ begin
 
 
 
-   If (flatp=1) OR (flactiv=1) then //если были изменения или будущее расписание
+   If (flatp) OR (flactiv) then //если были изменения или будущее расписание
       begin
   if flag_edit_shedule=2 then
      begin
@@ -2021,20 +2093,20 @@ begin
  //помечаем на удаление записи этого расписания в соответствующих таблицах
  if (flag_edit_shedule=2) then
    begin
-  If (flsezon=1) then
+  If (flsezon) then
     begin
       ZQuery1.SQL.Clear;
       ZQuery1.SQL.add('UPDATE av_shedule_sezon SET del=1,createdate=now(),id_user='+inttostr(id_user)+' WHERE id_shedule='+ old_id +' and del=0;');
       ZQuery1.ExecSQL;
     end;
- If (fltarif=1) then
+ If (fltarif) then
   begin
         ZQuery1.SQL.Clear;
         ZQuery1.SQL.add('UPDATE av_shedule_tarif SET del=1,createdate=now(),id_user='+inttostr(id_user)+' WHERE id_shedule='+ old_id +' and del=0;');
         ZQuery1.ExecSQL;
     end;
 
- If (fluslugi=1) then
+ If (fluslugi) then
   begin
       ZQuery1.SQL.Clear;
       ZQuery1.SQL.add('UPDATE av_shedule_uslugi SET del=1,createdate=now(),id_user='+inttostr(id_user)+' WHERE id_shedule='+ old_id +' and del=0;');
@@ -2053,7 +2125,7 @@ begin
     kodatp := atp_sostav[k,0];
 
   // =============================Записываем Сезонность======================================
-  If (flsezon=1) OR (flactiv=1) then //если были изменения или будущее расписание
+  If (flsezon) OR (flactiv) then //если были изменения или будущее расписание
      begin
      for n:=0 to length(mas_date)-1 do
      begin
@@ -2080,7 +2152,7 @@ begin
 
   // =============================Записываем тарифную сетку ======================================
      //записываем тариф только там, где были ручные изменения
-  If (fltarif=1) OR (flactiv=1) then //если были изменения или будущее расписание
+  If (fltarif) OR (flactiv) then //если были изменения или будущее расписание
   begin
    //if flag_edit_shedule=2 then
    //begin
@@ -2121,7 +2193,7 @@ begin
   end;
   //----------------------------------------------------------------------------------------
 
-  If (fluslugi=1) OR (flactiv=1) then //если были изменения или будущее расписание
+  If (fluslugi) OR (flactiv) then //если были изменения или будущее расписание
   begin
   // =============================Записываем услуги ======================================
   //if flag_edit_shedule=2 then
@@ -2189,7 +2261,7 @@ begin
  // закончился проход по атп в гриде
 
  //** записать запрещенных пользователей **********************************
- If (flblock=1) OR (flactiv=1) then //если были изменения или будущее расписание
+ If (flblock) OR (flactiv) then //если были изменения или будущее расписание
  begin
   if flag_edit_shedule=2 then
     begin
@@ -2212,7 +2284,7 @@ begin
   ZQuery1.Close;
   Zconnection1.disconnect;
   //
-  IF (flactiv=1) then showmessagealt('УСПЕШНО создано связанное расписание с отложенной датой активации !');
+  IF (flactiv) then showmessagealt('УСПЕШНО создано связанное расписание с отложенной датой активации !');
   Form16.Close;
  except
      ZConnection1.Rollback;
@@ -2223,15 +2295,15 @@ begin
  end;
   end;
   //сбрасываем флаги
-    flchange :=0;
-    flsostav :=0 ;
-    flatp :=0;
-    fltarif :=0;
-    flsezon :=0;
-    fluslugi :=0;
-    flblock :=0;
+    flchange := false;
+    flsostav := false;
+    flatp :=false;
+    fltarif :=false;
+    flsezon :=false;
+    fluslugi :=false;
+    flblock :=false;
     //fl_to :=0;  //переход на вкладку опции
-    flactiv :=0; //флаг создания будущего расписания
+    flactiv :=false; //флаг создания будущего расписания
     flcritical:=false;
 end;
 //=======================================   КОНЕЦ СОХРАНЕНИЯ =========================================================
@@ -2260,7 +2332,7 @@ procedure TForm16.StringGrid1SetCheckboxState(Sender: TObject; ACol,
 begin
    with sender as TStringGrid do
    begin
-   flsostav:=1;
+   flsostav:=true;
      if (Cells[10,aRow]='0') then  cells[10,aRow]:='1' else cells[10,aRow]:='0';
      m_sostav[aRow,14]:=cells[10,aRow];
    end;
@@ -2323,7 +2395,7 @@ begin
      //рассчитывать тариф при продаже автоматом
     // РАССЧИТАТЬ ТАРИФ АВТОМАТИЧЕСКИ для последующей ручной корректировки **************************************************************
     //showmessage('2');//$
-    If flsostav=1 then
+    If flsostav then
     begin
       showmessagealt('СНАЧАЛА НЕОБХОДИМО СОХРАНИТЬ'+#13+'ИЗМЕНЕНИЯ В СОСТАВЕ РАСПИСАНИЯ !');
       EXIT;
@@ -2335,7 +2407,7 @@ begin
      form16.FloatSpinEdit2.Value:=0;
      form16.GroupBox2.Enabled:=false;
      Refresh_all_grid(trim(Cells[0,row]));
-     fltarif:=1;
+     fltarif:=true;
     end
    else
    begin
@@ -2351,6 +2423,17 @@ begin
             atp_sostav[n,3] :=cells[3,Row]; //тип расчета тарифа
           end;
 
+   end;
+end;
+
+procedure TForm16.StringGrid6SetEditText(Sender: TObject; ACol, ARow: Integer;
+  const Value: string);
+begin
+    if not flatp and (ACol=2) then
+   begin
+    form16.Panel1.Caption:=inttostr(ACol);
+    form16.Panel1.Visible:=true;
+    flatp:=true;
    end;
 end;
 
@@ -2426,7 +2509,7 @@ begin
      // нименование маршрута
      form16.Edit2.Text:=form16.ZQuery1.FieldByName('name_route').asString;
      // id расписания
-     form16.Edit4.Text:=form16.ZQuery1.FieldByName('id').asString;
+     form16.Label4.caption:=form16.ZQuery1.FieldByName('id').asString;
      //old_id := form16.ZQuery1.FieldByName('id').asInteger;
      // код расписания
      form16.Edit6.Text:=form16.ZQuery1.FieldByName('kod').asString;
@@ -2449,17 +2532,22 @@ begin
      if  trim(form16.ZQuery1.FieldByName('active').asString)='1' then form16.CheckBox2.checked:=true;
      if  not(trim(form16.ZQuery1.FieldByName('active').asString)='1') then form16.CheckBox2.checked:=false;
      //showmessage(ZQuery1.FieldByName('date_tarif').asString);
-     For n:=0 to ComboBox4.Items.Count-1 do
-      begin
-      if ComboBox4.Items[n]<>'' then
-        begin
-         IF (form16.ZQuery1.FieldByName('date_tarif').asDatetime) = strToDate(ComboBox4.Items[n]) then
-            begin
-            ComboBox4.ItemIndex:=n;
-            break;
-            end;
-        end;
-      end;
+
+
+     //For n:=0 to ComboBox4.Items.Count-1 do
+     // begin
+     // if ComboBox4.Items[n]<>'' then
+     //   begin
+     //    IF (form16.ZQuery1.FieldByName('date_tarif').asDatetime) = strToDate(ComboBox4.Items[n]) then
+     //       begin
+     //       ComboBox4.ItemIndex:=n;
+     //       break;
+     //       end;
+     //   end;
+     // end;
+
+
+
      // Тип расписания
      //==================================АТП по умолчанию====================================================
      // form16.ZQuery1.SQL.Clear;
@@ -2478,8 +2566,9 @@ begin
      // ================================== Массив Перевозчиков ==================================================
      //запрос на Перевозчиков расписания, а также на тип тарифа для каждого (0-авто/1-измененный вручную)
       form16.ZQuery1.SQL.Clear;
-      form16.ZQuery1.SQL.add('SELECT a.id_kontr,a.def_ats,b.name,a.reestr ');
-      form16.ZQuery1.SQL.add(',case WHEN (select count(id_kontr) from av_shedule_tarif where del=0 and id_kontr=a.id_kontr and id_shedule='+old_id+')>0 THEN 1 ELSE 0 END tarif_type ');
+      form16.ZQuery1.SQL.add('SELECT DISTINCT a.id_kontr,a.def_ats,btrim(b.name) perevoz,a.reestr ');
+      form16.ZQuery1.SQL.add(',coalesce((select 1 from av_shedule_price where del=0 and id_kontr=a.id_kontr and id_shedule='+old_id+' order by createdate desc limit 1),0) as tarif_price ');
+      form16.ZQuery1.SQL.add(',coalesce((select 1 from av_shedule_tarif where del=0 and id_kontr=a.id_kontr and id_shedule='+old_id+' order by createdate desc limit 1),0) as tarif_type ');
       form16.ZQuery1.SQL.add('FROM av_shedule_atp as a ');
       form16.ZQuery1.SQL.add('LEFT JOIN av_spr_kontragent as b ON a.id_kontr=b.id and b.del=0 ');
       form16.ZQuery1.SQL.add('WHERE a.del=0 and a.id_shedule='+ old_id +';');
@@ -2503,9 +2592,12 @@ begin
      setlength(atp_sostav,form16.ZQuery1.RecordCount, atp_size);
      for n:=0 to form16.ZQuery1.RecordCount-1 do
        begin
+         //проверка на фиксированный тариф
+          If form16.ZQuery1.FieldByName('tarif_type').AsInteger=1 then
+            form16.Panel1.Visible:=true;
          atp_sostav[n,0]:=form16.ZQuery1.FieldByName('id_kontr').AsString;
          sTmp := sTmp + atp_sostav[n,0] + ','; //строка id АТП для запроса АТС
-         atp_sostav[n,1]:=form16.ZQuery1.FieldByName('name').AsString;
+         atp_sostav[n,1]:=form16.ZQuery1.FieldByName('perevoz').AsString;
          atp_sostav[n,2]:=form16.ZQuery1.FieldByName('def_ats').AsString; // Код АТС по умолчанию
          atp_sostav[n,3]:=form16.ZQuery1.FieldByName('tarif_type').AsString; //тип расчета тарифа 0-авто 1-ручной
          atp_sostav[n,4]:=form16.ZQuery1.FieldByName('reestr').AsString;//код реестра
@@ -2519,11 +2611,11 @@ begin
       //form16.ZQuery1.SQL.add('SELECT a.id_kontr,a.id_ats,a.flag,b.level,(b.m_down+b.m_up+b.m_lay+b.m_down_two+b.m_up_two+b.m_lay_two) as placeall,b.type_ats,b.name FROM av_shedule_ats as a ');
       //form16.ZQuery1.SQL.add('LEFT JOIN av_spr_ats as b ON b.del=0 AND b.id=a.id_ats ');
       //form16.ZQuery1.SQL.add('WHERE a.del=0 and a.id_shedule='+ old_id +' ORDER BY a.id_ats;');
-      form16.ZQuery1.SQL.add('SELECT a.id_kontr,a.id_ats,b.gos,b.level,(b.m_down+b.m_up+b.m_lay+b.m_down_two+b.m_up_two+b.m_lay_two) as placeall,b.type_ats,b.name,c.flag FROM av_spr_kontr_ats as a ');
+      form16.ZQuery1.SQL.add('SELECT DISTINCT a.id_kontr,a.id_ats,b.gos,b.level,(b.m_down+b.m_up+b.m_lay+b.m_down_two+b.m_up_two+b.m_lay_two) as placeall,b.type_ats,b.name,c.flag FROM av_spr_kontr_ats as a ');
       form16.ZQuery1.SQL.add('LEFT JOIN av_spr_ats as b ON b.del=0 AND b.id=a.id_ats ');
       form16.ZQuery1.SQL.add('LEFT JOIN av_shedule_ats as c ON c.del=0 AND c.id_ats=a.id_ats AND c.id_kontr=a.id_kontr AND c.id_shedule='+ old_id );
       form16.ZQuery1.SQL.add('WHERE a.del=0 and a.id_kontr in ('+sTmp+') ORDER BY a.id_ats; ');
-      //showmessage(Zquery1.SQL.text);//!!!!!
+      //showmessage(Zquery1.SQL.text);//$
      try
       form16.ZQuery1.open;
      except
@@ -2573,7 +2665,8 @@ begin
      //Делаем запрос расписанию
 
          form16.ZQuery1.SQL.Clear;
-         form16.ZQuery1.SQL.add('select * from av_shedule_sostav where del=0 and id_shedule='+ old_id +' ORDER BY point_order ASC;');
+         form16.ZQuery1.SQL.add('select DISTINCT * from av_shedule_sostav where del=0 and id_shedule='+ old_id +' ORDER BY point_order ASC;');
+
        try
          form16.ZQuery1.open;
         except
@@ -2623,7 +2716,7 @@ begin
     begin
      //===========================================     Сезонность       ==========================================
       form16.ZQuery1.SQL.Clear;
-      form16.ZQuery1.SQL.add('SELECT id_kontr,massezon FROM av_shedule_sezon where del=0 and id_shedule='+ old_id +' AND id_kontr='+atp_sostav[k,0]+';');
+      form16.ZQuery1.SQL.add('SELECT DISTINCT id_kontr,massezon FROM av_shedule_sezon where del=0 and id_shedule='+ old_id +' AND id_kontr='+atp_sostav[k,0]+';');
       //If atp_sostav[k,0]='105' then showmessage(form16.ZQuery1.SQL.text);//&
      try
       form16.ZQuery1.open;
@@ -2666,7 +2759,7 @@ begin
   If atp_sostav[k,3]='1' then
   begin
       form16.ZQuery1.SQL.Clear;
-      form16.ZQuery1.SQL.add('SELECT a.*,b.name FROM av_shedule_tarif AS a ');
+      form16.ZQuery1.SQL.add('SELECT DISTINCT a.*,b.name FROM av_shedule_tarif AS a ');
       form16.ZQuery1.SQL.add('LEFT JOIN av_spr_point AS b ON b.id=a.id_point AND b.del=0 ');
       form16.ZQuery1.SQL.add('where a.del=0 and a.id_shedule='+ old_id +' AND a.id_kontr='+atp_sostav[k,0]+' ORDER BY a.point_order ASC;');
       //showmessage(ZQuery1.SQL.text);//$
@@ -2714,7 +2807,7 @@ begin
     end;
    //=========================================== УСЛУГИ  ==========================================
       form16.ZQuery1.SQL.Clear;
-      form16.ZQuery1.SQL.add('SELECT a.id_kontr,a.id_uslugi,a.active,a.summa,a.percent,b.name FROM av_shedule_uslugi AS a ');
+      form16.ZQuery1.SQL.add('SELECT DISTINCT a.id_kontr,a.id_uslugi,a.active,a.summa,a.percent,b.name FROM av_shedule_uslugi AS a ');
       form16.ZQuery1.SQL.add('JOIN av_spr_uslugi AS b ON a.id_uslugi=b.id WHERE a.del=0 AND b.del=0 AND a.id_shedule='+ old_id +' AND a.id_kontr='+atp_sostav[k,0]+';');
      try
       form16.ZQuery1.open;
@@ -2741,7 +2834,7 @@ begin
      end;
    //=========================================== ЛЬготы  ==========================================
       form16.ZQuery1.SQL.Clear;
-      form16.ZQuery1.SQL.add('SELECT a.id_kontr,a.id_lgot,a.active,a.summa,a.percent,b.name,b.zakon FROM av_shedule_lgot AS a ');
+      form16.ZQuery1.SQL.add('SELECT DISTINCT a.id_kontr,a.id_lgot,a.active,a.summa,a.percent,b.name,b.zakon FROM av_shedule_lgot AS a ');
       form16.ZQuery1.SQL.add('JOIN av_spr_lgot AS b ON a.id_lgot=b.id WHERE a.del=0 AND b.del=0 AND a.id_shedule='+ old_id +' AND a.id_kontr='+atp_sostav[k,0]+';');
      try
       form16.ZQuery1.open;
@@ -2771,7 +2864,7 @@ begin
 
   //*** определяем пользователей запрещенных на данном расписании
     form16.ZQuery1.SQL.Clear;
-    form16.ZQuery1.SQL.add('SELECT a.denyuser_id,b.name FROM av_shedule_denyuser AS a JOIN av_users AS b on b.id=a.denyuser_id AND b.del=0 WHERE a.del=0 AND a.id_shedule='+ old_id +' ORDER BY b.name ASC;');
+    form16.ZQuery1.SQL.add('SELECT DISTINCT a.denyuser_id,b.name FROM av_shedule_denyuser AS a JOIN av_users AS b on b.id=a.denyuser_id AND b.del=0 WHERE a.del=0 AND a.id_shedule='+ old_id +' ORDER BY b.name ASC;');
        try
          form16.ZQuery1.open;
         except
@@ -2988,7 +3081,7 @@ begin
     kform:=0;
     form16.Edit8.Text:='0';
     form16.Edit7.Text:='00:00';
-    form16.Edit9.Text:='0';
+    //form16.Edit9.Text:='0';
 
     // Рисуем итоговые показатели
   for n:=2 to form16.StringGrid1.rowcount-1 do
@@ -3037,7 +3130,7 @@ begin
     form16.Edit10.Text:=padl(inttostr(tsto1+(tsto2 div 60)),'0',2)+':'+padl(inttostr((tsto2 mod 60)),'0',2);
 
     //3.Средняя скорость В ДВИЖЕНИИ
-      if strtofloat(form16.Edit8.Text)=0 then form16.Edit9.Text:='0' else form16.Edit9.Text:=floattostr(round(strtofloat(form16.Edit8.Text)/((tsto3*60+tsto4))*60));
+      //if strtofloat(form16.Edit8.Text)=0 then form16.Edit9.Text:='0' else form16.Edit9.Text:=floattostr(round(strtofloat(form16.Edit8.Text)/((tsto3*60+tsto4))*60));
 
     //4.Кол.формирующихся
     form16.Edit12.Text:=inttostr(kform);
@@ -3048,8 +3141,8 @@ begin
     form16.Edit16.Text:=padl(inttostr(tsto3+(tsto4 div 60)),'0',2)+':'+padl(inttostr((tsto4 mod 60)),'0',2);
 
     //6.СКОРОСТЬ В ПУТИ
-    form16.Edit17.Text:='0';
-    if strtofloat(form16.Edit8.Text)=0 then form16.Edit17.Text:='0' else form16.Edit17.Text:=floattostr(round(strtofloat(form16.Edit8.Text)/((tsto3*60+tsto4))*60));
+    //form16.Edit17.Text:='0';
+    //if strtofloat(form16.Edit8.Text)=0 then form16.Edit17.Text:='0' else form16.Edit17.Text:=floattostr(round(strtofloat(form16.Edit8.Text)/((tsto3*60+tsto4))*60));
 
     // Меняем наименование расписания
     if form16.StringGrid1.RowCount>1 then
@@ -3279,25 +3372,26 @@ begin
       // ===============================================================
 
       // Скоростные режимы
-      if (aRow>1) and (aCol=1) and (strtoint(m_sostav[aRow,11])>strtoint(m_sostav[aRow,10])) then
-         begin
-          Font.Size:=9;
-          Font.Color := clPurple;
-          TextOut(aRect.Left + 35, aRect.Top+22, 'ПРЕВЫШЕНИЕ СКОРОСТИ:');
-          TextOut(aRect.Left + 35, aRect.Top+32, 'ТЕКУЩАЯ='+trim(m_sostav[aRow,11])+' км\ч НОРМА='+trim(m_sostav[aRow,10])+' км\ч)');
-         end;
+      //if (aRow>1) and (aCol=1) and (strtoint(m_sostav[aRow,11])>strtoint(m_sostav[aRow,10])) then
+      //   begin
+      //    Font.Size:=9;
+      //    Font.Color := clPurple;
+      //    TextOut(aRect.Left + 35, aRect.Top+22, 'ПРЕВЫШЕНИЕ СКОРОСТИ:');
+      //    TextOut(aRect.Left + 35, aRect.Top+32, 'ТЕКУЩАЯ='+trim(m_sostav[aRow,11])+' км\ч НОРМА='+trim(m_sostav[aRow,10])+' км\ч)');
+      //   end;
 
       // Часовой пояс
       if (aRow>0) and (aCol=0) and not(trim(m_sostav[aRow,12])='0') then
          begin
           Font.Size:=9;
-          Font.Color := clBlack;
-          Brush.Color:=clMoneyGreen;
-          Pen.Color := clGreen;
-          Pen.Width := 1;
-          Ellipse(aRect.Left + 3,aRect.Top+18,aRect.right-4,aRect.bottom-3);
-          TextOut(aRect.Left + 10, aRect.Top+22,'Часовой');
-          TextOut(aRect.Left + 10, aRect.Top+30,'пояс: '+trim(m_sostav[aRow,12]));
+          Font.Color := clRed;
+          Font.Style:=[fsBold];
+          //Brush.Color:=clMoneyGreen;
+          //Pen.Color := clGreen;
+          //Pen.Width := 1;
+          //Ellipse(aRect.Left + 3,aRect.Top+18,aRect.right-4,aRect.bottom-3);
+          TextOut(aRect.Left + 10, aRect.Top+20,trim(m_sostav[aRow,12])+' час');
+          //TextOut(aRect.Left + 10, aRect.Top+30,'пояс: '+trim(m_sostav[aRow,12]));
          end;
 
       // Точка возврата
@@ -3390,8 +3484,8 @@ end;
 //****************   ДОБАВИТЬ остановочный пункт в состав     ***********************************************
 procedure TForm16.BitBtn2Click(Sender: TObject);
 begin
-  If (length(m_sostav)>1) and schange and (dialogs.MessageDlg('Добавление пункта приведет к '+#13+'УДАЛЕНИЮ ручных изменений тарифа на расписании !'+#13+'Продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then exit;
-     schange:=false;
+  //If (length(m_sostav)>1) and schange and (dialogs.MessageDlg('Добавление пункта приведет к '+#13+'УДАЛЕНИЮ ручных изменений тарифа на расписании !'+#13+'Продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then exit;
+  schange:=false;
   flag_edit_sostav:=1;
   form22:=Tform22.create(self);
   form22.ShowModal;
@@ -3401,7 +3495,7 @@ begin
   form16.rascet();
   form16.StringGrid1.SetFocus;
   form16.StringGrid1.Row:=form16.StringGrid1.RowCount-1;
-  flsostav:=1;//флаг изменения состава
+  flsostav:=true;//флаг изменения состава
   setlength(tarif_all,0,0);//удаляем тариф
 end;
 
@@ -3425,7 +3519,7 @@ begin
        showmessagealt('Невозможно удалить первый остановочный пункт'+#13+'так как существуют другие остановочные пункты в списке !');
        exit;
      end;
-  If schange and (dialogs.MessageDlg('Удаление пункта приведет к '+#13+'УДАЛЕНИЮ ручных изменений тарифа на расписании !'+#13+'Все равно удалить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then exit;
+  //If schange and (dialogs.MessageDlg('Удаление пункта приведет к '+#13+'УДАЛЕНИЮ ручных изменений тарифа на расписании !'+#13+'Все равно удалить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then exit;
      schange:=false;
      for n:=form16.StringGrid1.Row+1 to length(m_sostav)-1 do
       begin
@@ -3438,15 +3532,15 @@ begin
 
      form16.rascet();
      form16.perescet();
-     flsostav :=1; // флаг изменения состава
+     flsostav :=true; // флаг изменения состава
      //проставляем в массиве перевозчиков всем автоматический тариф
-     for n:=low(atp_sostav) to high(atp_sostav) do
-       begin
-        atp_sostav[n,3]:='0';
-       end;
-     UpdateGridATP();
-     fltarif:=1;
-     setlength(tarif_all,0,0); //удаляем тариф
+     //for n:=low(atp_sostav) to high(atp_sostav) do
+     //  begin
+     //   atp_sostav[n,3]:='0';
+     //  end;
+     //UpdateGridATP();
+     //fltarif:=1;
+     //setlength(tarif_all,0,0); //удаляем тариф
 
 end;
 
@@ -3464,6 +3558,7 @@ var
   n:integer;
 begin
   //Добавляем перевозчика
+   flatp :=true;
   result_kontr_id:='';
   formsk:=Tformsk.create(self);
   formsk.ShowModal;
@@ -3622,8 +3717,8 @@ begin
        ZQuery1.close;
       ZConnection1.disconnect;
 
-      flsezon:=1;
-      fltarif:=1;
+      flsezon:=true;
+      fltarif:=true;
         UpdateGridATP();
         UpdateGridATS();
 
@@ -3635,6 +3730,7 @@ begin
   //Report_sostav_shedule();
 end;
 
+//добавить в список запрещенных пользователей
 procedure TForm16.BitBtn9Click(Sender: TObject);
 var
   n : integer;
@@ -3663,7 +3759,7 @@ begin
     RowCount:= RowCount + 1;
     Cells[0,n] := result_user;
     Cells[1,n] := result_usname;
-    flblock := 1;
+    flblock := true;
   end;
 end;
 
@@ -3672,7 +3768,17 @@ procedure TForm16.Button1Click(Sender: TObject);
   //n,m:integer;
   // s:string;
 begin
-   showmas(arsatp);
+   if form16.GroupBox5.Height<10 then
+   begin
+     form16.GroupBox5.Height:=65;
+     form16.Button1.Caption:='ИНФО (показать)';
+   end
+   else
+   begin
+    form16.GroupBox5.Height:=1;
+    form16.Button1.Caption:='ИНФО (скрыть)';
+   end;
+   application.ProcessMessages;
 end;
 
 procedure TForm16.Button2Click(Sender: TObject);
@@ -3737,6 +3843,12 @@ begin
 
 end;
 
+procedure TForm16.Button5Click(Sender: TObject);
+begin
+  //переключить на вкладку журнал изменений
+  form16.PageControl1.ActivePageIndex:=3;
+end;
+
 
 procedure TForm16.CheckBox1Change(Sender: TObject);
 begin
@@ -3749,6 +3861,7 @@ end;
 // ****************************   Активность  ********************************
 procedure TForm16.CheckBox2Change(Sender: TObject);
 begin
+    flchange:=true;
    If Form16.CheckBOx2.Checked then Form16.DateEdit3.Enabled := true
     else Form16.DateEdit3.Enabled:= false;
 end;
@@ -3786,6 +3899,7 @@ end;
 
 procedure TForm16.CheckBox6Change(Sender: TObject);
 begin
+      flchange:=true;
   If form16.CheckBox6.Checked then
    begin
       form16.Edit14.Visible:=true;
@@ -3798,9 +3912,20 @@ begin
    end
 end;
 
+//редактирование периода
+procedure TForm16.DateEdit1Change(Sender: TObject);
+begin
+  flchange:=true;        //редактирование периода
+end;
+
+procedure TForm16.DateEdit2Change(Sender: TObject);
+begin
+    flchange:=true;        //редактирование периода
+end;
+
 procedure TForm16.DateEdit3Change(Sender: TObject);
 begin
-
+    flchange:=true;        //редактирование периода
 end;
 
 
@@ -3814,20 +3939,33 @@ begin
  end;
 end;
 
+//редактирование имени расписания
+procedure TForm16.Edit5Change(Sender: TObject);
+begin
+  flchange:=true;
+end;
+
+//редактирование кода расписания
+procedure TForm16.Edit6Change(Sender: TObject);
+begin
+  flchange:=true;
+end;
+
 
 procedure TForm16.FloatSpinEdit1EditingDone(Sender: TObject);
 //********************************************************** ПЕРЕСЧИТАТЬ ТАРИФ М2-мягкий С НОВЫМ КОЭФФИЦИЕНТОМ *********************************
 var
    n:integer;
-   tD : double=0;
+   //tD : double=0;
 begin
- fltarif :=1;
+ fltarif :=true;
    for n:=0 to length(tarif_all)-1 do
      begin
        If tarif_all[n,13]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
         begin
-         td:=strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value;
-         tarif_all[n,5]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         //td:=strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value;
+         //tarif_all[n,5]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         tarif_all[n,5]:=inttostr(floor(strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value));
          tarif_all[n,10]:=stringreplace(FloatSpinEdit1.text,',','.',[]);
      end;
        end;
@@ -3840,7 +3978,7 @@ var
    n : integer;
    bag:string;
 begin
- fltarif :=1;
+ fltarif :=true;
  bag:= stringreplace(form16.FloatSpinEdit2.text,',','.',[]);
     for n:=0 to length(tarif_all)-1 do
      begin
@@ -3861,7 +3999,7 @@ var
    n : integer;
    tD : double=0;
 begin
- fltarif :=1;
+ fltarif :=true;
     for n:=0 to length(tarif_all)-1 do
      begin
        If tarif_all[n,13]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
@@ -3889,7 +4027,7 @@ begin
 //  tarif_all[n,9]:= ;  Тариф Жесткий М3
 // tarif_all[n,10]:= ;  Тариф Мягкий М2
 // tarif_all[n,11]:= ;  Тариф Мягкий М3
- fltarif :=1;
+ fltarif :=true;
    for n:=0 to length(tarif_all)-1 do
      begin
        If tarif_all[n,13]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
@@ -3920,7 +4058,7 @@ begin
 // tarif_all[n,12]:= ;  тип расчета Багажа 0-автоматом,1-сумма,2-процент от билета
 // tarif_all[n,13]:= ;  id АТП
 // tarif_all[n,14]:= ;  flag редактирования 0-автомат,1-ручной
-  fltarif :=1;
+  fltarif :=true;
    for n:=0 to length(tarif_all)-1 do
      begin
        If tarif_all[n,13]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
@@ -3937,7 +4075,7 @@ end;
 //***   закрытие формы *********************************
 procedure TForm16.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  If (flchange=1) and (fl_print<>1) then
+  If (flchange) and (fl_print<>1) then
       if dialogs.MessageDlg('Изменения в расписании НЕ будут СОХРАНЕНЫ !!!'+#13+'Продолжить выход ?',mtConfirmation,[mbYes,mbNO], 0)=7 then
         begin
           CloseAction := caNone;
@@ -3953,6 +4091,7 @@ procedure TForm16.FormCreate(Sender: TObject);
 begin
 
 end;
+
 
 
 procedure TForm16.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -4002,9 +4141,15 @@ var
   rid,rkod,rname,rtype : string;
   ntype,flc: byte;
 begin
+ flchange:=true;
+ //Запоминаем маршрут
+ If trim(form16.Edit1.Text)='' then tekroute:='' else  tekroute:=trim(form16.Edit1.Text);
+
   form17:=Tform17.create(self);
   form17.ShowModal;
   FreeAndNil(form17);
+
+  tekroute:='';
   with Form16 do
   begin
     flc := 0;
@@ -4055,37 +4200,37 @@ begin
 
 
      //если меняется тип маршрута, то сбрасываем тариф расписания, если он автоматический
-     if (ZQuery1.FieldByName('type_route').asInteger<>ntype) AND (flag_edit_shedule=2) then
-       begin
-          ZQuery1.SQL.Clear;
-           ZQuery1.SQL.add('SELECT id_shedule FROM av_shedule_tarif WHERE id_shedule='+ old_id +' and del=0 AND calculation_type=1;');
-             try
-               ZQuery1.open;
-             except
-               showmessagealt('ОШИБКА запроса к базе данных !'+#13+'Команда: '+ZQuery1.SQL.Text);
-               ZQuery1.Close;
-               Zconnection1.disconnect;
-               exit;
-             end;
-       If  Zquery1.RecordCount>0 then
-       begin
-        If (dialogs.MessageDlg('Изменение типа маршрута приведет к УДАЛЕНИЮ ручных изменений тарифа !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=6) then
-        begin
-           ZQuery1.SQL.Clear;
-           ZQuery1.SQL.add('UPDATE av_shedule_tarif SET del=1,createdate=now(),id_user='+inttostr(id_user)+' WHERE id_shedule='+ old_id +' and del=0;');
-             try
-               ZQuery1.ExecSQL;
-             except
-               showmessagealt('ОШИБКА запроса к базе данных !'+#13+'Команда: '+ZQuery1.SQL.Text);
-               ZQuery1.Close;
-               Zconnection1.disconnect;
-               exit;
-             end;
-         end
-        else
-             flc:=1; //оставить все как было
-       end;
-   end;
+   //  if (ZQuery1.FieldByName('type_route').asInteger<>ntype) AND (flag_edit_shedule=2) then
+   //    begin
+   //       ZQuery1.SQL.Clear;
+   //        ZQuery1.SQL.add('SELECT id_shedule FROM av_shedule_tarif WHERE id_shedule='+ old_id +' and del=0 AND calculation_type=1;');
+   //          try
+   //            ZQuery1.open;
+   //          except
+   //            showmessagealt('ОШИБКА запроса к базе данных !'+#13+'Команда: '+ZQuery1.SQL.Text);
+   //            ZQuery1.Close;
+   //            Zconnection1.disconnect;
+   //            exit;
+   //          end;
+   //    If  Zquery1.RecordCount>0 then
+   //    begin
+   //     If (dialogs.MessageDlg('Изменение типа маршрута приведет к УДАЛЕНИЮ ручных изменений тарифа !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=6) then
+   //     begin
+   //        ZQuery1.SQL.Clear;
+   //        ZQuery1.SQL.add('UPDATE av_shedule_tarif SET del=1,createdate=now(),id_user='+inttostr(id_user)+' WHERE id_shedule='+ old_id +' and del=0;');
+   //          try
+   //            ZQuery1.ExecSQL;
+   //          except
+   //            showmessagealt('ОШИБКА запроса к базе данных !'+#13+'Команда: '+ZQuery1.SQL.Text);
+   //            ZQuery1.Close;
+   //            Zconnection1.disconnect;
+   //            exit;
+   //          end;
+   //      end
+   //     else
+   //          flc:=1; //оставить все как было
+   //    end;
+   //end;
     ////////////
     If flc=0 then
     begin
@@ -4110,7 +4255,7 @@ end;
 // кнопка теряет фокус - поднять флаг
 procedure TForm16.BitBtn1Exit(Sender: TObject);
 begin
-   flchange := 1; //флаг изменений
+   //flchange := true; //флаг изменений
 end;
 
 
@@ -4149,8 +4294,8 @@ begin
     //exit;
   end;
 
- form16.Panel1.Visible:=true;
- application.ProcessMessages;
+ //form16.Panel1.Visible:=true;
+ //application.ProcessMessages;
  // ------------- проверяем что определен состав расписания ----------------------------------
   if length(m_sostav)<3 then
      begin
@@ -4168,11 +4313,11 @@ begin
  with form16 do
  begin
  // ------------- проверяем что выбрана дата тарифа ----------------------------------
-  if trim(combobox4.Text)='' then
-     begin
-       showmessagealt('Для расчета цен билетов необходимо выбрать ДАТУ действия ТАРИФА !');
-       exit;
-     end;
+  //if trim(combobox4.Text)='' then
+  //   begin
+  //     showmessagealt('Для расчета цен билетов необходимо выбрать ДАТУ действия ТАРИФА !');
+  //     exit;
+  //   end;
 
   // Удалить элемент массива по коду атп
  // Если массив не определен то отваливаемся
@@ -4203,7 +4348,6 @@ begin
         end;
     end;
   end;
-
    //StringGrid10.RowCount:=1;
    //StringGrid2.RowCount:=1;
  t:=0; //сбрасываем счетчик запросов
@@ -4225,7 +4369,7 @@ begin
     // Загружаем тарифы
    ZQuery1.Close;
    ZQuery1.SQL.Clear;
-   ZQuery1.SQL.Add('select * from gettarif_avto('+quotedstr('tarif')+', '+Edit4.text+','+quotedstr(trim(ComboBox4.Text))+','+atp+','+inttostr(n)+');');
+   ZQuery1.SQL.Add('select * from gettarif('+quotedstr('tarif')+', '+Label4.caption+',current_date,'+atp+','+inttostr(n)+');');
    ZQuery1.sql.add('FETCH ALL IN tarif;');
    //showmessage(ZQuery1.SQL.Text);//$
    try
@@ -4294,7 +4438,7 @@ begin
  end;
   form16.GroupBox2.Enabled:=false;
    result:=true;
-   form16.Panel1.Visible:=false;
+   //form16.Panel1.Visible:=false;
    setlength(tmp_tarif,0,0);
    tmp_tarif := nil;
  end;
@@ -4312,7 +4456,7 @@ end;
 procedure TForm16.BitBtn25Click(Sender: TObject);
 begin
   DelStringgrid(Form16.StringGrid3, Form16.StringGrid3.Row);
-   flblock :=1 ;
+   flblock := true;
 end;
 
 
@@ -4392,12 +4536,12 @@ begin
        begin
         If atp_sostav[n,3]<>'0' then tarif_manual:=true;
        end;
-  If schange AND tarif_manual and (dialogs.MessageDlg('Изменение состава расписания приведет к УДАЛЕНИЮ изменений в тарифе !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then
-        begin
-          ZQuery1.Close;
-          ZConnection1.Disconnect;
-          exit;
-        end;
+  //If schange AND tarif_manual and (dialogs.MessageDlg('Изменение состава расписания приведет к УДАЛЕНИЮ изменений в тарифе !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then
+  //      begin
+  //        ZQuery1.Close;
+  //        ZConnection1.Disconnect;
+  //        exit;
+  //      end;
   schange:=false;
   //Меняем переменные в массиве местами
   for n:=0 to sostav_size-1 do
@@ -4410,7 +4554,7 @@ begin
   form16.StringGrid1.SetFocus;
   form16.perescet();
   form16.rascet();
-  flsostav :=1; // флаг изменения состава
+  flsostav := true; // флаг изменения состава
 
    //проставляем в массиве перевозчиков всем автоматический тариф
      for n:=low(atp_sostav) to high(atp_sostav) do
@@ -4418,7 +4562,7 @@ begin
         atp_sostav[n,3]:='0';
        end;
      UpdateGridATP();
-     fltarif:=1;
+     fltarif:= true;
      setlength(tarif_all,0,0); //удаляем тариф
 end;
 
@@ -4439,12 +4583,12 @@ begin
        begin
         If atp_sostav[n,3]<>'0' then tarif_manual:=true;
        end;
-  If schange AND tarif_manual and (dialogs.MessageDlg('Изменение состава расписания приведет к УДАЛЕНИЮ изменений в тарифе !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then
-        begin
-          ZQuery1.Close;
-          ZConnection1.Disconnect;
-          exit;
-        end;
+  //If schange AND tarif_manual and (dialogs.MessageDlg('Изменение состава расписания приведет к УДАЛЕНИЮ изменений в тарифе !'+#13+'Все равно продолжить ?',mtConfirmation,[mbYes,mbNO], 0)=7) then
+  //      begin
+  //        ZQuery1.Close;
+  //        ZConnection1.Disconnect;
+  //        exit;
+  //      end;
    schange:=false;
   //Меняем переменные в массиве местами
   for n:=0 to sostav_size-1 do
@@ -4457,14 +4601,14 @@ begin
   form16.StringGrid1.SetFocus;
   form16.perescet();
   form16.rascet();
-  flsostav :=1; // флаг изменения состава
+  flsostav := true; // флаг изменения состава
    //проставляем в массиве перевозчиков всем автоматический тариф
      for n:=low(atp_sostav) to high(atp_sostav) do
        begin
         atp_sostav[n,3]:='0';
        end;
      UpdateGridATP();
-     fltarif:=1;
+     fltarif:= true;
      setlength(tarif_all,0,0); //удаляем тариф
 end;
 
@@ -4659,7 +4803,7 @@ begin
   form16.perescet();
   form16.rascet();
   //If flcritical then
-  flsostav :=1; // флаг изменения состава
+  flsostav := true; // флаг изменения состава
 end;
 
 // выбрать договор для заказной перевозки
@@ -4667,6 +4811,7 @@ procedure TForm16.BitBtn13Click(Sender: TObject);
 var
   n:integer;
 begin
+  flchange:=true;
  tekkontr:='';
  If length(atp_sostav)=0 then
   begin
@@ -4694,6 +4839,11 @@ begin
    form16.Edit14.Text:=result_dog;
 end;
 
+procedure TForm16.BitBtn13Exit(Sender: TObject);
+begin
+
+end;
+
 
 //************************ ПЕЧАТЬ ОТЧЕТА *************************************
 procedure TForm16.BitBtn14Click(Sender: TObject);
@@ -4702,7 +4852,7 @@ begin
  // Открыть на выбор для отчета
   if fl_print=1 then
    begin
-     flchange :=0;
+     flchange := false;
      Close;
    end
   else
@@ -4784,6 +4934,7 @@ var
   n,m:integer;
   kodatp : string='';
 begin
+
  with Form16 do
  begin
   // Удаление перевозчика и АТС
@@ -4803,6 +4954,8 @@ begin
          form16.Edit18.text:='';
          form16.Edit19.text:='';
       end;}
+
+
   SetLength(tmp_arr,0,ats_size);
 
   // Если был один перевозчик, то просто чистим все массивы
@@ -4858,6 +5011,12 @@ begin
            end;
        end;
  //showmas(atp_sostav);
+  flatp := true;
+  flchange:= true;
+  fltarif :=true;
+  flsezon :=true;
+  fluslugi :=true;
+
   Refresh_arrays(kodatp, true);    // удаляем из всех массивов этого перевозчика
 
    UpdateGridATP();
@@ -4872,6 +5031,8 @@ begin
  decimalseparator:='.';
  copy_shed:='0';
  new_id:='0';
+ norma_KMH:=110;
+ norma_Deti:=110;
 //try
 //  raise EExternal.Create('Test');
 //except
@@ -4882,7 +5043,6 @@ begin
 //end;
  With Form16 do
  begin
-    Centrform(Form16);
     MasFree(); //очистка массивов
     Stringgrid6.RowHeights[1]:=0; //прячем строчку для всех
 
@@ -4890,7 +5050,7 @@ begin
     //параметры доступа
      if flag_access<2 then Bitbtn5.Enabled:=false;
     SetLength(m_sostav,1,sostav_size);
-    Form16.getNorma();
+    //Form16.getNorma(); //2022-02-02 убить datetarif
 
   // Открыть на выбор для отчета
   if fl_print=1 then
@@ -4907,17 +5067,19 @@ begin
   form16.PageControl1.ActivePageIndex:=0;
   //form16.PageControl2.ActivePageIndex:=1;
   Form16.BitBtn1.SetFocus;
-  //сбрасываем флаги
-    flchange:=0;
-    flsostav :=0 ;
-    flatp :=0;
-    fltarif :=0;
-    flsezon :=0;
-    fluslugi :=0;
-    flblock :=0;
-    //fl_to :=0;  //переход на вкладку опции
-    flactiv :=0; //флаг создания будущего расписания
+
     past_id:='0'; //сбрасываем связку с действующим расписанием
+     //сбрасываем флаги
+    flchange:= false;
+    flsostav := false;
+    flatp := false;
+    fltarif := false;
+    flsezon :=false;
+    fluslugi :=false;
+    flblock :=false;
+    //fl_to :=0;  //переход на вкладку опции
+    flactiv :=false; //флаг создания будущего расписания
+
 
   // Новая запись
   if flag_edit_shedule=1 then
@@ -4929,12 +5091,13 @@ begin
     form16.PageControl1.Enabled:=false;
     FOrm16.CheckBox1.Checked := true;
     form16.perescet();
-    flsostav :=1 ;
-    flatp :=1;
-    fltarif :=1;
-    flsezon :=1;
-    fluslugi :=1;
-    flblock :=1;
+    flchange:= true;
+    flsostav :=true;
+    flatp :=true;
+    fltarif :=true;
+    flsezon :=true;
+    fluslugi :=true;
+    flblock :=true;
    end;
 
     // Новая запись + данные из текущей
@@ -4949,19 +5112,21 @@ begin
     form16.DateEdit2.date:=now()+365;
     form16.DateEdit3.date:=now();
     //form16.perescet();
+    flchange:= true;
+    flsostav :=true;
+    flatp :=true;
+    fltarif :=true;
+    flsezon :=true;
+    fluslugi :=true;
+    flblock :=true;
 
-    flsostav :=1 ;
-    flatp :=1;
-    fltarif :=1;
-    flsezon :=1;
-    fluslugi :=1;
-    flblock :=1;
-
-    If flag_edit_shedule=4 then copy_shed:=old_id;//копировать данные по ручным тарифам
+    //If flag_edit_shedule=4 then
+     copy_shed:=old_id;//копировать данные по ручным тарифам
     old_id :='';
     past_id:='0'; //сбрасываем связку с действующим расписанием
     flag_edit_shedule:=1;
    end;
+
 
   // Редактируем запись
   if flag_edit_shedule=2 then
@@ -4971,6 +5136,15 @@ begin
     form16.perescet();
     form16.rascet();
     activDay:=form16.DateEdit3.date;
+    get_infoedit(old_id);
+    //сбрасываем флаги
+    flchange:= false;
+    flsostav := false;
+    flatp := false;
+    fltarif := false;
+    flsezon :=false;
+    fluslugi :=false;
+    flblock :=false;
    end;
  end;
 end;

@@ -10,8 +10,9 @@ object FormLic: TFormLic
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   ShowHint = True
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.8.0'
   object StringGrid1: TStringGrid
     Left = 3
     Height = 544
@@ -319,10 +320,9 @@ object FormLic: TFormLic
     Images = ImageList1
     TabOrder = 7
     object ToolButton7: TToolButton
-      Left = 1012
+      Left = 1010
       Height = 22
       Top = 2
-      Width = 10
       Caption = 'ToolButton7'
       Style = tbsSeparator
     end
@@ -330,7 +330,6 @@ object FormLic: TFormLic
       Left = 1
       Height = 22
       Top = 2
-      Width = 5
       Caption = 'ToolButton3'
       Style = tbsDivider
     end
@@ -348,12 +347,11 @@ object FormLic: TFormLic
       Left = 29
       Height = 22
       Top = 2
-      Width = 10
       Caption = 'ToolButton2'
       Style = tbsSeparator
     end
     object Label2: TLabel
-      Left = 39
+      Left = 37
       Height = 22
       Top = 2
       Width = 469
@@ -366,7 +364,7 @@ object FormLic: TFormLic
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 508
+      Left = 506
       Height = 22
       Top = 2
       Width = 504
@@ -589,8 +587,6 @@ object FormLic: TFormLic
       Top = 44
       Width = 112
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-      OKCaption = 'OK'
-      CancelCaption = 'Cancel'
       DateOrder = doNone
       ButtonWidth = 23
       NumGlyphs = 1
@@ -605,8 +601,6 @@ object FormLic: TFormLic
       Top = 44
       Width = 112
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-      OKCaption = 'OK'
-      CancelCaption = 'Cancel'
       DateOrder = doNone
       ButtonWidth = 23
       NumGlyphs = 1

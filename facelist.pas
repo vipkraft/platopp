@@ -333,7 +333,6 @@ end;
 
 procedure TFormFace.FormShow(Sender: TObject);
 begin
-   Centrform(FormFace);
     presetShow();
    UpdateGrid();
    If StringGrid1.RowCount>0 then StringGrid1.Row:=StringGrid1.RowCount-1;

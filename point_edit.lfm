@@ -10,6 +10,7 @@ object Form10: TForm10
   KeyPreview = True
   OnKeyDown = FormKeyDown
   OnShow = FormShow
+  Position = poOwnerFormCenter
   LCLVersion = '2.0.8.0'
   object Image1: TImage
     Left = 0
@@ -251,12 +252,12 @@ object Form10: TForm10
     }
   end
   object BitBtn3: TBitBtn
-    Left = 784
-    Height = 28
-    Hint = 'Сохранить'
-    Top = 720
-    Width = 107
-    Caption = 'Сохранить'
+    Left = 720
+    Height = 35
+    Hint = 'Сохранить [F2]'
+    Top = 713
+    Width = 127
+    Caption = 'Сохранить [F2]'
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       20000000000000040000640000006400000000000000000000001D1B1AB1201F
@@ -294,15 +295,15 @@ object Form10: TForm10
       A7FFB3B3A7FFB3B3A7FFB3B3A7FF201F1EFF514C4AC7514C4A2C
     }
     OnClick = BitBtn3Click
-    TabOrder = 13
+    TabOrder = 14
   end
   object BitBtn4: TBitBtn
-    Left = 897
-    Height = 28
+    Left = 888
+    Height = 35
     Hint = 'Сохранить'
-    Top = 720
-    Width = 107
-    Caption = 'Отмена'
+    Top = 713
+    Width = 119
+    Caption = 'Выход'
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000000000060000
@@ -340,12 +341,12 @@ object Form10: TForm10
       D8B30F67D74EFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
     OnClick = BitBtn4Click
-    TabOrder = 14
+    TabOrder = 13
   end
   object Label2: TLabel
     Left = 40
     Height = 15
-    Top = 57
+    Top = 55
     Width = 155
     Caption = '№ остановочного пункта'
     ParentColor = False
@@ -411,7 +412,7 @@ object Form10: TForm10
     ParentColor = False
   end
   object Edit3: TEdit
-    Left = 87
+    Left = 86
     Height = 25
     Top = 186
     Width = 191
@@ -427,7 +428,7 @@ object Form10: TForm10
     TabOrder = 8
   end
   object Edit5: TEdit
-    Left = 87
+    Left = 86
     Height = 25
     Top = 255
     Width = 257
@@ -493,7 +494,7 @@ object Form10: TForm10
   object Label12: TLabel
     Left = 24
     Height = 15
-    Top = 704
+    Top = 688
     Width = 137
     Caption = 'Последняя редакция: -'
     ParentColor = False
@@ -527,7 +528,7 @@ object Form10: TForm10
     Pen.Color = clRed
   end
   object Edit7: TEdit
-    Left = 348
+    Left = 347
     Height = 25
     Top = 219
     Width = 133
@@ -535,7 +536,7 @@ object Form10: TForm10
     TabOrder = 9
   end
   object Edit8: TEdit
-    Left = 636
+    Left = 632
     Height = 25
     Top = 139
     Width = 201
@@ -550,25 +551,34 @@ object Form10: TForm10
     Brush.Color = clRed
     Pen.Color = clRed
   end
+  object Label9: TLabel
+    Left = 606
+    Height = 15
+    Top = 96
+    Width = 43
+    Caption = 'Группа'
+    ParentColor = False
+    Visible = False
+  end
   object GroupBox1: TGroupBox
-    Left = 18
+    Left = 16
     Height = 253
-    Top = 295
+    Top = 296
     Width = 992
     Caption = 'Реквизиты остановочного пункта'
     ClientHeight = 236
     ClientWidth = 988
     TabOrder = 11
     object Label11: TLabel
-      Left = 30
+      Left = 27
       Height = 15
-      Top = 15
+      Top = 14
       Width = 49
       Caption = 'ОКТМО:'
       ParentColor = False
     end
     object Edit9: TEdit
-      Left = 91
+      Left = 81
       Height = 25
       Top = 11
       Width = 254
@@ -805,27 +815,25 @@ object Form10: TForm10
     }
   end
   object Label4: TLabel
-    Left = 45
-    Height = 13
+    Left = 39
+    Height = 15
     Top = 737
-    Width = 59
+    Width = 69
     Caption = 'F1-Помощь'
-    Font.Height = -11
     ParentColor = False
-    ParentFont = False
   end
   object Label16: TLabel
-    Left = 381
+    Left = 384
     Height = 15
-    Top = 57
+    Top = 55
     Width = 85
     Caption = 'Часовой пояс'
     ParentColor = False
   end
   object SpinEdit1: TSpinEdit
-    Left = 477
+    Left = 478
     Height = 25
-    Top = 53
+    Top = 52
     Width = 41
     MaxValue = 24
     MinValue = -24
@@ -901,8 +909,8 @@ object Form10: TForm10
     TransactIsolationLevel = tiReadCommitted
     Port = 0
     Protocol = 'postgresql'
-    left = 206
-    top = 705
+    left = 440
+    top = 688
   end
   object ZQuery1: TZQuery
     Connection = ZConnection1

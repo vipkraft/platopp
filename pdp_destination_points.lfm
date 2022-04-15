@@ -360,10 +360,15 @@ object Form29: TForm29
     ParentFont = False
   end
   object Image1: TImage
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
     Left = 0
     Height = 45
     Top = 0
     Width = 1024
+    Anchors = [akTop, akLeft, akRight]
     AutoSize = True
     Picture.Data = {
       1754506F727461626C654E6574776F726B47726170686963A21C000089504E47

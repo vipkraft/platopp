@@ -74,7 +74,6 @@ procedure TFormlgot_edit.FormShow(Sender: TObject);
  var
    tmp_id_user,n:integer;
 begin
-     Centrform(formlgot_edit);
    with formlgot_edit do
    begin
      if flag_access=1 then BitBtn3.Enabled:=false;
