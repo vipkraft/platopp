@@ -27,6 +27,7 @@ type
     Edit13: TEdit;
     Edit14: TEdit;
     Edit15: TEdit;
+    Edit16: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
     Edit4: TEdit;
@@ -49,6 +50,7 @@ type
     Label18: TLabel;
     Label19: TLabel;
     Label2: TLabel;
+    Label20: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -123,6 +125,7 @@ begin
       end;
    Self.Edit10.Text:=trim(ZQuery1.FieldByName('owner').asString);
    Self.Edit11.Text:=trim(ZQuery1.FieldByName('location').asString);
+   Self.Edit16.Text:=trim(ZQuery1.FieldByName('dname').asString);
 
    //StringGrid1.Repaint;
    ZQuery1.Close;
@@ -201,6 +204,7 @@ Form10.ZQuery1.SQL.add(',case when btrim(fio_owner)='''' then downer else btrim(
 Form10.ZQuery1.SQL.add(',* ');
 Form10.ZQuery1.SQL.add(' FROM ( ');
  Form10.ZQuery1.SQL.add('SELECT * ');
+ Form10.ZQuery1.SQL.add(',(SELECT c.dname FROM av_spr_destination c where c.idek=m.iddest limit 1) dname ');
 Form10.ZQuery1.SQL.add(',(SELECT c.location FROM av_spr_destination c where c.idek=m.iddest limit 1) dlocation ');
 Form10.ZQuery1.SQL.add(',(SELECT c.owner FROM av_spr_destination c where c.idek=m.iddest limit 1) downer ');
 Form10.ZQuery1.SQL.add('FROM ( ');
@@ -244,6 +248,7 @@ Form10.ZQuery1.SQL.add(') z ');
    Form10.edit13.Text:=Form10.ZQuery1.FieldByName('postadress').asString;
    Form10.edit14.Text:=Form10.ZQuery1.FieldByName('powner').asString;
    Form10.edit15.Text:=Form10.ZQuery1.FieldByName('plocation').asString;
+   Form10.edit16.Text:=Form10.ZQuery1.FieldByName('dname').asString;
 
    //id_group:=Form10.ZQuery1.FieldByName('id_group').asString;
    Form10.ZQuery1.SQL.Clear;

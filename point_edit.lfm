@@ -379,18 +379,16 @@ object Form10: TForm10
   end
   object Edit2: TEdit
     Left = 208
-    Height = 23
-    Top = 139
+    Height = 25
+    Top = 137
     Width = 390
-    Font.Height = -11
-    ParentFont = False
     ReadOnly = True
     TabOrder = 5
   end
   object Label5: TLabel
     Left = 36
     Height = 15
-    Top = 188
+    Top = 191
     Width = 44
     Caption = 'Страна'
     ParentColor = False
@@ -398,7 +396,7 @@ object Form10: TForm10
   object Label6: TLabel
     Left = 38
     Height = 15
-    Top = 222
+    Top = 225
     Width = 43
     Caption = 'Регион'
     ParentColor = False
@@ -406,7 +404,7 @@ object Form10: TForm10
   object Label7: TLabel
     Left = 44
     Height = 15
-    Top = 258
+    Top = 260
     Width = 38
     Caption = 'Район'
     ParentColor = False
@@ -439,7 +437,7 @@ object Form10: TForm10
     Left = 602
     Height = 25
     Hint = 'Выбор из имеющихся данных'
-    Top = 139
+    Top = 137
     Width = 28
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
@@ -512,11 +510,9 @@ object Form10: TForm10
   end
   object Edit6: TEdit
     Left = 208
-    Height = 23
+    Height = 25
     Top = 93
     Width = 390
-    Font.Height = -11
-    ParentFont = False
     TabOrder = 4
   end
   object Shape7: TShape
@@ -538,7 +534,7 @@ object Form10: TForm10
   object Edit8: TEdit
     Left = 632
     Height = 25
-    Top = 139
+    Top = 137
     Width = 201
     ReadOnly = True
     TabOrder = 6
@@ -719,64 +715,66 @@ object Form10: TForm10
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 152
+    Height = 173
     Top = 296
     Width = 992
     Caption = 'ЕДИНЫЙ КЛАССИФИКАТОР ОСТАНОВОЧНЫХ ПУНКТОВ'
-    ClientHeight = 135
+    ClientHeight = 156
     ClientWidth = 988
     TabOrder = 14
     object Label13: TLabel
-      Left = 18
+      Left = 51
       Height = 15
-      Top = 58
+      Top = 86
       Width = 61
       Caption = 'Владелец:'
       ParentColor = False
     end
     object Edit10: TEdit
-      Left = 91
+      Left = 122
       Height = 25
-      Top = 54
-      Width = 879
+      Top = 83
+      Width = 855
+      ReadOnly = True
       TabOrder = 0
     end
     object Label14: TLabel
-      Left = 43
+      Left = 73
       Height = 15
-      Top = 99
-      Width = 36
-      Caption = 'Адрес'
+      Top = 122
+      Width = 39
+      Caption = 'Адрес:'
       ParentColor = False
     end
     object Edit11: TEdit
-      Left = 91
-      Height = 35
-      Top = 92
-      Width = 879
-      AutoSize = False
+      Left = 122
+      Height = 25
+      Top = 119
+      Width = 855
+      ReadOnly = True
       TabOrder = 2
     end
     object Edit12: TEdit
-      Left = 91
+      Left = 122
       Height = 25
-      Top = 12
+      Top = 11
       Width = 201
+      ReadOnly = True
       TabOrder = 3
     end
     object Label15: TLabel
-      Left = 43
+      Left = 75
       Height = 15
-      Top = 18
+      Top = 15
       Width = 37
       Caption = 'ЕКОП:'
       ParentColor = False
     end
     object BitBtn8: TBitBtn
-      Left = 300
+      Left = 333
       Height = 25
       Hint = 'Выбор из имеющихся данных'
-      Top = 12
+      Top = 10
       Width = 28
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -818,12 +816,28 @@ object Form10: TForm10
       TabOrder = 1
       TabStop = False
     end
+    object Label20: TLabel
+      Left = 16
+      Height = 15
+      Top = 51
+      Width = 96
+      Caption = 'Наименование:'
+      ParentColor = False
+    end
+    object Edit16: TEdit
+      Left = 122
+      Height = 25
+      Top = 47
+      Width = 350
+      ReadOnly = True
+      TabOrder = 4
+    end
   end
   object BitBtn7: TBitBtn
     Left = 101
     Height = 25
     Hint = 'Выбор из имеющихся данных'
-    Top = 458
+    Top = 480
     Width = 209
     Caption = 'Скопировать адрес'
     Glyph.Data = {
@@ -868,16 +882,15 @@ object Form10: TForm10
   end
   object Edit13: TEdit
     Left = 101
-    Height = 35
-    Top = 498
+    Height = 25
+    Top = 520
     Width = 879
-    AutoSize = False
     TabOrder = 15
   end
   object Label17: TLabel
     Left = 19
     Height = 40
-    Top = 498
+    Top = 520
     Width = 70
     Alignment = taRightJustify
     AutoSize = False
@@ -888,9 +901,9 @@ object Form10: TForm10
   object Label11: TLabel
     Left = 400
     Height = 15
-    Top = 188
-    Width = 49
-    Caption = 'ОКТМО:'
+    Top = 191
+    Width = 46
+    Caption = 'ОКТМО'
     ParentColor = False
   end
   object Edit9: TEdit
@@ -903,7 +916,7 @@ object Form10: TForm10
   object Label18: TLabel
     Left = 28
     Height = 15
-    Top = 558
+    Top = 566
     Width = 61
     Caption = 'Владелец:'
     ParentColor = False
@@ -911,24 +924,23 @@ object Form10: TForm10
   object Edit14: TEdit
     Left = 101
     Height = 25
-    Top = 554
+    Top = 562
     Width = 879
     TabOrder = 17
   end
   object Label19: TLabel
     Left = 53
     Height = 15
-    Top = 599
+    Top = 609
     Width = 36
     Caption = 'Адрес'
     ParentColor = False
   end
   object Edit15: TEdit
     Left = 101
-    Height = 29
-    Top = 592
+    Height = 25
+    Top = 602
     Width = 879
-    AutoSize = False
     TabOrder = 18
   end
   object ZConnection1: TZConnection
