@@ -1379,7 +1379,6 @@ begin
 end;
 
 
-
 //--------------- ОТРИСОВКА ГРИДА  -----------------------------------------------
 procedure TForm15.StringGrid1DrawCell(Sender: TObject; aCol, aRow: Integer;
   aRect: TRect; aState: TGridDrawState);
@@ -1400,6 +1399,16 @@ begin
     begin
     //закрашиваем все белым
        Brush.Color:=clWhite;
+   //НЕАКТИВНЫЕ
+       if Cells[3, aRow]='0' then
+          Brush.Color:= cInactive;
+    //ЗАКАЗНОЙ
+       if Cells[6, aRow]='1' then
+          Brush.Color:= cZkz;
+   //УДАЛЕННЫЕ
+     If Cells[4, aRow]='2' then
+         Brush.Color:= cDlt;
+
        FillRect(aRect);
 
        if Cells[aCol, aRow]='1' then
@@ -1409,9 +1418,8 @@ begin
 
             //Доступность расписания для удаленной продажи
             if (acol=10) then brush.Color:=clGreen;
-
-               //form1.StringGrid1.Canvas.TextRect(aRect,arow+5,5,form1.StringGrid1.Cells[aCol, aRow]);
-                 //DrawCellsAlign(form1.StringGrid1,2,2,form1.StringGrid1.Cells[aCol, aRow],aRect);
+            //form1.StringGrid1.Canvas.TextRect(aRect,arow+5,5,form1.StringGrid1.Cells[aCol, aRow]);
+            //DrawCellsAlign(form1.StringGrid1,2,2,form1.StringGrid1.Cells[aCol, aRow],aRect);
 
            //Доступность расписания для ИНТЕРНЕТ продажи
             if (acol=11) then brush.Color:=clOlive;
@@ -1434,26 +1442,8 @@ begin
            MoveTo(aRect.left,aRect.bottom-1);
            LineTo(aRect.right,aRect.Bottom-1);
           end;
-      end;
+     end;
 
-      //НЕАКТИВНЫЕ
-       if Cells[3, aRow]='0' then
-        begin
-          Brush.Color:= cInactive;
-          FillRect(aRect);
-         end;
-        //ЗАКАЗНОЙ
-       if Cells[6, aRow]='1' then
-        begin
-          Brush.Color:= cZkz;
-          FillRect(aRect);
-         end;
-     //УДАЛЕННЫЕ
-     If Cells[4, aRow]='2' then
-       begin
-         Brush.Color:= cDlt;
-         FillRect(aRect);
-       end;
      //красный цвет для расписаний с ручным изменением тарифа
      //For n:=low(m_route) to high(m_route) do
      // begin
