@@ -74,7 +74,6 @@ type
     procedure EditButton1ButtonClick(Sender: TObject);
     procedure EditButton1Exit(Sender: TObject);
     procedure EditButton2ButtonClick(Sender: TObject);
-    procedure EditButton2Change(Sender: TObject);
     procedure EditButton2Exit(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -320,18 +319,18 @@ begin
               ZQuery1.SQL.add(' and id_shedule>0 ');
               if EditButton1.Text<>'' then
                   ZQuery1.SQL.add(' and id_shedule in ('+EditButton1.Text+') ');
-            end
-        else
-            ZQuery1.SQL.add(' and id_shedule=0 ');
+            end;
+        //else
+            //ZQuery1.SQL.add(' and id_shedule=0 ');
         //перевозчик
         if checkbox6.Checked then
             begin
               ZQuery1.SQL.add(' and id_kontr>0 ');
-              if EditButton1.Text<>'' then
+              if EditButton2.Text<>'' then
                   ZQuery1.SQL.add(' and id_kontr in ('+EditButton2.Text+') ');
-            end
-        else
-          ZQuery1.SQL.add(' and id_kontr=0 ');
+            end;
+        //else
+          //ZQuery1.SQL.add(' and id_kontr=0 ');
     end;
 
    if (stroka<>'') and (filter_type=2) then ZQuery1.SQL.add('and name ilike '+quotedstr(stroka+'%'));
@@ -751,10 +750,6 @@ begin
                            formTicket.EditButton2.Text:=formTicket.EditButton2.Text + ','+ trim(result_kontr_id);
 end;
 
-procedure TFormTicket.EditButton2Change(Sender: TObject);
-begin
-
-end;
 
 procedure TFormTicket.EditButton2Exit(Sender: TObject);
 begin

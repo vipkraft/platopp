@@ -1399,12 +1399,12 @@ begin
     begin
     //закрашиваем все белым
        Brush.Color:=clWhite;
-   //НЕАКТИВНЫЕ
-       if Cells[3, aRow]='0' then
-          Brush.Color:= cInactive;
     //ЗАКАЗНОЙ
        if Cells[6, aRow]='1' then
           Brush.Color:= cZkz;
+  //НЕАКТИВНЫЕ
+      if Cells[3, aRow]='0' then
+          Brush.Color:= cInactive;
    //УДАЛЕННЫЕ
      If Cells[4, aRow]='2' then
          Brush.Color:= cDlt;

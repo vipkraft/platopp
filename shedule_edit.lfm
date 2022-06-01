@@ -50,7 +50,7 @@ object Form16: TForm16
         Top = 0
         Width = 1142
         Anchors = [akTop, akLeft, akRight, akBottom]
-        ClientHeight = 545
+        ClientHeight = 561
         ClientWidth = 1138
         TabOrder = 0
         object GroupBox5: TGroupBox
@@ -65,7 +65,7 @@ object Form16: TForm16
           BorderSpacing.Left = 5
           BorderSpacing.Bottom = 5
           Caption = 'Последнее изменение'
-          ClientHeight = 45
+          ClientHeight = 48
           ClientWidth = 333
           TabOrder = 18
           object Label28: TLabel
@@ -110,7 +110,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Добавить запись'
-          Top = 8
+          Top = 9
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -162,7 +162,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Удалить запись'
-          Top = 82
+          Top = 83
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -213,7 +213,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Выбрать запись'
-          Top = 378
+          Top = 390
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -263,7 +263,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Выбрать запись'
-          Top = 344
+          Top = 355
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -316,7 +316,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Внести изменения в данные'
-          Top = 45
+          Top = 46
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -367,7 +367,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Переместить остановочный пункт ВВЕРХ по списку'
-          Top = 166
+          Top = 171
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -420,7 +420,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Переместить остановочный пункт ВНИЗ по списку'
-          Top = 203
+          Top = 208
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -525,7 +525,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Автоматический расчет пути следования'
-          Top = 243
+          Top = 251
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -576,7 +576,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Добавить наименование остановочного пункта к наименованию расписания'
-          Top = 281
+          Top = 290
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -953,7 +953,7 @@ object Form16: TForm16
         BorderSpacing.Right = 5
         BorderSpacing.Bottom = 5
         Caption = 'Список перевозчиков и АТС'
-        ClientHeight = 535
+        ClientHeight = 538
         ClientWidth = 1128
         TabOrder = 0
         object StringGrid8: TStringGrid
@@ -980,7 +980,7 @@ object Form16: TForm16
             item
               SizePriority = 3
               Title.Caption = 'Наименование перевозчика'
-              Width = 380
+              Width = 382
             end>
           FixedCols = 0
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll]
@@ -991,7 +991,7 @@ object Form16: TForm16
           OnSelection = StringGrid8Selection
           ColWidths = (
             65
-            380
+            382
           )
           Cells = (
             1
@@ -1132,7 +1132,7 @@ object Form16: TForm16
             item
               ReadOnly = True
               Title.Caption = 'МАРКА АТС'
-              Width = 291
+              Width = 293
             end          
             item
               ReadOnly = True
@@ -1174,7 +1174,7 @@ object Form16: TForm16
           OnSetCheckboxState = StringGrid9SetCheckboxState
           ColWidths = (
             65
-            291
+            293
             87
             56
             54
@@ -1339,7 +1339,7 @@ object Form16: TForm16
             Top = 8
             Width = 664
             Caption = 'Временные характеристики расписания'
-            ClientHeight = 496
+            ClientHeight = 500
             ClientWidth = 660
             Font.Height = -12
             ParentFont = False
@@ -1369,7 +1369,7 @@ object Form16: TForm16
               ChildSizing.ShrinkVertical = crsScaleChilds
               ChildSizing.Layout = cclLeftToRightThenTopToBottom
               ChildSizing.ControlsPerLine = 4
-              ClientHeight = 54
+              ClientHeight = 58
               ClientWidth = 306
               Columns = 4
               Enabled = False
@@ -1403,7 +1403,7 @@ object Form16: TForm16
               ChildSizing.ShrinkVertical = crsScaleChilds
               ChildSizing.Layout = cclLeftToRightThenTopToBottom
               ChildSizing.ControlsPerLine = 2
-              ClientHeight = 54
+              ClientHeight = 58
               ClientWidth = 255
               Columns = 2
               Enabled = False
@@ -1434,7 +1434,7 @@ object Form16: TForm16
               ChildSizing.ShrinkVertical = crsScaleChilds
               ChildSizing.Layout = cclLeftToRightThenTopToBottom
               ChildSizing.ControlsPerLine = 11
-              ClientHeight = 102
+              ClientHeight = 106
               ClientWidth = 611
               Columns = 11
               Items.Strings = (
@@ -1489,10 +1489,10 @@ object Form16: TForm16
               WordWrap = True
             end
             object SpinEdit1: TSpinEdit
-              Left = 280
+              Left = 267
               Height = 24
               Top = 117
-              Width = 42
+              Width = 55
               Enabled = False
               MaxValue = 365
               MinValue = 1
@@ -1516,7 +1516,7 @@ object Form16: TForm16
               ChildSizing.ShrinkVertical = crsScaleChilds
               ChildSizing.Layout = cclLeftToRightThenTopToBottom
               ChildSizing.ControlsPerLine = 6
-              ClientHeight = 52
+              ClientHeight = 56
               ClientWidth = 641
               Columns = 6
               Items.Strings = (
@@ -1618,7 +1618,7 @@ object Form16: TForm16
               Top = 251
               Width = 615
               Caption = 'Периодичность'
-              ClientHeight = 27
+              ClientHeight = 31
               ClientWidth = 611
               TabOrder = 9
               object CheckBox3: TCheckBox
@@ -2505,7 +2505,7 @@ object Form16: TForm16
         BorderSpacing.Right = 10
         BorderSpacing.Bottom = 10
         Caption = 'Последние изменения:'
-        ClientHeight = 515
+        ClientHeight = 518
         ClientWidth = 650
         TabOrder = 3
         object StringGrid4: TStringGrid
