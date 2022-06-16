@@ -3965,7 +3965,7 @@ begin
         begin
          //td:=strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value;
          //tarif_all[n,5]:=floattostrF(round(td*100)/100,fffixed,12,2);
-         tarif_all[n,5]:=inttostr(floor(strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value));
+         tarif_all[n,5]:=inttostr(ceil(strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value));
          tarif_all[n,10]:=stringreplace(FloatSpinEdit1.text,',','.',[]);
      end;
        end;
@@ -4004,8 +4004,9 @@ begin
      begin
        If tarif_all[n,13]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
         begin
-         td:=strtofloat(tarif_all[n,2])*FloatSpinEdit3.Value;
-         tarif_all[n,3]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         //td:=strtofloat(tarif_all[n,2])*FloatSpinEdit3.Value;
+         //tarif_all[n,3]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         tarif_all[n,3]:=inttostr(ceil(strtofloat(tarif_all[n,2])*FloatSpinEdit3.Value));
        tarif_all[n,8]:=stringreplace(FloatSpinEdit3.text,',','.',[]);
      end;
        end;
@@ -4032,8 +4033,9 @@ begin
      begin
        If tarif_all[n,13]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
         begin
-         td:=strtofloat(tarif_all[n,2])*FloatSpinEdit4.Value;
-         tarif_all[n,6]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         //td:=strtofloat(tarif_all[n,2])*FloatSpinEdit4.Value;
+         //tarif_all[n,6]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         tarif_all[n,6]:=inttostr(ceil(strtofloat(tarif_all[n,2])*FloatSpinEdit4.Value));
       tarif_all[n,11]:=stringreplace(FloatSpinEdit4.text,',','.',[]);
      end;
        end;
@@ -4063,9 +4065,10 @@ begin
      begin
        If tarif_all[n,13]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
         begin
-         td:=strtofloat(tarif_all[n,2])*FloatSpinEdit5.Value;
-         tarif_all[n,4]:=floattostrF(round(td*100)/100,fffixed,12,2);
-      tarif_all[n,9]:=stringreplace(FloatSpinEdit5.text,',','.',[]);
+         //td:=strtofloat(tarif_all[n,2])*FloatSpinEdit5.Value;
+         //tarif_all[n,4]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         tarif_all[n,4]:=inttostr(ceil(strtofloat(tarif_all[n,2])*FloatSpinEdit5.Value));
+         tarif_all[n,9]:=stringreplace(FloatSpinEdit5.text,',','.',[]);
          end;
      end;
   Refresh_all_grid(trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]));
