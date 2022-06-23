@@ -110,7 +110,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Добавить запись'
-          Top = 9
+          Top = 11
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -162,7 +162,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Удалить запись'
-          Top = 83
+          Top = 85
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -213,7 +213,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Выбрать запись'
-          Top = 390
+          Top = 414
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -263,7 +263,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Выбрать запись'
-          Top = 355
+          Top = 377
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -316,7 +316,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Внести изменения в данные'
-          Top = 46
+          Top = 48
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -367,7 +367,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Переместить остановочный пункт ВВЕРХ по списку'
-          Top = 171
+          Top = 182
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -420,7 +420,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Переместить остановочный пункт ВНИЗ по списку'
-          Top = 208
+          Top = 219
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -525,7 +525,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Автоматический расчет пути следования'
-          Top = 251
+          Top = 267
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -576,7 +576,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Добавить наименование остановочного пункта к наименованию расписания'
-          Top = 290
+          Top = 308
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -1326,6 +1326,154 @@ object Form16: TForm16
             TabStop = False
             TitleFont.Height = -11
             Visible = False
+          end
+        end
+        object TabSheet2: TTabSheet
+          Caption = 'ТАРИФ NEW'
+          ClientHeight = 525
+          ClientWidth = 811
+          object StringGrid13: TStringGrid
+            AnchorSideLeft.Control = TabSheet2
+            AnchorSideTop.Control = TabSheet2
+            AnchorSideRight.Control = TabSheet7
+            AnchorSideRight.Side = asrBottom
+            AnchorSideBottom.Control = TabSheet7
+            AnchorSideBottom.Side = asrBottom
+            Left = 1
+            Height = 520
+            Top = 3
+            Width = 807
+            AutoFillColumns = True
+            BorderSpacing.Left = 1
+            BorderSpacing.Top = 3
+            BorderSpacing.Right = 1
+            BorderSpacing.Bottom = 1
+            ColCount = 16
+            Columns = <            
+              item
+                Color = clSilver
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = '№ п/п'
+                Width = 42
+              end            
+              item
+                ReadOnly = True
+                Title.Caption = 'Наименование пункта'
+                Width = 232
+              end            
+              item
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'КМ'
+                Width = 40
+              end            
+              item
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'ПУТЬ(км)'
+                Width = 60
+              end            
+              item
+                Color = clCream
+                Font.Height = -15
+                SizePriority = 0
+                Title.Caption = 'ФиксЦЕНА'
+                Width = 75
+              end            
+              item
+                Color = clCream
+                SizePriority = 0
+                Title.Caption = 'ФиксБагаж'
+                Width = 67
+              end            
+              item
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'Тариф'
+                Width = 40
+              end            
+              item
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'БАГАЖ'
+                Width = 45
+              end            
+              item
+                Font.Height = -13
+                Font.Style = [fsBold]
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'ФиналЦена'
+                Width = 75
+              end            
+              item
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'ФиналБагаж'
+                Width = 72
+              end            
+              item
+                SizePriority = 0
+                Title.Caption = 'Title'
+                Width = 0
+                Visible = False
+              end            
+              item
+                SizePriority = 0
+                Title.Caption = 'Title'
+                Width = 0
+                Visible = False
+              end            
+              item
+                SizePriority = 0
+                Title.Caption = 'Title'
+                Width = 0
+                Visible = False
+              end            
+              item
+                SizePriority = 0
+                Title.Caption = 'Title'
+                Width = 0
+                Visible = False
+              end            
+              item
+                SizePriority = 0
+                Title.Caption = 'Title'
+                Width = 30
+              end            
+              item
+                SizePriority = 0
+                Title.Caption = 'Title'
+                Width = 25
+              end>
+            DefaultColWidth = 60
+            DefaultRowHeight = 22
+            ExtendedSelect = False
+            FixedCols = 0
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goEditing, goRowSelect, goAlwaysShowEditor]
+            ParentShowHint = False
+            RowCount = 1
+            TabOrder = 0
+            OnEditingDone = StringGrid13EditingDone
+            ColWidths = (
+              42
+              232
+              40
+              60
+              75
+              67
+              40
+              45
+              75
+              72
+              0
+              0
+              0
+              0
+              30
+              25
+            )
           end
         end
         object TabSheet8: TTabSheet
@@ -2082,6 +2230,7 @@ object Form16: TForm16
         TabOrder = 1
         TitleFont.Height = -11
         OnBeforeSelection = StringGrid6BeforeSelection
+        OnCheckboxToggled = StringGrid6CheckboxToggled
         OnButtonClick = StringGrid6ButtonClick
         OnSelection = StringGrid6Selection
         OnSetCheckboxState = StringGrid6SetCheckboxState
