@@ -96,10 +96,8 @@ type
     Image3: TImage;
     Label1: TLabel;
     Label10: TLabel;
-    Label11: TLabel;
     Label12: TLabel;
     Label13: TLabel;
-    Label14: TLabel;
     Label15: TLabel;
     Label16: TLabel;
     Label17: TLabel;
@@ -108,7 +106,6 @@ type
     Label20: TLabel;
     Label21: TLabel;
     Label22: TLabel;
-    Label23: TLabel;
     Label24: TLabel;
     Label25: TLabel;
     Label27: TLabel;
@@ -240,6 +237,7 @@ type
     procedure StringGrid6ButtonClick(Sender: TObject; aCol, aRow: Integer);
     procedure StringGrid6CheckboxToggled(sender: TObject; aCol, aRow: Integer;
       aState: TCheckboxState);
+    procedure StringGrid6EditingDone(Sender: TObject);
     procedure StringGrid6MouseEnter(Sender: TObject);
     procedure StringGrid6Selection(Sender: TObject; aCol, aRow: Integer);
     procedure StringGrid6SetCheckboxState(Sender: TObject; ACol, ARow: Integer; const Value: TCheckboxState);
@@ -356,7 +354,7 @@ const
   uslugi_size = 6;
   lgoty_size = 7;
   sezon_size = 63;
-  trf_new_size = 16;
+  trf_new_size = 18;
 var
   tmp_arr:array of array of String;
   //флаги изменений
@@ -385,19 +383,19 @@ begin
       If tarifCombo[n,0]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
        begin
         fltarif :=true;
-          if tarifCombo[n,7] <> bag then
-            tarifCombo[n,7]:=bag;
+          if tarifCombo[n,6] <> bag then
+            tarifCombo[n,6]:=bag;
 
-        if form16.RadioButton1.Checked then tarifCombo[n,14]:='1';
-        if form16.RadioButton2.Checked then tarifCombo[n,14]:='2';
-        if (tarifCombo[n,5]='0') OR (tarifCombo[n,5]='') then
+        if form16.RadioButton1.Checked then tarifCombo[n,16]:='1';
+        if form16.RadioButton2.Checked then tarifCombo[n,16]:='2';
+        if (tarifCombo[n,8]='0') OR (tarifCombo[n,8]='') then
            begin
-            if tarifCombo[n,14]='1' then
-             tarifCombo[n,9]:=bag;
-            if tarifCombo[n,14]='2' then
+            if tarifCombo[n,16]='1' then
+             tarifCombo[n,10]:=bag;
+            if tarifCombo[n,16]='2' then
              begin
-               td:=strtofloat(tarifCombo[n,8])*FloatSpin.Value/100;
-               tarifCombo[n,9]:=floattostr(round(td*100)/100);
+               td:=strtofloat(tarifCombo[n,9])*FloatSpin.Value/100;
+               tarifCombo[n,10]:=floattostr(round(td*100)/100);
               end;
             end;
           end;
@@ -418,25 +416,27 @@ begin
        //проверка АТП
        If tarifCombo[n,0]=trim(form16.StringGrid6.cells[0,form16.StringGrid6.row]) then
         begin
-        //showmessage(form16.StringGrid13.Cells[10,form16.StringGrid13.Row]+#13
+        //showmessage(form16.StringGrid13.Cells[14,form16.StringGrid13.Row]+#13
         //+tarifCombo[n,10]+#13
-        //+form16.StringGrid13.Cells[11,form16.StringGrid13.Row]+#13
+        //+form16.StringGrid13.Cells[13,form16.StringGrid13.Row]+#13
         //+tarifCombo[n,11]);
         //внести изменения только в выбранный отрезок расписания
           //if form16.StringGrid13.Row>0 then
-            //if (form16.StringGrid13.Cells[10,form16.StringGrid13.Row]=tarifCombo[n,10])
-              //and (form16.StringGrid13.Cells[11,form16.StringGrid13.Row]=tarifCombo[n,11]) then
+            //if (form16.StringGrid13.Cells[12,form16.StringGrid13.Row]=tarifCombo[n,10])
+              //and (form16.StringGrid13.Cells[13,form16.StringGrid13.Row]=tarifCombo[n,11]) then
         begin
-          if tarifCombo[n,6]<>stringreplace(FloatSpin.text,',','.',[]) then
+          if tarifCombo[n,11]<>stringreplace(FloatSpin.text,',','.',[]) then
            begin
-           tarifCombo[n,6]:=stringreplace(FloatSpin.text,',','.',[]);
+           tarifCombo[n,11]:=stringreplace(FloatSpin.text,',','.',[]);
+           tarifCombo[n,4]:=floattostr(strtofloat(tarifCombo[n,2])*FloatSpin.Value);
+           tarifCombo[n,5]:=floattostr(strtofloat(tarifCombo[n,3])*FloatSpin.Value);
            fltarif :=true;
            end;
-
-          if (tarifCombo[n,4]='0') OR (tarifCombo[n,4]='') then
+      //проверка, что нет фикс цены
+          if (tarifCombo[n,7]='0') OR (tarifCombo[n,7]='') then
            begin
-              td:=strtofloat(tarifCombo[n,2])*FloatSpin.Value;
-              tarifCombo[n,8]:=floattostr(round(td*100)/100);
+              td:=strtofloat(tarifCombo[n,3])*FloatSpin.Value;
+              tarifCombo[n,9]:=floattostr(round(td*100)/100);
            end;
          //  tarifCombo[length(tarifCombo)-1,2]:=form16.ZQuery1.FieldByName('km').AsString;
          //tarifCombo[length(tarifCombo)-1,3]:=form16.ZQuery1.FieldByName('trip').AsString;
@@ -478,7 +478,7 @@ begin
       if not(trim(tarifCombo[n,0])=idkontr) then
         begin
          SetLength(tmp_tarif,length(tmp_tarif)+1, trf_new_size);
-         for m:=0 to tarif_size-1 do
+         for m:=0 to trf_new_size-1 do
            begin
              tmp_tarif[length(tmp_tarif)-1,m]:=tarifCombo[n,m];
            end;
@@ -490,7 +490,7 @@ begin
   for n:=0 to length(tmp_tarif)-1 do
     begin
       SetLength(tarifCombo,length(tarifCombo)+1, trf_new_size);
-      for m:=0 to tarif_size-1 do
+      for m:=0 to trf_new_size-1 do
         begin
            tarifCombo[length(tarifCombo)-1,m]:=tmp_tarif[n,m];
         end;
@@ -545,18 +545,20 @@ begin
             end;
          tarifCombo[length(tarifCombo)-1,2]:=form16.ZQuery1.FieldByName('km').AsString;
          tarifCombo[length(tarifCombo)-1,3]:=form16.ZQuery1.FieldByName('trip').AsString;
-         tarifCombo[length(tarifCombo)-1,4]:=form16.ZQuery1.FieldByName('fix_price').AsString;
-         tarifCombo[length(tarifCombo)-1,5]:=form16.ZQuery1.FieldByName('fix_bagazh').AsString;
-         tarifCombo[length(tarifCombo)-1,6]:=form16.ZQuery1.FieldByName('tarif').AsString;
-         tarifCombo[length(tarifCombo)-1,7]:=form16.ZQuery1.FieldByName('bagazh').AsString;
-         tarifCombo[length(tarifCombo)-1,8]:=form16.ZQuery1.FieldByName('final_price').AsString;
-         tarifCombo[length(tarifCombo)-1,9]:=form16.ZQuery1.FieldByName('final_bagazh').AsString;
-         tarifCombo[length(tarifCombo)-1,10]:=form16.ZQuery1.FieldByName('from_order').AsString;
-         tarifCombo[length(tarifCombo)-1,11]:=form16.ZQuery1.FieldByName('from_point').AsString;
-         tarifCombo[length(tarifCombo)-1,12]:=form16.ZQuery1.FieldByName('point_order').AsString;
-         tarifCombo[length(tarifCombo)-1,13]:=form16.ZQuery1.FieldByName('id_point').AsString;
-         tarifCombo[length(tarifCombo)-1,14]:=form16.ZQuery1.FieldByName('bagazh_calc').AsString;
-         tarifCombo[length(tarifCombo)-1,15]:='0';//флаг изменений
+         tarifCombo[length(tarifCombo)-1,4]:=form16.ZQuery1.FieldByName('short').AsString;
+         tarifCombo[length(tarifCombo)-1,5]:=form16.ZQuery1.FieldByName('tripsum').AsString;
+         tarifCombo[length(tarifCombo)-1,6]:=form16.ZQuery1.FieldByName('bagazh').AsString;
+         tarifCombo[length(tarifCombo)-1,7]:=form16.ZQuery1.FieldByName('fix_price').AsString;
+         tarifCombo[length(tarifCombo)-1,8]:=form16.ZQuery1.FieldByName('fix_bagazh').AsString;
+         tarifCombo[length(tarifCombo)-1,9]:=form16.ZQuery1.FieldByName('final_price').AsString;
+         tarifCombo[length(tarifCombo)-1,10]:=form16.ZQuery1.FieldByName('final_bagazh').AsString;
+         tarifCombo[length(tarifCombo)-1,11]:=form16.ZQuery1.FieldByName('tarif').AsString;
+         tarifCombo[length(tarifCombo)-1,12]:=form16.ZQuery1.FieldByName('from_order').AsString;
+         tarifCombo[length(tarifCombo)-1,13]:=form16.ZQuery1.FieldByName('from_point').AsString;
+         tarifCombo[length(tarifCombo)-1,14]:=form16.ZQuery1.FieldByName('point_order').AsString;
+         tarifCombo[length(tarifCombo)-1,15]:=form16.ZQuery1.FieldByName('id_point').AsString;
+         tarifCombo[length(tarifCombo)-1,16]:=form16.ZQuery1.FieldByName('bagazh_calc').AsString;
+         tarifCombo[length(tarifCombo)-1,17]:='0';//флаг изменений
 
          ZQuery1.Next;
         end;
@@ -581,131 +583,118 @@ begin
        for m:=1 to form16.StringGrid13.RowCount-1 do
          begin
          //если формирующиеся, обнулить
-           if (StringGrid13.Cells[10,m]=StringGrid13.Cells[12,m])
-             and (StringGrid13.Cells[11,m]=StringGrid13.Cells[13,m]) then
+           if (StringGrid13.Cells[12,m]=StringGrid13.Cells[14,m])
+             and (StringGrid13.Cells[13,m]=StringGrid13.Cells[15,m]) then
                begin
-                 StringGrid13.Cells[4,m]:= '';
-                 StringGrid13.Cells[5,m]:= '';
+                 StringGrid13.Cells[7,m]:= '';
+                 StringGrid13.Cells[8,m]:= '';
                  continue;
                end;
 
-           if (tarifCombo[n,10]=StringGrid13.Cells[10,m]) //'from_order').AsString;
-             and (tarifCombo[n,11]=StringGrid13.Cells[11,m]) //from_point
-             and (tarifCombo[n,12]=StringGrid13.Cells[12,m]) //point_order
-             and (tarifCombo[n,13]=StringGrid13.Cells[13,m]) //id_point
+           if (tarifCombo[n,12]=StringGrid13.Cells[12,m]) //'from_order').AsString;
+             and (tarifCombo[n,13]=StringGrid13.Cells[13,m]) //from_point
+             and (tarifCombo[n,14]=StringGrid13.Cells[14,m]) //point_order
+             and (tarifCombo[n,15]=StringGrid13.Cells[15,m]) //id_point
              then
                begin
                //---------------- фикс цена билета -------------------------
-                 if (tarifCombo[n,4]='') or (tarifCombo[n,4]='0') then
-                   if (trim(StringGrid13.Cells[4,m])<>'') and (trim(StringGrid13.Cells[4,m])<>'0') then
+                 if (tarifCombo[n,7]='') or (tarifCombo[n,7]='0') then
+                   if (trim(StringGrid13.Cells[7,m])<>'') and (trim(StringGrid13.Cells[7,m])<>'0') then
                      begin
                        try
-                       tarifCombo[n,4] := floattostr(strtofloat(stringreplace(StringGrid13.Cells[4,m],',','.',[])));
-                       tarifCombo[n,8] := tarifCombo[n,4]; //final price
-                       tarifCombo[n,15] := '1';
+                       tarifCombo[n,7] := floattostr(strtofloat(stringreplace(StringGrid13.Cells[7,m],',','.',[])));
+                       tarifCombo[n,9] := tarifCombo[n,7]; //final price
+                       tarifCombo[n,17] := '1';
                        fltarif_new :=true;
                        except
                          showmessagealt('Некорректное значение цены билета!');
-                         StringGrid13.Cells[4,m]:='';
+                         StringGrid13.Cells[7,m]:='';
                          continue;
                        end;
                      end;
-                  if (tarifCombo[n,4]<>'') and (tarifCombo[n,4]<>'0') then
-                   if (trim(StringGrid13.Cells[4,m])='') or (trim(StringGrid13.Cells[4,m])='0') then
+                  if (tarifCombo[n,7]<>'') and (tarifCombo[n,7]<>'0') then
+                   if (trim(StringGrid13.Cells[7,m])='') or (trim(StringGrid13.Cells[7,m])='0') then
                      begin
-                       tarifCombo[n,4] := '0';
+                       tarifCombo[n,7] := '0';
                        //тогда возвращаемся к расчету по коэффициенту
                        try
-                       tarifCombo[n,8] := floattostr(round(strtofloat(tarifCombo[n,6])*strtofloat(tarifCombo[n,3])*100/100)); //final price
+                       tarifCombo[n,9] := floattostr(round(strtofloat(tarifCombo[n,11])*strtofloat(tarifCombo[n,3])*100/100)); //final price
                         except
                          showmessagealt('Некорректное значение коэффициента!');
                          exit;
                        end;
-                       tarifCombo[n,15] := '1';
+                       tarifCombo[n,17] := '1';
                        fltarif_new :=true;
                      end;
-                  if (tarifCombo[n,4]<>'') and (tarifCombo[n,4]<>'0') then
-                    if (trim(StringGrid13.Cells[4,m])<>'') and (trim(StringGrid13.Cells[4,m])<>'0') then
+                  if (tarifCombo[n,7]<>'') and (tarifCombo[n,7]<>'0') then
+                    if (trim(StringGrid13.Cells[7,m])<>'') and (trim(StringGrid13.Cells[7,m])<>'0') then
                      begin
                        try
-                         if strtofloat(tarifCombo[n,4]) <> (strtofloat(stringreplace(StringGrid13.Cells[4,m],',','.',[]))) then
+                         if strtofloat(tarifCombo[n,7]) <> (strtofloat(stringreplace(StringGrid13.Cells[7,m],',','.',[]))) then
                           begin
-                            tarifCombo[n,4] := floattostr(strtofloat(stringreplace(StringGrid13.Cells[4,m],',','.',[])));
-                            tarifCombo[n,8] := tarifCombo[n,4]; //final price
+                            tarifCombo[n,7] := floattostr(strtofloat(stringreplace(StringGrid13.Cells[7,m],',','.',[])));
+                            tarifCombo[n,9] := tarifCombo[n,7]; //final price
                             fltarif_new :=true;
-                            tarifCombo[n,15] := '1';
+                            tarifCombo[n,17] := '1';
                           end;
                        except
                          showmessagealt('Некорректное значение цены билета!');
-                         StringGrid13.Cells[4,m]:='';
+                         StringGrid13.Cells[7,m]:='';
                        end;
                     end;
                     //---------------- фикс цена багажа -------------------------
-                 if (tarifCombo[n,5]='') or (tarifCombo[n,5]='0') then
-                   if (trim(StringGrid13.Cells[5,m])<>'') and (trim(StringGrid13.Cells[5,m])<>'0') then
+                 if (tarifCombo[n,8]='') or (tarifCombo[n,8]='0') then
+                   if (trim(StringGrid13.Cells[8,m])<>'') and (trim(StringGrid13.Cells[8,m])<>'0') then
                      begin
                        try
-                       tarifCombo[n,5] := floattostr(strtofloat(stringreplace(StringGrid13.Cells[5,m],',','.',[])));
-                       tarifCombo[n,9] := tarifCombo[n,5]; //final bag
-                       tarifCombo[n,15] := '1';
+                       tarifCombo[n,8] := floattostr(strtofloat(stringreplace(StringGrid13.Cells[8,m],',','.',[])));
+                       tarifCombo[n,10] := tarifCombo[n,8]; //final bag
+                       tarifCombo[n,17] := '1';
                        fltarif_new :=true;
                        except
                          showmessagealt('Некорректное значение цены багажа!');
-                         StringGrid13.Cells[5,m]:='';
+                         StringGrid13.Cells[8,m]:='';
                          continue;
                        end;
                      end;
-                  if (tarifCombo[n,5]<>'') and (tarifCombo[n,5]<>'0') then
-                   if (trim(StringGrid13.Cells[5,m])='') or (trim(StringGrid13.Cells[5,m])='0') then
+                  if (tarifCombo[n,8]<>'') and (tarifCombo[n,8]<>'0') then
+                   if (trim(StringGrid13.Cells[8,m])='') or (trim(StringGrid13.Cells[8,m])='0') then
                      begin
-                       tarifCombo[n,5] := '0';
+                       tarifCombo[n,8] := '0';
                        //тогда возвращаемся к расчету по коэффициенту
-                       if tarifCombo[n,14]='1' then
-                        tarifCombo[n,9]:=tarifCombo[n,7];
-                       if tarifCombo[n,14]='2' then
+                       if tarifCombo[n,16]='1' then
+                        tarifCombo[n,10]:=tarifCombo[n,7];
+                       if tarifCombo[n,16]='2' then
                          begin
                           try
-                           td:=strtofloat(tarifCombo[n,8])*strtofloat(tarifCombo[n,7])/100;
-                           tarifCombo[n,9]:=floattostr(round(td*100)/100);
+                           td:=strtofloat(tarifCombo[n,9])*strtofloat(tarifCombo[n,7])/100;
+                           tarifCombo[n,10]:=floattostr(round(td*100)/100);
                           except
                             showmessagealt('Некорректное значение цены билета!');
                           end;
                          end;
-                       tarifCombo[n,15] := '1';
+                       tarifCombo[n,17] := '1';
                        fltarif_new :=true;
                      end;
-                  if (tarifCombo[n,5]<>'') and (tarifCombo[n,5]<>'0') then
-                    if (trim(StringGrid13.Cells[5,m])<>'') and (trim(StringGrid13.Cells[5,m])<>'0') then
+                  if (tarifCombo[n,8]<>'') and (tarifCombo[n,8]<>'0') then
+                    if (trim(StringGrid13.Cells[8,m])<>'') and (trim(StringGrid13.Cells[8,m])<>'0') then
                      begin
                        try
-                         if strtofloat(tarifCombo[n,5]) <> (strtofloat(stringreplace(StringGrid13.Cells[5,m],',','.',[]))) then
+                         if strtofloat(tarifCombo[n,8]) <> (strtofloat(stringreplace(StringGrid13.Cells[8,m],',','.',[]))) then
                           begin
-                            tarifCombo[n,5] := floattostr(strtofloat(stringreplace(StringGrid13.Cells[5,m],',','.',[])));
-                            tarifCombo[n,9] := tarifCombo[n,5]; //final bag
-                            tarifCombo[n,15] := '1';
+                            tarifCombo[n,8] := floattostr(strtofloat(stringreplace(StringGrid13.Cells[8,m],',','.',[])));
+                            tarifCombo[n,10] := tarifCombo[n,8]; //final bag
+                            tarifCombo[n,17] := '1';
                             fltarif_new :=true;
                           end;
                        except
-                         showmessagealt('Некорректное значение цены билета!');
-                         StringGrid13.Cells[5,m]:='';
+                         showmessagealt('Некорректное значение цены багажа!');
+                         StringGrid13.Cells[8,m]:='';
                        end;
                     end;
                end;
 
-         //  tarifCombo[length(tarifCombo)-1,2]:=form16.ZQuery1.FieldByName('km').AsString;
-         //tarifCombo[length(tarifCombo)-1,3]:=form16.ZQuery1.FieldByName('trip').AsString;
-         //tarifCombo[length(tarifCombo)-1,4]:=form16.ZQuery1.FieldByName('fix_price').AsString;
-         //tarifCombo[length(tarifCombo)-1,5]:=form16.ZQuery1.FieldByName('fix_bagazh').AsString;
-         //tarifCombo[length(tarifCombo)-1,6]:=form16.ZQuery1.FieldByName('tarif').AsString;
-         //tarifCombo[length(tarifCombo)-1,7]:=form16.ZQuery1.FieldByName('bagazh').AsString;
-         //tarifCombo[length(tarifCombo)-1,8]:=form16.ZQuery1.FieldByName('final_price').AsString;
-         //tarifCombo[length(tarifCombo)-1,9]:=form16.ZQuery1.FieldByName('final_bagazh').AsString;
-         //tarifCombo[length(tarifCombo)-1,10]:=form16.ZQuery1.FieldByName('from_order').AsString;
-         //tarifCombo[length(tarifCombo)-1,11]:=form16.ZQuery1.FieldByName('from_point').AsString;
-         //tarifCombo[length(tarifCombo)-1,12]:=form16.ZQuery1.FieldByName('point_order').AsString;
-         //tarifCombo[length(tarifCombo)-1,13]:=form16.ZQuery1.FieldByName('id_point').AsString;
-         //tarifCombo[length(tarifCombo)-1,14]:=form16.ZQuery1.FieldByName('bagazh_calc').AsString;
-         //tarif_all[n,5]:=inttostr(ceil(strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value));
+
 
        end;
       end;
@@ -1044,7 +1033,7 @@ begin
    }
    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ TARIF_ALL^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   // =========================== TARIF NEW ========================================
+   // =========================== TARIF_COMBO ========================================
    form16.StringGrid13.RowCount:=1;
    k:=0;
     for n:=0 to length(tarifCombo)-1 do
@@ -1415,7 +1404,8 @@ begin
        for n:=1 to form16.StringGrid13.RowCount-1 do
          begin
            SetLength(tarifCombo,length(tarifCombo)+1, trf_new_size);
-           for m:=0 to trf_new_size-1 do
+           tarifCombo[length(tarifCombo)-1,0]:=id_atp;
+           for m:=1 to trf_new_size-1 do
              begin
                tarifCombo[length(tarifCombo)-1,m]:=form16.StringGrid13.cells[m,n];
              end;
@@ -1943,7 +1933,7 @@ end;
 procedure TForm16.TabSheet7Enter(Sender: TObject);
 begin
    //вкладка тарифа
-   fltarif:= true;
+   //fltarif:= true;
 end;
 
 //уход с вкладки тарифа
@@ -2555,14 +2545,14 @@ begin
  if fltarif_new then begin
   for n:=low(tarifCombo) to high(tarifCombo) do
    begin
-     if tarifCombo[n,15]<>'1' then continue;
+     if tarifCombo[n,17]<>'1' then continue;
    ZQuery1.SQL.Clear;
   //помечаем на удаление записи стоимости тарифа и багажа для данного перевозчика на распсании
    ZQuery1.SQL.add('UPDATE av_shedule_price SET del=1,createdate=now(),id_user='+inttostr(id_user)+' WHERE ');
     if flag_edit_shedule=1 then ZQuery1.SQL.add('id_shedule='+new_id );
     if flag_edit_shedule=2 then ZQuery1.SQL.add('id_shedule='+old_id );
-   ZQuery1.SQL.add(' AND point_order=' + tarifCombo[n,10]+' AND id_point=' + tarifCombo[n,11]+' AND point_order_dest=' + tarifCombo[n,12]);
-   ZQuery1.SQL.add(' AND id_point_destination=' + tarifCombo[n,13]+' AND id_kontr='+tarifCombo[n,0]+' and del=0;');
+   ZQuery1.SQL.add(' AND point_order=' + tarifCombo[n,12]+' AND id_point=' + tarifCombo[n,13]+' AND point_order_dest=' + tarifCombo[n,14]);
+   ZQuery1.SQL.add(' AND id_point_destination=' + tarifCombo[n,15]+' AND id_kontr='+tarifCombo[n,0]+' and del=0;');
    //showmessage(ZQuery1.SQL.Text);//$
          ////try
     ZQuery1.ExecSQL;
@@ -2583,14 +2573,14 @@ begin
   ZQuery1.SQL.add('INSERT INTO av_shedule_price(createdate,id_user,del,id_shedule,id_kontr,id_point,id_point_destination,tarif,bagazh,point_order,point_order_dest) VALUES ');
   for n:=low(tarifCombo) to high(tarifCombo) do
    begin
-     if tarifCombo[n,15]<>'1' then continue;
+     if tarifCombo[n,17]<>'1' then continue;
    inc(j);
    if j>1 then ZQuery1.SQL.add(', ');
   //помечаем на удаление записи стоимости тарифа и багажа для данного перевозчика на распсании
    ZQuery1.SQL.add('(now(),'+inttostr(id_user)+',0,');
     if flag_edit_shedule=1 then ZQuery1.SQL.add(new_id +',');
     if flag_edit_shedule=2 then ZQuery1.SQL.add(old_id +',');
-   ZQuery1.SQL.add(kodatp+','+tarifCombo[n,11]+','+tarifCombo[n,13]+','+tarifCombo[n,4]+','+tarifCombo[n,5]+','+tarifCombo[n,10]+','+tarifCombo[n,12]+')');
+   ZQuery1.SQL.add(kodatp+','+tarifCombo[n,13]+','+tarifCombo[n,15]+','+tarifCombo[n,7]+','+tarifCombo[n,8]+','+tarifCombo[n,12]+','+tarifCombo[n,14]+')');
    end;
   ZQuery1.SQL.add(';');
   //showmessage(ZQuery1.SQL.Text);//$
@@ -2908,7 +2898,8 @@ begin
      form16.FloatSpinEdit1.Value:=0;
      form16.FloatSpinEdit2.Value:=0;
      form16.GroupBox2.Enabled:=false;
-     Refresh_all_grid(    trim(Cells[0,Arow]));
+     ChangeSpin(self.FloatSpinEdit1);
+     Refresh_all_grid(trim(Cells[0,Arow]));
      fltarif:=true;
     end
    else
@@ -2928,15 +2919,20 @@ begin
   end;
 end;
 
+procedure TForm16.StringGrid6EditingDone(Sender: TObject);
+begin
+   flatp:=true;
+end;
+
 
 procedure TForm16.StringGrid6SetEditText(Sender: TObject; ACol, ARow: Integer;
   const Value: string);
 begin
     if not flatp and (ACol=2) then
    begin
-    form16.Panel1.Caption:=inttostr(ACol);
-    form16.Panel1.Visible:=true;
-    flatp:=true;
+    //form16.Panel1.Caption:=inttostr(ACol);
+    //form16.Panel1.Visible:=true;
+    //flatp:=true;
    end;
 end;
 
@@ -4288,53 +4284,8 @@ begin
 end;
 
 procedure TForm16.Button2Click(Sender: TObject);
-var
-   n,m:integer;
-   s,sss:string;
 begin
-  s:=inttostr(length(mas_date))+#13;
-  for n:=low(mas_date) to High(mas_date) do
-begin
-
-   //sss:='month: '+(mas_date[n,0]);
-      //for m:=0 to 13 do
-      //   begin
-      //     sss:=sss+' | '+(mas_date[n,m]);
-      //   end;
-       // sss:=sss+#13+'weeks: ';
-       //for m:=14 to 19 do
-       //  begin
-       //    sss:=sss+' | '+(mas_date[n,m]);
-       //  end;
-        sss:='atp: '+(mas_date[n,0])+#13;
-        sss:=sss+'months:';
-        for m:=1 to 12 do
-         begin
-           sss:=sss+' | '+(mas_date[n,m]);
-         end;
-         sss:=sss+#13+'days of week:';
-          for m:=13 to 26 do
-         begin
-           sss:=sss+' | '+(mas_date[n,m]);
-         end;
-       // sss:=sss+#13+'чет\нечет: ';
-       // for m:=27 to 29 do
-       //  begin
-       //    sss:=sss+' | '+(mas_date[n,m]);
-       //  end;
-       // sss:=sss+#13+'days: ';
-       // for m:=30 to 60 do
-       //  begin
-       //    sss:=sss+' | '+(mas_date[n,m]);
-       //  end;
-         sss:=sss+#13+'n-day: ';
-        for m:=61 to 62 do
-         begin
-           sss:=sss+' | '+(mas_date[n,m]);
-         end;
-       s := s+sss+#13;
-  end;
-  showmessagealt(s);
+  showmas(tarifCombo);
 end;
 
 procedure TForm16.Button3Click(Sender: TObject);
@@ -4346,7 +4297,6 @@ end;
 procedure TForm16.Button4Click(Sender: TObject);
 begin
   showmas(atp_sostav);
-
 end;
 
 procedure TForm16.Button5Click(Sender: TObject);
@@ -4474,6 +4424,15 @@ begin
          tarif_all[n,5]:=floattostrF(round(td*100)/100,fffixed,12,2);
          //tarif_all[n,5]:=inttostr(ceil(strtofloat(tarif_all[n,2])*FloatSpinEdit1.Value));
          tarif_all[n,10]:=stringreplace(FloatSpinEdit1.text,',','.',[]);
+
+         tarif_all[n,3]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         tarif_all[n,8]:=stringreplace(FloatSpinEdit1.text,',','.',[]);
+
+         tarif_all[n,4]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         tarif_all[n,9]:=stringreplace(FloatSpinEdit1.text,',','.',[]);
+
+         tarif_all[n,6]:=floattostrF(round(td*100)/100,fffixed,12,2);
+         tarif_all[n,11]:=stringreplace(FloatSpinEdit1.text,',','.',[]);
         end;
      end;
 

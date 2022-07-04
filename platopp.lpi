@@ -147,7 +147,7 @@
         <PackageName Value="LCL"/>
       </Item8>
     </RequiredPackages>
-    <Units Count="64">
+    <Units Count="63">
       <Unit0>
         <Filename Value="platopp.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -308,9 +308,8 @@
         <EditorIndex Value="7"/>
         <CursorPos X="11" Y="16"/>
         <UsageCount Value="200"/>
-        <Bookmarks Count="2">
+        <Bookmarks Count="1">
           <Item0 X="7" Y="1524" ID="1"/>
-          <Item1 X="13" Y="444"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -365,11 +364,10 @@
         <ComponentName Value="Form22"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="9"/>
-        <TopLine Value="377"/>
-        <CursorPos X="51" Y="388"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8"/>
+        <CursorPos X="52" Y="20"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="lgot_main.pas"/>
@@ -666,9 +664,12 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="2877"/>
-        <CursorPos X="11" Y="2877"/>
+        <TopLine Value="1865"/>
+        <CursorPos X="24" Y="1875"/>
         <UsageCount Value="237"/>
+        <Bookmarks Count="1">
+          <Item0 X="3" Y="546"/>
+        </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit46>
@@ -786,7 +787,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="11" Y="10"/>
-        <UsageCount Value="157"/>
+        <UsageCount Value="146"/>
       </Unit57>
       <Unit58>
         <Filename Value="astradno.pas"/>
@@ -795,7 +796,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="11"/>
-        <UsageCount Value="265"/>
+        <UsageCount Value="254"/>
       </Unit58>
       <Unit59>
         <Filename Value="/usr/lib/lazarus/lcl/graphics.pp"/>
@@ -803,7 +804,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="49"/>
         <CursorPos X="25" Y="63"/>
-        <UsageCount Value="36"/>
+        <UsageCount Value="25"/>
       </Unit59>
       <Unit60>
         <Filename Value="spr_shed_kontr.pas"/>
@@ -831,18 +832,126 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="101"/>
         <CursorPos Y="116"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="1"/>
       </Unit62>
-      <Unit63>
-        <Filename Value="../lazarus/lcl/grids.pas"/>
-        <UnitName Value="Grids"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="10782"/>
-        <CursorPos Y="10796"/>
-        <UsageCount Value="9"/>
-      </Unit63>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2929" Column="8" TopLine="2909"/>
+      </Position1>
+      <Position2>
+        <Filename Value="shedule_edit.pas"/>
+      </Position2>
+      <Position3>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2929" Column="30" TopLine="2904"/>
+      </Position3>
+      <Position4>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="3090" Column="34" TopLine="3067"/>
+      </Position4>
+      <Position5>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="4767" Column="25" TopLine="4744"/>
+      </Position5>
+      <Position6>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="4911" Column="27" TopLine="4888"/>
+      </Position6>
+      <Position7>
+        <Filename Value="shedule_edit.pas"/>
+      </Position7>
+      <Position8>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="5619" Column="10" TopLine="5603"/>
+      </Position8>
+      <Position9>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="2096" Column="12" TopLine="2086"/>
+      </Position9>
+      <Position10>
+        <Filename Value="shedule_edit.pas"/>
+      </Position10>
+      <Position11>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="854" Column="38" TopLine="830"/>
+      </Position11>
+      <Position12>
+        <Filename Value="shedule_edit.pas"/>
+      </Position12>
+      <Position13>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="4767" Column="42" TopLine="4744"/>
+      </Position13>
+      <Position14>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="5533" Column="48" TopLine="5521"/>
+      </Position14>
+      <Position15>
+        <Filename Value="shedule_edit.pas"/>
+      </Position15>
+      <Position16>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="152" Column="25" TopLine="129"/>
+      </Position16>
+      <Position17>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="153" Column="25" TopLine="130"/>
+      </Position17>
+      <Position18>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="154" Column="25" TopLine="131"/>
+      </Position18>
+      <Position19>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="155" Column="25" TopLine="132"/>
+      </Position19>
+      <Position20>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="156" Column="25" TopLine="133"/>
+      </Position20>
+      <Position21>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="157" Column="25" TopLine="134"/>
+      </Position21>
+      <Position22>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="158" Column="25" TopLine="135"/>
+      </Position22>
+      <Position23>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="159" Column="25" TopLine="136"/>
+      </Position23>
+      <Position24>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="160" Column="25" TopLine="137"/>
+      </Position24>
+      <Position25>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="248" Column="23" TopLine="225"/>
+      </Position25>
+      <Position26>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="249" Column="23" TopLine="226"/>
+      </Position26>
+      <Position27>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="250" Column="23" TopLine="227"/>
+      </Position27>
+      <Position28>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="251" Column="23" TopLine="228"/>
+      </Position28>
+      <Position29>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1875" Column="38" TopLine="1851"/>
+      </Position29>
+      <Position30>
+        <Filename Value="shedule_edit.pas"/>
+        <Caret Line="1933" Column="27" TopLine="1909"/>
+      </Position30>
+    </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>

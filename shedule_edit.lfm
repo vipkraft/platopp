@@ -110,7 +110,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Добавить запись'
-          Top = 11
+          Top = 13
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -162,7 +162,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Удалить запись'
-          Top = 85
+          Top = 87
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -213,7 +213,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Выбрать запись'
-          Top = 414
+          Top = 440
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -263,7 +263,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Выбрать запись'
-          Top = 377
+          Top = 401
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -316,7 +316,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Внести изменения в данные'
-          Top = 48
+          Top = 50
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -367,7 +367,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Переместить остановочный пункт ВВЕРХ по списку'
-          Top = 182
+          Top = 194
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -420,7 +420,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Переместить остановочный пункт ВНИЗ по списку'
-          Top = 219
+          Top = 231
           Width = 115
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 5
@@ -525,7 +525,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Автоматический расчет пути следования'
-          Top = 267
+          Top = 284
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -576,7 +576,7 @@ object Form16: TForm16
           Left = 1015
           Height = 32
           Hint = 'Добавить наименование остановочного пункта к наименованию расписания'
-          Top = 308
+          Top = 328
           Width = 115
           Anchors = [akRight]
           BorderSpacing.Right = 8
@@ -953,7 +953,7 @@ object Form16: TForm16
         BorderSpacing.Right = 5
         BorderSpacing.Bottom = 5
         Caption = 'Список перевозчиков и АТС'
-        ClientHeight = 535
+        ClientHeight = 538
         ClientWidth = 1128
         TabOrder = 0
         object StringGrid8: TStringGrid
@@ -980,7 +980,7 @@ object Form16: TForm16
             item
               SizePriority = 3
               Title.Caption = 'Наименование перевозчика'
-              Width = 380
+              Width = 382
             end>
           FixedCols = 0
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goSmoothScroll]
@@ -991,7 +991,7 @@ object Form16: TForm16
           OnSelection = StringGrid8Selection
           ColWidths = (
             65
-            380
+            382
           )
           Cells = (
             1
@@ -1132,7 +1132,7 @@ object Form16: TForm16
             item
               ReadOnly = True
               Title.Caption = 'МАРКА АТС'
-              Width = 291
+              Width = 293
             end          
             item
               ReadOnly = True
@@ -1174,7 +1174,7 @@ object Form16: TForm16
           OnSetCheckboxState = StringGrid9SetCheckboxState
           ColWidths = (
             65
-            291
+            293
             87
             56
             54
@@ -1206,7 +1206,7 @@ object Form16: TForm16
         Height = 550
         Top = 10
         Width = 813
-        ActivePage = TabSheet7
+        ActivePage = TabSheet2
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 10
         BorderSpacing.Top = 10
@@ -1214,122 +1214,8 @@ object Form16: TForm16
         BorderSpacing.Bottom = 5
         TabIndex = 0
         TabOrder = 0
-        object TabSheet7: TTabSheet
-          Caption = '         1.Тариф       '
-          ClientHeight = 525
-          ClientWidth = 811
-          OnEnter = TabSheet7Enter
-          OnExit = TabSheet7Exit
-          object StringGrid10: TStringGrid
-            AnchorSideLeft.Control = TabSheet7
-            AnchorSideTop.Control = TabSheet7
-            AnchorSideRight.Control = TabSheet7
-            AnchorSideRight.Side = asrBottom
-            AnchorSideBottom.Control = TabSheet7
-            AnchorSideBottom.Side = asrBottom
-            Left = 2
-            Height = 520
-            Top = 3
-            Width = 807
-            Anchors = [akTop, akLeft, akRight, akBottom]
-            AutoFillColumns = True
-            BorderSpacing.Left = 2
-            BorderSpacing.Top = 3
-            BorderSpacing.Right = 2
-            BorderSpacing.Bottom = 2
-            ColCount = 8
-            Columns = <            
-              item
-                Color = clSilver
-                ReadOnly = True
-                SizePriority = 0
-                Title.Caption = '№ п/п'
-                Width = 45
-              end            
-              item
-                ReadOnly = True
-                Title.Caption = 'Наименование пункта'
-                Width = 354
-              end            
-              item
-                ReadOnly = True
-                SizePriority = 0
-                Title.Caption = 'Путь (км)'
-                Width = 60
-              end            
-              item
-                Color = clCream
-                SizePriority = 0
-                Title.Caption = 'Жест/М2'
-                Width = 68
-              end            
-              item
-                Color = clCream
-                SizePriority = 0
-                Title.Caption = 'Жест/М3'
-                Width = 68
-              end            
-              item
-                Color = clCream
-                SizePriority = 0
-                Title.Caption = 'Мягк/М2'
-                Width = 68
-              end            
-              item
-                Color = clCream
-                SizePriority = 0
-                Title.Caption = 'Мягк/М3'
-                Width = 68
-              end            
-              item
-                Color = clCream
-                SizePriority = 0
-                Title.Caption = 'БАГАЖ'
-                Width = 60
-              end>
-            DefaultDrawing = False
-            ExtendedSelect = False
-            FixedCols = 0
-            Font.Height = -12
-            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goAlwaysShowEditor]
-            ParentFont = False
-            RowCount = 1
-            ScrollBars = ssVertical
-            TabOrder = 1
-            TitleFont.Height = -11
-            OnDrawCell = StringGrid10DrawCell
-            OnEditingDone = StringGrid10EditingDone
-            OnEnter = StringGrid10Enter
-            OnGetEditMask = StringGrid10GetEditMask
-            ColWidths = (
-              45
-              354
-              60
-              68
-              68
-              68
-              68
-              60
-            )
-          end
-          object StringGrid2: TStringGrid
-            Left = 15
-            Height = 232
-            Top = 286
-            Width = 332
-            FixedCols = 0
-            Options = [goFixedVertLine, goVertLine]
-            ParentBiDiMode = False
-            RowCount = 1
-            ScrollBars = ssAutoVertical
-            TabOrder = 0
-            TabStop = False
-            TitleFont.Height = -11
-            Visible = False
-          end
-        end
         object TabSheet2: TTabSheet
-          Caption = 'ТАРИФ NEW'
+          Caption = '  ТАРИФ NEW'
           ClientHeight = 525
           ClientWidth = 811
           object StringGrid13: TStringGrid
@@ -1348,7 +1234,7 @@ object Form16: TForm16
             BorderSpacing.Top = 3
             BorderSpacing.Right = 1
             BorderSpacing.Bottom = 1
-            ColCount = 16
+            ColCount = 18
             Columns = <            
               item
                 Color = clSilver
@@ -1360,7 +1246,7 @@ object Form16: TForm16
               item
                 ReadOnly = True
                 Title.Caption = 'Наименование пункта'
-                Width = 232
+                Width = 275
               end            
               item
                 ReadOnly = True
@@ -1369,15 +1255,39 @@ object Form16: TForm16
                 Width = 40
               end            
               item
+                Color = clBtnFace
+                Font.Height = -13
                 ReadOnly = True
                 SizePriority = 0
-                Title.Caption = 'ПУТЬ(км)'
-                Width = 60
+                Title.Font.Height = -13
+                Title.Caption = 'ПУТЬ'
+                Width = 48
+              end            
+              item
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'Тариф'
+                Width = 43
+              end            
+              item
+                Color = clBtnFace
+                Font.Height = -15
+                SizePriority = 0
+                Title.Font.Height = -13
+                Title.Caption = 'Цена'
+                Width = 47
+              end            
+              item
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'багаж'
+                Width = 43
               end            
               item
                 Color = clCream
                 Font.Height = -15
                 SizePriority = 0
+                Title.Font.Height = -13
                 Title.Caption = 'ФиксЦЕНА'
                 Width = 75
               end            
@@ -1385,67 +1295,67 @@ object Form16: TForm16
                 Color = clCream
                 SizePriority = 0
                 Title.Caption = 'ФиксБагаж'
-                Width = 67
+                Width = 60
               end            
               item
-                ReadOnly = True
-                SizePriority = 0
-                Title.Caption = 'Тариф'
-                Width = 40
-              end            
-              item
-                ReadOnly = True
-                SizePriority = 0
-                Title.Caption = 'БАГАЖ'
-                Width = 45
-              end            
-              item
-                Font.Height = -13
+                Font.Height = -15
                 Font.Style = [fsBold]
                 ReadOnly = True
                 SizePriority = 0
+                Title.Font.Height = -13
                 Title.Caption = 'ФиналЦена'
-                Width = 75
+                Width = 77
               end            
               item
+                Font.Height = -15
+                Font.Style = [fsItalic]
                 ReadOnly = True
                 SizePriority = 0
-                Title.Caption = 'ФиналБагаж'
-                Width = 72
+                Title.Font.Height = -13
+                Title.Caption = 'Ф-Багаж'
+                Width = 55
               end            
               item
                 SizePriority = 0
-                Title.Caption = 'Title'
+                Title.Caption = 'Коэф.тариф'
                 Width = 0
                 Visible = False
               end            
               item
                 SizePriority = 0
-                Title.Caption = 'Title'
+                Title.Caption = 'from-order'
                 Width = 0
                 Visible = False
               end            
               item
                 SizePriority = 0
-                Title.Caption = 'Title'
+                Title.Caption = 'from-point'
                 Width = 0
                 Visible = False
               end            
               item
                 SizePriority = 0
-                Title.Caption = 'Title'
+                Title.Caption = 'point-order'
                 Width = 0
                 Visible = False
               end            
               item
                 SizePriority = 0
-                Title.Caption = 'Title'
-                Width = 30
+                Title.Caption = 'id-point'
+                Width = 0
+                Visible = False
               end            
               item
                 SizePriority = 0
-                Title.Caption = 'Title'
-                Width = 25
+                Title.Caption = 'bag-calc'
+                Width = 0
+                Visible = False
+              end            
+              item
+                SizePriority = 0
+                Title.Caption = 'флаг-измен'
+                Width = 0
+                Visible = False
               end>
             DefaultColWidth = 60
             DefaultRowHeight = 22
@@ -1458,26 +1368,28 @@ object Form16: TForm16
             OnEditingDone = StringGrid13EditingDone
             ColWidths = (
               42
-              232
+              275
               40
+              48
+              43
+              47
+              43
+              75
               60
-              75
-              67
-              40
-              45
-              75
-              72
+              77
+              55
               0
               0
               0
               0
-              30
-              25
+              0
+              0
+              0
             )
           end
         end
         object TabSheet8: TTabSheet
-          Caption = '      2.Календарный план     '
+          Caption = '    Календарный план    '
           ClientHeight = 525
           ClientWidth = 811
           OnEnter = TabSheet8Enter
@@ -1860,7 +1772,7 @@ object Form16: TForm16
           end
         end
         object TabSheet9: TTabSheet
-          Caption = '   3.Льготы и Услуги   '
+          Caption = '    Льготы и Услуги    '
           ClientHeight = 525
           ClientWidth = 811
           OnEnter = TabSheet9Enter
@@ -2181,6 +2093,120 @@ object Form16: TForm16
             ParentColor = False
           end
         end
+        object TabSheet7: TTabSheet
+          Caption = '         Тариф       '
+          ClientHeight = 525
+          ClientWidth = 811
+          OnEnter = TabSheet7Enter
+          OnExit = TabSheet7Exit
+          object StringGrid10: TStringGrid
+            AnchorSideLeft.Control = TabSheet7
+            AnchorSideTop.Control = TabSheet7
+            AnchorSideRight.Control = TabSheet7
+            AnchorSideRight.Side = asrBottom
+            AnchorSideBottom.Control = TabSheet7
+            AnchorSideBottom.Side = asrBottom
+            Left = 2
+            Height = 520
+            Top = 3
+            Width = 807
+            Anchors = [akTop, akLeft, akRight, akBottom]
+            AutoFillColumns = True
+            BorderSpacing.Left = 2
+            BorderSpacing.Top = 3
+            BorderSpacing.Right = 2
+            BorderSpacing.Bottom = 2
+            ColCount = 8
+            Columns = <            
+              item
+                Color = clSilver
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = '№ п/п'
+                Width = 45
+              end            
+              item
+                ReadOnly = True
+                Title.Caption = 'Наименование пункта'
+                Width = 354
+              end            
+              item
+                ReadOnly = True
+                SizePriority = 0
+                Title.Caption = 'Путь (км)'
+                Width = 60
+              end            
+              item
+                Color = clCream
+                SizePriority = 0
+                Title.Caption = 'Жест/М2'
+                Width = 68
+              end            
+              item
+                Color = clCream
+                SizePriority = 0
+                Title.Caption = 'Жест/М3'
+                Width = 68
+              end            
+              item
+                Color = clCream
+                SizePriority = 0
+                Title.Caption = 'Мягк/М2'
+                Width = 68
+              end            
+              item
+                Color = clCream
+                SizePriority = 0
+                Title.Caption = 'Мягк/М3'
+                Width = 68
+              end            
+              item
+                Color = clCream
+                SizePriority = 0
+                Title.Caption = 'БАГАЖ'
+                Width = 60
+              end>
+            DefaultDrawing = False
+            ExtendedSelect = False
+            FixedCols = 0
+            Font.Height = -12
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goAlwaysShowEditor]
+            ParentFont = False
+            RowCount = 1
+            ScrollBars = ssVertical
+            TabOrder = 1
+            TitleFont.Height = -11
+            OnDrawCell = StringGrid10DrawCell
+            OnEditingDone = StringGrid10EditingDone
+            OnEnter = StringGrid10Enter
+            OnGetEditMask = StringGrid10GetEditMask
+            ColWidths = (
+              45
+              354
+              60
+              68
+              68
+              68
+              68
+              60
+            )
+          end
+          object StringGrid2: TStringGrid
+            Left = 15
+            Height = 232
+            Top = 286
+            Width = 332
+            FixedCols = 0
+            Options = [goFixedVertLine, goVertLine]
+            ParentBiDiMode = False
+            RowCount = 1
+            ScrollBars = ssAutoVertical
+            TabOrder = 0
+            TabStop = False
+            TitleFont.Height = -11
+            Visible = False
+          end
+        end
       end
       object StringGrid6: TStringGrid
         AnchorSideLeft.Control = TabSheet6
@@ -2232,9 +2258,9 @@ object Form16: TForm16
         OnBeforeSelection = StringGrid6BeforeSelection
         OnCheckboxToggled = StringGrid6CheckboxToggled
         OnButtonClick = StringGrid6ButtonClick
+        OnEditingDone = StringGrid6EditingDone
         OnSelection = StringGrid6Selection
         OnSetCheckboxState = StringGrid6SetCheckboxState
-        OnSetEditText = StringGrid6SetEditText
         ColWidths = (
           43
           128
@@ -2299,34 +2325,34 @@ object Form16: TForm16
         AnchorSideBottom.Control = TabSheet6
         AnchorSideBottom.Side = asrBottom
         Left = 5
-        Height = 135
-        Top = 427
+        Height = 98
+        Top = 464
         Width = 311
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 5
         BorderSpacing.Top = 3
         BorderSpacing.Bottom = 3
         Caption = 'ТАРИФНЫЙ КОЭФФИЦИЕНТ;'
-        ClientHeight = 118
+        ClientHeight = 81
         ClientWidth = 307
         Enabled = False
         Font.Height = -13
         ParentFont = False
         TabOrder = 3
         object Label10: TLabel
-          Left = 3
+          Left = 8
           Height = 18
-          Top = 12
+          Top = 8
           Width = 50
-          Caption = 'М2мяг:'
+          Caption = 'БИЛЕТ:'
           Font.Height = -15
           ParentColor = False
           ParentFont = False
         end
         object Label13: TLabel
-          Left = 5
+          Left = 8
           Height = 18
-          Top = 85
+          Top = 46
           Width = 46
           Caption = 'багаж:'
           Font.Height = -15
@@ -2336,7 +2362,7 @@ object Form16: TForm16
         object RadioButton1: TRadioButton
           Left = 165
           Height = 21
-          Top = 85
+          Top = 44
           Width = 52
           Caption = 'руб.'
           Checked = True
@@ -2349,7 +2375,7 @@ object Form16: TForm16
         object RadioButton2: TRadioButton
           Left = 227
           Height = 21
-          Top = 85
+          Top = 44
           Width = 35
           Caption = '%'
           Font.Height = -15
@@ -2358,9 +2384,9 @@ object Form16: TForm16
           TabOrder = 6
         end
         object FloatSpinEdit1: TFloatSpinEdit
-          Left = 63
+          Left = 69
           Height = 28
-          Top = 8
+          Top = 4
           Width = 80
           Font.Height = -15
           Font.Style = [fsBold]
@@ -2373,10 +2399,11 @@ object Form16: TForm16
           Value = 0
         end
         object FloatSpinEdit2: TFloatSpinEdit
-          Left = 63
+          Left = 69
           Height = 28
-          Top = 80
-          Width = 85
+          Top = 42
+          Width = 72
+          DecimalPlaces = 0
           Font.Height = -15
           Font.Style = [fsBold]
           MaxValue = 10000
@@ -2386,80 +2413,50 @@ object Form16: TForm16
           TabOrder = 4
           Value = 0
         end
-        object Label11: TLabel
-          Left = 159
-          Height = 18
-          Top = 12
-          Width = 51
-          Caption = 'М2жес:'
-          Font.Height = -15
-          ParentColor = False
-          ParentFont = False
-        end
         object FloatSpinEdit3: TFloatSpinEdit
-          Left = 222
+          Left = 280
           Height = 28
-          Top = 8
+          Top = 63
           Width = 80
           Font.Height = -15
           Font.Style = [fsBold]
           Increment = 0.01
           MaxValue = 100000
           MinValue = 0
-          OnEditingDone = FloatSpinEdit3EditingDone
           ParentFont = False
           TabOrder = 1
           Value = 0
-        end
-        object Label14: TLabel
-          Left = 3
-          Height = 18
-          Top = 49
-          Width = 50
-          Caption = 'М3мяг:'
-          Font.Height = -15
-          ParentColor = False
-          ParentFont = False
+          Visible = False
         end
         object FloatSpinEdit4: TFloatSpinEdit
-          Left = 63
+          Left = 272
           Height = 28
-          Top = 45
+          Top = 39
           Width = 80
           Font.Height = -15
           Font.Style = [fsBold]
           Increment = 0.01
           MaxValue = 100000
           MinValue = 0
-          OnEditingDone = FloatSpinEdit4EditingDone
           ParentFont = False
           TabOrder = 2
           Value = 0
-        end
-        object Label23: TLabel
-          Left = 159
-          Height = 18
-          Top = 49
-          Width = 51
-          Caption = 'М3жес:'
-          Font.Height = -15
-          ParentColor = False
-          ParentFont = False
+          Visible = False
         end
         object FloatSpinEdit5: TFloatSpinEdit
-          Left = 222
+          Left = 264
           Height = 28
-          Top = 45
+          Top = 23
           Width = 80
           Font.Height = -15
           Font.Style = [fsBold]
           Increment = 0.01
           MaxValue = 100000
           MinValue = 0
-          OnEditingDone = FloatSpinEdit5EditingDone
           ParentFont = False
           TabOrder = 3
           Value = 0
+          Visible = False
         end
       end
       object Panel1: TPanel
@@ -2810,31 +2807,29 @@ object Form16: TForm16
     TabOrder = 1
   end
   object Button2: TButton
-    Left = 864
+    Left = 352
     Height = 21
-    Top = 12
+    Top = 766
     Width = 106
-    Caption = 'mas_date'
+    Caption = 'combo'
     OnClick = Button2Click
     TabOrder = 3
-    Visible = False
   end
   object Button3: TButton
-    Left = 736
+    Left = 236
     Height = 21
-    Top = 12
+    Top = 766
     Width = 106
     Caption = 'tarif'
     OnClick = Button3Click
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
-    Visible = False
   end
   object Button4: TButton
-    Left = 592
+    Left = 120
     Height = 21
-    Top = 12
+    Top = 766
     Width = 106
     Caption = 'arSezon'
     OnClick = Button4Click
@@ -3748,12 +3743,12 @@ object Form16: TForm16
     Port = 0
     Protocol = 'postgresql'
     left = 248
-    top = 480
+    top = 464
   end
   object ZQuery1: TZQuery
     Connection = ZConnection1
     Params = <>
-    left = 240
-    top = 552
+    left = 248
+    top = 520
   end
 end
