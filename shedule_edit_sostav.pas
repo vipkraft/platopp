@@ -290,7 +290,7 @@ end;
 procedure TForm22.BitBtn1Click(Sender: TObject);
 begin
   //type_read:=1;
-   flcritical:=true;
+
   form9:=Tform9.create(self);
   form9.ShowModal;
   FreeAndNil(form9);
@@ -299,6 +299,10 @@ begin
    begin
      With Form22 do
      begin
+      //изменился пункт
+        if form22.edit2.Text<>result_point_id then
+           flcritical:=true;
+
           form22.edit2.Text:=result_point_id;
        // Определяем наименование остановочного пункта
        // Подключаемся к серверу
@@ -665,8 +669,11 @@ begin
 end;
 
 procedure TForm22.FormShow(Sender: TObject);
+var
+  tmplogical:boolean;
 begin
-
+  //сохранить состояние флага изменения состава
+     tmplogical:=flcritical;
      decimalseparator:='.';
      With Form22 do
      begin
@@ -784,7 +791,7 @@ begin
            form22.CheckBox3.Checked:=false;
        end;
 
-      flcritical:=false;
+      flcritical:=tmplogical;
      end;
 end;
 

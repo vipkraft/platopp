@@ -2292,7 +2292,7 @@ begin
       ZConnection1.Rollback;
      end;
 
-//\\\\\\\\\  проверка при изменении состава расписания удалять броню \\\\\\\\\\\\\\\\\\
+//\\\\\\\\\  проверка при изменении состава расписания удалять брон \\\\\\\\\\\\\\\\\\
   if (flag_edit_shedule=2) AND (flsostav) and flcritical then
     begin
       ZQuery1.SQL.Clear;
@@ -2312,6 +2312,12 @@ begin
       ZQuery1.SQL.add('UPDATE av_shedule_bron SET del=2,createdate=now(),id_user='+inttostr(id_user)+' WHERE del=0 AND id_shedule='+old_id+';');
       ZQuery1.ExecSQL;
       end;
+
+     //также удалить неснимаемую бронь
+      ZQuery1.SQL.Clear;
+      ZQuery1.SQL.add('UPDATE av_shedule_hard_bron SET del=2,createdate=now(),id_user='+inttostr(id_user)+' WHERE del=0 AND id_shedule='+old_id+';');
+      ZQuery1.ExecSQL;
+
     end;
 
 
@@ -3997,7 +4003,9 @@ begin
   form16.rascet();
   form16.StringGrid1.SetFocus;
   form16.StringGrid1.Row:=form16.StringGrid1.RowCount-1;
-  flsostav:=true;//флаг изменения состава
+  flsostav :=true;//флаг изменения состава
+  flcritical :=true;
+  fltarif :=true;
   setlength(tarif_all,0,0);//удаляем тариф
 end;
 
@@ -4034,6 +4042,8 @@ begin
 
      form16.rascet();
      form16.perescet();
+       flcritical:=true;
+       fltarif:=true;
      flsostav :=true; // флаг изменения состава
      //проставляем в массиве перевозчиков всем автоматический тариф
      //for n:=low(atp_sostav) to high(atp_sostav) do
@@ -5270,7 +5280,7 @@ begin
   //       showmessagealt('Нельзя редактировать первую запись в составе, ее можно только удалить !');
   //       exit;
   //     end;
-  flcritical:=false;
+
   flag_edit_sostav:=2;
   form22:=Tform22.create(self);
   form22.ShowModal;
@@ -5278,7 +5288,8 @@ begin
   form16.StringGrid1.SetFocus;
   form16.perescet();
   form16.rascet();
-  //If flcritical then
+  If flcritical then
+    fltarif:=true;
   flsostav := true; // флаг изменения состава
 end;
 
@@ -5497,7 +5508,7 @@ begin
 
    UpdateGridATP();
    UpdateGridATS();
-    end;
+   end;
 end;
 
 
